@@ -151,12 +151,12 @@ else {
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
 
 <!-- JS : UIZARD -->
-<script type="text/javascript" src="lib/js/objects.js"></script>
-<script type="text/javascript" src="lib/js/behavior.js"></script>
-<script type="text/javascript" src="lib/js/panels.js"></script>
-<script type="text/javascript" src="lib/js/menu.js"></script>
-<script type="text/javascript" src="lib/js/stdfunc.js"></script>
-<script type="text/javascript" src="lib/js/datasource.js"></script>
+<script type="text/javascript" src="js/objects.js"></script>
+<script type="text/javascript" src="js/behavior.js"></script>
+<script type="text/javascript" src="js/panels.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/stdfunc.js"></script>
+<script type="text/javascript" src="js/datasource.js"></script>
 
 <!-- JS : CODEMIRROR -->
 <script src="lib/codeMirror/js/codemirror.js" type="text/javascript"></script>
