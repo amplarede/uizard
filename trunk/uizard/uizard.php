@@ -114,29 +114,26 @@ else {
 <script type="text/javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"></script>
 
 <!-- JS : YAHOO USER INTERFACE LIBRARY -->
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/event/event-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dom/dom-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/event/event.js" ></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dom/dom.js" ></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/datasource/datasource-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-beta-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/animation/animation-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dragdrop/dragdrop-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/animation/animation-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/get/get-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/utilities/utilities.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/animation/animation-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/json/json-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dragdrop/dragdrop-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/resize/resize-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/layout/layout-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/button/button-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/tabview/tabview-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/autocomplete/autocomplete-min.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yuiloader/yuiloader.js"></script>
@@ -209,7 +206,10 @@ panelLoading.show();
                     <a class="yuimenubaritemlabel" href="#">File</a>
                 </li>
                 <li class="yuimenubaritem">
-                    <a class="yuimenubaritemlabel" href="#">Edit</a>
+                    <a class="yuimenubaritemlabel" href="#">Object</a>
+                </li>                
+                <li class="yuimenubaritem">
+                    <a class="yuimenubaritemlabel" href="#">Editor</a>
                 </li>
                 <li class="yuimenubaritem">
                     <a class="yuimenubaritemlabel" href="#">View</a>
@@ -367,6 +367,7 @@ var demomode = false;
 //Object
 var objectCount = 0;
 var selectedObj = -1;
+var copiedObj = null;
 
 var projectName = "<?=$projectname?>";
 
@@ -761,6 +762,48 @@ function projSettingLabelClicked(node) {
 //ProjectSetting
 var tabViewProjectSetting = new YAHOO.widget.TabView('tabProjectSetting');
 
+//ColorPicker
+var handleColorPickerOK = function() {
+	this.cancel();
+}
+
+var colorPickerDialog = new YAHOO.widget.Dialog("ColorPicker", { 
+				width : "400px",
+				close: true,
+				fixedcenter : true,
+				visible : false, 
+				constraintoviewport : true,
+				buttons : [ { text:"OK", handler:handleColorPickerOK, isDefault:true } ]
+});
+
+
+var colorPicker;
+
+colorPickerDialog.renderEvent.subscribe(function() {
+	if (!colorPicker) {
+		colorPicker = new YAHOO.widget.ColorPicker("yui-picker", {
+			container: colorPickerDialog,
+			images: {
+				PICKER_THUMB: "http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/picker_thumb.png",
+				HUE_THUMB: "http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/hue_thumb.png"
+			},
+			showhexsummary: false,
+			showwebsafe: true
+		});
+
+		colorPicker.on("rgbChange", function(o) {
+			if(selectedObj == 0) {
+				uizSetStyle("canvasDesign", "background-color", "#" + convertDecToHex(o.newValue[0], o.newValue[1], o.newValue[2]));
+			}
+			else {
+				uizSetStyle("object"+selectedObj, "background-color", "#" + convertDecToHex(o.newValue[0], o.newValue[1], o.newValue[2]));
+			}
+		});
+	}
+});
+				
+colorPickerDialog.render();
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 // Main Function
@@ -792,6 +835,7 @@ var tabViewProjectSetting = new YAHOO.widget.TabView('tabProjectSetting');
 				this.getItem(2).cfg.setProperty("submenu", aSubmenuData[2]);
 				this.getItem(3).cfg.setProperty("submenu", aSubmenuData[3]);
 				this.getItem(4).cfg.setProperty("submenu", aSubmenuData[4]);
+				this.getItem(5).cfg.setProperty("submenu", aSubmenuData[5]);
 			}
 		});
 		

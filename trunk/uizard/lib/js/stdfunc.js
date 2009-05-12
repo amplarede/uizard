@@ -32,3 +32,29 @@ function domGetX(elementID) {
 function domGetY(elementID) {
 	return YAHOO.util.Dom.getY(elementID);
 }
+
+function convertHex(Dec) {
+	var Value;
+	
+	if(Dec == 10) { Value = "A"; }
+	else if(Dec == 11) { Value = "B"; }
+	else if(Dec == 12) { Value = "C"; }
+	else if(Dec == 13) { Value = "D"; }	
+	else if(Dec == 14) { Value = "E"; }
+	else if(Dec == 15) { Value = "F"; }
+	else { Value = "" + Dec; }
+	
+	return Value;
+}
+
+function convertDecToHex(Red, Green, Blue) {
+	var a, b, c, d, e, f;
+	a = convertHex(Math.floor(Red / 16));
+	b = convertHex(Red % 16);
+	c = convertHex(Math.floor(Green / 16));
+	d = convertHex(Green % 16);
+	e = convertHex(Math.floor(Blue / 16));
+	f = convertHex(Blue % 16);	
+	
+	return a + b + c + d + e + f;
+}

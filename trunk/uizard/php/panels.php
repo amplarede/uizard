@@ -303,6 +303,15 @@ version: 0.8.0
 	</div>
 </div>
 
+<!-- HTML : CONTAINER::COLOR PICKER -->
+<div id="ColorPicker" class="yui-picker-panel"> 
+	<div class="hd" style="text-align:left;">Please choose a color...</div> 
+	<div class="bd"> 
+		<div class="yui-picker" id="yui-picker"></div> 
+	</div> 
+	<div class="ft"></div> 
+</div>
+
 <?
 
 ?>
