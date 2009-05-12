@@ -134,12 +134,13 @@ version: 0.8.0
               <ul>
                 <li>Files
                   <ul>
-                    <li><a><input id="chkboxIncludeHTMLFile" name="chkboxIncludeHTMLFile" type="checkbox" checked /> HTML File</a></li>
-                    <li><a><input id="chkboxIncludeJSFile" name="chkboxIncludeJSFile" type="checkbox" checked /> JS File</a></li>
-                    <li><a><input id="chkboxIncludeCSSFile" name="chkboxIncludeCSSFile" type="checkbox" checked /> CSS File</a></li>
-                    <li><a><input id="chkboxIncludePHPFile" name="chkboxIncludePHPFile" type="checkbox" /> PHP File (for XML Proxy)</a></li>
+                    <li><a><input id="chkboxIncludeHTMLFile" name="chkboxIncludeHTMLFile" type="checkbox" checked /> HTML Files</a></li>
+                    <li><a><input id="chkboxIncludeJSFile" name="chkboxIncludeJSFile" type="checkbox" checked /> JS Files</a></li>
+                    <li><a><input id="chkboxIncludeCSSFile" name="chkboxIncludeCSSFile" type="checkbox" checked /> CSS Files</a></li>
+                    <li><a><input id="chkboxIncludePHPFile" name="chkboxIncludePHPFile" type="checkbox" /> PHP Files (for XML Proxy)</a></li>
                   </ul>
                 </li>
+                <!--
                 <li>Libraries
                   <ul>
                     <li><a><input id="chkboxIncludeLibYUI" name="chkboxIncludeLibYUI" type="checkbox" /> YUI</a></li>
@@ -151,6 +152,7 @@ version: 0.8.0
                     <li><a><input id="chkboxIncludeSWFObject" name="chkboxIncludeSWFObject" type="checkbox" /> SWF Object</a></li>                                        
                   </ul>
                 </li>
+                -->
               </ul>
             </div>
         </div>
@@ -243,6 +245,7 @@ version: 0.8.0
 <div id="ProjectSetting">
 	<div class="hd" style="text-align:left"><img src="images/toolbar/projectsetting.png" align="absmiddle"> Project Setting</div>
 	<div class="bd">
+    	<div style="height:300px; width:100%; float:left;">
     	<div id="tabProjectSetting" style="text-align:left;">
             <ul class="yui-nav">
                 <li class="selected"><a href="#tab1"><em>General</em></a></li>
@@ -250,7 +253,7 @@ version: 0.8.0
             </ul>            
             <div class="yui-content">
                 <div id="tab1" style="text-align:left; height:270px; font-size:12px; padding:10px;">
-	                <div style="height:260px;">
+	                <div style="float:left; height:260px; width:100%;">
                         <div style="height:16px; font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Project Title</div>
                         <div style="height:16px; margin-bottom:15px;">
                             <input id="inputProjectTitle" name="" type="text" style="width:100%; border:0px; border-bottom:1px #999 dashed;" value="<?=$projectName?>" />
@@ -299,6 +302,7 @@ version: 0.8.0
                     </div>
                 </div>
             </div>        
+        </div>
         </div>
 	</div>
 </div>

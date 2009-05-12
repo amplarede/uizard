@@ -571,8 +571,11 @@ treeviewExportProject.subscribe("labelClick", exportLabelClicked);
 
 function exportLabelClicked(node) {
 	var label = node.getEl();
-	if(label.getElementsByTagName("input")[0].checked == true) label.getElementsByTagName("input")[0].checked = false;
-	else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
+
+	if(label.getElementsByTagName("input")[0].id != "chkboxIncludeHTMLFile") {
+		if(label.getElementsByTagName("input")[0].checked == true) label.getElementsByTagName("input")[0].checked = false;
+		else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
+	}
 }
 
 
@@ -722,7 +725,7 @@ panelPreferences.render();
 var tabViewPreferences = new YAHOO.widget.TabView('tabPreferences');
 
 
-
+//ProjectSetting
 var panelProjectSetting = new YAHOO.widget.Dialog("ProjectSetting",  
                                                     { width: "600px", 
 													  height: "400px",
@@ -759,7 +762,6 @@ function projSettingLabelClicked(node) {
 	else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
 }
 
-//ProjectSetting
 var tabViewProjectSetting = new YAHOO.widget.TabView('tabProjectSetting');
 
 //ColorPicker
