@@ -16,9 +16,7 @@ if($_POST['chkboxIncludeHTMLFile']) {
 }
 if($_POST['chkboxIncludeJSFile']) {
 	$create = $zipfile->add($_POST['projectDir']."/".$_POST['projectDir'].".js"); 
-}
-if($_POST['chkboxIncludeStdFuncFile']) {
-	$create = $zipfile->add($_POST['projectDir']."/stdfunc.js"); 
+	$create = $zipfile->add($_POST['projectDir']."/stdfunc.js");
 }
 if($_POST['chkboxIncludeCSSFile']) {
 	$create = $zipfile->add($_POST['projectDir']."/".$_POST['projectDir'].".css");
@@ -26,6 +24,7 @@ if($_POST['chkboxIncludeCSSFile']) {
 if($_POST['chkboxIncludePHPFile']) {
 	$create = $zipfile->add($_POST['projectDir']."/xmlProxy.php");
 }
+
 
 if(!empty($create)) {
 	header("Content-type: application/octet-stream");
