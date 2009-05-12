@@ -22,7 +22,7 @@ if($_POST['inputProjectAuthor'] != "" && $_POST['inputProjectName'] != "") {
 	copy("../conf/project.xml", "./".$projectname."/project.xml") ;
 	copy("../conf/css/default.css", "./".$projectname."/".$projectname.".css") ;
 	copy("../php/xmlProxy.php", "./".$projectname."/xmlProxy.php");
-	copy("../lib/js/stdfunc.js", "./".$projectname."/stdfunc.js") ;
+	copy("../js/stdfunc.js", "./".$projectname."/stdfunc.js") ;
 
 	echo "New Project is Generated Successfully...";
 	echo "<script>location.href='../uizard.php?action=load&projectDir=".$projectname."';</script>";
