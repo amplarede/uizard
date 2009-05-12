@@ -52,11 +52,15 @@ function objClicked(objCount) {
 																		{ text: "Remove a Checkbox", onclick: { fn: removeCheckboxSetItem } }
 																		],
 																		[
+																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		],																		
+																		[
 																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
 																		{ text: "View the Html Code", onclick: { fn: viewHtml } }
 																		],																		
 																		[
-																		{ text: "Delete", onclick: { fn: deleteObj } }
+																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
 																		]
 																	] });		
 	}
@@ -70,11 +74,15 @@ function objClicked(objCount) {
 																		{ text: "Remove a Radiobutton", onclick: { fn: removeRadioButtonSetItem } }
 																		],
 																		[
+																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		],
+																		[
 																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
 																		{ text: "View the Html Code", onclick: { fn: viewHtml } }
 																		],																		
 																		[
-																		{ text: "Delete", onclick: { fn: deleteObj } }
+																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
 																		]
 																	] });		
 	}
@@ -88,11 +96,15 @@ function objClicked(objCount) {
 																		{ text: "Remove the Tab", onclick: { fn: removeTabItem } }
 																		],
 																		[
+																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		],
+																		[
 																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
 																		{ text: "View the Html Code", onclick: { fn: viewHtml }, disabled: true }
 																		],																		
 																		[
-																		{ text: "Delete", onclick: { fn: deleteObj } }
+																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
 																		]
 																	] });	
 	}
@@ -105,12 +117,16 @@ function objClicked(objCount) {
 																	{ text: "Add a Radio Button", onclick: { fn: addRadioButtonItem } },
 																	{ text: "Remove a Radio Button", onclick: { fn: removeRadioButtonItem } }
 																	],
+																	[
+																	{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+																	{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																	],
                                                                     [
 																	{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																	{ text: "View the Html Code", onclick: { fn: viewHtml }, disabled: true }
+																	{ text: "View the Html Code", onclick: { fn: viewHtml } }
 																	],																	
 																	[
-																	{ text: "Delete", onclick: { fn: deleteObj } }
+																	{ text: "Delete this Object", onclick: { fn: deleteObj } }
 																	]
                                                                 ] });
 	}
@@ -119,12 +135,16 @@ function objClicked(objCount) {
                                                                 trigger: "object"+objCount,
                                                                 lazyload: true, 
                                                                 itemdata: [
+																	[
+																	{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+																	{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																	],	
                                                                     [
 																	{ text: "View the Javascript Code", onclick: { fn: viewCode } },
 																	{ text: "View the Html Code", onclick: { fn: viewHtml } }
 																	],																		   
 																	[
-																	{ text: "Delete", onclick: { fn: deleteObj } }
+																	{ text: "Delete this Object", onclick: { fn: deleteObj } }
 																	]
                                                                 ] });		
 	}
@@ -237,11 +257,23 @@ function setResizeObj(objCount) {
 	
 	if(uizObj[objCount].type != "mapGoogle" && uizObj[objCount].type != "mapYahoo" && uizObj[objCount].type != "mapDaum" && uizObj[objCount].type != "mapNaver") uizObj[objCount].resize.set("draggable", true);
 
-	var resizeEndMsg = function (args) {
+	uizObj[objCount].resize.subscribe("endResize", function (args) {
 		setObjStyle(selectedObj);		
-	};
-	
-	uizObj[objCount].resize.subscribe("endResize", resizeEndMsg);
+		
+		var left = uizGetStyle("object"+selectedObj, "left");
+		left = parseInt(replaceAll(left, "px", ""));
+		var top = uizGetStyle("object"+selectedObj, "top");
+		top = parseInt(replaceAll(top, "px", ""));
+		var width = uizGetStyle("object"+selectedObj, "width");
+		width = parseInt(replaceAll(width, "px", ""));
+		var height = uizGetStyle("object"+selectedObj, "height");
+		height = parseInt(replaceAll(height, "px", ""));		
+		uizSetStyle("objectSelection", "left", (left-2) + "px");
+		uizSetStyle("objectSelection", "top", (top-2) + "px");
+		uizSetStyle("objectSelection", "width", (width+2) + "px");
+		uizSetStyle("objectSelection", "height", (height+2) + "px");
+		uizSetStyle("objectSelection", "visibility", uizGetStyle("object"+selectedObj, "visibility"));		
+	});
 	
 	uizObj[objCount].resize.on("resize", function(args) {
 		if(uizObj[selectedObj].type == "panel") {
@@ -249,7 +281,7 @@ function setResizeObj(objCount) {
 			var panelHeight = args.height;  
 			uizObj[selectedObj].obj.cfg.setProperty("height", panelWidth + "px");	
 		}
-		if(uizObj[selectedObj].type == "googleChart") {
+		else if(uizObj[selectedObj].type == "googleChart") {
 			var imgWidth = args.width;  
 			var imgHeight = args.height;
 			uizGetElementById('objectImg'+selectedObj).src = "http://chart.apis.google.com/chart?cht=p3&chd=t:60,40&chs="+imgWidth+"x"+imgHeight;
@@ -414,7 +446,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		//dataSource | dataTable
 		else if(parsedData == "fields") { fields = newData; }	
 		//dataTable
-		else if(parsedData == "columnWidth") columnWidth = newData;
+		else if(parsedData == "columnWidth") { columnWidth = newData; }
 		//tabView
 		else if(parsedData == "tabcount") { tabcount = newData; }	
 		//image, swf
@@ -426,7 +458,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		//inputBox
 		else if(parsedData == "value") { value = newData; }
 		//div
-		else if(parsedData == "backgroundColor") { backgroundColor = newData; }
+		else if(parsedData == "backgroundColor") {	backgroundColor = newData; }
 		//radioButton
 		else if(parsedData == "buttoncount") { buttoncount = newData; }	
 		//panel
@@ -445,9 +477,22 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		writeMessage("<font color=green><b>" + parsedData + " is changed to " + newData + " (object#" + objCount + ")</b></font>");
 	};
 	
+	var onRowClick = function(oArgs) {
+		var parsingData = YAHOO.util.Dom.getChildren(oArgs.target)[0].innerHTML;		
+		var parsingLength = parsingData.length;
+		var parsingStartPoint = parsingData.indexOf("er\">") + 4;
+		var parsingEndPoint = parsingData.indexOf("</div>");
+		var parsedData = parsingData.substr(parsingStartPoint, parsingEndPoint - parsingStartPoint);
+
+		if(parsedData == "backgroundColor") {
+			colorPickerDialog.show();
+		}
+	}
+	
 	tableProperties.subscribe("cellMouseoverEvent", highlightEditableCell); 
 	tableProperties.subscribe("cellMouseoutEvent", tableProperties.onEventUnhighlightCell); 
-	tableProperties.subscribe("cellClickEvent", tableProperties.onEventShowCellEditor); 
+	tableProperties.subscribe("cellClickEvent", tableProperties.onEventShowCellEditor);
+	tableProperties.subscribe("rowClickEvent", onRowClick);
 	tableProperties.subscribe("editorSaveEvent", onCellEdit);
 }
 
@@ -704,7 +749,6 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	}
 	if(uizObj[objCount].type == "radioButton") {
 		uizGetElementById("object"+objCount).innerHTML = html;
-		uizObj[objCount].obj.destroy();
 		uizObj[objCount].obj = new YAHOO.widget.ButtonGroup("objectRadioButtonGroup"+objCount);
 	}
 	if(uizObj[objCount].type == "panel") {

@@ -32,7 +32,24 @@ var mainMenuData =
 			]
 		},
 		{
-			id: "edit", 
+			id: "object", 
+			itemdata:
+			[
+				[
+					{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+					{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+				],																		
+				[
+					{ text: "View the Javascript Code", onclick: { fn: viewCode } },
+					{ text: "View the Html Code", onclick: { fn: viewHtml } }
+				],
+				[
+					{ text: "Delete this Object", onclick: { fn: deleteObj } }
+				]
+			]
+		},		
+		{
+			id: "editor", 
 			itemdata:
 			[
 				[
@@ -118,13 +135,283 @@ var mainMenuData =
 	];
 	
 var designCanvasContextMenuData = [
-		{ text: "Grid Setting", onclick: { fn: showGridSetting } },
-		{ text: "Project Setting", onclick: { fn: showProjectSetting } }
+		[
+			{ text: "Copy this Object", onclick: { fn: doObjCopy } },
+			{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+		],	
+		[
+			{ text: "Grid Setting", onclick: { fn: showGridSetting } },
+			{ text: "Project Setting", onclick: { fn: showProjectSetting } }
+		]
 	];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Menu Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function doObjCopy() {
+	if(uizObj[selectedObj].type != "canvas") {
+		copiedObj = selectedObj;
+	}
+	else {
+		alert("Can not copy the target is!");
+	}
+}
+
+function doObjPaste() {
+	var x = uizGetStyle("object"+copiedObj, "left");
+	x = ( eval(x.replace("px", "")) + 10 ) + "px";	
+	var y = uizGetStyle("object"+copiedObj, "top");
+	y = ( eval(y.replace("px", "")) + 10 ) + "px";
+	var zindex = uizGetStyle("object"+copiedObj, "z-index");
+	var width = uizGetStyle("object"+copiedObj, "width");
+	var height = uizGetStyle("object"+copiedObj, "height");
+	var align = uizGetStyle("object"+copiedObj, "text-align");
+	var visibility = uizGetStyle("object"+copiedObj, "visibility");
+	//pushButton | checkboxButton
+	var label = "";	
+	var disabled = "";
+	var tabindex = "";
+	//autoComplete
+	var datasourceNo = "";
+	//dataSource
+	var provider = "";
+	var datasourceURL = "";
+	var datasourceType = "";
+	var resultNode = "";
+	var query = "";
+	//dataSource | dataTable
+	var fields = "";
+	//dataTable
+	var columnWidth = "";
+	//tabView
+	var tabcount = "";
+	//image, swf
+	var src = "";
+	//form
+	var action = "";
+	var method = "";
+	var target = "";
+	//inputBox
+	var value = "";
+	//div
+	var backgroundColor = "";
+	//buttoncount
+	var buttoncount = "";	
+	//panel
+	var closebutton = "";
+	var draggable = "";
+	//timer 
+	var interval = "";
+	
+	//code
+	var code = "";
+	//html
+	var html = "";
+	
+	if(uizObj[copiedObj].type == "pushButton" || uizObj[copiedObj].type == "checkboxButton") {
+		label= uizObj[copiedObj].obj.get("label");
+		disabled = uizObj[copiedObj].disabled;
+		tabindex = uizObj[copiedObj].tabindex;
+	}
+	if(uizObj[copiedObj].type == "autoComplete" || uizObj[copiedObj].type == "dataTable") {
+		datasourceNo = uizObj[copiedObj].datasourceNo;
+	}
+	if(uizObj[copiedObj].type == "dataSource") {
+		provider = uizObj[copiedObj].provider;
+		datasourceURL = uizObj[copiedObj].obj.liveData;
+		datasourceType = uizObj[copiedObj].datasourceType;
+		resultNode = uizObj[copiedObj].resultNode;
+		query = uizObj[copiedObj].query;
+	}	
+	if(uizObj[copiedObj].type == "dataSource" || uizObj[copiedObj].type == "dataTable") {
+		fields = uizObj[copiedObj].fields;
+	}
+	if(uizObj[copiedObj].type == "dataTable") {
+		columnWidth = uizObj[copiedObj].columnWidth;
+	}	
+	if(uizObj[copiedObj].type == "tabView") {
+		tabcount = uizObj[copiedObj].childCount;
+	}
+	if(uizObj[copiedObj].type == "image" || uizObj[copiedObj].type == "googleChart") {
+		src = uizGetElementById("objectImg"+copiedObj).src;
+	}
+	if(uizObj[copiedObj].type == "swf") {
+		src = uizGetElementById("objectSWF"+copiedObj).data;
+	}
+	if(uizObj[copiedObj].type == "form") {
+		action = uizGetElementById("objectForm"+copiedObj).action;
+		method = uizGetElementById("objectForm"+copiedObj).method;
+		target = uizGetElementById("objectForm"+copiedObj).target;
+	}		
+	if(uizObj[copiedObj].type == "inputBox") {
+		value = uizGetElementById("objectInput"+copiedObj).value;
+	}
+	if(uizObj[copiedObj].type == "div" || uizObj[copiedObj].type == "table") {
+		backgroundColor = uizGetStyle("object"+copiedObj, "background-color");
+	}
+	if(uizObj[copiedObj].type == "radioButton") {
+		buttoncount = uizObj[copiedObj].childCount;
+	}
+	if(uizObj[copiedObj].type == "panel") {
+		closebutton = uizObj[copiedObj].obj.cfg.getProperty("close");
+		draggable = uizObj[copiedObj].obj.cfg.getProperty("draggable");
+	}
+	if(uizObj[copiedObj].type == "timer") {
+		interval = uizObj[copiedObj].interval;
+	}	
+	
+	code = uizObj[copiedObj].code;
+	html = uizObj[copiedObj].html;
+	
+	if(uizObj[copiedObj].type == "div") {
+		addObjDiv();
+		//replaceAll(html, "", "");
+		//replaceAll(code, "", "");
+	}
+	else if(uizObj[copiedObj].type == "image") {
+		addObjImage();
+	}
+	else if(uizObj[copiedObj].type == "swf") {
+		addObjSWF(); 
+	}
+	else if(uizObj[copiedObj].type == "form") { 
+		addObjForm();
+	}
+	else if(uizObj[copiedObj].type == "inputBox") {
+		addObjInputbox();
+	}
+	else if(uizObj[copiedObj].type == "checkboxSet") {
+		addObjCheckboxSet();
+		html = replaceAll(html, "objectCheckboxForm"+copiedObj, "objectCheckboxForm"+(objectCount-1));
+		html = replaceAll(html, "objectCheckboxSet"+copiedObj, "objectCheckboxSet"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));				
+	}
+	else if(uizObj[copiedObj].type == "radiobuttonSet") {
+		addObjRadiobuttonSet();
+		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));				
+	}
+	else if(uizObj[copiedObj].type == "textArea") {
+		addObjTextarea();
+	}
+	else if(uizObj[copiedObj].type == "table") {
+		addObjTable();
+		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));			
+	}
+	else if(uizObj[copiedObj].type == "timer") {
+		addObjTimer();
+	}
+	else if(uizObj[copiedObj].type == "pushButton") {
+		addObjPushButton();
+		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
+	}
+	else if(uizObj[copiedObj].type == "radioButton") {
+		addObjRadioButton();
+		html = replaceAll(html, "objectRadioButtonGroup"+copiedObj, "objectRadioButtonGroup"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
+	}
+	else if(uizObj[copiedObj].type == "checkboxButton") {
+		addObjCheckboxButton();
+		html = replaceAll(html, "objectCheckBoxButton"+copiedObj, "objectCheckBoxButton"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
+	}
+	else if(uizObj[copiedObj].type == "colorPicker") {
+		addObjColorPicker();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));			
+	}
+	else if(uizObj[copiedObj].type == "tabView") {
+		addObjTabview();
+		html = replaceAll(html, "objectTabView"+copiedObj, "objectTabView"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
+	}
+	else if(uizObj[copiedObj].type == "dataTable") {
+		addObjDatatable();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "calendar") {
+		addObjCalendar();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "panel") { 
+		addObjPanel(); 
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "slider") { 
+		addObjSlider(); 
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "autoComplete") { 
+		addObjAutoComplete(); 
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "rechTextEditor") { 
+		addObjRichTextEditor(); 
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "menuBar") {
+		addObjMenuBar(); 
+		html = replaceAll(html, "objectMenuBar"+copiedObj, "objectMenuBar"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "treeView") {
+		addObjTreeview();
+		html = replaceAll(html, "objectTreeview"+copiedObj, "objectTreeview"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "yuiChart") {
+		addObjYUIChart();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "paginator") {
+		addObjPaginator();
+		html = replaceAll(html, "objectPaginator"+copiedObj, "objectPaginator"+(objectCount-1));
+		html = replaceAll(html, "objectPaginatorContent"+copiedObj, "objectPaginatorContent"+(objectCount-1));
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "dragAndDrop") {
+		addObjDragAndDrop();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "resize") {
+		addObjResize();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "mapDaum") {
+		addObjDaumMap();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "mapGoogle") {
+		addObjGoogleMap();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "googleChart") {
+		addObjGoogleChart();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "mapNaver") {
+		addObjNaverMap();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "mapLive") {
+		addObjLiveMap();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}
+	else if(uizObj[copiedObj].type == "dataSource") {
+		addObjPushButton();
+		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
+	}	
+	else {
+		alert("Can not copy the object!");
+		return 0;
+	}
+	
+	setObjStyle(objectCount-1, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
+	
+	objClicked(objectCount-1);
+}
 
 function doUndo() {
 	var whichEditor = codeEditor;
@@ -626,7 +913,7 @@ function loadSetting() {
 		if(SWFObject == "true") uizGetElementById("chkboxUseSWFObject").checked = true;
 		else if(SWFObject == "false") uizGetElementById("chkboxUseSWFObject").checked = false;
 		
-		writeMessage("<font color=green><b>The Project Setting Loading Succeeded.</b></font>");
+		writeMessage("<font color=green><b>Project Setting has been successfully loaded.</b></font>");
 	};
 	
 	var responseFailure = function(o) {
