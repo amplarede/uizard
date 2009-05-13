@@ -2,7 +2,7 @@
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
-version: 0.8.0
+version: 0.8.2
 */
 
 var mainMenuData =
@@ -12,11 +12,11 @@ var mainMenuData =
 			itemdata:
 			[ 
 				[
-					{ text: "New...", helptext: "Ctrl + N", onclick: { fn: showNewProject } },
-					{ text: "Open...", helptext: "Ctrl + O", onclick: { fn: showOpenProject } },
-					{ text: "Save...", helptext: "Ctrl + S", onclick: { fn: saveProject } },
+					{ text: "New...", helptext: "Shift + N", onclick: { fn: showNewProject } },
+					{ text: "Open...", helptext: "Shift + O", onclick: { fn: showOpenProject } },
+					{ text: "Save...", helptext: "Shift + S", onclick: { fn: saveProject } },
 					{ text: "Save As...", helptext: "Shift + Ctrl + S", onclick: { fn: showSaveAsProject } },
-					{ text: "Export the Project", helptext: "Ctrl + E", onclick: { fn: showExportProject } }
+					{ text: "Export The Project", helptext: "Shift + E", onclick: { fn: showExportProject } }
 				],
 				[
 					{ text: "RealCode in New Window", onclick: { fn: openRealCode } },
@@ -36,15 +36,15 @@ var mainMenuData =
 			itemdata:
 			[
 				[
-					{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-					{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+					{ text: "Copy The Object", helptext: "Shift + C", onclick: { fn: doObjCopy } },
+					{ text: "Paste The Object", helptext: "Shift + V", onclick: { fn: doObjPaste } }
 				],																		
 				[
-					{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-					{ text: "View the Html Code", onclick: { fn: viewHtml } }
+					{ text: "View The Javascript Code", helptext: "Shift + J", onclick: { fn: viewCode } },
+					{ text: "View The Html Code", helptext: "Shift + H", onclick: { fn: viewHtml } }
 				],
 				[
-					{ text: "Delete this Object", onclick: { fn: deleteObj } }
+					{ text: "Delete The Object", helptext: "Shift + D", onclick: { fn: deleteObj } }
 				]
 			]
 		},		
@@ -53,8 +53,8 @@ var mainMenuData =
 			itemdata:
 			[
 				[
-					{ text: "Undo", helptext: "Ctrl + Z", onclick: { fn: doUndo } },
-					{ text: "Redo", helptext: "Ctrl + Y", onclick: { fn: doRedo } }
+					{ text: "Undo", helptext: "Shift + Z", onclick: { fn: doUndo } },
+					{ text: "Redo", helptext: "Shift + Y", onclick: { fn: doRedo } }
 				],
 				[
 					{ text: "Copy", helptext: "Ctrl + C", onclick: { fn: doCopy }, disabled:true },
@@ -63,15 +63,15 @@ var mainMenuData =
 					{ text: "Delete", helptext: "Delete", onclick: { fn: doDelete }, disabled:true }
 				],
 				[
-					{ text: "Indent All", helptext: "Ctrl + I", onclick: { fn: doIndentAll } },
-					{ text: "Select All", helptext: "Ctrl + A", onclick: { fn: doSelectAll } }
+					{ text: "Indent All", helptext: "Shift + I", onclick: { fn: doIndentAll } },
+					{ text: "Select All", helptext: "Shift + A", onclick: { fn: doSelectAll } }
 				],
 				[
-					{ text: "Find", helptext: "Ctrl + F", onclick: { fn: doFind }  },
-					{ text: "Replace", helptext: "Ctrl + R", onclick: { fn: doReplace }  }              
+					{ text: "Find", helptext: "Shift + F", onclick: { fn: doFind }  },
+					{ text: "Replace", helptext: "Shift + R", onclick: { fn: doReplace }  }              
 				],
 				[
-					{ text: "Preferences", onclick: { fn: showPreferences } } 
+					{ text: "Preferences", helptext: "Shift + B", onclick: { fn: showPreferences } } 
 				]
 			]
 		},
@@ -80,18 +80,18 @@ var mainMenuData =
 			itemdata:
 			[
 				[
-					{ text: "Toogle the Tool Box", onclick: { fn: toggleLeft } },
-					{ text: "Toogle the Object Explorer & Properties", onclick: { fn: toggleRight } },
-					{ text: "Toogle the Message", onclick: { fn: toggleBottom } }
+					{ text: "Toogle The Tool Box", onclick: { fn: toggleLeft } },
+					{ text: "Toogle The Object Explorer & Properties", onclick: { fn: toggleRight } },
+					{ text: "Toogle The Message", onclick: { fn: toggleBottom } }
 				],
 				[
-					{ text: "View the Design Tab", onclick: { fn: viewDesignTab } },
-					{ text: "View the DataSource Tab", onclick: { fn: viewDataSourceTab } },
-					{ text: "View the Code Tab", onclick: { fn: viewCodeTab } },
-					{ text: "View the RealCode Tab", onclick: { fn: viewRealCodeTab } },
-					{ text: "View the Html Tab", onclick: { fn: viewHtmlTab } },
-					{ text: "View the RealHtml Tab", onclick: { fn: viewRealHtmlTab } },					
-					{ text: "View the Preview Tab", onclick: { fn: viewPreviewTab } }
+					{ text: "View The Design Tab", onclick: { fn: viewDesignTab } },
+					{ text: "View The DataSource Tab", onclick: { fn: viewDataSourceTab } },
+					{ text: "View The Code Tab", onclick: { fn: viewCodeTab } },
+					{ text: "View The RealCode Tab", onclick: { fn: viewRealCodeTab } },
+					{ text: "View The Html Tab", onclick: { fn: viewHtmlTab } },
+					{ text: "View The RealHtml Tab", onclick: { fn: viewRealHtmlTab } },					
+					{ text: "View The Preview Tab", onclick: { fn: viewPreviewTab } }
 				]              
 			] 
 		},
@@ -100,12 +100,12 @@ var mainMenuData =
 			itemdata:
 			[
 				[
-					{ text: "Grid Setting", onclick: { fn: showGridSetting } },
-					{ text: "API Key Setting", onclick: { fn: showAPIKeySetting } },
-					{ text: "CSS Setting", onclick: { fn: showCSSSetting } }
+					{ text: "Grid Setting", helptext: "Shift + G", onclick: { fn: showGridSetting } },
+					{ text: "API Key Setting", helptext: "Shift + K", onclick: { fn: showAPIKeySetting } },
+					{ text: "CSS Setting", helptext: "Shift + W", onclick: { fn: showCSSSetting } }
 				],
 				[
-					{ text: "Project Setting", onclick: { fn: showProjectSetting } }
+					{ text: "Project Setting", helptext: "Shift + P", onclick: { fn: showProjectSetting } }
 				]
 			]
 		},
@@ -114,7 +114,7 @@ var mainMenuData =
 			itemdata:
 			[
 			 	[
-				 	{ text: "UIzard Official Manual", url: "http://uizard.org/Manual", target: "_blank" },
+				 	{ text: "UIzard Official Manual", url: "http://uizard.org/OfficialManual", target: "_blank" },
 					{ text: "UIzard Tutorial Video", url: "http://uizard.org/TutorialVideo", target: "_blank" },
 					{ text: "UIzard Q&A Board", url: "http://uizard.org/QNA", target: "_blank" },
 					{ text: "UIzard Bug Report", url: "http://uizard.org/BugReport", target: "_blank" }
@@ -137,8 +137,8 @@ var mainMenuData =
 	
 var designCanvasContextMenuData = [
 		[
-			{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-			{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+			{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+			{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 		],	
 		[
 			{ text: "Grid Setting", onclick: { fn: showGridSetting } },
@@ -817,19 +817,22 @@ function saveSetting() {
 	else if(gridSettingButtonGroup.get("checkedButton") == "Button yui-gen11") gridSize = 10;
 	else if(gridSettingButtonGroup.get("checkedButton") == "Button yui-gen12") gridSize = 20;	
 	var gridOpacity = gridSettingSlider.getValue() / 2;  
-	var objectSelection = uizGetElementById("chkboxShowSelection").checked;  
+	var objectSelection = uizGetElementById("chkboxShowSelection").checked;
 	var objectFill = uizGetElementById("chkboxFillSelection").checked; 
 	var resizeHandle = uizGetElementById("chkboxShowResizeHandle").checked; 
-	var resizeProxy = uizGetElementById("chkboxProxyResize").checked; 
-	var dragProxy = uizGetElementById("chkboxProxyDrag").checked;  
+	//var resizeProxy = uizGetElementById("chkboxProxyResize").checked; 
+	var resizeProxy = true;
+	//var dragProxy = uizGetElementById("chkboxProxyDrag").checked;  
+	var dragProxy = true;
 	var font = "false";  
 	var lineSpacing = "false"; 
+	var debuggerFireBug = uizGetElementById("chkboxDebuggerFireBug").checked;
 	var YUI = uizGetElementById("chkboxUseYUI").checked; 
 	var Prototype = uizGetElementById("chkboxUsePrototype").checked; 
 	var jQuery = uizGetElementById("chkboxUsejQuery").checked; 
 	var MooTools = uizGetElementById("chkboxUseMooTools").checked; 
 	var Dojo = uizGetElementById("chkboxUseDojo").checked; 
-	var Jindo = uizGetElementById("chkboxUseJindo").checked; 		
+	//var Jindo = uizGetElementById("chkboxUseJindo").checked; 		
 	var SWFObject = uizGetElementById("chkboxUseSWFObject").checked; 
 	
 	var responseSuccess = function(o) {
@@ -846,7 +849,53 @@ function saveSetting() {
 		failure:responseFailure,
 	};	
 	
-	var transaction = YAHOO.util.Connect.asyncRequest('GET', "php/xmlProject.php?mode=save&projectName=" + projectName + "&title=" + title + "&owner=" + owner + "&description=" + description + "&gridSize=" + gridSize + "&gridOpacity=" + gridOpacity + "&objectSelection=" + objectSelection + "&objectFill=" + objectFill + "&resizeHandle=" + resizeHandle + "&resizeProxy=" + resizeProxy + "&dragProxy=" + dragProxy + "&font=" + font + "&lineSpacing=" + lineSpacing + "&YUI=" + YUI + "&Prototype=" + Prototype + "&jQuery=" + jQuery + "&MooTools=" + MooTools + "&Dojo=" + Dojo + "&Jindo=" + Jindo + "&SWFObject=" + SWFObject, callback); 
+	//var transaction = YAHOO.util.Connect.asyncRequest('GET', "php/xmlProject.php?mode=save&projectName=" + projectName + "&title=" + title + "&owner=" + owner + "&description=" + description + "&gridSize=" + gridSize + "&gridOpacity=" + gridOpacity + "&objectSelection=" + objectSelection + "&objectFill=" + objectFill + "&resizeHandle=" + resizeHandle + "&resizeProxy=" + resizeProxy + "&dragProxy=" + dragProxy + "&font=" + font + "&lineSpacing=" + lineSpacing + "&YUI=" + YUI + "&Prototype=" + Prototype + "&jQuery=" + jQuery + "&MooTools=" + MooTools + "&Dojo=" + Dojo + "&Jindo=" + Jindo + "&SWFObject=" + SWFObject, callback); 
+	var transaction = YAHOO.util.Connect.asyncRequest('GET', "php/xmlProject.php?mode=save&projectName=" + projectName + "&title=" + title + "&owner=" + owner + "&description=" + description + "&gridSize=" + gridSize + "&gridOpacity=" + gridOpacity + "&objectSelection=" + objectSelection + "&objectFill=" + objectFill + "&resizeHandle=" + resizeHandle + "&resizeProxy=" + resizeProxy + "&dragProxy=" + dragProxy + "&font=" + font + "&lineSpacing=" + lineSpacing + "&debuggerFireBug=" + debuggerFireBug + "&YUI=" + YUI + "&Prototype=" + Prototype + "&jQuery=" + jQuery + "&MooTools=" + MooTools + "&Dojo=" + Dojo + "&SWFObject=" + SWFObject, callback); 
+	
+	if(objectSelection == true) {
+		for(var i=0; i < objectCount; i++) {
+			if(uizGetElementById("objectSelection"+i)) uizSetStyle("objectSelection"+i, "visibility", "visible");
+		}
+		showObjectSelection = true;
+	}
+	else {
+		for(var i=0; i < objectCount; i++) {
+			if(uizGetElementById("objectSelection"+i)) uizSetStyle("objectSelection"+i, "visibility", "hidden");
+		}
+		showObjectSelection = false;		
+	}
+	
+	if(objectFill == true) {
+		fillObjectSelection = true;
+		
+		var sheet = new YAHOO.util.StyleSheet(".objBorder { background-color: #FFC8C8; }");
+		sheet.enable();
+	}
+	else if(objectFill == false) {
+		fillObjectSelection = false;
+		
+		var sheet = new YAHOO.util.StyleSheet(".objBorder { background-color: transparent; }");
+		sheet.enable();
+	}
+	
+	if(resizeHandle == true) {
+		uizGetElementById("chkboxShowResizeHandle").checked = true;
+		hoverResizeHandle = false;
+	}
+	else if(resizeHandle == false) {
+		uizGetElementById("chkboxShowResizeHandle").checked = false;
+		hoverResizeHandle = true;
+	}
+	/*
+	if(resizeProxy == true) {
+		uizGetElementById("chkboxProxyResize").checked = true;
+		proxyResize = true;
+	}
+	else if(resizeProxy == false) {
+		uizGetElementById("chkboxProxyResize").checked = false;
+		proxyResize = false;
+	}
+	*/
 }
 
 function loadSetting() {
@@ -862,16 +911,17 @@ function loadSetting() {
 		var objectSelection = root.getElementsByTagName('objectSelection')[0].firstChild.data; 
 		var objectFill = root.getElementsByTagName('objectFill')[0].firstChild.data; 
 		var resizeHandle = root.getElementsByTagName('resizeHandle')[0].firstChild.data; 
-		var resizeProxy = root.getElementsByTagName('resizeProxy')[0].firstChild.data; 
-		var dragProxy = root.getElementsByTagName('dragProxy')[0].firstChild.data; 
+		//var resizeProxy = root.getElementsByTagName('resizeProxy')[0].firstChild.data; 
+		//var dragProxy = root.getElementsByTagName('dragProxy')[0].firstChild.data; 
 		var font = root.getElementsByTagName('font')[0].firstChild.data; 
 		var lineSpacing = root.getElementsByTagName('lineSpacing')[0].firstChild.data;
+		var debuggerFireBug = root.getElementsByTagName('debuggerFireBug')[0].firstChild.data;
 		var YUI = root.getElementsByTagName('YUI')[0].firstChild.data;
 		var Prototype = root.getElementsByTagName('Prototype')[0].firstChild.data;
 		var jQuery = root.getElementsByTagName('jQuery')[0].firstChild.data;
 		var MooTools = root.getElementsByTagName('MooTools')[0].firstChild.data;
 		var Dojo = root.getElementsByTagName('Dojo')[0].firstChild.data;
-		var Jindo = root.getElementsByTagName('Jindo')[0].firstChild.data;		
+		//var Jindo = root.getElementsByTagName('Jindo')[0].firstChild.data;		
 		var SWFObject = root.getElementsByTagName('SWFObject')[0].firstChild.data;
 		
 		
@@ -885,19 +935,55 @@ function loadSetting() {
 
 		gridSettingSlider.setValue(parseInt(gridOpacity) * 2);
 		
-		if(objectSelection == "true") uizGetElementById("chkboxShowSelection").checked = true;
-		else if(objectSelection == "false") uizGetElementById("chkboxShowSelection").checked = false;
-		if(objectFill == "true") uizGetElementById("chkboxFillSelection").checked = true;
-		else if(objectFill == "false") uizGetElementById("chkboxFillSelection").checked = false;
-		if(resizeHandle == "true") uizGetElementById("chkboxShowResizeHandle").checked = true;
-		else if(resizeHandle == "false") uizGetElementById("chkboxShowResizeHandle").checked = false;
-		if(resizeProxy == "true") uizGetElementById("chkboxProxyResize").checked = true;
-		else if(resizeProxy == "false") uizGetElementById("chkboxProxyResize").checked = false;
+		if(objectSelection == "true") {
+			uizGetElementById("chkboxShowSelection").checked = true;
+			showObjectSelection = true;
+		}
+		else if(objectSelection == "false") {
+			uizGetElementById("chkboxShowSelection").checked = false;
+			showObjectSelection = false;
+		}
+		if(objectFill == "true") {
+			uizGetElementById("chkboxFillSelection").checked = true;
+			fillObjectSelection = true;
+			
+			var sheet = new YAHOO.util.StyleSheet(".objBorder { background-color: #FFC8C8; }");
+			sheet.enable();
+		}
+		else if(objectFill == "false") {
+			uizGetElementById("chkboxFillSelection").checked = false;
+			fillObjectSelection = false;
+			
+			var sheet = new YAHOO.util.StyleSheet(".objBorder { background-color: transparent; }");
+			sheet.enable();
+		}
+		if(resizeHandle == "true") {
+			uizGetElementById("chkboxShowResizeHandle").checked = true;
+			hoverResizeHandle = false;
+		}
+		else if(resizeHandle == "false") {
+			uizGetElementById("chkboxShowResizeHandle").checked = false;
+			hoverResizeHandle = true;
+		}
+		
+		/*
+		if(resizeProxy == "true") {
+			uizGetElementById("chkboxProxyResize").checked = true;
+			proxyResize = true;
+		}
+		else if(resizeProxy == "false") {
+			uizGetElementById("chkboxProxyResize").checked = false;
+			proxyResize = false;
+		}
 		if(dragProxy == "true") uizGetElementById("chkboxProxyDrag").checked = dragProxy;
 		else if(dragProxy == "false") uizGetElementById("chkboxProxyDrag").checked = false;
+		*/
 		
 		//uizGetElementById("").value = font;
 		//uizGetElementById("").value = lineSpacing;
+		
+		if(debuggerFireBug == "true") uizGetElementById("chkboxDebuggerFireBug").checked = true;
+		else if(debuggerFireBug == "false") uizGetElementById("chkboxDebuggerFireBug").checked = false;
 		
 		if(YUI == "true") uizGetElementById("chkboxUseYUI").checked = true;
 		else if(YUI == "false") uizGetElementById("chkboxUseYUI").checked = false;
@@ -909,8 +995,8 @@ function loadSetting() {
 		else if(MooTools == "false") uizGetElementById("chkboxUseMooTools").checked = false;
 		if(Dojo == "true") uizGetElementById("chkboxUseDojo").checked = true;
 		else if(Dojo == "false") uizGetElementById("chkboxUseDojo").checked = false;
-		if(Jindo == "true") uizGetElementById("chkboxUseJindo").checked = true;
-		else if(Jindo == "false") uizGetElementById("chkboxUseJindo").checked = false;
+		//if(Jindo == "true") uizGetElementById("chkboxUseJindo").checked = true;
+		//else if(Jindo == "false") uizGetElementById("chkboxUseJindo").checked = false;
 		if(SWFObject == "true") uizGetElementById("chkboxUseSWFObject").checked = true;
 		else if(SWFObject == "false") uizGetElementById("chkboxUseSWFObject").checked = false;
 		

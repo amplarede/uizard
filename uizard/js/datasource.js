@@ -8,7 +8,7 @@ version: 0.8.0
 function addDs(provider, datasourceType, livedata, resultNode, fields) {
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.util.XHRDataSource(livedata);
-	uizObj[objectCount].type = "dataSource";
+	uizObj[objectCount].type = "DATASOURCE";
 	uizObj[objectCount].provider = provider;
 	uizObj[objectCount].datasourceType = datasourceType;
 	if(datasourceType == "XML") {

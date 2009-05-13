@@ -3,7 +3,7 @@
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
-version: 0.8.0
+version: 0.8.2
 */
 
 
@@ -157,6 +157,7 @@ else {
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/stdfunc.js"></script>
 <script type="text/javascript" src="js/datasource.js"></script>
+<script type="text/javascript" src="js/keyListener.js"></script>
 
 <!-- JS : CODEMIRROR -->
 <script src="lib/codeMirror/js/codemirror.js" type="text/javascript"></script>
@@ -289,7 +290,7 @@ panelLoading.show();
 	<div class="hd"></div>
 	<div id='canvasDesign' class="bd" style='height:1000px; background-color:#ffffff;' onClick='canvasClicked();' onDblClick='canvasDblClicked();'>
 	<div id="objectStorage" style=""></div>
-	<div id="canvasGrid" style="height:100%; background:url(images/grid_10px.png); opacity:0.5; filter:alpha(opacity=40);"></div>
+	<div id="canvasGrid" style="height:100%; background:url(images/grid_10px.png); opacity:0.4; filter:alpha(opacity=40);"></div>
 	</div>
 </div>
 
@@ -363,6 +364,12 @@ var demomode = false;
 <?
 }
 ?>
+
+//Environment
+var showObjectSelection = false;
+var fillObjectSelection = false;
+var hoverResizeHandle = true;
+var proxyResize = true;
 
 //Object
 var objectCount = 0;
@@ -758,11 +765,57 @@ treeviewProjectSettingLibrary.subscribe("labelClick", projSettingLabelClicked);
 
 function projSettingLabelClicked(node) {
 	var label = node.getEl();
-	if(label.getElementsByTagName("input")[0].checked == true) label.getElementsByTagName("input")[0].checked = false;
-	else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
+		
+	if(label.getElementsByTagName("input")[0].id != "chkboxUseYUI" && label.getElementsByTagName("input")[0].id != "chkboxUseSWFObject") {
+		if(label.getElementsByTagName("input")[0].checked == true) label.getElementsByTagName("input")[0].checked = false;
+		else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
+	}
+	
+	libIntroHideAll();
+	if(label.getElementsByTagName("input")[0].id == "chkboxUseYUI") {
+		panelLibIntro1.show();
+	}
+	else if(label.getElementsByTagName("input")[0].id == "chkboxUsePrototype") {
+		panelLibIntro2.show();
+	}
+	else if(label.getElementsByTagName("input")[0].id == "chkboxUsejQuery") {
+		panelLibIntro3.show();
+	}
+	else if(label.getElementsByTagName("input")[0].id == "chkboxUseMooTools") {
+		panelLibIntro4.show();
+	}
+	else if(label.getElementsByTagName("input")[0].id == "chkboxUseDojo") {
+		panelLibIntro5.show();
+	}	
+	else if(label.getElementsByTagName("input")[0].id == "chkboxUseSWFObject") {
+		panelLibIntro6.show();
+	}	
 }
 
 var tabViewProjectSetting = new YAHOO.widget.TabView('tabProjectSetting');
+
+var panelLibIntro1 = new YAHOO.widget.Module("libIntroYUI", { visible: true });   
+panelLibIntro1.render("libIntro");
+var panelLibIntro2 = new YAHOO.widget.Module("libIntroPrototype", { visible: false });   
+panelLibIntro2.render("libIntro");
+var panelLibIntro3 = new YAHOO.widget.Module("libIntrojQuery", { visible: false });   
+panelLibIntro3.render("libIntro");
+var panelLibIntro4 = new YAHOO.widget.Module("libIntroMooTools", { visible: false });   
+panelLibIntro4.render("libIntro");
+var panelLibIntro5 = new YAHOO.widget.Module("libIntroDojo", { visible: false });   
+panelLibIntro5.render("libIntro");
+var panelLibIntro6 = new YAHOO.widget.Module("libIntroSWFObject", { visible: false });   
+panelLibIntro6.render("libIntro");
+
+function libIntroHideAll() {
+	panelLibIntro1.hide();
+	panelLibIntro2.hide();
+	panelLibIntro3.hide();
+	panelLibIntro4.hide();
+	panelLibIntro5.hide();
+	panelLibIntro6.hide();	
+}
+
 
 //ColorPicker
 var handleColorPickerOK = function() {
@@ -1057,9 +1110,7 @@ colorPickerDialog.render();
 		canvas6 = new YAHOO.widget.Module("canvas6", { visible: false });   
 		canvas6.render("canvasContainer"); 	
 		canvas7 = new YAHOO.widget.Module("canvas7", { visible: false });   
-		canvas7.render("canvasContainer"); 	
-		
-		uizGetElementById('objectStorage').innerHTML += "<div id='objectSelection' class='objBorder'></div>"
+		canvas7.render("canvasContainer");
 	};
 	
 	var initProperties = function() {
@@ -1193,7 +1244,7 @@ if($_GET['action'] == "newProject") {
 
 	layout.getUnitByPosition('right').set("width", 350);
 	
-	//location.href = "#anchorTapTop";
+	enableKeyListener();
 }
 
 function loadProject() {
@@ -1246,103 +1297,103 @@ if($_GET['action'] == "load") {
 		
 		echo "\t";
 		
-		if($type == "div") {
+		if($type == "DIV") {
 			echo "addObjDiv();\n";
 		}		
-		else if($type == "image") {
+		else if($type == "IMAGE") {
 			echo "addObjImage();\n";
 		}		
-		else if($type == "swf") {
+		else if($type == "SWF") {
 			echo "addObjSWF();\n";
 		}	
-		else if($type == "form") {
+		else if($type == "FORM") {
 			echo "addObjForm();\n";
 		}
-		else if($type == "inputBox") {
+		else if($type == "INPUTBOX") {
 			echo "addObjInputbox();\n";
 		}	
-		else if($type == "checkboxSet") {
+		else if($type == "CHECKBOXSET") {
 			echo "addObjCheckboxSet();\n";
 		}	
-		else if($type == "radiobuttonSet") {
+		else if($type == "RADIOBUTTONSET") {
 			echo "addObjRadiobuttonSet();\n";
 		}		
-		else if($type == "textArea") {
+		else if($type == "TEXTAREA") {
 			echo "addObjTextarea();\n";
 		}
-		else if($type == "table") {
+		else if($type == "TABLE") {
 			echo "addObjTable();\n";
 		}	
-		else if($type == "timer") {
+		else if($type == "TIMER") {
 			echo "addObjTimer();\n";
 		}	
-		else if($type == "pushButton") {
+		else if($type == "PUSHBUTTON") {
 			echo "addObjPushButton();\n";
 		}
-		else if($type == "radioButton") {
+		else if($type == "RADIOBUTTON") {
 			echo "addObjRadioButton();\n";
 		}
-		else if($type == "checkboxButton") {
+		else if($type == "CHECKBOXBUTTON") {
 			echo "addObjCheckboxButton();\n";
 		}
-		else if($type == "colorPicker") {
+		else if($type == "COLORPICKER") {
 			echo "addObjColorPicker();\n";
 		}
-		else if($type == "tabView") {
+		else if($type == "TABVIEW") {
 			echo "addObjTabview();\n";
 		}
-		else if($type == "dataTable") {
+		else if($type == "DATATABLE") {
 			echo "addObjDatatable();\n";
 		}	
-		else if($type == "calendar") {
+		else if($type == "CALENDAR") {
 			echo "addObjCalendar();\n";
 		}	
-		else if($type == "panel") {
+		else if($type == "PANEL") {
 			echo "addObjPanel();\n";
 		}
-		else if($type == "slider") {
+		else if($type == "SLIDER") {
 			echo "addObjSlider();\n";
 		}
-		else if($type == "autoComplete") {
+		else if($type == "AUTOCOMPLETE") {
 			echo "addObjAutoComplete();\n";
 		}
-		else if($type == "richTextEditor") {
+		else if($type == "RICHTEXTEDITOR") {
 			echo "addObjRichTextEditor();\n";
 		}
-		else if($type == "menuBar") {
+		else if($type == "MENUBAR") {
 			echo "addObjMenuBar();\n";
 		}
-		else if($type == "treeView") {
+		else if($type == "TREEVIEW") {
 			echo "addObjTreeview();\n";
 		}
-		else if($type == "yuiChart") {
+		else if($type == "YUICHART") {
 			echo "addObjYUIChart();\n";
 		}
-		else if($type == "paginator") {
+		else if($type == "PAGINATOR") {
 			echo "addObjPaginator();\n";
 		}
-		else if($type == "dragAndDrop") {
+		else if($type == "DRAGANDDROP") {
 			echo "addObjDragAndDrop();\n";
 		}	
-		else if($type == "resize") {
+		else if($type == "RESIZE") {
 			echo "addObjResize();\n";
 		}	
-		else if($type == "mapDaum") {
+		else if($type == "MAPDAUM") {
 			echo "addObjDaumMap();\n";
 		}	
-		else if($type == "mapGoogle") {
+		else if($type == "MAPGOOGLE") {
 			echo "addObjGoogleMap();\n";
 		}
-		else if($type == "googleChart") {
+		else if($type == "GOOGLECHART") {
 			echo "addObjGoogleChart();\n";
 		}
-		else if($type == "mapNaver") {
+		else if($type == "MAPNAVER") {
 			echo "addObjNaverMap();\n";
 		}
-		else if($type == "mapLive") {
+		else if($type == "MAPLIVE") {
 			echo "addObjLiveMap();\n";
 		}
-		else if($type == "dataSource") {
+		else if($type == "DATASOURCE") {
 			echo "addObjPushButton();\n";
 		}
 
@@ -1383,8 +1434,6 @@ if($_GET['action'] == "load") {
 	}
 }
 
-
-		
 
 var eventReady = YAHOO.util.Event.on(window, "load", panelLoadinghide);
 

@@ -10,7 +10,7 @@ version: 0.8.0
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addCanvas() {
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "canvas";
+	uizObj[objectCount].type = "CANVAS";
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -30,7 +30,7 @@ function addObjDiv() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:150px; height:150px; font-size:12px; color:#888;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'>No Contents Now...</div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "div";	
+	uizObj[objectCount].type = "DIV";	
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -47,7 +47,7 @@ function addObjImage() {
 
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img id='objectImg"+objectCount+"' style='width:100%; height:100%;' src='http://no-src'>";
-	uizObj[objectCount].type = "image";
+	uizObj[objectCount].type = "IMAGE";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -66,7 +66,7 @@ function addObjSWF() {
 
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<div id=\"objectSWFcontainer"+objectCount+"\"></div>";
-	uizObj[objectCount].type = "swf";
+	uizObj[objectCount].type = "SWF";
 
 	uizGetElementById('object'+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -94,7 +94,7 @@ function addObjForm() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img src='images/toolbox/form.png' align='absmiddle'> Form"+objectCount+"<form id='objectForm"+objectCount+"' name='objectForm"+objectCount+"' action=\"no-target\" method=\"post\" target=\"\"></form>";	
-	uizObj[objectCount].type = "form";
+	uizObj[objectCount].type = "FORM";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 
@@ -113,7 +113,7 @@ function addObjInputbox() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<input id='objectInput"+objectCount+"' type='text' style='width:100%;'>";
-	uizObj[objectCount].type = "inputBox";
+	uizObj[objectCount].type = "INPUTBOX";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -131,7 +131,7 @@ function addObjCheckboxSet() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:100px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "checkboxSet";
+	uizObj[objectCount].type = "CHECKBOXSET";
 	uizObj[objectCount].childCount = 1;
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
@@ -153,7 +153,7 @@ function addObjRadiobuttonSet() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:100px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "radiobuttonSet";
+	uizObj[objectCount].type = "RADIOBUTTONSET";
 	uizObj[objectCount].childCount = 1;
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
@@ -176,7 +176,7 @@ function addObjTextarea() {
 
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<textarea id='objectTextArea"+objectCount+"' style='width:100%; height:100%; padding:0px; margin:0px;'></textarea>";
-	uizObj[objectCount].type = "textArea";
+	uizObj[objectCount].type = "TEXTAREA";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -194,7 +194,7 @@ function addObjTable() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:100px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "table";
+	uizObj[objectCount].type = "TABLE";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<table width='100%' border='1'>\n";
@@ -223,7 +223,7 @@ function addObjTimer() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img src='images/toolbox/timer.png' align='absmiddle'> Timer"+objectCount;
-	uizObj[objectCount].type = "timer";
+	uizObj[objectCount].type = "TIMER";
 	uizObj[objectCount].interval = 1000;
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
@@ -244,7 +244,7 @@ function addObjPushButton() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"Handle' style='position:absolute; z-index:1; left:50px; top:50px; cursor:move; width:20px; height:20px; background:url(images/handle.png); opacity:0.5; filter:alpha(opacity=50);' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "pushButton";
+	uizObj[objectCount].type = "PUSHBUTTON";
 		
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<input type=\"button\" id=\"objectPushButton"+objectCount+"\" name=\"objectPushButton"+objectCount+"\" value=\"Button\">\n";
@@ -289,7 +289,7 @@ function addObjRadioButton() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; ' onMouseUp='objClicked("+objectCount+")'   onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "radioButton";
+	uizObj[objectCount].type = "RADIOBUTTON";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id=\"objectRadioButtonGroup"+objectCount+"\" class=\"yui-buttongroup\">\n";
@@ -338,7 +338,7 @@ function addObjCheckboxButton() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"Handle' style='position:absolute; z-index:1; left:50px; top:50px; cursor:move; width:20px; height:20px; background:url(images/handle.png); opacity:0.5; filter:alpha(opacity=50);' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";	
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "checkboxButton";
+	uizObj[objectCount].type = "CHECKBOXBUTTON";
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<input type=\"checkbox\" id=\"objectCheckBoxButton"+objectCount+"\" name=\"objectCheckBoxButton"+objectCount+"\" value=\"1\">\n";
@@ -385,7 +385,7 @@ function addObjColorPicker() {
 			HUE_THUMB: "lib/yui/colorpicker/assets/hue_thumb.png"
 		}
 	});
-	uizObj[objectCount].type = "colorPicker";
+	uizObj[objectCount].type = "COLORPICKER";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -403,7 +403,7 @@ function addObjTabview() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='width:400px; height:100px; position:absolute; z-index:1; left:50px; top:50px; ' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "tabView";
+	uizObj[objectCount].type = "TABVIEW";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id='objectTabView"+objectCount+"' class='yui-navset'>\n";
@@ -458,7 +458,7 @@ function addObjDatatable() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.DataTable("object"+objectCount, tableColumnDefs, dummyDs);
-	uizObj[objectCount].type = "dataTable";
+	uizObj[objectCount].type = "DATATABLE";
 	uizObj[objectCount].fields = "id,value";	
 	uizObj[objectCount].columnWidth = "80,220";	
 	
@@ -521,7 +521,7 @@ function addObjCalendar() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.Calendar("objectCalendar"+objectCount,"object"+objectCount);
-	uizObj[objectCount].type = "calendar";
+	uizObj[objectCount].type = "CALENDAR";
 	uizObj[objectCount].obj.render();
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
@@ -540,7 +540,7 @@ function addObjPanel() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='width:300px; height:200px; position:absolute; z-index:1; left:50px; top:50px; ' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "panel";
+	uizObj[objectCount].type = "PANEL";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id='objectPanel"+objectCount+"'>\n";
@@ -582,7 +582,7 @@ function addObjSlider() {
 
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.Slider.getHorizSlider("slider-bg" + objectCount, "slider-thumb" + objectCount, topConstraint, bottomConstraint, 20);
-	uizObj[objectCount].type = "slider";
+	uizObj[objectCount].type = "SLIDER";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -606,7 +606,7 @@ function addObjAutoComplete() {
 	//AutoComplete
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<input id='object"+objectCount+"Input' type='text' style='width:100%;'>";
-	uizObj[objectCount].type = "autoComplete";
+	uizObj[objectCount].type = "AUTOCOMPLETE";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 		
@@ -637,7 +637,7 @@ function addObjRichTextEditor() {
 	
 	uizObj[objectCount] = new uizObjClass();
     uizObj[objectCount].obj = new YAHOO.widget.Editor('textarea'+objectCount, myConfig);
-	uizObj[objectCount].type = "richTextEditor";
+	uizObj[objectCount].type = "RICHTEXTEDITOR";
 	
     uizObj[objectCount].obj.render();
 
@@ -653,7 +653,7 @@ function addObjMenuBar() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; ' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "menuBar";
+	uizObj[objectCount].type = "MENUBAR";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id=\"objectMenuBar"+objectCount+"\">\n";
@@ -720,7 +720,7 @@ function addObjTreeview() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; ' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "treeView";
+	uizObj[objectCount].type = "TREEVIEW";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id=\"objectTreeview"+objectCount+"\">\n";
@@ -769,7 +769,7 @@ function addObjYUIChart() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:250px; height:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "yuiChart";	
+	uizObj[objectCount].type = "YUICHART";	
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div style='visibility:hidden; position:absolute;'>\n";
@@ -840,7 +840,7 @@ function addObjPaginator() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:350px; height:80px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].type = "paginator";	
+	uizObj[objectCount].type = "PAGINATOR";	
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	uizObj[objectCount].html += "<div id='objectPaginator"+objectCount+"'>\n";
@@ -903,7 +903,7 @@ function addObjDragAndDrop() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img src='images/toolbox/draganddrop.png' align='absmiddle'> Drag And Drop"+objectCount;
-	uizObj[objectCount].type = "dragAndDrop";
+	uizObj[objectCount].type = "DRAGANDDROP";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -922,7 +922,7 @@ function addObjResize() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img src='images/toolbox/resize.png' align='absmiddle'> Resize"+objectCount;
-	uizObj[objectCount].type = "resize";	
+	uizObj[objectCount].type = "RESIZE";	
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 
@@ -947,7 +947,7 @@ function addObjGoogleMap() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new google.maps.Map2(uizGetElementById("object"+objectCount));
-	uizObj[objectCount].type = "mapGoogle";
+	uizObj[objectCount].type = "MAPGOOGLE";
 	
 	uizObj[objectCount].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
 
@@ -1012,7 +1012,7 @@ function addObjGoogleChart() {
 
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = "<img id='objectImg"+objectCount+"' src='http://chart.apis.google.com/chart?cht=p3&chd=t:60,40&chs="+uizGetStyle("object"+objectCount, "width").replace("px", "")+"x"+uizGetStyle("object"+objectCount, "height").replace("px", "")+"'>";
-	uizObj[objectCount].type = "googleChart";
+	uizObj[objectCount].type = "GOOGLECHART";
 	
 	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
 	
@@ -1037,7 +1037,7 @@ function addObjDaumMap() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new DMap("object"+objectCount, {point:new DLatLng(37.48879895934866, 127.03130020103005), level:2}); 
-	uizObj[objectCount].type = "mapDaum";
+	uizObj[objectCount].type = "MAPDAUM";
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -1080,7 +1080,7 @@ function addObjNaverMap() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new NMap(uizGetElementById("object"+objectCount));
-	uizObj[objectCount].type = "mapNaver";
+	uizObj[objectCount].type = "MAPNAVER";
 	
 	uizObj[objectCount].obj.setCenterAndZoom(new NPoint(321198,529730),3);
 
@@ -1123,7 +1123,7 @@ function addObjLiveMap() {
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new VEMap('object'+objectCount);
-	uizObj[objectCount].type = "mapLive";
+	uizObj[objectCount].type = "MAPLIVE";
 	
 	uizObj[objectCount].obj.LoadMap();
 
@@ -1177,6 +1177,8 @@ function addObjFinish() {
 		treeviewObjects.expandAll();
 		treeviewObjects.subscribe("labelClick", labelClicked);
 	}
+	
+	uizGetElementById('objectStorage').innerHTML += "<div id='objectSelection" + objectCount + "' class='objBorder'></div>"
 	
 	writeMessage("<font color=blue><b>Added the object#" + objectCount + "</b></font>");
 	objectCount++;	

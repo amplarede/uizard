@@ -44,7 +44,7 @@ version: 0.8.0
             <img src="images/toolbar/line.png" class="toolbarButton">
             <img src="images/toolbar/projectsetting.png" border="0" onClick="showProjectSetting();" class="toolbarButton">
             <img src="images/toolbar/line.png" class="toolbarButton">
-            <a href="http://uizard.org/Manual" target="_blank">            
+            <a href="http://uizard.org/OfficialManual" target="_blank">            
             <img src="images/toolbar/manual.png" border="0" onClick="" class="toolbarButton">    
             </a>
             <a href="http://uizard.org/BugReport" target="_blank">  

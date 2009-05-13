@@ -32,12 +32,13 @@ if($_GET['mode'] == "load") {
 	$xmlOutput .= "\t\t<dragProxy>".$prt['dragProxy'][0]['value']."</dragProxy>\n";
 	$xmlOutput .= "\t\t<font>".$prt['font'][0]['value']."</font>\n";
 	$xmlOutput .= "\t\t<lineSpacing>".$prt['lineSpacing'][0]['value']."</lineSpacing>\n";
+	$xmlOutput .= "\t\t<debuggerFireBug>".$prt['debuggerFireBug'][0]['value']."</debuggerFireBug>\n";
 	$xmlOutput .= "\t\t<YUI>".$prt['YUI'][0]['value']."</YUI>\n";
 	$xmlOutput .= "\t\t<Prototype>".$prt['Prototype'][0]['value']."</Prototype>\n";
 	$xmlOutput .= "\t\t<jQuery>".$prt['jQuery'][0]['value']."</jQuery>\n";
 	$xmlOutput .= "\t\t<MooTools>".$prt['MooTools'][0]['value']."</MooTools>\n";
 	$xmlOutput .= "\t\t<Dojo>".$prt['Dojo'][0]['value']."</Dojo>\n";
-	$xmlOutput .= "\t\t<Jindo>".$prt['Jindo'][0]['value']."</Jindo>\n";
+//	$xmlOutput .= "\t\t<Jindo>".$prt['Jindo'][0]['value']."</Jindo>\n";
 	$xmlOutput .= "\t\t<SWFObject>".$prt['SWFObject'][0]['value']."</SWFObject>\n";
 	
 	$xmlOutput .= "\t</project>\n";
@@ -63,12 +64,13 @@ else if($_GET['mode'] == "save") {
 	$xmlOutput .= "\t\t<dragProxy>".$_GET['dragProxy']."</dragProxy>\n";
 	$xmlOutput .= "\t\t<font>".$_GET['font']."</font>\n";
 	$xmlOutput .= "\t\t<lineSpacing>".$_GET['lineSpacing']."</lineSpacing>\n";
+	$xmlOutput .= "\t\t<debuggerFireBug>".$_GET['debuggerFireBug']."</debuggerFireBug>\n";
 	$xmlOutput .= "\t\t<YUI>".$_GET['YUI']."</YUI>\n";
 	$xmlOutput .= "\t\t<Prototype>".$_GET['Prototype']."</Prototype>\n";
 	$xmlOutput .= "\t\t<jQuery>".$_GET['jQuery']."</jQuery>\n";
 	$xmlOutput .= "\t\t<MooTools>".$_GET['MooTools']."</MooTools>\n";
 	$xmlOutput .= "\t\t<Dojo>".$_GET['Dojo']."</Dojo>\n";
-	$xmlOutput .= "\t\t<Jindo>".$_GET['Jindo']."</Jindo>\n";
+//	$xmlOutput .= "\t\t<Jindo>".$_GET['Jindo']."</Jindo>\n";
 	$xmlOutput .= "\t\t<SWFObject>".$_GET['SWFObject']."</SWFObject>\n";
 	
 	$xmlOutput .= "\t</project>\n";
