@@ -14,7 +14,7 @@ function genDiv($objectid, $type, $x, $y, $zindex, $width, $height, $align, $vis
 	$x = "left:".$x."; ";
 	$y = "top:".$y."; ";
 	
-	if($type == "panel") {
+	if($type == "PANEL") {
 		$position = "";
 		$x = "";
 		$y = "";
@@ -61,7 +61,7 @@ function genSWF($no, $objectid, $width, $height, $src) {
 	//Generating a object#".$no."(SWF)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = \"<div id=\\\"objectSWFcontainer".$no."\\\"></div>\";
-	uizObj[".$no."].type = \"swf\";
+	uizObj[".$no."].type = \"SWF\";
 
 	uizGetElementById(\"".$objectid."\").innerHTML = uizObj[".$no."].obj;
 	
@@ -161,7 +161,7 @@ function genPushButton($no, $objectid, $label, $disabled, $tabindex, $code) {
 	//Generating a object#".$no."(PushButton)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.widget.Button(\"objectPushButton".$no."\");
-	uizObj[".$no."].type = \"pushButton\";
+	uizObj[".$no."].type = \"PUSHBUTTON\";
 	
 	uizObj[".$no."].obj.set(\"label\", \"".$label."\");
 	uizObj[".$no."].obj.set(\"disabled\", \"".$disabled."\");
@@ -187,7 +187,7 @@ function genRadioButton($no, $objectid, $buttoncount, $code) {
 	//Generating a object#".$no."(RadioButton)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.widget.ButtonGroup(\"objectRadioButtonGroup".$no."\");
-	uizObj[".$no."].type = \"radioButton\";
+	uizObj[".$no."].type = \"RADIOBUTTON\";
 	
 	uizObj[".$no."].obj.on(\"valueChange\", onValueChange_Object".$no.");
 	";
@@ -206,7 +206,7 @@ function genCheckboxButton($no, $objectid, $label, $disabled, $tabindex, $code) 
 	//Generating a object#".$no."(CheckboxButton)	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.widget.Button(\"objectCheckBoxButton".$no."\");
-	uizObj[".$no."].type = \"checkboxButton\";
+	uizObj[".$no."].type = \"CHECKBOXBUTTON\";
 	
 	uizObj[".$no."].obj.set(\"label\", \"".$label."\");
 	uizObj[".$no."].obj.set(\"disabled\", \"".$disabled."\");
@@ -236,7 +236,7 @@ function genColorPicker($no, $objectid, $code) {
 			HUE_THUMB: \"../lib/yui/colorpicker/assets/hue_thumb.png\"
 		}
 	});
-	uizObj[".$no."].type = \"colorPicker\";
+	uizObj[".$no."].type = \"COLORPICKER\";
 	
 	uizObj[".$no."].obj.on(\"rgbChange\", onRGBChange_Object".$no.");
 	";
@@ -255,7 +255,7 @@ function genTabView($no, $objectid, $tabcount, $code) {
 	//Generating a object#".$no."(TabView)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.widget.TabView(\"objectTabView".$no."\");
-	uizObj[".$no."].type = \"tabView\";
+	uizObj[".$no."].type = \"TABVIEW\";
 	";
 	
 	$return  .= str_replace("\n", "\n\t", stripslashes($code));
@@ -284,7 +284,7 @@ function genDataTable($no, $objectid, $datasourceNo, $fields, $columnWidth, $cod
 	".str_replace("\n", "\n\t", stripslashes($code))."
 	
 	uizObj[".$no."].obj = new YAHOO.widget.DataTable(\"".$objectid."\", ".$objectid."ColumnDefs, uizObj[".$datasourceNo."].obj);
-	uizObj[".$no."].type = \"dataTable\";
+	uizObj[".$no."].type = \"DATATABLE\";
 	
 	uizObj[".$no."].obj.subscribe(\"cellClickEvent\", onCellClickEvent_Object".$no.");
 	uizObj[".$no."].obj.subscribe(\"cellDblClickEvent\", onCellDblclickEvent_Object".$no.");
@@ -308,7 +308,7 @@ function genCalendar($no, $objectid, $code) {
 	//Generating a object#".$no."(Calendar)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.widget.Calendar(\"objectCalendar\"+".$no.",\"".$objectid."\");
-	uizObj[".$no."].type = \"calendar\";
+	uizObj[".$no."].type = \"CALENDAR\";
 
 	uizObj[".$no."].obj.selectEvent.subscribe(onSelect_Object".$no.");
 	
@@ -334,7 +334,7 @@ function genPanel($no, $objectid, $x, $y, $width, $height, $closebutton, $dragga
 	uizObj[".$no."].obj = new YAHOO.widget.Panel(\"objectPanel".$no."\", { xy:[".$x.",".$y."], width:\"".$width."\", height:\"".$height."\", visible:true, draggable:".$draggable.", close:".$closebutton." } );
 	uizObj[".$no."].obj.render();	
 
-	uizObj[".$no."].type = \"panel\";
+	uizObj[".$no."].type = \"PANEL\";
 	
 	YAHOO.util.Event.on(uizObj[".$no."].obj, \"dragEvent\", onDragEvent_Object".$no.");
 	YAHOO.util.Event.on(uizObj[".$no."].obj, \"hideMaskEvent\", onHideMaskEvent_Object".$no.");
@@ -361,7 +361,7 @@ function genSlider($no, $objectid, $code) {
 	var topConstraint = 0;
 	var bottomConstraint = 200;
 	uizObj[".$no."].obj = new YAHOO.widget.Slider.getHorizSlider(\"slider-bg\" + ".$no.", \"slider-thumb\" + ".$no.", topConstraint, bottomConstraint, 20);
-	uizObj[".$no."].type = \"slider\";
+	uizObj[".$no."].type = \"SLIDER\";
 	
 	uizObj[".$no."].obj.subscribe(\"change\", onChange_Object".$no.");
 	uizObj[".$no."].obj.subscribe(\"slideStart\", onSlideStart_Object".$no.");
@@ -383,7 +383,7 @@ function genAutoComplete($no, $objectid, $datasourceNo, $code) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	uizGetElementById(\"".$objectid."\").innerHTML = \"<input id='".$objectid."Input' type='text' style='width:100%;'><div id='".$objectid."Container'></div>\";
 	uizObj[".$no."].obj = new YAHOO.widget.AutoComplete(\"".$objectid."Input\", \"".$objectid."Container\", uizObj[".$datasourceNo."].obj);
-	uizObj[".$no."].type = \"autoComplete\";
+	uizObj[".$no."].type = \"AUTOCOMPLETE\";
 	uizObj[".$no."].obj.suppressInputUpdate = true;
 	
 	".str_replace("\n", "\n\t", stripslashes($code))."
@@ -411,7 +411,7 @@ function genRichTextEditor($no, $objectid) {
 
 	uizGetElementById(\"".$objectid."\").innerHTML = \"<textarea id='textarea".$no."'></textarea>\";
     uizObj[".$no."].obj = new YAHOO.widget.Editor('textarea".$no."', myConfig);
-	uizObj[".$no."].type = \"richTextEditor\";
+	uizObj[".$no."].type = \"RICHTEXTEDITOR\";
 	
     uizObj[".$no."].obj.render();
 	";
@@ -425,7 +425,7 @@ function genMenuBar($no, $objectid, $code) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	//Generating a object#".$no."(MenuBar)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	uizObj[".$no."].type = \"menuBar\";
+	uizObj[".$no."].type = \"MENUBAR\";
 	uizObj[".$no."].obj = new YAHOO.widget.MenuBar(\"objectMenuBar".$no."\");	
 	uizObj[".$no."].obj.render();
 	
@@ -446,7 +446,7 @@ function genTreeView($no, $objectid, $code) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	//Generating a object#".$no."(MenuBar)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	uizObj[".$no."].type = \"treeView\";
+	uizObj[".$no."].type = \"TREEVIEW\";
 	uizObj[".$no."].obj = new YAHOO.widget.TreeView(\"objectTreeview".$no."\");
 	uizObj[".$no."].obj.render();
 	
@@ -467,7 +467,7 @@ function genYuiChart($no, $objectid, $code) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	//Generating a object#".$no."(YUIChart)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	uizObj[".$no."].type = \"yuiChart\";
+	uizObj[".$no."].type = \"YUICHART\";
 	uizGetElementById('".$objectid."').innerHTML += \"<div id='objectChart".$no."'>Unable to load Flash content. The YUI Charts Control requires Flash Player 9.0.45 or higher. You can download the latest version of Flash Player from the <a href='http://www.adobe.com/go/getflashplayer'>Adobe Flash Player Download Center</a>.</p></div>\";
 	
 	var chartData".$no." = new YAHOO.util.DataSource(YAHOO.util.Dom.get('objectChartData".$no."'));
@@ -553,7 +553,7 @@ function genMapDaum($no, $objectid, $code) {
 	//Generating a object#".$no."(Daum Map)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new DMap(\"".$objectid."\", {point:new DLatLng(37.48879895934866, 127.03130020103005), level:2}); 
-	uizObj[".$no."].type = \"mapDaum\";
+	uizObj[".$no."].type = \"MAPDAUM\";
 	
 	DEvent.addListener(uizObj[".$no."].obj, \"move\", onMove_Object".$no.");
 	DEvent.addListener(uizObj[".$no."].obj, \"drag\", onDrag_Object".$no.");
@@ -581,7 +581,7 @@ function genMapGoogle($no, $objectid, $code) {
 	//Generating a object#".$no."(Map Google)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new google.maps.Map2(uizGetElementById(\"".$objectid."\"));
-	uizObj[".$no."].type = \"mapGoogle\";
+	uizObj[".$no."].type = \"MAPGOOGLE\";
 	
 	uizObj[".$no."].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
 	
@@ -633,7 +633,7 @@ function genMapNaver($no, $objectid, $code) {
 	//Generating a object#".$no."(Map Naver)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new NMap(uizGetElementById(\"".$objectid."\"));
-	uizObj[".$no."].type = \"mapNaver\";
+	uizObj[".$no."].type = \"MAPNAVER\";
 	
 	uizObj[".$no."].obj.setCenterAndZoom(new NPoint(321198,529730),3);
 	
@@ -662,7 +662,7 @@ function genMapLive($no, $objectid, $code) {
 	//Generating a object#".$no."(Live Map)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new VEMap(\"".$objectid."\");
-	uizObj[".$no."].type = \"mapLive\";
+	uizObj[".$no."].type = \"MAPLIVE\";
 	
 	uizObj[".$no."].obj.LoadMap();
 	
@@ -736,7 +736,7 @@ function genDatasource($no, $objectid, $provider, $datasourceURL, $datasourceTyp
 	//Generating a object#".$no."(Datasource)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.util.XHRDataSource(\"xmlProxy.php?url=".str_replace("&", "and!", $datasourceURL)."\");
-	uizObj[".$no."].type = \"dataSource\";
+	uizObj[".$no."].type = \"DATASOURCE\";
 	uizObj[".$no."].datasourceType = \"".$datasourceType."\";
 	uizObj[".$no."].obj.connMethodPost = true;	
 	uizObj[".$no."].obj.responseType =  YAHOO.util.DataSourceBase.TYPE_".$datasourceType.";

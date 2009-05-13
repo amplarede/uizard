@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<objectSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:lcl" xsi:schemaLocation="urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd" totalobjectsAvailable="3" totalobjectsReturned="3" firstobjectPosition="1">
+	<object>
+		<object-id>object0</object-id>
+		<type>canvas</type>
+		<x>false</x>
+		<y>false</y>
+		<z-index>false</z-index>
+		<width>1111px</width>
+		<height>1000px</height>
+		<align>false</align>
+		<visibility>false</visibility>
+		<label></label>
+		<disabled></disabled>
+		<tabindex></tabindex>
+		<datasourceNo></datasourceNo>
+		<provider></provider>
+		<datasourceURL><![CDATA[]]></datasourceURL>
+		<datasourceType></datasourceType>
+		<resultNode></resultNode>
+		<query><![CDATA[]]></query>
+		<fields><![CDATA[]]></fields>
+		<columnWidth><![CDATA[]]></columnWidth>
+		<tabcount></tabcount>
+		<src><![CDATA[]]></src>
+		<action><![CDATA[]]></action>
+		<method><![CDATA[]]></method>
+		<target><![CDATA[]]></target>
+		<value><![CDATA[]]></value>
+		<backgroundColor><![CDATA[rgb(255, 255, 255)]]></backgroundColor>
+		<buttoncount></buttoncount>
+		<closebutton></closebutton>
+		<draggable></draggable>
+		<interval></interval>
+		<code><![CDATA[//Do Not Remove This Function Prototype
+function onLoad_Canvas() {
+
+}
+
+function onUnLoad_Canvas() {
+
+}
+
+]]></code>
+		<html><![CDATA[<!-- Write here the HTML code for this div Layer -->
+]]></html>
+	</object>
+	<object>
+		<object-id>object1</object-id>
+		<type>treeView</type>
+		<x>623px</x>
+		<y>162px</y>
+		<z-index>1</z-index>
+		<width>238px</width>
+		<height>192px</height>
+		<align>left</align>
+		<visibility>visible</visibility>
+		<label></label>
+		<disabled></disabled>
+		<tabindex></tabindex>
+		<datasourceNo></datasourceNo>
+		<provider></provider>
+		<datasourceURL><![CDATA[]]></datasourceURL>
+		<datasourceType></datasourceType>
+		<resultNode></resultNode>
+		<query><![CDATA[]]></query>
+		<fields><![CDATA[]]></fields>
+		<columnWidth><![CDATA[]]></columnWidth>
+		<tabcount></tabcount>
+		<src><![CDATA[]]></src>
+		<action><![CDATA[]]></action>
+		<method><![CDATA[]]></method>
+		<target><![CDATA[]]></target>
+		<value><![CDATA[]]></value>
+		<backgroundColor><![CDATA[]]></backgroundColor>
+		<buttoncount></buttoncount>
+		<closebutton></closebutton>
+		<draggable></draggable>
+		<interval></interval>
+		<code><![CDATA[//Do Not Remove This Function Prototype
+function onShow_Object1() {
+
+}
+
+function onHide_Object1() {
+
+}
+
+]]></code>
+		<html><![CDATA[<!-- Write here the HTML code for this div Layer -->
+<div id=\"objectTreeview1\">
+<ul>
+<li>item 0
+<ul>
+<li>item 0-0
+<ul>
+<li>item 0-0-0</li>
+<li>item 0-0-1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>item 1
+<ul>
+<li>item 1-0
+<ul>
+<li>item 1-0-0</li>
+<li>item 1-0-1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+]]></html>
+	</object>
+	<object>
+		<object-id>object2</object-id>
+		<type>treeView</type>
+		<x>230px</x>
+		<y>230px</y>
+		<z-index>1</z-index>
+		<width>238px</width>
+		<height>192px</height>
+		<align>left</align>
+		<visibility>visible</visibility>
+		<label></label>
+		<disabled></disabled>
+		<tabindex></tabindex>
+		<datasourceNo></datasourceNo>
+		<provider></provider>
+		<datasourceURL><![CDATA[]]></datasourceURL>
+		<datasourceType></datasourceType>
+		<resultNode></resultNode>
+		<query><![CDATA[]]></query>
+		<fields><![CDATA[]]></fields>
+		<columnWidth><![CDATA[]]></columnWidth>
+		<tabcount></tabcount>
+		<src><![CDATA[]]></src>
+		<action><![CDATA[]]></action>
+		<method><![CDATA[]]></method>
+		<target><![CDATA[]]></target>
+		<value><![CDATA[]]></value>
+		<backgroundColor><![CDATA[]]></backgroundColor>
+		<buttoncount></buttoncount>
+		<closebutton></closebutton>
+		<draggable></draggable>
+		<interval></interval>
+		<code><![CDATA[//Do Not Remove This Function Prototype
+function onShow_Object2() {
+
+}
+
+function onHide_Object2() {
+
+}
+
+]]></code>
+		<html><![CDATA[<!-- Write here the HTML code for this div Layer -->
+<div id=\"objectTreeview2\">
+<ul>
+<li>item 0
+<ul>
+<li>item 0-0
+<ul>
+<li>item 0-0-0</li>
+<li>item 0-0-1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>item 1
+<ul>
+<li>item 1-0
+<ul>
+<li>item 1-0-0</li>
+<li>item 1-0-1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+]]></html>
+	</object>
+</objectSet>

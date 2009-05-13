@@ -3,7 +3,7 @@
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
-version: 0.8.0
+version: 0.8.2
 */
 
 include("xmlClass.php");
@@ -102,9 +102,49 @@ $htmldata .= "
 <script type=\"text/javascript\" src=\"http://yui.yahooapis.com/2.7.0/build/charts/charts-min.js\"></script>
 <script type=\"text/javascript\" src=\"http://yui.yahooapis.com/2.7.0/build/paginator/paginator-min.js\"></script>
 <script type=\"text/javascript\" src=\"http://yui.yahooapis.com/2.7.0/build/assets/js/data.js\"></script>
+";
 
+$xmlProjectSetting = new uizXmlClass; 
+$projectSetting = $xmlProjectSetting->xmlOpen("../projects/".$_GET['projectName']."/project.xml",'project');
+
+if($projectSetting['Prototype'][0]['value'] == "true") {
+$htmldata .= "
+<!-- JS : PROTOTYPE -->
+<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js\"></script>
+";
+}
+if($projectSetting['jQuery'][0]['value'] == "true") {
+$htmldata .= "
+<!-- JS : JQUERY -->
+<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></script>
+";
+}
+if($projectSetting['MooTools'][0]['value'] == "true") {
+$htmldata .= "
+<!-- JS : MOOTOOLS -->
+<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/mootools/1.2.2/mootools-yui-compressed.js\"></script>
+";
+}
+if($projectSetting['Dojo'][0]['value'] == "true") {
+$htmldata .= "
+<!-- JS : DOJO -->
+<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/dojo/1.3.1/dojo/dojo.xd.js\"></script>
+";
+}
+if($projectSetting['SWFObject'][0]['value'] == "true") {
+$htmldata .= "
 <!-- JS : SWFOBJECT -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js\"></script>
+";
+}
+if($projectSetting['debuggerFireBug'][0]['value'] == "true") {
+$htmldata .= "
+<!-- JS : FIREBUG -->
+<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>
+";
+}
+
+$htmldata .= "
 
 <!-- JS : UIZARD -->
 <script type=\"text/javascript\" src=\"stdfunc.js\"></script>
@@ -153,19 +193,19 @@ for($i=1; $i<$count; $i++) {
 	
 	
 	if($type != "dataSource" && $type != "") {
-		if($type == "form") {
+		if($type == "FORM") {
 			$htmldata .= genForm($i, $objectid, $type, $x, $y, $zindex, $width, $height, $align, $visibility, $backgroundColor, $action, $method, $target);
 		}
-		else if($type == "div" || $type == "table" || $type == "checkboxSet"  || $type == "radiobuttonSet" || $type == "pushButton" || $type == "radioButton" || $type == "checkboxButton" || $type == "tabView" || $type == "panel" || $type == "menuBar" || $type == "treeView" || $type == "yuiChart" || $type == "paginator") {
+		else if($type == "DIV" || $type == "TABLE" || $type == "CHECKBOXSET"  || $type == "RADIOBUTTONSET" || $type == "PUSHBUTTON" || $type == "RADIOBUTTON" || $type == "CHECKBOXBUTTON" || $type == "TABVIEW" || $type == "PANEL" || $type == "MENUBAR" || $type == "TREEVIEW" || $type == "YUICHART" || $type == "PAGINATOR") {
 			$htmldata .= genDiv($objectid, $type, $x, $y, $zindex, $width, $height, $align, $visibility, $backgroundColor, $html);
 		}
-		else if($type == "image" || $type == "googleChart") {
+		else if($type == "IMAGE" || $type == "GOOGLECHART") {
 			$htmldata .= genImage($i, $objectid, $type, $x, $y, $zindex, $width, $height, $align, $visibility, $backgroundColor,$src);
 		}
-		else if($type == "inputBox") {
+		else if($type == "INPUTBOX") {
 			$htmldata .= genInputBox($i, $objectid, $type, $x, $y, $zindex, $width, $height, $align, $visibility, $backgroundColor, $value);
 		}
-		else if($type == "textArea") {
+		else if($type == "TEXTAREA") {
 			$htmldata .= genTextArea($i, $objectid, $type, $x, $y, $zindex, $width, $height, $align, $visibility, $backgroundColor);
 		}
 		else {
@@ -258,103 +298,103 @@ for($i=1; $i<$count; $i++) {
 	$fields = $prt['fields'][$i]['value'];
 	$query = $prt['query'][$i]['value'];
 	
-	if($type == "div") {
+	if($type == "DIV") {
 		
 	}		
-	else if($type == "image") {
+	else if($type == "IMAGE") {
 		
 	}		
-	else if($type == "swf") {
+	else if($type == "SWF") {
 		$codedata .= genSWF($i, $objectid, $width, $height, $src);
 	}	
-	else if($type == "form") {
+	else if($type == "FORM") {
 
 	}
-	else if($type == "inputBox") {
+	else if($type == "INPUTBOX") {
 		
 	}	
-	else if($type == "checkboxSet") {
+	else if($type == "CHECKBOXSET") {
 		
 	}	
-	else if($type == "radiobuttonSet") {
+	else if($type == "RADIOBUTTONSET") {
 		
 	}		
-	else if($type == "textArea") {
+	else if($type == "TEXTAREA") {
 		
 	}
-	else if($type == "table") {
+	else if($type == "TABLE") {
 		
 	}	
-	else if($type == "timer") {
+	else if($type == "TIMER") {
 		$codedata .= genTimer($i, $objectid);
 	}	
-	else if($type == "pushButton") {
+	else if($type == "PUSHBUTTON") {
 		$codedata .= genPushButton($i, $objectid, $label, $disabled, $tabindex, $code);
 	}
-	else if($type == "radioButton") {
+	else if($type == "RADIOBUTTON") {
 		$codedata .= genRadioButton($i, $objectid, $buttoncount, $code);
 	}
-	else if($type == "checkboxButton") {
+	else if($type == "CHECKBOXBUTTON") {
 		$codedata .= genCheckboxButton($i, $objectid, $label, $disabled, $tabindex, $code);
 	}
-	else if($type == "colorPicker") {
+	else if($type == "COLORPICKER") {
 		$codedata .= genColorPicker($i, $objectid, $code);
 	}
-	else if($type == "tabView") {
+	else if($type == "TABVIEW") {
 		$codedata .= genTabView($i, $objectid, $tabcount, $code);
 	}
-	else if($type == "dataTable") {
+	else if($type == "DATATABLE") {
 		$codedata .= genDataTable($i, $objectid, $datasourceNo, $fields, $columnWidth, $code);
 	}	
-	else if($type == "calendar") {
+	else if($type == "CALENDAR") {
 		$codedata .= genCalendar($i, $objectid, $code);
 	}	
-	else if($type == "panel") {
+	else if($type == "PANEL") {
 		$codedata .= genPanel($i, $objectid, $x, $y, $width, $height, $closebutton, $draggable, $code);
 	}
-	else if($type == "slider") {
+	else if($type == "SLIDER") {
 		$codedata .= genSlider($i, $objectid, $code);
 	}
-	else if($type == "autoComplete") {
+	else if($type == "AUTOCOMPLETE") {
 		$codedata .= genAutoComplete($i, $objectid, $datasourceNo, $code);
 	}
-	else if($type == "richTextEditor") {
+	else if($type == "RICHTEXTEDITOR") {
 		$codedata .= genRichTextEditor($i, $objectid);
 	}
-	else if($type == "menuBar") {
+	else if($type == "MENUBAR") {
 		$codedata .= genMenuBar($i, $objectid, $code);
 	}
-	else if($type == "treeView") {
+	else if($type == "TREEVIEW") {
 		$codedata .= genTreeView($i, $objectid, $code);
 	}
-	else if($type == "yuiChart") {
+	else if($type == "YUICHART") {
 		$codedata .= genYuiChart($i, $objectid, $code);
 	}
-	else if($type == "paginator") {
+	else if($type == "PAGINATOR") {
 		$codedata .= genPaginator($i, $objectid, $code);
 	}
-	else if($type == "dragAndDrop") {
+	else if($type == "DRAGANDDROP") {
 		$codedata .= genDragAndDrop($i, $objectid);
 	}	
-	else if($type == "resize") {
+	else if($type == "RESIZE") {
 		$codedata .= genResize($i, $objectid);
 	}	
-	else if($type == "mapDaum") {
+	else if($type == "MAPDAUM") {
 		$codedata .= genMapDaum($i, $objectid, $code);
 	}	
-	else if($type == "mapGoogle") {
+	else if($type == "MAPGOOGLE") {
 		$codedata .= genMapGoogle($i, $objectid, $code);
 	}
-	else if($type == "googleChart") {
+	else if($type == "GOOGLECHART") {
 		
 	}
-	else if($type == "mapNaver") {
+	else if($type == "MAPNAVER") {
 		$codedata .= genMapNaver($i, $objectid, $code);
 	}
-	else if($type == "mapLive") {
+	else if($type == "MAPLIVE") {
 		$codedata .= genMapLive($i, $objectid, $code);
 	}
-	else if($type == "dataSource") {
+	else if($type == "DATASOURCE") {
 		$codedata .= genDatasource($i, $objectid, $provider, $datasourceURL, $datasourceType, $resultNode, $fields, $query, $code);
 	}	
 }

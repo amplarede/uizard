@@ -171,7 +171,7 @@ function writeXML($No) {
 		echo "\t\t<id>type</id>\n";
 		echo "\t\t<value>".$result['type'][$No]['value']."</value>\n";
 		echo "\t</property>\n";		
-	if($result['type'][$No]['value'] != "dataSource" && $result['type'][$No]['value'] != "canvas") {		
+	if($result['type'][$No]['value'] != "DATASOURCE" && $result['type'][$No]['value'] != "CANVAS") {		
 		echo "\t<property>\n";
 		echo "\t\t<id>x</id>\n";
 		echo "\t\t<value>".$result['x'][$No]['value']."</value>\n";
@@ -185,7 +185,7 @@ function writeXML($No) {
 		echo "\t\t<value>".$result['z-index'][$No]['value']."</value>\n";
 		echo "\t</property>\n";	
 	}
-	if($result['type'][$No]['value'] != "dataSource" ) {
+	if($result['type'][$No]['value'] != "DATASOURCE" ) {
 		echo "\t<property>\n";
 		echo "\t\t<id>width</id>\n";
 		echo "\t\t<value>".$result['width'][$No]['value']."</value>\n";
@@ -195,7 +195,7 @@ function writeXML($No) {
 		echo "\t\t<value>".$result['height'][$No]['value']."</value>\n";
 		echo "\t</property>\n";	
 	}
-	if($result['type'][$No]['value'] != "dataSource" && $result['type'][$No]['value'] != "canvas") {
+	if($result['type'][$No]['value'] != "DATASOURCE" && $result['type'][$No]['value'] != "CANVAS") {
 		echo "\t<property>\n";
 		echo "\t\t<id>align</id>\n";
 		echo "\t\t<value>".$result['align'][$No]['value']."</value>\n";
@@ -205,7 +205,7 @@ function writeXML($No) {
 		echo "\t\t<value>".$result['visibility'][$No]['value']."</value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "pushButton" || $result['type'][$No]['value'] == "checkboxButton") {
+	if($result['type'][$No]['value'] == "PUSHBUTTON" || $result['type'][$No]['value'] == "checkboxButton") {
 		echo "\t<property>\n";
 		echo "\t\t<id>label</id>\n";
 		echo "\t\t<value>".$result['label'][$No]['value']."</value>\n";
@@ -219,13 +219,13 @@ function writeXML($No) {
 		echo "\t\t<value>".$result['tabindex'][$No]['value']."</value>\n";
 		echo "\t</property>\n";		
 	}
-	if($result['type'][$No]['value'] == "autoComplete" || $result['type'][$No]['value'] == "dataTable") {
+	if($result['type'][$No]['value'] == "AUTOCOMPLETE" || $result['type'][$No]['value'] == "DATATABLE") {
 		echo "\t<property>\n";
 		echo "\t\t<id>datasourceNo</id>\n";
 		echo "\t\t<value>".$result['datasourceNo'][$No]['value']."</value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "dataSource") {
+	if($result['type'][$No]['value'] == "DATASOURCE") {
 		echo "\t<property>\n";
 		echo "\t\t<id>provider</id>\n";
 		echo "\t\t<value>".$result['provider'][$No]['value']."</value>\n";
@@ -247,31 +247,31 @@ function writeXML($No) {
 		echo "\t\t<value><![CDATA[".$result['query'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";	
 	}
-	if($result['type'][$No]['value'] == "dataSource" || $result['type'][$No]['value'] == "dataTable") {
+	if($result['type'][$No]['value'] == "DATASOURCE" || $result['type'][$No]['value'] == "DATATABLE") {
 		echo "\t<property>\n";
 		echo "\t\t<id>fields</id>\n";
 		echo "\t\t<value><![CDATA[".$result['fields'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";			
 	}	
-	if($result['type'][$No]['value'] == "dataTable") {
+	if($result['type'][$No]['value'] == "DATATABLE") {
 		echo "\t<property>\n";
 		echo "\t\t<id>columnWidth</id>\n";
 		echo "\t\t<value>".$result['columnWidth'][$No]['value']."</value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "tabView") {
+	if($result['type'][$No]['value'] == "TABVIEW") {
 		echo "\t<property>\n";
 		echo "\t\t<id>tabcount</id>\n";
 		echo "\t\t<value>".$result['tabcount'][$No]['value']."</value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "image" || $result['type'][$No]['value'] == "googleChart" || $result['type'][$No]['value'] == "swf" ) {
+	if($result['type'][$No]['value'] == "IMAGE" || $result['type'][$No]['value'] == "GOOGLECHART" || $result['type'][$No]['value'] == "SWF" ) {
 		echo "\t<property>\n";
 		echo "\t\t<id>src</id>\n";
 		echo "\t\t<value><![CDATA[".$result['src'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "form") {
+	if($result['type'][$No]['value'] == "FORM") {
 		echo "\t<property>\n";
 		echo "\t\t<id>action</id>\n";
 		echo "\t\t<value><![CDATA[".$result['action'][$No]['value']."]]></value>\n";
@@ -285,25 +285,25 @@ function writeXML($No) {
 		echo "\t\t<value><![CDATA[".$result['target'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";			
 	}	
-	if($result['type'][$No]['value'] == "inputBox") {
+	if($result['type'][$No]['value'] == "INPUTBOX") {
 		echo "\t<property>\n";
 		echo "\t\t<id>value</id>\n";
 		echo "\t\t<value><![CDATA[".$result['value'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";
 	}	
-	if($result['type'][$No]['value'] == "canvas" || $result['type'][$No]['value'] == "div") {
+	if($result['type'][$No]['value'] == "CANVAS" || $result['type'][$No]['value'] == "DIV") {
 		echo "\t<property>\n";
 		echo "\t\t<id>backgroundColor</id>\n";
 		echo "\t\t<value><![CDATA[".$result['backgroundColor'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "radioButton") {
+	if($result['type'][$No]['value'] == "RADIOBUTTON") {
 		echo "\t<property>\n";
 		echo "\t\t<id>buttoncount</id>\n";
 		echo "\t\t<value><![CDATA[".$result['buttoncount'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";
 	}
-	if($result['type'][$No]['value'] == "panel") {
+	if($result['type'][$No]['value'] == "PANEL") {
 		echo "\t<property>\n";
 		echo "\t\t<id>closebutton</id>\n";
 		echo "\t\t<value><![CDATA[".$result['closebutton'][$No]['value']."]]></value>\n";
@@ -313,7 +313,7 @@ function writeXML($No) {
 		echo "\t\t<value><![CDATA[".$result['draggable'][$No]['value']."]]></value>\n";
 		echo "\t</property>\n";		
 	}	
-	if($result['type'][$No]['value'] == "timer") {
+	if($result['type'][$No]['value'] == "TIMER") {
 		echo "\t<property>\n";
 		echo "\t\t<id>interval</id>\n";
 		echo "\t\t<value><![CDATA[".$result['interval'][$No]['value']."]]></value>\n";

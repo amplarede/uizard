@@ -2,7 +2,7 @@
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
-version: 0.8.0
+version: 0.8.2
 */
 
 function canvasClicked() {
@@ -28,13 +28,21 @@ function objMouseOut() {
 function objClicked(objCount) {
 	selectedObj = objCount;
 	
-	if(uizObj[objCount].type == "canvas") {
-		uizSetStyle("objectSelection", "visibility", "hidden");
+	if(showObjectSelection == false) {
+		for(var i=0; i < objectCount; i++) {
+			if(uizGetElementById("objectSelection"+i)) uizSetStyle("objectSelection"+i, "visibility", "hidden");
+		}
 	}
-	else if(uizObj[objCount].type == "mapGoogle" || uizObj[objCount].type == "mapYahoo" || uizObj[objCount].type == "mapDaum" || uizObj[objCount].type == "mapNaver" || uizObj[objCount].type == "mapLive" || uizObj[objCount].type == "pushButton" || uizObj[objCount].type == "checkboxButton") {
+	
+	if(uizObj[objCount].type == "CANVAS") {
+		//uizSetStyle("objectSelection", "visibility", "hidden");
+	}
+	
+	if(uizObj[objCount].type == "MAPGOOGLE" || uizObj[objCount].type == "MAPYAHOO" || uizObj[objCount].type == "MAPDAUM" || uizObj[objCount].type == "MAPNAVER" || uizObj[objCount].type == "MAPLIVE" || uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
 		setDragAndDropObj(objCount);
 	}
-	else if(uizObj[objCount].type != "canvas" || uizObj[objCount].type != "panel") {
+//	else if(uizObj[objCount].type != "CANVAS" && uizObj[objCount].type != "PANEL") {
+	else if(uizObj[objCount].type != "CANVAS") {
 		setResizeObj(objCount);
 	}
 
@@ -42,7 +50,7 @@ function objClicked(objCount) {
 		uizObj[objCount].contextMenu.destroy();
 	}
 
-	if(uizObj[objCount].type == "checkboxSet") {
+	if(uizObj[objCount].type == "CHECKBOXSET") {
 		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
 																	trigger: "object"+objCount,
 																	lazyload: true, 
@@ -52,19 +60,19 @@ function objClicked(objCount) {
 																		{ text: "Remove a Checkbox", onclick: { fn: removeCheckboxSetItem } }
 																		],
 																		[
-																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 																		],																		
 																		[
-																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																		{ text: "View the Html Code", onclick: { fn: viewHtml } }
+																		{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																		{ text: "View The Html Code", onclick: { fn: viewHtml } }
 																		],																		
 																		[
-																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
+																		{ text: "Delete The Object", onclick: { fn: deleteObj } }
 																		]
 																	] });		
 	}
-	else if(uizObj[objCount].type == "radiobuttonSet") {
+	else if(uizObj[objCount].type == "RADIOBUTTONSET") {
 		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
 																	trigger: "object"+objCount,
 																	lazyload: true, 
@@ -74,41 +82,41 @@ function objClicked(objCount) {
 																		{ text: "Remove a Radiobutton", onclick: { fn: removeRadioButtonSetItem } }
 																		],
 																		[
-																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 																		],
 																		[
-																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																		{ text: "View the Html Code", onclick: { fn: viewHtml } }
+																		{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																		{ text: "View The Html Code", onclick: { fn: viewHtml } }
 																		],																		
 																		[
-																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
+																		{ text: "Delete The Object", onclick: { fn: deleteObj } }
 																		]
 																	] });		
 	}
-	else if(uizObj[objCount].type == "tabView") {
+	else if(uizObj[objCount].type == "TABVIEW") {
 		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
 																	trigger: "object"+objCount,
 																	lazyload: true, 
 																	itemdata: [
 																		[
-																		{ text: "Add the Tab", onclick: { fn: addTabItem } },
-																		{ text: "Remove the Tab", onclick: { fn: removeTabItem } }
+																		{ text: "Add The Tab", onclick: { fn: addTabItem } },
+																		{ text: "Remove The Tab", onclick: { fn: removeTabItem } }
 																		],
 																		[
-																		{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-																		{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																		{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																		{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 																		],
 																		[
-																		{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																		{ text: "View the Html Code", onclick: { fn: viewHtml }, disabled: true }
+																		{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																		{ text: "View The Html Code", onclick: { fn: viewHtml }, disabled: true }
 																		],																		
 																		[
-																		{ text: "Delete this Object", onclick: { fn: deleteObj } }
+																		{ text: "Delete The Object", onclick: { fn: deleteObj } }
 																		]
 																	] });	
 	}
-	else if(uizObj[objCount].type == "radioButton") {
+	else if(uizObj[objCount].type == "RADIOBUTTON") {
 		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
                                                                 trigger: "object"+objCount,
                                                                 lazyload: true, 
@@ -118,15 +126,15 @@ function objClicked(objCount) {
 																	{ text: "Remove a Radio Button", onclick: { fn: removeRadioButtonItem } }
 																	],
 																	[
-																	{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-																	{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																	{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																	{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 																	],
                                                                     [
-																	{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																	{ text: "View the Html Code", onclick: { fn: viewHtml } }
+																	{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																	{ text: "View The Html Code", onclick: { fn: viewHtml } }
 																	],																	
 																	[
-																	{ text: "Delete this Object", onclick: { fn: deleteObj } }
+																	{ text: "Delete The Object", onclick: { fn: deleteObj } }
 																	]
                                                                 ] });
 	}
@@ -136,26 +144,24 @@ function objClicked(objCount) {
                                                                 lazyload: true, 
                                                                 itemdata: [
 																	[
-																	{ text: "Copy this Object", onclick: { fn: doObjCopy } },
-																	{ text: "Paste the Object", onclick: { fn: doObjPaste } }
+																	{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																	{ text: "Paste The Object", onclick: { fn: doObjPaste } }
 																	],	
                                                                     [
-																	{ text: "View the Javascript Code", onclick: { fn: viewCode } },
-																	{ text: "View the Html Code", onclick: { fn: viewHtml } }
+																	{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																	{ text: "View The Html Code", onclick: { fn: viewHtml } }
 																	],																		   
 																	[
-																	{ text: "Delete this Object", onclick: { fn: deleteObj } }
+																	{ text: "Delete The Object", onclick: { fn: deleteObj } }
 																	]
                                                                 ] });		
 	}
-	
-
 	
 	getObjStyle(objCount);
 	codeEditor.setCode(uizObj[objCount].code);
 	htmlEditor.setCode(uizObj[objCount].html);
 	
-	if(uizObj[objCount].type != "canvas") {
+	if(uizObj[objCount].type != "CANVAS") {
 		var left = uizGetStyle("object"+objCount, "left");
 		left = parseInt(replaceAll(left, "px", ""));
 		var top = uizGetStyle("object"+objCount, "top");
@@ -164,11 +170,11 @@ function objClicked(objCount) {
 		width = parseInt(replaceAll(width, "px", ""));
 		var height = uizGetStyle("object"+objCount, "height");
 		height = parseInt(replaceAll(height, "px", ""));		
-		uizSetStyle("objectSelection", "left", (left-2) + "px");
-		uizSetStyle("objectSelection", "top", (top-2) + "px");
-		uizSetStyle("objectSelection", "width", (width+2) + "px");
-		uizSetStyle("objectSelection", "height", (height+2) + "px");
-		uizSetStyle("objectSelection", "visibility", uizGetStyle("object"+objCount, "visibility"));		
+		uizSetStyle("objectSelection"+objCount, "left", (left-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "top", (top-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "width", (width+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "height", (height+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "visibility", uizGetStyle("object"+objCount, "visibility"));		
 	}
 	
 	//writeMessage("<font color=blue><b>You selected the object#" + selectedObj + "</b></font>");
@@ -248,14 +254,14 @@ function setResizeObj(objCount) {
 	uizObj[objCount].resize = new YAHOO.util.Resize('object' + objCount, {
 		handles: 'tr, tl, br, bl',
 		knobHandles: true,
-		hover: true,
-		status: true,
+		hover: hoverResizeHandle,
+		status: proxyResize,
 		draggable: false,
 		ghost: true,
 		proxy: true
 	});
 	
-	if(uizObj[objCount].type != "mapGoogle" && uizObj[objCount].type != "mapYahoo" && uizObj[objCount].type != "mapDaum" && uizObj[objCount].type != "mapNaver") uizObj[objCount].resize.set("draggable", true);
+	if(uizObj[objCount].type != "MAPGOOGLE" && uizObj[objCount].type != "MAPYAHOO" && uizObj[objCount].type != "MAPDAUM" && uizObj[objCount].type != "MAPNAVER") uizObj[objCount].resize.set("draggable", true);
 
 	uizObj[objCount].resize.subscribe("endResize", function (args) {
 		setObjStyle(selectedObj);		
@@ -268,20 +274,20 @@ function setResizeObj(objCount) {
 		width = parseInt(replaceAll(width, "px", ""));
 		var height = uizGetStyle("object"+selectedObj, "height");
 		height = parseInt(replaceAll(height, "px", ""));		
-		uizSetStyle("objectSelection", "left", (left-2) + "px");
-		uizSetStyle("objectSelection", "top", (top-2) + "px");
-		uizSetStyle("objectSelection", "width", (width+2) + "px");
-		uizSetStyle("objectSelection", "height", (height+2) + "px");
-		uizSetStyle("objectSelection", "visibility", uizGetStyle("object"+selectedObj, "visibility"));		
+		uizSetStyle("objectSelection"+objCount, "left", (left-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "top", (top-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "width", (width+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "height", (height+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "visibility", uizGetStyle("object"+selectedObj, "visibility"));		
 	});
 	
 	uizObj[objCount].resize.on("resize", function(args) {
-		if(uizObj[selectedObj].type == "panel") {
+		if(uizObj[selectedObj].type == "PANEL") {
 			var panelWidth = args.width;
 			var panelHeight = args.height;  
 			uizObj[selectedObj].obj.cfg.setProperty("height", panelWidth + "px");	
 		}
-		else if(uizObj[selectedObj].type == "googleChart") {
+		else if(uizObj[selectedObj].type == "GOOGLECHART") {
 			var imgWidth = args.width;  
 			var imgHeight = args.height;
 			uizGetElementById('objectImg'+selectedObj).src = "http://chart.apis.google.com/chart?cht=p3&chd=t:60,40&chs="+imgWidth+"x"+imgHeight;
@@ -311,58 +317,58 @@ function setDragAndDropObj(objCount) {
 function setProperties(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval) {
 	var uri = "php/xmlio.php?projectName="+projectName+"&objNo=" + objCount + "&type=" + uizObj[objCount].type + "&x=" + x + "&y=" + y + "&z-index=" + zindex + "&width=" + width + "&height=" + height + "&align=" + align + "&visibility=" + visibility;
 
-	if(uizObj[objCount].type == "canvas") {
+	if(uizObj[objCount].type == "CANVAS") {
 		uri += "&backgroundColor=" + backgroundColor;
 	}	
-	if(uizObj[objCount].type == "pushButton" || uizObj[objCount].type == "checkboxButton") {
+	if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
 		uri += "&label=" + label;
 		uri += "&disabled=" + disabled;
 		uri += "&tabindex=" + tabindex;
 	}
-	if(uizObj[objCount].type == "autoComplete" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
 		uri += "&datasourceNo=" + datasourceNo;
 	}
-	if(uizObj[objCount].type == "dataSource") {
+	if(uizObj[objCount].type == "DATASOURCE") {
 		uri += "&provider=" + provider;
 		uri += "&datasourceURL=" + escape(datasourceURL);
 		uri += "&datasourceType=" + datasourceType;
 		uri += "&resultNode=" + resultNode;
 		uri += "&query=" + query;	
 	}
-	if(uizObj[objCount].type == "dataSource" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
 		uri += "&fields=" + fields;	
 	}
-	if(uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATATABLE") {
 		uri += "&columnWidth=" + columnWidth;
 	}	
-	if(uizObj[objCount].type == "tabView") {
+	if(uizObj[objCount].type == "TABVIEW") {
 		uri += "&tabcount=" + tabcount;
 	}
-	if(uizObj[objCount].type == "image" || uizObj[objCount].type == "googleChart") {
+	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		uri += "&src=" + replaceAll(src, "&", "!and");
 	}
-	if(uizObj[objCount].type == "swf") {
+	if(uizObj[objCount].type == "SWF") {
 		uri += "&src=" + replaceAll(src, "&", "!and");
 	}
-	if(uizObj[objCount].type == "form") {
+	if(uizObj[objCount].type == "FORM") {
 		uri += "&action=" + replaceAll(action, "&", "!and");
 		uri += "&method=" + method;
 		uri += "&target=" + target;
 	}
-	if(uizObj[objCount].type == "inputBox") {
+	if(uizObj[objCount].type == "INPUTBOX") {
 		uri += "&value=" + value;
 	}	
-	if(uizObj[objCount].type == "div" || uizObj[objCount].type == "table") {
+	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
 		uri += "&backgroundColor=" + backgroundColor;
 	}
-	if(uizObj[objCount].type == "radioButton") {
+	if(uizObj[objCount].type == "RADIOBUTTON") {
 		uri += "&buttoncount=" + buttoncount;
 	}
-	if(uizObj[objCount].type == "panel") {
+	if(uizObj[objCount].type == "PANEL") {
 		uri += "&closebutton=" + closebutton;
 		uri += "&draggable=" + draggable;
 	}
-	if(uizObj[objCount].type == "timer") {
+	if(uizObj[objCount].type == "TIMER") {
 		uri += "&interval=" + interval;
 	}	
 	
@@ -545,60 +551,60 @@ function getObjStyle(objCount) {
 	//html
 	var html = "";
 
-	if(uizObj[objCount].type == "canvas") {
+	if(uizObj[objCount].type == "CANVAS") {
 		width = uizGetStyle("canvasDesign", "width");
 		height = uizGetStyle("canvasDesign", "height");
 		backgroundColor = uizGetStyle("canvasDesign", "background-color");
 	}
-	if(uizObj[objCount].type == "pushButton" || uizObj[objCount].type == "checkboxButton") {
+	if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
 		label= uizObj[objCount].obj.get("label");
 		disabled = uizObj[objCount].disabled;
 		tabindex = uizObj[objCount].tabindex;
 	}
-	if(uizObj[objCount].type == "autoComplete" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
 		datasourceNo = uizObj[objCount].datasourceNo;
 	}
-	if(uizObj[objCount].type == "dataSource") {
+	if(uizObj[objCount].type == "DATASOURCE") {
 		provider = uizObj[objCount].provider;
 		datasourceURL = uizObj[objCount].obj.liveData;
 		datasourceType = uizObj[objCount].datasourceType;
 		resultNode = uizObj[objCount].resultNode;
 		query = uizObj[objCount].query;
 	}	
-	if(uizObj[objCount].type == "dataSource" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
 		fields = uizObj[objCount].fields;
 	}
-	if(uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATATABLE") {
 		columnWidth = uizObj[objCount].columnWidth;
 	}	
-	if(uizObj[objCount].type == "tabView") {
+	if(uizObj[objCount].type == "TABVIEW") {
 		tabcount = uizObj[objCount].childCount;
 	}
-	if(uizObj[objCount].type == "image" || uizObj[objCount].type == "googleChart") {
+	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		src = uizGetElementById("objectImg"+objCount).src;
 	}
-	if(uizObj[objCount].type == "swf") {
+	if(uizObj[objCount].type == "SWF") {
 		src = uizGetElementById("objectSWF"+objCount).data;
 	}
-	if(uizObj[objCount].type == "form") {
+	if(uizObj[objCount].type == "FORM") {
 		action = uizGetElementById("objectForm"+objCount).action;
 		method = uizGetElementById("objectForm"+objCount).method;
 		target = uizGetElementById("objectForm"+objCount).target;
 	}		
-	if(uizObj[objCount].type == "inputBox") {
+	if(uizObj[objCount].type == "INPUTBOX") {
 		value = uizGetElementById("objectInput"+objCount).value;
 	}
-	if(uizObj[objCount].type == "div" || uizObj[objCount].type == "table") {
+	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
 		backgroundColor = uizGetStyle("object"+objCount, "background-color");
 	}
-	if(uizObj[objCount].type == "radioButton") {
+	if(uizObj[objCount].type == "RADIOBUTTON") {
 		buttoncount = uizObj[objCount].childCount;
 	}
-	if(uizObj[objCount].type == "panel") {
+	if(uizObj[objCount].type == "PANEL") {
 		closebutton = uizObj[objCount].obj.cfg.getProperty("close");
 		draggable = uizObj[objCount].obj.cfg.getProperty("draggable");
 	}
-	if(uizObj[objCount].type == "timer") {
+	if(uizObj[objCount].type == "TIMER") {
 		interval = uizObj[objCount].interval;
 	}	
 	
@@ -686,27 +692,27 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	uizSetStyle("object"+objCount, "text-align", align);
 	uizSetStyle("object"+objCount, "visibility", visibility);
 
-	if(uizObj[objCount].type == "canvas") {
+	if(uizObj[objCount].type == "CANVAS") {
 		uizSetStyle("canvasDesign", "width", width);
 		uizSetStyle("canvasDesign", "height", height);
 		uizSetStyle("canvasDesign", "background-color", backgroundColor);
 		uizSetStyle("canvasGrid", "width", width);
 		uizSetStyle("canvasGrid", "height", height);	
 	}	
-	if(uizObj[objCount].type == "pushButton") {
+	if(uizObj[objCount].type == "PUSHBUTTON") {
 		modObjPushButton(objCount, label, disabled, tabindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);
 	}
-	if(uizObj[objCount].type == "checkboxButton") {
+	if(uizObj[objCount].type == "CHECKBOXBUTTON") {
 		modObjCheckboxButton(objCount, label, disabled, tabindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);		
 	}
-	if(uizObj[objCount].type == "autoComplete" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
 		uizObj[objCount].datasourceNo = datasourceNo;
 	}
-	if(uizObj[objCount].type == "dataSource") {
+	if(uizObj[objCount].type == "DATASOURCE") {
 		uizObj[objCount].provider = provider;
 		uizObj[objCount].obj.liveData = datasourceURL;
 		uizGetElementById("divLiveData" + objCount).innerHTML = datasourceURL;
@@ -714,73 +720,73 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizObj[objCount].resultNode = resultNode;
 		uizObj[objCount].query = query;
 	}
-	if(uizObj[objCount].type == "dataSource" || uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
 		uizObj[objCount].fields = fields;
 	}
-	if(uizObj[objCount].type == "dataTable") {
+	if(uizObj[objCount].type == "DATATABLE") {
 		uizObj[objCount].columnWidth = columnWidth;
 		var keys = fields.split(",");
 		var widths = columnWidth.split(",");
 		modObjDatatable(objCount, keys, widths);
 	}
-	if(uizObj[objCount].type == "tabView") {
+	if(uizObj[objCount].type == "TABVIEW") {
 		uizGetElementById("object"+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.TabView("objectTabView"+objCount);
 	}
-	if(uizObj[objCount].type == "image" || uizObj[objCount].type == "googleChart") {
+	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		uizGetElementById("objectImg"+objCount).src = src;
 	}
-	if(uizObj[objCount].type == "swf") {
+	if(uizObj[objCount].type == "SWF") {
 		uizGetElementById("objectSWF"+objCount).data = src;		
 		uizGetElementById("objectSWF"+objCount).width = width.replace("px", "");
 		uizGetElementById("objectSWF"+objCount).height = height.replace("px", "");
 	}
-	if(uizObj[objCount].type == "form") {
+	if(uizObj[objCount].type == "FORM") {
 		uizGetElementById("objectForm"+objCount).action = action;
 		uizGetElementById("objectForm"+objCount).method = method;
 		uizGetElementById("objectForm"+objCount).target = target;
 	}		
-	if(uizObj[objCount].type == "inputBox") {
+	if(uizObj[objCount].type == "INPUTBOX") {
 		uizGetElementById("objectInput"+objCount).value = value;
 	}
-	if(uizObj[objCount].type == "div" || uizObj[objCount].type == "table" || uizObj[objCount].type == "checkboxSet" || uizObj[objCount].type == "radiobuttonSet") {
+	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE" || uizObj[objCount].type == "CHECKBOXSET" || uizObj[objCount].type == "RADIOBUTTONSET") {
 		uizSetStyle("object"+objCount, "background-color", backgroundColor);
 		uizGetElementById("object"+objCount).innerHTML = html;
 	}
-	if(uizObj[objCount].type == "radioButton") {
+	if(uizObj[objCount].type == "RADIOBUTTON") {
 		uizGetElementById("object"+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.ButtonGroup("objectRadioButtonGroup"+objCount);
 	}
-	if(uizObj[objCount].type == "panel") {
+	if(uizObj[objCount].type == "PANEL") {
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.Panel("objectPanel"+objCount, { width:width, height:height, visible:true, draggable:draggable, close:closebutton } );
 		uizObj[objCount].obj.render();		
 	}	
-	if(uizObj[objCount].type == "mapGoogle" || uizObj[objCount].type == "mapYahoo" || uizObj[objCount].type == "mapDaum" || uizObj[objCount].type == "mapNaver" || uizObj[objCount].type == "mapLive") {
+	if(uizObj[objCount].type == "MAPGOOGLE" || uizObj[objCount].type == "MAPYAHOO" || uizObj[objCount].type == "MAPDAUM" || uizObj[objCount].type == "MAPNAVER" || uizObj[objCount].type == "MAPLIVE") {
 		uizSetStyle("object"+objCount+"Handle", "z-index", zindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);		
 	}
-	if(uizObj[objCount].type == "panel") {
+	if(uizObj[objCount].type == "PANEL") {
 		uizObj[objCount].interval = interval;
 	}
-	if(uizObj[objCount].type == "treeView") {	
+	if(uizObj[objCount].type == "TREEVIEW") {	
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj.destroy();
 		uizObj[objCount].obj = new YAHOO.widget.TreeView("objectTreeview"+objCount);
 		uizObj[objCount].obj.render();
 	}
-	if(uizObj[objCount].type == "menuBar") {	
+	if(uizObj[objCount].type == "MENUBAR") {	
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj.destroy();
 		uizObj[objCount].obj = new YAHOO.widget.MenuBar("objectMenuBar"+objCount);
 		uizObj[objCount].obj.render();
 	}
-	if(uizObj[objCount].type == "yuiChart") {	
+	if(uizObj[objCount].type == "YUICHART") {	
 		uizGetElementById('object'+objCount).innerHTML = "";
 		makeYUIChart(objCount);
 	}	
-	if(uizObj[objCount].type == "paginator") {	
+	if(uizObj[objCount].type == "PAGINATOR") {	
 		uizGetElementById('object'+objCount).innerHTML = "";
 		makePaginator(objCount);
 	}

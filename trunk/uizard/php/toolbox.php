@@ -25,7 +25,9 @@ version: 0.8.0
                 <img src="images/toolbox/radiobuttonset.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjRadiobuttonSet();">RadiobuttonSet</a><br />
                 <img src="images/toolbox/textarea.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjTextarea();">Textarea</a><br />
                 <img src="images/toolbox/table.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjTable();">Table</a><br />
+                <!--
                 <img src="images/toolbox/timer.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjTimer();">Timer</a><br />
+                -->
             </div>
         </div>
         <div style="padding:0px;">
@@ -47,13 +49,15 @@ version: 0.8.0
                 <img src="images/toolbox/panel.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjPanel();">Panel</a><br />
                 <img src="images/toolbox/slider.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjSlider();">Slider</a><br />
                 <img src="images/toolbox/autocomplete.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjAutoComplete();">AutoComplete</a><br />
-                <img src="images/toolbox/richtexteditor.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjRichTextEditor();">Rich Text Editor</a><br />
+                <!--<img src="images/toolbox/richtexteditor.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjRichTextEditor();">Rich Text Editor</a><br />-->
                 <img src="images/toolbox/menubar.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjMenuBar();">MenuBar</a><br />
                 <img src="images/toolbox/treeview.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjTreeview();">TreeView</a><br />
                 <img src="images/toolbox/yuichart.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjYUIChart();">Chart</a><br />
                 <img src="images/toolbox/paginator.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjPaginator();">Paginator</a><br />
+                <!--
                 <img src="images/toolbox/draganddrop.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjDragAndDrop();">Drag&amp;Drop</a><br />
                 <img src="images/toolbox/resize.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjResize();">Resize</a><br />
+                -->
 			</div>
 		</div>
 		<div style="padding:0px;">

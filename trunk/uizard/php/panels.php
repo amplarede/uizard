@@ -4,7 +4,7 @@
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
-version: 0.8.0
+version: 0.8.2
 */
 
 ?>
@@ -220,20 +220,28 @@ version: 0.8.0
                 <div id="tab1" style="text-align:left; height:270px; font-size:12px; padding:10px;">
                 	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Object Highlighting</div>
                     <div style="margin-bottom:15px;">
-                    	<input id="chkboxShowSelection" name="chkboxShowSelection" type="checkbox" /> Show the Object Selection<br />
-                        <input id="chkboxFillSelection" name="chkboxFillSelection" type="checkbox" /> Fill the Object Selection<br />
+                    	<input id="chkboxShowSelection" name="chkboxShowSelection" type="checkbox" /> Show The Object Selection Always<br />
+                        <input id="chkboxFillSelection" name="chkboxFillSelection" type="checkbox" /> Fill The Object Selection<br />
                     </div>
                 	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Drag & Resize</div>
                     <div style="margin-bottom:15px;">
-                    	<input id="chkboxShowResizeHandle" name="chkboxShowResizeHandle" type="checkbox" /> Show the Resize Handle Always<br />
-                        <input id="chkboxProxyResize" name="chkboxProxyResize" type="checkbox" /> Proxy Resize<br />
-                        <input id="chkboxProxyDrag" name="chkboxProxyDrag" type="checkbox" /> Proxy Drag<br />                        
+                    	<input id="chkboxShowResizeHandle" name="chkboxShowResizeHandle" type="checkbox" /> Show The Resize Handle Always<br />
+                        <!--
+                        <input id="chkboxProxyResize" name="chkboxProxyResize" type="checkbox" checked /> Proxy Resize<br />
+                        <input id="chkboxProxyDrag" name="chkboxProxyDrag" type="checkbox" /> Proxy Drag<br />
+                        -->
                     </div>
+                    <!--
                 	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Edit</div>
                     <div style="margin-bottom:15px;">
                     	Font : <br />
                         Line Spacing : <br />
-                    </div>                                              
+                    </div>
+                    -->
+                	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Debugger</div>
+                    <div style="margin-bottom:15px;">
+                    	<input id="chkboxDebuggerFireBug" name="chkboxDebuggerFireBug" type="checkbox" /> Enable FireBug<br />
+                    </div>                        
                 </div>
             </div>
         </div>
@@ -284,7 +292,7 @@ version: 0.8.0
                                 <li><a><input id="chkboxUsejQuery" name="chkboxUsejQuery" type="checkbox" /> jQuery</a></li>
                                 <li><a><input id="chkboxUseMooTools" name="chkboxUseMooTools" type="checkbox" /> MooTools</a></li>
                                 <li><a><input id="chkboxUseDojo" name="chkboxUseDojo" type="checkbox" /> Dojo</a></li>                                     
-                                <li><a><input id="chkboxUseJindo" name="chkboxUseJindo" type="checkbox" /> Jindo</a></li>                                
+                                <!--<li><a><input id="chkboxUseJindo" name="chkboxUseJindo" type="checkbox" /> Jindo</a></li>-->
                               </ul>
                             </li>
                             <li>Etc
@@ -296,8 +304,35 @@ version: 0.8.0
                         </div>
                     </div>
                     <div style="float:right; width:400px; height:250px;">
-                    	<div style="height:20px;"><b>Description (from Wikipedia)</b></div>
-                        <div style="text-align:left; padding:3px; height:230px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+                    	<div style="height:20px;"><b>Description (from <a href="http://wikipedia.org/" target="_blank">Wikipedia</a>)</b></div>
+                        <div id="libIntro" style="text-align:left; padding:3px; height:230px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+                        	<div id="libIntroYUI">
+                            	The Yahoo! UI Library (YUI) is an open-source JavaScript library for building richly interactive web applications using techniques such as Ajax, DHTML and DOM scripting. YUI includes several core CSS resources. It is available under a BSD License. Development on YUI began in 2005 and Yahoo! properties such as My Yahoo! and the Yahoo! front page began using YUI in the summer of that year. In February 2006 YUI was released for public use under BSD. It is actively developed by a core team of Yahoo! engineers.<br /><br />
+The YUI Library project at Yahoo! was founded by Thomas Sha and sponsored internally by Yahoo! co-founder Jerry Yang; its principal architects have been Sha, Adam Moore, and Matt Sweeney. The library's developers maintain the YUIBlog; the YUI community discusses the library and implementations in its community forum.<br /><br />
+<a href="http://developer.yahoo.com/yui/" target="_blank">http://developer.yahoo.com/yui/</a>
+                            </div>
+                        	<div id="libIntroPrototype">
+                            The Prototype JavaScript Framework is a JavaScript framework created by Sam Stephenson which provides an Ajax framework and other utilities. It is implemented as a single file of JavaScript code, usually named prototype.js. Prototype is distributed standalone, but also as part of larger projects, such as Ruby on Rails, script.aculo.us and Rico.<br /><br />
+<a href="http://www.prototypejs.org/" target="_blank">http://www.prototypejs.org/</a>
+                            </div>
+                        	<div id="libIntrojQuery">
+                            	jQuery is a lightweight JavaScript library that emphasizes interaction between JavaScript and HTML. It was released January 2006 at BarCamp NYC by John Resig.<br /><br />
+Dual licensed under the MIT License and the GNU General Public License, jQuery is free, open source software.<br /><br />
+Both Microsoft and Nokia have announced plans to bundle jQuery on their platforms, Microsoft adopting it initially within Visual Studio and use within Microsoft's ASP.NET AJAX framework and ASP.NET MVC Framework whilst Nokia will integrate it into their Web Run-Time platform.<br /><br />
+<a href="http://jquery.com/" target="_blank">http://jquery.com/</a>
+                            </div>
+                        	<div id="libIntroMooTools">
+                            	MooTools is an open source, lightweight, modular object-oriented programming JavaScript web application framework released under the MIT License. The goal of the software is to provide a means for intermediate to advanced web developers to write cross-browser JavaScript in an elegant, flexible, and efficient fashion. The MooTools JavaScript framework includes built-in functions for manipulation of CSS, DOM elements, native JavaScript objects, Ajax requests, and more. MooTools also provides a detailed, coherent API to increase speed of development.<br /><br />
+<a href="http://mootools.net/" target="_blank">http://mootools.net/</a>
+                            </div>
+                        	<div id="libIntroDojo">
+                            	The Dojo Toolkit is an open source modular JavaScript library (or more specifically JavaScript toolkit) designed to ease the rapid development of cross platform, JavaScript/Ajax based applications and web sites. It was started by Alex Russell, Dylan Schiemann, David Schontzler, and others in 2004 and is dual-licensed under the BSD License and the Academic Free License. The Dojo Foundation is a non-profit organization designed to promote the adoption of the toolkit.<br /><br />
+<a href="http://dojotoolkit.org/" target="_blank">http://dojotoolkit.org/</a>
+                            </div>
+                        	<div id="libIntroSWFObject">
+                            	SWFObject is a JavaScript script library used to embed Adobe Flash content onto Web pages. The script can also detect the installed Adobe Flash Player plug-in in all major web browsers, on all major Operating Systems, and can redirect if the installed plug-in is not suitable.. Adobe Flash Player Express Install is also available, users can install the latest Flash Player without leaving the site.<br /><br />
+<a href="http://code.google.com/p/swfobject/" target="_blank">http://code.google.com/p/swfobject/</a>
+                            </div>
                         </div>
                     </div>
                 </div>
