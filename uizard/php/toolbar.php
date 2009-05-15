@@ -29,9 +29,9 @@ version: 0.8.0
             <img src="images/toolbar/undo.png" border="0" onClick="doUndo();" class="toolbarButton">
             <img src="images/toolbar/redo.png" border="0" onClick="doRedo();" class="toolbarButton">
             <img src="images/toolbar/line.png" class="toolbarButton">
-            <img src="images/toolbar/copy.png" border="0" onClick="" class="toolbarButton">
-            <img src="images/toolbar/cut.png" border="0" onClick="" class="toolbarButton">
-            <img src="images/toolbar/paste.png" border="0" onClick="" class="toolbarButton">
+            <img src="images/toolbar/copy.png" border="0" onClick="alert('not yet ^^;');" class="toolbarButton">
+            <img src="images/toolbar/cut.png" border="0" onClick="alert('not yet ^^;');" class="toolbarButton">
+            <img src="images/toolbar/paste.png" border="0" onClick="alert('not yet ^^;');" class="toolbarButton">
             <img src="images/toolbar/line.png" class="toolbarButton"> 
             <img src="images/toolbar/preference.png" border="0" onClick="showPreferences();" class="toolbarButton">            
             <img src="images/toolbar/line.png" class="toolbarButton">

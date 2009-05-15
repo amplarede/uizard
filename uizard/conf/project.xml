@@ -13,12 +13,13 @@
 		<dragProxy>false</dragProxy> 
 		<font>false</font> 
 		<lineSpacing>false</lineSpacing> 
+		<debuggerFireBug>false</debuggerFireBug>
 		<YUI>true</YUI> 
 		<Prototype>false</Prototype> 
 		<jQuery>false</jQuery> 
 		<MooTools>false</MooTools> 
 		<Dojo>false</Dojo> 
 		<Jindo>false</Jindo> 
-		<SWFObject>false</SWFObject> 
+		<SWFObject>true</SWFObject> 
 	</project> 
 </projectSet> 

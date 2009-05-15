@@ -43,8 +43,9 @@ version: 0.8.0
                 <img src="images/toolbox/colorpicker.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjColorPicker();">Color Picker</a><br />
                 <img src="images/toolbox/tabview.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjTabview();">Tabview</a><br />
                 <img src="images/toolbox/datatable.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjDatatable();">Datatable</a><br />
-                <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDs('self', 'XML', 'sourceURL', 'resultNode', ['fields1','fields2']);">XML Datasource</a><br />
-                <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDs('self', 'JSON', 'sourceURL', 'resultNode', ['fields1','fields2']);">JSON Datasource</a><br />        
+                <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDsHTML();">HTML Datasource</a><br />
+                <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDsJSON();">JSON Datasource</a><br />
+                <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDsXML();">XML Datasource</a><br />
                 <img src="images/toolbox/calendar.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjCalendar();">Calendar</a><br />
                 <img src="images/toolbox/panel.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjPanel();">Panel</a><br />
                 <img src="images/toolbox/slider.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addObjSlider();">Slider</a><br />

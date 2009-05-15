@@ -210,202 +210,202 @@ function doObjPaste() {
 	//html
 	var html = "";
 	
-	if(uizObj[copiedObj].type == "pushButton" || uizObj[copiedObj].type == "checkboxButton") {
+	if(uizObj[copiedObj].type == "PUSHBUTTON" || uizObj[copiedObj].type == "CHECKBOXBUTTON") {
 		label= uizObj[copiedObj].obj.get("label");
 		disabled = uizObj[copiedObj].disabled;
 		tabindex = uizObj[copiedObj].tabindex;
 	}
-	if(uizObj[copiedObj].type == "autoComplete" || uizObj[copiedObj].type == "dataTable") {
+	if(uizObj[copiedObj].type == "AUTOCOMPLETE" || uizObj[copiedObj].type == "DATATABLE") {
 		datasourceNo = uizObj[copiedObj].datasourceNo;
 	}
-	if(uizObj[copiedObj].type == "dataSource") {
+	if(uizObj[copiedObj].type == "DATASOURCE") {
 		provider = uizObj[copiedObj].provider;
 		datasourceURL = uizObj[copiedObj].obj.liveData;
 		datasourceType = uizObj[copiedObj].datasourceType;
 		resultNode = uizObj[copiedObj].resultNode;
 		query = uizObj[copiedObj].query;
 	}	
-	if(uizObj[copiedObj].type == "dataSource" || uizObj[copiedObj].type == "dataTable") {
+	if(uizObj[copiedObj].type == "DATASOURCE" || uizObj[copiedObj].type == "DATATABLE") {
 		fields = uizObj[copiedObj].fields;
 	}
-	if(uizObj[copiedObj].type == "dataTable") {
+	if(uizObj[copiedObj].type == "DATATABLE") {
 		columnWidth = uizObj[copiedObj].columnWidth;
 	}	
-	if(uizObj[copiedObj].type == "tabView") {
+	if(uizObj[copiedObj].type == "TABVIEW") {
 		tabcount = uizObj[copiedObj].childCount;
 	}
-	if(uizObj[copiedObj].type == "image" || uizObj[copiedObj].type == "googleChart") {
+	if(uizObj[copiedObj].type == "IMAGE" || uizObj[copiedObj].type == "GOOGLECHART") {
 		src = uizGetElementById("objectImg"+copiedObj).src;
 	}
-	if(uizObj[copiedObj].type == "swf") {
+	if(uizObj[copiedObj].type == "SWF") {
 		src = uizGetElementById("objectSWF"+copiedObj).data;
 	}
-	if(uizObj[copiedObj].type == "form") {
+	if(uizObj[copiedObj].type == "FORM") {
 		action = uizGetElementById("objectForm"+copiedObj).action;
 		method = uizGetElementById("objectForm"+copiedObj).method;
 		target = uizGetElementById("objectForm"+copiedObj).target;
 	}		
-	if(uizObj[copiedObj].type == "inputBox") {
+	if(uizObj[copiedObj].type == "INPUTBOX") {
 		value = uizGetElementById("objectInput"+copiedObj).value;
 	}
-	if(uizObj[copiedObj].type == "div" || uizObj[copiedObj].type == "table") {
+	if(uizObj[copiedObj].type == "DIV" || uizObj[copiedObj].type == "TABLE") {
 		backgroundColor = uizGetStyle("object"+copiedObj, "background-color");
 	}
-	if(uizObj[copiedObj].type == "radioButton") {
+	if(uizObj[copiedObj].type == "RADIOBUTTON") {
 		buttoncount = uizObj[copiedObj].childCount;
 	}
-	if(uizObj[copiedObj].type == "panel") {
+	if(uizObj[copiedObj].type == "PANEL") {
 		closebutton = uizObj[copiedObj].obj.cfg.getProperty("close");
 		draggable = uizObj[copiedObj].obj.cfg.getProperty("draggable");
 	}
-	if(uizObj[copiedObj].type == "timer") {
+	if(uizObj[copiedObj].type == "TIMER") {
 		interval = uizObj[copiedObj].interval;
 	}	
 	
 	code = uizObj[copiedObj].code;
 	html = uizObj[copiedObj].html;
 	
-	if(uizObj[copiedObj].type == "div") {
+	if(uizObj[copiedObj].type == "DIV") {
 		addObjDiv();
 		//replaceAll(html, "", "");
 		//replaceAll(code, "", "");
 	}
-	else if(uizObj[copiedObj].type == "image") {
+	else if(uizObj[copiedObj].type == "IMAGE") {
 		addObjImage();
 	}
-	else if(uizObj[copiedObj].type == "swf") {
+	else if(uizObj[copiedObj].type == "SWF") {
 		addObjSWF(); 
 	}
-	else if(uizObj[copiedObj].type == "form") { 
+	else if(uizObj[copiedObj].type == "FORM") { 
 		addObjForm();
 	}
-	else if(uizObj[copiedObj].type == "inputBox") {
+	else if(uizObj[copiedObj].type == "INPUTBOX") {
 		addObjInputbox();
 	}
-	else if(uizObj[copiedObj].type == "checkboxSet") {
+	else if(uizObj[copiedObj].type == "CHECKBOXSET") {
 		addObjCheckboxSet();
 		html = replaceAll(html, "objectCheckboxForm"+copiedObj, "objectCheckboxForm"+(objectCount-1));
 		html = replaceAll(html, "objectCheckboxSet"+copiedObj, "objectCheckboxSet"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));				
 	}
-	else if(uizObj[copiedObj].type == "radiobuttonSet") {
+	else if(uizObj[copiedObj].type == "RADIOBUTTONSET") {
 		addObjRadiobuttonSet();
 		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));				
 	}
-	else if(uizObj[copiedObj].type == "textArea") {
+	else if(uizObj[copiedObj].type == "TEXTAREA") {
 		addObjTextarea();
 	}
-	else if(uizObj[copiedObj].type == "table") {
+	else if(uizObj[copiedObj].type == "TABLE") {
 		addObjTable();
 		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));			
 	}
-	else if(uizObj[copiedObj].type == "timer") {
+	else if(uizObj[copiedObj].type == "TIMER") {
 		addObjTimer();
 	}
-	else if(uizObj[copiedObj].type == "pushButton") {
+	else if(uizObj[copiedObj].type == "PUSHBUTTON") {
 		addObjPushButton();
 		html = replaceAll(html, "objectPushButton"+copiedObj, "objectPushButton"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
 	}
-	else if(uizObj[copiedObj].type == "radioButton") {
+	else if(uizObj[copiedObj].type == "RADIOBUTTON") {
 		addObjRadioButton();
 		html = replaceAll(html, "objectRadioButtonGroup"+copiedObj, "objectRadioButtonGroup"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
 	}
-	else if(uizObj[copiedObj].type == "checkboxButton") {
+	else if(uizObj[copiedObj].type == "CHECKBOXBUTTON") {
 		addObjCheckboxButton();
 		html = replaceAll(html, "objectCheckBoxButton"+copiedObj, "objectCheckBoxButton"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
 	}
-	else if(uizObj[copiedObj].type == "colorPicker") {
+	else if(uizObj[copiedObj].type == "COLORPICKER") {
 		addObjColorPicker();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));			
 	}
-	else if(uizObj[copiedObj].type == "tabView") {
+	else if(uizObj[copiedObj].type == "TABVIEW") {
 		addObjTabview();
 		html = replaceAll(html, "objectTabView"+copiedObj, "objectTabView"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));	
 	}
-	else if(uizObj[copiedObj].type == "dataTable") {
+	else if(uizObj[copiedObj].type == "DATATABLE") {
 		addObjDatatable();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "calendar") {
+	else if(uizObj[copiedObj].type == "CALENDAR") {
 		addObjCalendar();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "panel") { 
+	else if(uizObj[copiedObj].type == "PANEL") { 
 		addObjPanel(); 
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "slider") { 
+	else if(uizObj[copiedObj].type == "SLIDER") { 
 		addObjSlider(); 
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "autoComplete") { 
+	else if(uizObj[copiedObj].type == "AUTOCOMPLETE") { 
 		addObjAutoComplete(); 
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "rechTextEditor") { 
+	else if(uizObj[copiedObj].type == "RECHTEXTEDITOR") { 
 		addObjRichTextEditor(); 
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "menuBar") {
+	else if(uizObj[copiedObj].type == "MENUBAR") {
 		addObjMenuBar(); 
 		html = replaceAll(html, "objectMenuBar"+copiedObj, "objectMenuBar"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "treeView") {
+	else if(uizObj[copiedObj].type == "TREEVIEW") {
 		addObjTreeview();
 		html = replaceAll(html, "objectTreeview"+copiedObj, "objectTreeview"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "yuiChart") {
+	else if(uizObj[copiedObj].type == "YUICHART") {
 		addObjYUIChart();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "paginator") {
+	else if(uizObj[copiedObj].type == "PAGINATOR") {
 		addObjPaginator();
 		html = replaceAll(html, "objectPaginator"+copiedObj, "objectPaginator"+(objectCount-1));
 		html = replaceAll(html, "objectPaginatorContent"+copiedObj, "objectPaginatorContent"+(objectCount-1));
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "dragAndDrop") {
+	else if(uizObj[copiedObj].type == "DRAGANDDROP") {
 		addObjDragAndDrop();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "resize") {
+	else if(uizObj[copiedObj].type == "RESIZE") {
 		addObjResize();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "mapDaum") {
+	else if(uizObj[copiedObj].type == "MAPDAUM") {
 		addObjDaumMap();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "mapGoogle") {
+	else if(uizObj[copiedObj].type == "MAPGOOGLE") {
 		addObjGoogleMap();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "googleChart") {
+	else if(uizObj[copiedObj].type == "GOOGLECHART") {
 		addObjGoogleChart();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "mapNaver") {
+	else if(uizObj[copiedObj].type == "MAPNAVER") {
 		addObjNaverMap();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "mapLive") {
+	else if(uizObj[copiedObj].type == "MAPLIVE") {
 		addObjLiveMap();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}
-	else if(uizObj[copiedObj].type == "dataSource") {
+	else if(uizObj[copiedObj].type == "DATASOURCE") {
 		addObjPushButton();
 		code = replaceAll(code, "Object"+copiedObj, "Object"+(objectCount-1));
 	}	
 	else {
-		alert("Can not copy the object!");
+		alert("Can not paste the object!");
 		return 0;
 	}
 	

@@ -42,7 +42,7 @@ function objClicked(objCount) {
 		setDragAndDropObj(objCount);
 	}
 //	else if(uizObj[objCount].type != "CANVAS" && uizObj[objCount].type != "PANEL") {
-	else if(uizObj[objCount].type != "CANVAS") {
+	else if(uizObj[objCount].type != "CANVAS" && uizObj[objCount].type != "DATASOURCE") {
 		setResizeObj(objCount);
 	}
 
@@ -186,6 +186,20 @@ function objDblClicked(objCount) {
 	viewCode();
 }
 
+function objDsClicked(objCount) {
+	selectedObj = objCount;
+
+	getObjStyle(objCount);
+	codeEditor.setCode(uizObj[objCount].code);
+	htmlEditor.setCode(uizObj[objCount].html);
+}
+
+function objDsDblClicked(objCount) {
+	selectedObj = objCount;
+
+	viewHtml();
+}
+
 function viewCode() {
 	canvas1.hide();
 	canvas2.hide();
@@ -220,12 +234,6 @@ function viewHtml() {
 	htmlEditor.focus();
 
 	writeMessage("Edit object#"+selectedObj+" Html");	
-}
-
-function objDsClicked(objCount) {
-	selectedObj = objCount;
-
-	getObjStyle(objCount);
 }
 
 function objSaveCodeAndHtml() {
@@ -719,6 +727,92 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizObj[objCount].datasourceType = datasourceType;
 		uizObj[objCount].resultNode = resultNode;
 		uizObj[objCount].query = query;
+		uizObj[objCount].fields = fields;
+		
+		if(uizObj[objCount].datasourceType == "HTML") {
+			uizGetElementById('datasourceHTML'+objCount).innerHTML = html;
+			
+			var column = uizGetElementById('datasourceHTML'+objCount).getElementsByTagName('th');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+			
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML};
+				myColumnFields[i] = {key:column[i].innerHTML};
+			}
+			
+			uizObj[objCount].datasource = new YAHOO.util.DataSource(YAHOO.util.Dom.get("datasourceHTMLTable"+objCount));
+			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
+			uizObj[objCount].datasource.responseSchema = {
+				fields: myColumnFields
+			};
+			
+			var oConfigs = {   
+				paginator: new YAHOO.widget.Paginator({   
+					rowsPerPage: 3,
+					alwaysVisible: false					
+				}),   
+			}; 
+			
+			uizGetElementById("dataPreview" + objCount).innerHTML = "";
+			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+		}
+		else if(uizObj[objCount].datasourceType == "JSON") {
+			var column = fields.split(',');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+			
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnFields[i] = {key:column[i]};
+			}
+			
+			uizObj[objCount].datasource = new YAHOO.util.DataSource("/php/xmlProxy.php?url=" + replaceAll("&", "and!", datasourceURL));
+			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
+			//uizObj[objCount].datasource.connXhrMode = "queueRequests";
+			uizObj[objCount].datasource.responseSchema = {
+				resultsList: resultNode,
+            	fields: myColumnFields
+			};
+			
+			var oConfigs = {   
+				paginator: new YAHOO.widget.Paginator({   
+					rowsPerPage: 3,
+					alwaysVisible: false					
+				}),   
+			}; 
+			
+			uizGetElementById("dataPreview" + objCount).innerHTML = "";
+			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+		}
+		else if(uizObj[objCount].datasourceType == "XML") {
+			var column = fields.split(',');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+			
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnFields[i] = {key:column[i]};
+			}
+			
+			uizObj[objCount].datasource = new YAHOO.util.DataSource("/php/xmlProxy.php?url=" + replaceAll("&", "and!", datasourceURL));
+			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
+			//uizObj[objCount].datasource.connMethodPost = true;
+			uizObj[objCount].datasource.responseSchema = {
+				resultsList: resultNode,
+            	fields: myColumnFields
+			};
+			
+			var oConfigs = {   
+				paginator: new YAHOO.widget.Paginator({   
+					rowsPerPage: 3,
+					alwaysVisible: false					
+				}),   
+			}; 
+			
+			uizGetElementById("dataPreview" + objCount).innerHTML = "";
+			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+		}
 	}
 	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
 		uizObj[objCount].fields = fields;
