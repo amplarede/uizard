@@ -382,7 +382,7 @@ var objDD;
 var objResize;
 
 //Object Class
-function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceType, resultNode, fields, query, columnWidth, dragAndDrop, code, html, tabindex, disabled, interval) {
+function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceType, resultNode, fields, query, columnWidth, datatable, datasource, dragAndDrop, code, html, tabindex, disabled, interval) {
 	this.obj = obj;
 	this.type = type;
 	this.datasourceNo = datasourceNo;
@@ -395,6 +395,8 @@ function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, p
 	this.fields = fields;	
 	this.query = query;
 	this.columnWidth = columnWidth;
+	this.datatable = datatable;
+	this.datasource = datasource;
 	this.dragAndDrop = dragAndDrop;
 	this.code = code;
 	this.html = html;
@@ -1394,7 +1396,15 @@ if($_GET['action'] == "load") {
 			echo "addObjLiveMap();\n";
 		}
 		else if($type == "DATASOURCE") {
-			echo "addObjPushButton();\n";
+			if($datasourceType == "HTML") {
+				echo "addDsHTML();\n";
+			}
+			else if($datasourceType == "JSON") {
+				echo "addDsJSON();\n";
+			}
+			else if($datasourceType == "XML") {
+				echo "addDsXML();\n";
+			}
 		}
 
 		if($type != "") {

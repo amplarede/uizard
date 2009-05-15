@@ -166,7 +166,7 @@ $prt = $xml->xmlOpen("../projects/".$_GET['projectName']."/objProperties.xml",'o
 $count = count($prt['object']);
 
 $htmldata .= "
-<div id='designCanvas' style='width:".$prt['width'][0]['value']."; height:".$prt['height'][0]['value']."; backgroundColor:".$prt['backgroundColor'][0]['value'].";'>
+<div id='designCanvas' style='width:".$prt['width'][0]['value']."; height:".$prt['height'][0]['value']."; background-color:".$prt['backgroundColor'][0]['value'].";'>
 ";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
