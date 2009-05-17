@@ -7,7 +7,7 @@ http://www.uizard.org/License
 version: 0.8.0
 */
 
-include('../php/pclzip.lib.php');
+include('../lib/pclzip.lib.php');
 
 $zipfile = new PclZip($_GET['projectDir'].'.uiz');
 

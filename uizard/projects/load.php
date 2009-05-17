@@ -12,7 +12,7 @@ $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
 
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {	
-    include('../php/pclzip.lib.php');
+    include('../lib/pclzip.lib.php');
 	$zipfile = new PclZip($_FILES['userfile']['name']); 
 	
 	$extract = $zipfile->extract(PCLZIP_OPT_PATH, $_GET['projectDir'].'/'); 
