@@ -7,7 +7,7 @@ http://www.uizard.org/License
 version: 0.8.2
 */
 
-include('../php/pclzip.lib.php');
+include('../lib/pclzip.lib.php');
 
 $zipfile = new PclZip($_POST['projectDir'].'.zip');
 
@@ -15,7 +15,8 @@ if($_POST['chkboxIncludeHTMLFile']) {
 	$create = $zipfile->create($_POST['projectDir']."/".$_POST['projectDir'].".html"); 
 }
 if($_POST['chkboxIncludeJSFile']) {
-	$create = $zipfile->add($_POST['projectDir']."/".$_POST['projectDir'].".js"); 
+	exec("java -classpath ../lib/ -jar ../lib/yuicompressor-2.4.2.jar ".$_POST['projectDir']."/".$_POST['projectDir'].".js"." -o ".$_POST['projectDir']."/".$_POST['projectDir'].".js");
+	$create = $zipfile->add($_POST['projectDir']."/".$_POST['projectDir'].".js");
 	$create = $zipfile->add($_POST['projectDir']."/stdfunc.js");
 }
 if($_POST['chkboxIncludeCSSFile']) {
