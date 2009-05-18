@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
 Copyright Ryu Sung Tae. All rights reserved.
@@ -141,7 +141,3 @@ version: 0.8.0
                 <img src="images/toolbox/datasource.png" style="margin:2px;" align="absmiddle"> <a href="#" onclick="addDs('liveWeb', 'XML', 'http://api.search.live.net/xml.aspx?Sources=Web', 'web:WebResult', ['web:Title','web:Url']);">Web</a><br />
             </div>
         </div>
-
-<?
-
-?>

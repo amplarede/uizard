@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<defaultCodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:lcl" xsi:schemaLocation="urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd" totaldefaultCodesAvailable="1" totaldefaultCodesReturned="1" firstdefaultCodePosition="1">
+<defaultCodeSet>
     <defaultCode>
         <type>pushButton</type>
 		<code><![CDATA[

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<projectSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:lcl" xsi:schemaLocation="urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd" totalprojectsAvailable="1" totalprojectsReturned="1" firstprojectPosition="1"> 
+<projectSet> 
 	<project> 
 		<title>Please type the title of this project</title> 
 		<owner>Please type the owner of this project</owner> 

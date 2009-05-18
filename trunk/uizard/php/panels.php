@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
 Copyright Ryu Sung Tae. All rights reserved.
@@ -350,7 +350,3 @@ Both Microsoft and Nokia have announced plans to bundle jQuery on their platform
 	</div> 
 	<div class="ft"></div> 
 </div>
-
-<?
-
-?>

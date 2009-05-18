@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
 Copyright Ryu Sung Tae. All rights reserved.
@@ -9,7 +9,7 @@ version: 0.8.0
 
 header('Content-type: text/xml'); 
 
-//±âÈ£& Ã³¸®
+//ï¿½ï¿½È£& Ã³ï¿½ï¿½
 $url = str_replace("and!", "&", $_GET['url']);
 
 $xml = implode("", file($url));

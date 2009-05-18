@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
@@ -8,7 +8,7 @@ version: 0.8.0
 
 header('Content-type: text/css'); 
 
-//CSSÆÄÀÏ ÀÐ±â
+//CSSï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
 if($_GET['mode'] == "load") {
 	$filename = "../projects/".$_GET['projectName']."/".$_GET['projectName'].".css";
 	$handle = fopen($filename, "r");
@@ -17,7 +17,7 @@ if($_GET['mode'] == "load") {
 	
 	echo $contents;	
 }
-//CSSÆÄÀÏ ¾²±â
+//CSSï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 else if($_GET['mode'] == "save") {
 	$filename = "../projects/".$_GET['projectName']."/".$_GET['projectName'].".css";
 	$handle = fopen($filename, "w");

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<objectSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:lcl" xsi:schemaLocation="urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd" totalobjectsAvailable="1" totalobjectsReturned="1" firstobjectPosition="1">
+<objectSet>
 	<keySetting>
 		<GoogleMapAPI>ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ</GoogleMapAPI>
 		<YahooAPI>mHLH.VzV34FWDBR1LM__PA96CSHNk5l9uUQDFPNkuIgmvLax4G77zXqWMHMQNo9uBsy0KeANdrU0oA--</YahooAPI>

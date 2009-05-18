@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
 Copyright Ryu Sung Tae. All rights reserved.

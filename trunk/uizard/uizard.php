@@ -1,11 +1,10 @@
-<?
+<?php
 /*
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
 http://www.uizard.org/License
 version: 0.8.2
 */
-
 
 //제로보드XE에 가입된 사용자를 인증하여 사용할 수 있도록 해주기 위한 코드입니다.
 define('__ZBXE__',true);
@@ -69,9 +68,6 @@ else {
 		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
 	}
 */
-
-
-
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -226,7 +222,7 @@ panelLoading.show();
     </div>
     <div id="toolbar" style="background:url(images/bg_toolbar.png); height:35px; border-bottom:#666 solid 1px;">
         <div id="toolbarContainer" style="margin-left:64px; padding-top:5px;">
-      		<? include("php/toolbar.php"); ?>
+      		<?php include("php/toolbar.php"); ?>
         </div>
     </div>
 </div>
@@ -245,7 +241,7 @@ panelLoading.show();
 <!-- HTML : LAYOUT::LEFT -->
 <div id="left1">
 	<div id="divComponents" style="font-size:12px;" class="divDefaultBackground">
-		<? include("php/toolbox.php"); ?>
+		<?php include("php/toolbox.php"); ?>
 	</div>
 </div>
 
@@ -345,23 +341,23 @@ panelLoading.show();
 <div id='canvasContainer'>   
 </div>
 
-<? include("php/panels.php"); ?>
+<?php include("php/panels.php"); ?>
 
 <!-- HTML : CONTAINER::ICON -->
 <div id="uizardIcon" style="position:absolute; z-index:2; left:2px; top:2px; width:60px; height:60px; background:url(images/uizardIcon.png);"></div>
 
 <script>
 
-<?
+<?php
 if($demomode == TRUE) {
 ?>
 var demomode = true;
-<?
+<?php
 }
 else {
 ?>
 var demomode = false;
-<?
+<?php
 }
 ?>
 
@@ -1236,11 +1232,11 @@ function panelLoadinghide() {
 	makeHtmlEditor();
 	makeCssEditor();
 
-<?
+<?php
 if($_GET['action'] == "newProject") {
 ?>
 	showNewProject();
-<?
+<?php
 }
 ?>
 
@@ -1252,7 +1248,7 @@ if($_GET['action'] == "newProject") {
 function loadProject() {
 	
 
-<?
+<?php
 if($_GET['action'] == "load") {
 	echo "\twriteMessage(\"<font color=#F90><b>Start Loading...</b></font>\");\n\n";
 	
