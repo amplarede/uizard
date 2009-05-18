@@ -443,7 +443,7 @@ function addObjTabview() {
 function addObjDatatable() {
 	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:300px; height:300px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
-	var dummyDs = new YAHOO.util.XHRDataSource("conf/toolbox/default.xml");
+	var dummyDs = new YAHOO.util.XHRDataSource("config/toolbox/default.xml");
 	dummyDs.connMethodPost = true; 
 	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
 	dummyDs.responseSchema = { 
@@ -491,7 +491,7 @@ function addObjDatatable() {
 function modObjDatatable(objCount, fields, columnWidth) {
 	uizGetElementById('object'+objCount).innerHTML = "";
 	
-	var dummyDs = new YAHOO.util.XHRDataSource("conf/toolbox/default.xml");
+	var dummyDs = new YAHOO.util.XHRDataSource("config/toolbox/default.xml");
 	dummyDs.connMethodPost = true; 
 	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
 	dummyDs.responseSchema = { 
