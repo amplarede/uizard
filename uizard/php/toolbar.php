@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
 Copyright Ryu Sung Tae. All rights reserved.
@@ -51,8 +51,3 @@ version: 0.8.0
             <img src="images/toolbar/bugreport.png" border="0" onClick="" class="toolbarButton">            
             </a>
             <img src="images/toolbar/info.png" border="0" onClick="showUIzardInfo();" class="toolbarButton">
-
-
-<?
-
-?>

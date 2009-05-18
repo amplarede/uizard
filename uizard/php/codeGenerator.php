@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:
@@ -159,7 +159,7 @@ $htmldata .= "
 ";
 ?>
 
-<?
+<?php
 $xml = new uizXmlClass; 
 $prt = $xml->xmlOpen("../projects/".$_GET['projectName']."/objProperties.xml",'object');
 
@@ -218,7 +218,7 @@ $htmldata .= "
 ";
 ?>
 
-<?
+<?php
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // JS CODE GENERATION
@@ -406,7 +406,7 @@ $codedata .= "
 ";
 ?>
 
-<?
+<?php
 $htmldata .= "
 
 </body>
@@ -457,13 +457,13 @@ SyntaxHighlighter.all();
 
 <body onload="dp.SyntaxHighlighter.HighlightAll('code');" leftmargin="0" topmargin="0">
   <textarea class="javascript" name="code">
-<?	
+<?php
 	echo htmlspecialchars($codedata);
 ?>
   </textarea>
 </body>
 </html>
-<?
+<?php
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -492,13 +492,13 @@ SyntaxHighlighter.all();
 
 <body onload="dp.SyntaxHighlighter.HighlightAll('code');" leftmargin="0" topmargin="0">
   <textarea class="html" name="code">
-<?	
+<?php
 	echo htmlspecialchars($htmldata);
 ?>
   </textarea>
 </body>
 </html>
-<?
+<?php
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

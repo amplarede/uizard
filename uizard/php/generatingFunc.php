@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 Copyright Ryu Sung Tae. All rights reserved.
 Code licensed under the GPL v2 License:

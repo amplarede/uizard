@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<propertySet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:lcl" xsi:schemaLocation="urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd" totalpropertysAvailable="501" totalpropertysReturned="10" firstpropertyPosition="1">
+<propertySet>
     <property>
         <id>object-id</id>
 		<value>asasdf</value>
