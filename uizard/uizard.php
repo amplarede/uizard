@@ -269,7 +269,7 @@ panelLoading.show();
 	</div>
 	<div id="objectsExplorerTreeviewDummy" style="display:none;">
 		<ul id="treeNodeProject">
-			<li><a onclick=""><img src="images/layout/project.png" align="absmiddle"> <b><?=$projectname?></b></a>
+			<li><a onclick=""><img src="images/layout/project.png" align="absmiddle"> <b><?php echo $projectname;?></b></a>
 				<ul id="treeNodeCanvas">
 					<li><a href="#" onclick="objClicked(0);"><img src="images/layout/canvas.png" align="absmiddle"> Canvas</a>
 						<ul id="treeNodeObjects">
@@ -309,7 +309,7 @@ panelLoading.show();
 <div id='canvas4'>  
 	<div class="hd"></div>
 	<div id='canvasRealCode' class="bd" style='background:#ffffff; padding:0px;'>
-		<iframe id='iframeRealCode' src='php/codeGenerator.php?projectName=<?=$projectname ?>&mode=codeview' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
+		<iframe id='iframeRealCode' src='php/codeGenerator.php?projectName=<?php echo $projectname;?>&mode=codeview' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
 	</div>
 </div>    
 
@@ -325,7 +325,7 @@ panelLoading.show();
 <div id='canvas6'>  
 	<div class="hd"></div>
 	<div id='canvasRealHtml' class="bd" style='background:#ffffff; padding:0px;'>
-		<iframe id='iframeRealHtml' src='php/codeGenerator.php?projectName=<?=$projectname ?>&mode=htmlview' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
+		<iframe id='iframeRealHtml' src='php/codeGenerator.php?projectName=<?php echo $projectname;?>&mode=htmlview' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
 	</div>
 </div>
 
@@ -333,7 +333,7 @@ panelLoading.show();
 <div id='canvas7'>   
 	<div class="hd"></div>
 	<div id='canvasPreview' class="bd" style='background:#ffffff; width:100%; height:1000px; padding:0px;'>
-		<iframe id='iframePreview' src='php/codeGenerator.php?projectName=<?=$projectname ?>&mode=print' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
+		<iframe id='iframePreview' src='php/codeGenerator.php?projectName=<?php echo $projectname;?>&mode=print' width='100%' height="1000" frameborder='0' scrolling='no'></iframe>
 	</div>
 </div>
 
@@ -372,7 +372,7 @@ var objectCount = 0;
 var selectedObj = -1;
 var copiedObj = null;
 
-var projectName = "<?=$projectname?>";
+var projectName = "<?php echo $projectname;?>";
 
 var objDD;
 var objResize;
@@ -511,7 +511,7 @@ var handleOpenCancel = function() {
     this.cancel();
 }
 var handleOpenSubmit = function() {
-	window.location = "uizard.php?action=load&projectDir="+"<?=$projectAuthor?>"+"_"+uizGetElementById("openProjectName").value;
+	window.location = "uizard.php?action=load&projectDir="+"<?php echo $projectAuthor;?>"+"_"+uizGetElementById("openProjectName").value;
 }
 var openButtons = [{ text:"Open", handler:handleOpenSubmit, isDefault:true },
                  { text:"Cancel", handler:handleOpenCancel } ];
@@ -534,7 +534,7 @@ var handleSaveAsCancel = function() {
     this.cancel();
 }
 var handleSaveAsSubmit = function() {
-	location.href = 'projects/saveas.php?projectDir=<?=$projectname?>&projectNewDir=' + uizGetElementById("newProjectName").value + "_" + "<?=$projectAuthor?>";
+	location.href = 'projects/saveas.php?projectDir=<?php echo $projectname;?>&projectNewDir=' + uizGetElementById("newProjectName").value + "_" + "<?=$projectAuthor?>";
 }
 var saveAsButtons = [{ text:"Save As", handler:handleSaveAsSubmit, isDefault:true },
                  { text:"Cancel", handler:handleSaveAsCancel } ];

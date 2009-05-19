@@ -15,13 +15,13 @@ version: 0.8.0
             <img src="images/toolbar/saveas.png" border="0" onClick="showSaveAsProject();" class="toolbarButton">
             <img src="images/toolbar/export.png" border="0" onClick="showExportProject();" class="toolbarButton">
             <img src="images/toolbar/line.png" class="toolbarButton">
-            <a href="php/codeGenerator.php?mode=codeview&projectName=<?=$projectname ?>" target="_blank">
+            <a href="php/codeGenerator.php?mode=codeview&projectName=<?php echo $projectname;?>" target="_blank">
             <img src="images/toolbar/realcode.png" border="0" onClick="" class="toolbarButton">
             </a>
-            <a href="php/codeGenerator.php?mode=htmlview&projectName=<?=$projectname ?>" target="_blank">
+            <a href="php/codeGenerator.php?mode=htmlview&projectName=<?php echo $projectname;?>" target="_blank">
             <img src="images/toolbar/realhtml.png" border="0" onClick="" class="toolbarButton">
             </a>            
-            <a href="php/codeGenerator.php?mode=print&projectName=<?=$projectname ?>" target="_blank">
+            <a href="php/codeGenerator.php?mode=print&projectName=<?php echo $projectname;?>" target="_blank">
             <img src="images/toolbar/preview.png" border="0" onClick="" class="toolbarButton">
             </a>
             <img src="images/toolbar/print.png" border="0" onClick="printRealCode();" class="toolbarButton">
