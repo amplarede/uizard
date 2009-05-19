@@ -442,13 +442,13 @@ if($_GET['mode'] == "codeview") {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>UIzard Codeview</title>
 
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shLegacy.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shBrushBash.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shLegacy.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushJScript.js"></script>
 
-<link type="text/css" rel="stylesheet" href="<?=$dirLib?>syntaxHighlighter/styles/shCore.css">
-<link type="text/css" rel="stylesheet" href="<?=$dirLib?>syntaxHighlighter/styles/shThemeDefault.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css">
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>
@@ -477,13 +477,13 @@ else if($_GET['mode'] == "htmlview") {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>UIzard Codeview</title>
 
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shLegacy.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shBrushBash.js"></script>
-<script type="text/javascript" src="<?=$dirLib?>syntaxHighlighter/scripts/shBrushXml.js "></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shLegacy.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushXml.js "></script>
 
-<link type="text/css" rel="stylesheet" href="<?=$dirLib?>syntaxHighlighter/styles/shCore.css">
-<link type="text/css" rel="stylesheet" href="<?=$dirLib?>syntaxHighlighter/styles/shThemeDefault.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css">
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>

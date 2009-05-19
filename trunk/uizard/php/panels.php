@@ -86,7 +86,7 @@ version: 0.8.2
         	<div style="height:25px;">Project Name</div>
             <div style="height:30px;"><input id="inputProjectName" name="inputProjectName" style="width:384px;"></div>
             <div style="height:25px;">Project Author</div>
-            <div style="height:30px;"><input style="width:384px;" value="<?=$projectAuthor?>" disabled="disabled"><input id="inputProjectAuthor" name="inputProjectAuthor" value="<?=$projectAuthor?>" type="hidden"></div>
+            <div style="height:30px;"><input style="width:384px;" value="<?php echo $projectAuthor;?>" disabled="disabled"><input id="inputProjectAuthor" name="inputProjectAuthor" value="<?=$projectAuthor?>" type="hidden"></div>
         </div>    
     </form>   
 	</div>
@@ -119,18 +119,18 @@ version: 0.8.2
 	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="absmiddle"> Export The Project</div>
 	<div class="bd" style="text-align:center;">
     <form id="exportProjectForm" name="exportProjectForm" method="POST" action="projects/export.php" target="_blank"> 
-    	<input name="projectDir" type="hidden" value="<?=$projectname?>" />
-    	<div id-"exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
+    	<input name="projectDir" type="hidden" value="<?php echo $projectname;?>" />
+    	<div id="exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
         	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Name</b></div>
-            <div style="margin-bottom:15px; margin-right:10px;"><?=$projectName?><br /></div>
+            <div style="margin-bottom:15px; margin-right:10px;"><?php echo $projectName;?><br /></div>
             <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Author</b></div>
-            <div style="margin-bottom:15px; margin-right:10px;"><?=$projectAuthor?></div>
+            <div style="margin-bottom:15px; margin-right:10px;"><?php echo $projectAuthor;?></div>
             <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Description</b></div>
-            <div style="margin-right:10px;"><?=$projectAuthor?></div>
+            <div style="margin-right:10px;"><?php echo $projectAuthor;?></div>
         </div>
         <div id="exportProjectOption" style="float:left; width:226px; height:310px; text-align:left; font-size:12px;">
         	<div style="height:20px;"><b>Project Option</b></div>
-        	<div id="exportProjectOptionTreeview" style="text-align:left; padding:3px; height:290px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+        	<div id="exportProjectOptionTreeview" style="text-align:left; padding:3px; height:260px; border:1px #CCC solid; background:#FFF; font-size:11px;">
               <ul>
                 <li>Files
                   <ul>
@@ -154,6 +154,9 @@ version: 0.8.2
                 </li>
                 -->
               </ul>
+            </div>
+            <div id="exportProjectOptionCheckBox" style="text-align:left; padding:3px; height:20px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+            	<a><input id="chkboxCompressJSFile" name="chkboxCompressJSFile" type="checkbox" checked /> Compress JS Files</a>
             </div>
         </div>
     </form>
@@ -264,11 +267,11 @@ version: 0.8.2
 	                <div style="float:left; height:260px; width:100%;">
                         <div style="height:16px; font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Project Title</div>
                         <div style="height:16px; margin-bottom:15px;">
-                            <input id="inputProjectTitle" name="" type="text" style="width:100%; border:0px; border-bottom:1px #999 dashed;" value="<?=$projectName?>" />
+                            <input id="inputProjectTitle" name="" type="text" style="width:100%; border:0px; border-bottom:1px #999 dashed;" value="<?php echo $projectName;?>" />
                         </div>
                         <div style="height:16px; font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Project Owner</div>
                         <div style="height:16px; margin-bottom:15px;">
-                            <input id="inputProjectOwner" name="" type="text" style="width:100%; border:0px; border-bottom:1px #999 dashed;" value="<?=$projectAuthor?>" />
+                            <input id="inputProjectOwner" name="" type="text" style="width:100%; border:0px; border-bottom:1px #999 dashed;" value="<?php echo $projectAuthor;?>" />
                         </div>
                         <div style="height:16px; font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Description</div>
                         <div style="margin-bottom:15px; height:120px;">
