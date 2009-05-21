@@ -344,55 +344,55 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 	if(uizObj[objCount].type == "CANVAS") {
 		uri += "&backgroundColor=" + backgroundColor;
 	}	
-	if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
+	else if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
 		uri += "&label=" + label;
 		uri += "&disabled=" + disabled;
 		uri += "&tabindex=" + tabindex;
 	}
-	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
+	else if(uizObj[objCount].type == "AUTOCOMPLETE") {
 		uri += "&datasourceNo=" + datasourceNo;
 	}
-	if(uizObj[objCount].type == "DATASOURCE") {
+	else if(uizObj[objCount].type == "DATASOURCE") {
 		uri += "&provider=" + provider;
 		uri += "&datasourceURL=" + escape(datasourceURL);
 		uri += "&datasourceType=" + datasourceType;
 		uri += "&resultNode=" + resultNode;
-		uri += "&query=" + query;	
-	}
-	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
+		uri += "&query=" + query;
 		uri += "&fields=" + fields;	
 	}
-	if(uizObj[objCount].type == "DATATABLE") {
+	else if(uizObj[objCount].type == "DATATABLE") {
+		uri += "&datasourceNo=" + datasourceNo;
+		uri += "&fields=" + fields;	
 		uri += "&columnWidth=" + columnWidth;
 	}	
-	if(uizObj[objCount].type == "TABVIEW") {
+	else if(uizObj[objCount].type == "TABVIEW") {
 		uri += "&tabcount=" + tabcount;
 	}
-	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
+	else if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		uri += "&src=" + replaceAll(src, "&", "!and");
 	}
-	if(uizObj[objCount].type == "SWF") {
+	else if(uizObj[objCount].type == "SWF") {
 		uri += "&src=" + replaceAll(src, "&", "!and");
 	}
-	if(uizObj[objCount].type == "FORM") {
+	else if(uizObj[objCount].type == "FORM") {
 		uri += "&action=" + replaceAll(action, "&", "!and");
 		uri += "&method=" + method;
 		uri += "&target=" + target;
 	}
-	if(uizObj[objCount].type == "INPUTBOX") {
+	else if(uizObj[objCount].type == "INPUTBOX") {
 		uri += "&value=" + value;
 	}	
-	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
+	else if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
 		uri += "&backgroundColor=" + backgroundColor;
 	}
-	if(uizObj[objCount].type == "RADIOBUTTON") {
+	else if(uizObj[objCount].type == "RADIOBUTTON") {
 		uri += "&buttoncount=" + buttoncount;
 	}
-	if(uizObj[objCount].type == "PANEL") {
+	else if(uizObj[objCount].type == "PANEL") {
 		uri += "&closebutton=" + closebutton;
 		uri += "&draggable=" + draggable;
 	}
-	if(uizObj[objCount].type == "TIMER") {
+	else if(uizObj[objCount].type == "TIMER") {
 		uri += "&interval=" + interval;
 	}	
 	
@@ -580,55 +580,55 @@ function getObjStyle(objCount) {
 		height = uizGetStyle("canvasDesign", "height");
 		backgroundColor = uizGetStyle("canvasDesign", "background-color");
 	}
-	if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
+	else if(uizObj[objCount].type == "PUSHBUTTON" || uizObj[objCount].type == "CHECKBOXBUTTON") {
 		label= uizObj[objCount].obj.get("label");
 		disabled = uizObj[objCount].disabled;
 		tabindex = uizObj[objCount].tabindex;
 	}
-	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
+	else if(uizObj[objCount].type == "AUTOCOMPLETE") {
 		datasourceNo = uizObj[objCount].datasourceNo;
 	}
-	if(uizObj[objCount].type == "DATASOURCE") {
+	else if(uizObj[objCount].type == "DATASOURCE") {
 		provider = uizObj[objCount].provider;
 		datasourceURL = uizObj[objCount].obj.liveData;
 		datasourceType = uizObj[objCount].datasourceType;
 		resultNode = uizObj[objCount].resultNode;
 		query = uizObj[objCount].query;
-	}	
-	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
 		fields = uizObj[objCount].fields;
-	}
-	if(uizObj[objCount].type == "DATATABLE") {
+	}	
+	else if(uizObj[objCount].type == "DATATABLE") {
+		datasourceNo = uizObj[objCount].datasourceNo;
+		fields = uizObj[objCount].fields;
 		columnWidth = uizObj[objCount].columnWidth;
 	}	
-	if(uizObj[objCount].type == "TABVIEW") {
+	else if(uizObj[objCount].type == "TABVIEW") {
 		tabcount = uizObj[objCount].childCount;
 	}
-	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
+	else if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		src = uizGetElementById("objectImg"+objCount).src;
 	}
-	if(uizObj[objCount].type == "SWF") {
+	else if(uizObj[objCount].type == "SWF") {
 		src = uizGetElementById("objectSWF"+objCount).data;
 	}
-	if(uizObj[objCount].type == "FORM") {
+	else if(uizObj[objCount].type == "FORM") {
 		action = uizGetElementById("objectForm"+objCount).action;
 		method = uizGetElementById("objectForm"+objCount).method;
 		target = uizGetElementById("objectForm"+objCount).target;
 	}		
-	if(uizObj[objCount].type == "INPUTBOX") {
+	else if(uizObj[objCount].type == "INPUTBOX") {
 		value = uizGetElementById("objectInput"+objCount).value;
 	}
-	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
+	else if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE") {
 		backgroundColor = uizGetStyle("object"+objCount, "background-color");
 	}
-	if(uizObj[objCount].type == "RADIOBUTTON") {
+	else if(uizObj[objCount].type == "RADIOBUTTON") {
 		buttoncount = uizObj[objCount].childCount;
 	}
-	if(uizObj[objCount].type == "PANEL") {
+	else if(uizObj[objCount].type == "PANEL") {
 		closebutton = uizObj[objCount].obj.cfg.getProperty("close");
 		draggable = uizObj[objCount].obj.cfg.getProperty("draggable");
 	}
-	if(uizObj[objCount].type == "TIMER") {
+	else if(uizObj[objCount].type == "TIMER") {
 		interval = uizObj[objCount].interval;
 	}	
 	
@@ -723,24 +723,25 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizSetStyle("canvasGrid", "width", width);
 		uizSetStyle("canvasGrid", "height", height);	
 	}	
-	if(uizObj[objCount].type == "PUSHBUTTON") {
+	else if(uizObj[objCount].type == "PUSHBUTTON") {
 		modObjPushButton(objCount, label, disabled, tabindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);
 	}
-	if(uizObj[objCount].type == "CHECKBOXBUTTON") {
+	else if(uizObj[objCount].type == "CHECKBOXBUTTON") {
 		modObjCheckboxButton(objCount, label, disabled, tabindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);		
 	}
-	if(uizObj[objCount].type == "AUTOCOMPLETE" || uizObj[objCount].type == "DATATABLE") {
+	else if(uizObj[objCount].type == "AUTOCOMPLETE") {
 		uizObj[objCount].datasourceNo = datasourceNo;
 	}
-	if(uizObj[objCount].type == "DATASOURCE") {
+	else if(uizObj[objCount].type == "DATASOURCE") {
 		uizObj[objCount].provider = provider;
 		uizObj[objCount].obj.liveData = datasourceURL;
 		uizGetElementById("divLiveData" + objCount).innerHTML = datasourceURL;
 		uizObj[objCount].datasourceType = datasourceType;
+		uizGetElementById("divDsType" + objCount).innerHTML = datasourceType;
 		uizObj[objCount].resultNode = resultNode;
 		uizObj[objCount].query = query;
 		uizObj[objCount].fields = fields;
@@ -753,7 +754,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 			var myColumnFields = new Array();
 			
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML};
+				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML, width:100};
 				myColumnFields[i] = {key:column[i].innerHTML};
 			}
 			
@@ -767,7 +768,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				paginator: new YAHOO.widget.Paginator({   
 					rowsPerPage: 3,
 					alwaysVisible: false					
-				}),   
+				})   
 			}; 
 			
 			uizGetElementById("dataPreview" + objCount).innerHTML = "";
@@ -778,12 +779,19 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 			var myColumnDefs = new Array();
 			var myColumnFields = new Array();
 			
+			YAHOO.widget.DataTable.formatterCellData = function(elCell, oRecord, oColumn, oData) {   
+				var data = oData.substr(0,16);
+				elCell.innerHTML = data;
+			};
+			
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnDefs[i] = {key:column[i], label:column[i], formatter:YAHOO.widget.DataTable.formatterCellData};
 				myColumnFields[i] = {key:column[i]};
 			}
 			
-			uizObj[objCount].datasource = new YAHOO.util.DataSource("/php/xmlProxy.php?url=" + replaceAll("&", "and!", datasourceURL));
+			datasourceURL = datasourceURL + "&" + query;
+			
+			uizObj[objCount].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
 			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
 			//uizObj[objCount].datasource.connXhrMode = "queueRequests";
 			uizObj[objCount].datasource.responseSchema = {
@@ -795,7 +803,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				paginator: new YAHOO.widget.Paginator({   
 					rowsPerPage: 3,
 					alwaysVisible: false					
-				}),   
+				})   
 			}; 
 			
 			uizGetElementById("dataPreview" + objCount).innerHTML = "";
@@ -806,97 +814,116 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 			var myColumnDefs = new Array();
 			var myColumnFields = new Array();
 			
+			YAHOO.widget.DataTable.formatterCellData = function(elCell, oRecord, oColumn, oData) {   
+				var data = oData.substr(0,26);
+				elCell.innerHTML = data;
+			};
+
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnDefs[i] = {key:column[i], label:column[i], formatter:YAHOO.widget.DataTable.formatterCellData};
 				myColumnFields[i] = {key:column[i]};
 			}
 			
-			uizObj[objCount].datasource = new YAHOO.util.DataSource("/php/xmlProxy.php?url=" + replaceAll("&", "and!", datasourceURL));
-			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
-			//uizObj[objCount].datasource.connMethodPost = true;
-			uizObj[objCount].datasource.responseSchema = {
-				resultsList: resultNode,
-            	fields: myColumnFields
-			};
+			if(datasourceURL != "" && query != "query") {
+				datasourceURL = datasourceURL + "&" + query;
+			}
 			
-			var oConfigs = {   
-				paginator: new YAHOO.widget.Paginator({   
-					rowsPerPage: 3,
-					alwaysVisible: false					
-				}),   
-			}; 
+			var connectionCallback = {   
+	            success: function(o) {
+					if(datasourceURL != "" && query != "query") {
+						uizObj[objCount].datasource = new YAHOO.util.DataSource("php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
+						uizObj[objCount].datasource.connMethodPost = true;
+						uizObj[objCount].datasource.responseSchema = {
+							resultNode: resultNode,
+							fields: myColumnFields
+						};
+						
+						var oConfigs = {   
+							paginator: new YAHOO.widget.Paginator({   
+								rowsPerPage: 3,
+								alwaysVisible: false					
+							})   
+						};
+						
+						uizGetElementById("dataPreview" + objCount).innerHTML = "";
+						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+					}
+				},
+				failure: function(o) {
+					alert("Failed.");   
+				}   
+			}
 			
-			uizGetElementById("dataPreview" + objCount).innerHTML = "";
-			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+			var getXML = YAHOO.util.Connect.asyncRequest("GET", "php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);  
 		}
 	}
-	if(uizObj[objCount].type == "DATASOURCE" || uizObj[objCount].type == "DATATABLE") {
+	else if(uizObj[objCount].type == "DATATABLE") {
+		uizObj[objCount].datasourceNo = datasourceNo;
 		uizObj[objCount].fields = fields;
-	}
-	if(uizObj[objCount].type == "DATATABLE") {
 		uizObj[objCount].columnWidth = columnWidth;
 		var keys = fields.split(",");
 		var widths = columnWidth.split(",");
 		modObjDatatable(objCount, keys, widths);
 	}
-	if(uizObj[objCount].type == "TABVIEW") {
+	else if(uizObj[objCount].type == "TABVIEW") {
 		uizGetElementById("object"+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.TabView("objectTabView"+objCount);
 	}
-	if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
+	else if(uizObj[objCount].type == "IMAGE" || uizObj[objCount].type == "GOOGLECHART") {
 		uizGetElementById("objectImg"+objCount).src = src;
 	}
-	if(uizObj[objCount].type == "SWF") {
+	else if(uizObj[objCount].type == "SWF") {
 		uizGetElementById("objectSWF"+objCount).data = src;		
 		uizGetElementById("objectSWF"+objCount).width = width.replace("px", "");
 		uizGetElementById("objectSWF"+objCount).height = height.replace("px", "");
 	}
-	if(uizObj[objCount].type == "FORM") {
+	else if(uizObj[objCount].type == "FORM") {
 		uizGetElementById("objectForm"+objCount).action = action;
 		uizGetElementById("objectForm"+objCount).method = method;
 		uizGetElementById("objectForm"+objCount).target = target;
 	}		
-	if(uizObj[objCount].type == "INPUTBOX") {
+	else if(uizObj[objCount].type == "INPUTBOX") {
 		uizGetElementById("objectInput"+objCount).value = value;
 	}
-	if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE" || uizObj[objCount].type == "CHECKBOXSET" || uizObj[objCount].type == "RADIOBUTTONSET") {
+	else if(uizObj[objCount].type == "DIV" || uizObj[objCount].type == "TABLE" || uizObj[objCount].type == "CHECKBOXSET" || uizObj[objCount].type == "RADIOBUTTONSET") {
 		uizSetStyle("object"+objCount, "background-color", backgroundColor);
 		uizGetElementById("object"+objCount).innerHTML = html;
 	}
-	if(uizObj[objCount].type == "RADIOBUTTON") {
+	else if(uizObj[objCount].type == "RADIOBUTTON") {
 		uizGetElementById("object"+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.ButtonGroup("objectRadioButtonGroup"+objCount);
 	}
-	if(uizObj[objCount].type == "PANEL") {
+	else if(uizObj[objCount].type == "PANEL") {
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj = new YAHOO.widget.Panel("objectPanel"+objCount, { width:width, height:height, visible:true, draggable:draggable, close:closebutton } );
 		uizObj[objCount].obj.render();		
 	}	
-	if(uizObj[objCount].type == "MAPGOOGLE" || uizObj[objCount].type == "MAPYAHOO" || uizObj[objCount].type == "MAPDAUM" || uizObj[objCount].type == "MAPNAVER" || uizObj[objCount].type == "MAPLIVE") {
+	else if(uizObj[objCount].type == "MAPGOOGLE" || uizObj[objCount].type == "MAPYAHOO" || uizObj[objCount].type == "MAPDAUM" || uizObj[objCount].type == "MAPNAVER" || uizObj[objCount].type == "MAPLIVE") {
 		uizSetStyle("object"+objCount+"Handle", "z-index", zindex);
 		uizSetStyle("object"+objCount+"Handle", "left", x);
 		uizSetStyle("object"+objCount+"Handle", "top", y);		
 	}
-	if(uizObj[objCount].type == "PANEL") {
+	else if(uizObj[objCount].type == "PANEL") {
 		uizObj[objCount].interval = interval;
 	}
-	if(uizObj[objCount].type == "TREEVIEW") {	
+	else if(uizObj[objCount].type == "TREEVIEW") {	
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj.destroy();
 		uizObj[objCount].obj = new YAHOO.widget.TreeView("objectTreeview"+objCount);
 		uizObj[objCount].obj.render();
 	}
-	if(uizObj[objCount].type == "MENUBAR") {	
+	else if(uizObj[objCount].type == "MENUBAR") {	
 		uizGetElementById('object'+objCount).innerHTML = html;
 		uizObj[objCount].obj.destroy();
 		uizObj[objCount].obj = new YAHOO.widget.MenuBar("objectMenuBar"+objCount);
 		uizObj[objCount].obj.render();
 	}
-	if(uizObj[objCount].type == "YUICHART") {	
+	else if(uizObj[objCount].type == "YUICHART") {	
 		uizGetElementById('object'+objCount).innerHTML = "";
 		makeYUIChart(objCount);
 	}	
-	if(uizObj[objCount].type == "PAGINATOR") {	
+	else if(uizObj[objCount].type == "PAGINATOR") {	
 		uizGetElementById('object'+objCount).innerHTML = "";
 		makePaginator(objCount);
 	}

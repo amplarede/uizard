@@ -7,7 +7,7 @@ http://www.uizard.org/License
 version: 0.8.0
 */
 
-header('Content-type: text/xml'); 
+header('Content-type: application/json'); 
 
 $url = str_replace("and!", "&", $_GET['url']);
 
