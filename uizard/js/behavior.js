@@ -315,6 +315,22 @@ function setDragAndDropObj(objCount) {
 	}
 	
 	function mouseUp() {
+		setObjStyle(selectedObj);		
+		
+		var left = uizGetStyle("object"+selectedObj, "left");
+		left = parseInt(replaceAll(left, "px", ""));
+		var top = uizGetStyle("object"+selectedObj, "top");
+		top = parseInt(replaceAll(top, "px", ""));
+		var width = uizGetStyle("object"+selectedObj, "width");
+		width = parseInt(replaceAll(width, "px", ""));
+		var height = uizGetStyle("object"+selectedObj, "height");
+		height = parseInt(replaceAll(height, "px", ""));		
+		uizSetStyle("objectSelection"+objCount, "left", (left-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "top", (top-2) + "px");
+		uizSetStyle("objectSelection"+objCount, "width", (width+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "height", (height+2) + "px");
+		uizSetStyle("objectSelection"+objCount, "visibility", uizGetStyle("object"+selectedObj, "visibility"));		
+		
 		getObjStyle(selectedObj);
 	}
 	
