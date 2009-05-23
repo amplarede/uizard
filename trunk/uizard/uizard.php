@@ -277,6 +277,10 @@ panelLoading.show();
 						<ul id="treeNodeObjects">
 						</ul>
 					</li>
+					<li><a href="#" onclick=""><img src="images/layout/datasource.png" align="absmiddle"> Datasource</a>
+						<ul id="treeNodeDatasource">
+						</ul>
+					</li>                    
 				</ul>
 			</li>
 		</ul>
@@ -380,7 +384,7 @@ var objDD;
 var objResize;
 
 //Object Class
-function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceType, resultNode, fields, query, columnWidth, datatable, datasource, dragAndDrop, code, html, tabindex, disabled, interval) {
+function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, datatable, datasource, dragAndDrop, code, html, tabindex, disabled, interval) {
 	this.obj = obj;
 	this.type = type;
 	this.datasourceNo = datasourceNo;
@@ -393,6 +397,8 @@ function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, p
 	this.fields = fields;	
 	this.query = query;
 	this.columnWidth = columnWidth;
+	this.paginator = paginator;
+	this.rowsPerPage = rowsPerPage;
 	this.datatable = datatable;
 	this.datasource = datasource;
 	this.dragAndDrop = dragAndDrop;
@@ -434,6 +440,17 @@ var tableProperties;
 var tableColumnDefs;
 //Treeview
 var treeviewObjects;
+//API Keys
+var APIKeyGoogleMap;
+var APIKeyYahoo;
+var APIKeyNaverData;
+var APIKeyNaverMap;
+var APIKeyDaumSearch;
+var APIKeyDaumShopping;
+var APIKeyDaumContents;
+var APIKeyDaumMAp;
+var APIKeyLiveData;
+
 
 var objectMouseOver = false;
 
@@ -1326,6 +1343,8 @@ if($_GET['action'] == "load") {
 		$datasourceNo = $prt['datasourceNo'][$i]['value'];
 		$fields = $prt['fields'][$i]['value'];
 		$columnWidth = $prt['columnWidth'][$i]['value'];
+		$paginator = $prt['paginator'][$i]['value'];
+		$rowsPerPage = $prt['rowsPerPage'][$i]['value'];
 		$closebutton = $prt['closebutton'][$i]['value'];
 		$draggable = $prt['draggable'][$i]['value'];
 		$provider = $prt['provider'][$i]['value'];
@@ -1450,7 +1469,7 @@ if($_GET['action'] == "load") {
 	
 			$html = str_replace("\n", "\\n", $html);	
 			
-			echo "\tsetObjStyle(".$i.", '".$x."', '".$y."', '".$zindex."', '".$width."', '".$height."', '".$align."', '".$visibility."', '".$label."', '".$disabled."', '".$tabindex."', '".$datasourceNo."', '".$provider."', '".$datasourceURL."', '".$datasourceType."', '".$resultNode."', '".$fields."', '".$query."', '".$columnWidth."', '".$tabcount."', '".$src."', '".$action."', '".$method."', '".$target."', '".$value."', '".$backgroundColor."', '".$buttoncount."', '".$closebutton."', '".$draggable."', '".$code."', '".$html."', '".$interval."');\n";
+			echo "\tsetObjStyle(".$i.", '".$x."', '".$y."', '".$zindex."', '".$width."', '".$height."', '".$align."', '".$visibility."', '".$label."', '".$disabled."', '".$tabindex."', '".$datasourceNo."', '".$provider."', '".$datasourceURL."', '".$datasourceType."', '".$resultNode."', '".$fields."', '".$query."', '".$columnWidth."', '".$paginator."', '".$rowsPerPage."', '".$tabcount."', '".$src."', '".$action."', '".$method."', '".$target."', '".$value."', '".$backgroundColor."', '".$buttoncount."', '".$closebutton."', '".$draggable."', '".$code."', '".$html."', '".$interval."');\n";
 			
 			//echo "\tsetTimeout('objClicked(".$i.")', 500);\n\n";
 		}
@@ -1473,6 +1492,7 @@ if($_GET['action'] == "load") {
 ?>
 	loadSetting();
 	loadCss();
+	loadAPIKeys();
 	
 	setTimeout('panelLoading.hide()', 600 + (objectCount*200));	
 	

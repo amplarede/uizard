@@ -57,11 +57,11 @@ $xmlOutput .= "<objectSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\
 	else {
 		$xmlOutput .= "\t\t<DaumShoppingAPI>".$prt['DaumShoppingAPI'][0]['value']."</DaumShoppingAPI>\n";
 	}	
-	if($_GET['DaumRecommendAPI'] != "undefined" && $_GET['DaumRecommendAPI'] != "null") {
-		$xmlOutput .= "\t\t<DaumRecommendAPI>".$_GET['DaumRecommendAPI']."</DaumRecommendAPI>\n";
+	if($_GET['DaumContentsAPI'] != "undefined" && $_GET['DaumContentsAPI'] != "null") {
+		$xmlOutput .= "\t\t<DaumContentsAPI>".$_GET['DaumContentsAPI']."</DaumContentsAPI>\n";
 	}
 	else {
-		$xmlOutput .= "\t\t<DaumRecommendAPI>".$prt['DaumRecommendAPI'][0]['value']."</DaumRecommendAPI>\n";
+		$xmlOutput .= "\t\t<DaumContentsAPI>".$prt['DaumContentsAPI'][0]['value']."</DaumContentsAPI>\n";
 	}		
 	if($_GET['DaumMapAPI'] != "undefined" && $_GET['DaumMapAPI'] != "null") {
 		$xmlOutput .= "\t\t<DaumMapAPI>".$_GET['DaumMapAPI']."</DaumMapAPI>\n";
@@ -120,8 +120,8 @@ echo "<keyvalueSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns
 	echo "\t\t<value>".$result['DaumShoppingAPI'][0]['value']."</value>\n";
 	echo "\t</keyvalue>\n";	
 	echo "\t<keyvalue>\n";
-	echo "\t\t<apitype>DaumRecommendAPI</apitype>\n";
-	echo "\t\t<value>".$result['DaumRecommendAPI'][0]['value']."</value>\n";
+	echo "\t\t<apitype>DaumContentsAPI</apitype>\n";
+	echo "\t\t<value>".$result['DaumContentsAPI'][0]['value']."</value>\n";
 	echo "\t</keyvalue>\n";
 	echo "\t<keyvalue>\n";
 	echo "\t\t<apitype>DaumMapAPI</apitype>\n";

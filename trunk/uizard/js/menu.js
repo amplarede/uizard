@@ -1015,3 +1015,35 @@ function loadSetting() {
 	
 	var transaction = YAHOO.util.Connect.asyncRequest('GET', "php/xmlProject.php?mode=load&projectName=" + projectName, callback); 
 }
+
+
+function loadAPIKeys() {
+	writeMessage("<font color=#F90><b>Loading The API Keys Start...</b></font>");
+	
+	var responseSuccess = function(o) {
+		var root = o.responseXML.documentElement;
+		APIKeyGoogleMap = root.getElementsByTagName('GoogleMapAPI')[0].firstChild.data; 
+		APIKeyYahoo = root.getElementsByTagName('YahooAPI')[0].firstChild.data;
+		APIKeyNaverData = root.getElementsByTagName('NaverDataAPI')[0].firstChild.data;
+		APIKeyNaverMap = root.getElementsByTagName('NaverMapAPI')[0].firstChild.data;
+		APIKeyDaumSearch = root.getElementsByTagName('DaumSearchAPI')[0].firstChild.data;
+		APIKeyDaumShopping = root.getElementsByTagName('DaumShoppingAPI')[0].firstChild.data;
+		APIKeyDaumContents = root.getElementsByTagName('DaumContentsAPI')[0].firstChild.data;
+		APIKeyDaumMAp = root.getElementsByTagName('DaumMapAPI')[0].firstChild.data;
+		APIKeyLiveData = root.getElementsByTagName('LiveDataAPI')[0].firstChild.data;
+		
+		writeMessage("<font color=green><b>API Keys has been successfully loaded.</b></font>");
+	}
+	
+	var responseFailure = function(o) {
+		writeMessage("<font color=red><b>API Keys Loading Error : " + o.statusText + ".</b></font>");
+	}
+	
+	var callback =
+	{
+		success:responseSuccess,
+		failure:responseFailure,
+	};	
+	
+	var transaction = YAHOO.util.Connect.asyncRequest('GET', "projects/" + projectName + "/apiKeys.xml", callback); 
+}

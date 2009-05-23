@@ -441,7 +441,7 @@ function addObjTabview() {
 // addObjDatatable()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addObjDatatable() {
-	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
+	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:310px; height:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	var dummyDs = new YAHOO.util.XHRDataSource("config/dummy.xml");
 	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
@@ -451,15 +451,17 @@ function addObjDatatable() {
 	}; 
 
 	var tableColumnDefs = [
-		{key:"dummyKey1", width:80 },
-		{key:"dummyKey2", width:80 }
+		{key:"dummyKey1", width:150 },
+		{key:"dummyKey2", width:150 }
 	];
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.DataTable("object"+objectCount, tableColumnDefs, dummyDs);
 	uizObj[objectCount].type = "DATATABLE";
 	uizObj[objectCount].fields = "dummyKey1,dummyKey2";	
-	uizObj[objectCount].columnWidth = "80,80";	
+	uizObj[objectCount].columnWidth = "150,150";	
+	uizObj[objectCount].paginator = "true";	
+	uizObj[objectCount].rowsPerPage = "10";
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -498,6 +500,19 @@ function modObjDatatable(objCount, datasourceNo) {
 		var query = uizObj[datasourceNo].query;
 		var fields = uizObj[datasourceNo].fields;
 		var resultNode = uizObj[datasourceNo].resultNode;
+		
+		var oConfigs;
+		
+		var columnWidth = uizObj[objCount].columnWidth.split(',');
+		
+		if(uizObj[objCount].paginator == "true") {
+			oConfigs = {   
+				paginator: new YAHOO.widget.Paginator({   
+					rowsPerPage: uizObj[objCount].rowsPerPage,
+					alwaysVisible: false					
+				})   
+			};
+		}
 	
 		if(uizObj[datasourceNo].datasourceType == "HTML") {
 			uizGetElementById('datasourceHTML'+datasourceNo).innerHTML = html;
@@ -507,7 +522,7 @@ function modObjDatatable(objCount, datasourceNo) {
 			var myColumnFields = new Array();
 				
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML, width:100};
+				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML, width:eval(columnWidth[i])};
 				myColumnFields[i] = {key:column[i].innerHTML};
 			}
 				
@@ -517,13 +532,6 @@ function modObjDatatable(objCount, datasourceNo) {
 				fields: myColumnFields
 			};
 				
-			var oConfigs = {   
-				paginator: new YAHOO.widget.Paginator({   
-					rowsPerPage: 10,
-					alwaysVisible: false					
-				})   
-			}; 
-			
 			uizGetElementById("object" + objCount).innerHTML = "";
 			uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
 		}
@@ -533,7 +541,7 @@ function modObjDatatable(objCount, datasourceNo) {
 			var myColumnFields = new Array();
 
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnDefs[i] = {key:column[i], label:column[i], width:eval(columnWidth[i])};
 				myColumnFields[i] = {key:column[i]};
 			}
 			
@@ -550,13 +558,6 @@ function modObjDatatable(objCount, datasourceNo) {
 							resultsList: resultNode,
 							fields: myColumnFields
 						};
-						
-						var oConfigs = {   
-							paginator: new YAHOO.widget.Paginator({   
-								rowsPerPage: 10,
-								alwaysVisible: false					
-							})   
-						}; 
 						
 						uizGetElementById("object" + objCount).innerHTML = "";
 						uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
@@ -575,7 +576,7 @@ function modObjDatatable(objCount, datasourceNo) {
 			var myColumnFields = new Array();
 			
 			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnDefs[i] = {key:column[i], label:column[i], width:eval(columnWidth[i])};
 				myColumnFields[i] = {key:column[i]};
 			}
 			
@@ -591,13 +592,6 @@ function modObjDatatable(objCount, datasourceNo) {
 						uizObj[datasourceNo].datasource.responseSchema = {
 							resultNode: resultNode,
 							fields: myColumnFields
-						};
-						
-						var oConfigs = {   
-							paginator: new YAHOO.widget.Paginator({   
-								rowsPerPage: 10,
-								alwaysVisible: false					
-							})   
 						};
 						
 						uizGetElementById("object" + objCount).innerHTML = "";
@@ -1284,7 +1278,7 @@ function addObjFinish() {
 	if(objectCount != 0) {
 		objClicked(objectCount);
 		
-		uizGetElementById("treeNodeObjects").innerHTML += "<li id='treeNodeObject"+objectCount+"'><a onclick='objClicked("+objectCount+");'><img src='images/toolbox/"+uizObj[objectCount].type.toLowerCase()+".png' align='absmiddle'> object"+objectCount+"("+uizObj[objectCount].type+")</a></li>";
+		uizGetElementById("treeNodeObjects").innerHTML += "<li id='treeNodeObject"+objectCount+"'><a onclick='objClicked("+objectCount+");'><img src='images/toolbox/"+uizObj[objectCount].type.toLowerCase()+".png' align='absmiddle'> object"+objectCount+" ("+uizObj[objectCount].type+")</a></li>";
 		uizGetElementById("objectsExplorerTreeview").innerHTML = uizGetElementById("objectsExplorerTreeviewDummy").innerHTML;
 				
 		treeviewObjects = new YAHOO.widget.TreeView("objectsExplorerTreeview");
@@ -1317,6 +1311,7 @@ function deleteObj() {
 	
 	uizGetElementById('objectStorage').removeChild(uizGetElementById('object'+selectedObj));
 	if(uizGetElementById('object'+selectedObj+"Handle")) uizGetElementById('objectStorage').removeChild(uizGetElementById('object'+selectedObj+"Handle"));
+	if(uizGetElementById('objectSelection'+selectedObj)) uizGetElementById('objectStorage').removeChild(uizGetElementById('objectSelection'+selectedObj));
 	//writeMessage("<textarea style='width:800px; height:60px;'>"+uizGetElementById('objectStorage').innerHTML+"</textarea>");
 
 	uizObj[selectedObj] = null;
@@ -1345,7 +1340,13 @@ function labelClicked(node) {
 	}
 	else {
 		label = replaceAll(label, /[^0-9]/, "");
-		objClicked(label);
+		
+		if(uizObj[eval(label)].type == "DATASOURCE") {
+			objDsClicked(label);
+		}
+		else {
+			objClicked(label);
+		}
 	}
 }
 

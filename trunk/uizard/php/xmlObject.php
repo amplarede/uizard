@@ -52,6 +52,8 @@ if($_GET['objNo'] != "")
 			$prt['fields'][$i]['value'] = $_GET['fields'];
 			//dataTable
 			$prt['columnWidth'][$i]['value'] = $_GET['columnWidth'];
+			$prt['paginator'][$i]['value'] = $_GET['paginator'];
+			$prt['rowsPerPage'][$i]['value'] = $_GET['rowsPerPage'];
 			//tabView
 			$prt['tabcount'][$i]['value'] = $_GET['tabcount'];
 			//image | googleChart
@@ -113,6 +115,8 @@ if($_GET['objNo'] != "")
 			$xmlOutput .= "\t\t<fields><![CDATA[".$prt['fields'][$i]['value']."]]></fields>\n";
 			//dataTable
 			$xmlOutput .= "\t\t<columnWidth><![CDATA[".$prt['columnWidth'][$i]['value']."]]></columnWidth>\n";
+			$xmlOutput .= "\t\t<paginator><![CDATA[".$prt['paginator'][$i]['value']."]]></paginator>\n";
+			$xmlOutput .= "\t\t<rowsPerPage><![CDATA[".$prt['rowsPerPage'][$i]['value']."]]></rowsPerPage>\n";			
 			//tabView
 			$xmlOutput .= "\t\t<tabcount>".$prt['tabcount'][$i]['value']."</tabcount>\n";
 			//image | googleChart
@@ -258,6 +262,14 @@ function writeXML($No) {
 		echo "\t\t<id>columnWidth</id>\n";
 		echo "\t\t<value>".$result['columnWidth'][$No]['value']."</value>\n";
 		echo "\t</property>\n";
+		echo "\t<property>\n";
+		echo "\t\t<id>paginator</id>\n";
+		echo "\t\t<value>".$result['paginator'][$No]['value']."</value>\n";
+		echo "\t</property>\n";
+		echo "\t<property>\n";
+		echo "\t\t<id>rowsPerPage</id>\n";
+		echo "\t\t<value>".$result['rowsPerPage'][$No]['value']."</value>\n";
+		echo "\t</property>\n";		
 	}
 	if($result['type'][$No]['value'] == "TABVIEW") {
 		echo "\t<property>\n";
