@@ -860,6 +860,46 @@ colorPickerDialog.renderEvent.subscribe(function() {
 colorPickerDialog.render();
 
 
+//Select a datasource
+var panelSelectDatasource = new YAHOO.widget.Dialog("SelectDatasource",  
+                                                    { width: "350px", 
+													  height: "500px",
+                                                      fixedcenter: true, 
+                                                      close: true, 
+                                                      draggable: true, 
+													  autofillheight: "body",
+                                                      zindex:100,
+                                                      visible: false,
+													  modal: true,
+													  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25}
+                                                    } 
+                                                );
+
+var handleSelectDatasourceOK = function() {
+	this.cancel();
+}
+var handleSelectDatasourceCancel = function() {
+    this.cancel();
+}
+
+var selectDatasourceButtons = [ { text:"OK", handler:handleSelectDatasourceOK, isDefault:true },
+							   { text:"Cancel", handler:handleSelectDatasourceCancel } ];
+panelSelectDatasource.cfg.queueProperty("buttons", selectDatasourceButtons);
+
+panelSelectDatasource.render();
+
+var layoutSelectDatasource = new YAHOO.widget.Layout('layoutSelectDatasource', {
+	width: 328,
+	height: 420,
+	units: [
+		{ position:'top', body:'listSelectDatasource', scroll: true, height: 420 },
+		{ position:'center', body:'adsfasdf', scroll: false, height: 1 }
+	]
+});
+		
+layoutSelectDatasource.render();
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 // Main Function
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////	

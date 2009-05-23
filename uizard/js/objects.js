@@ -441,26 +441,25 @@ function addObjTabview() {
 // addObjDatatable()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addObjDatatable() {
-	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:300px; height:300px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
+	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
-	var dummyDs = new YAHOO.util.XHRDataSource("config/toolbox/default.xml");
-	dummyDs.connMethodPost = true; 
+	var dummyDs = new YAHOO.util.XHRDataSource("config/dummy.xml");
 	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
 	dummyDs.responseSchema = { 
-		resultNode: "property", 
-		fields: ["id","value"] 
+		resultNode: "dummyNode",
+		fields: ["dummyKey1","dummyKey2"] 
 	}; 
 
 	var tableColumnDefs = [
-		{key:"id", width:80 },
-		{key:"value", width:220 }
+		{key:"dummyKey1", width:80 },
+		{key:"dummyKey2", width:80 }
 	];
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.DataTable("object"+objectCount, tableColumnDefs, dummyDs);
 	uizObj[objectCount].type = "DATATABLE";
-	uizObj[objectCount].fields = "id,value";	
-	uizObj[objectCount].columnWidth = "80,220";	
+	uizObj[objectCount].fields = "dummyKey1,dummyKey2";	
+	uizObj[objectCount].columnWidth = "80,80";	
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -482,23 +481,138 @@ function addObjDatatable() {
 	uizObj[objectCount].code += "function onRowMouseoutEvent_Object" + objectCount +"(oArgs) {\n\n";
 	uizObj[objectCount].code += "}\n\n";	
 	
-	addObjFinish();	
+	addObjFinish();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // modObjDatatable()
 ///////////////////////////////////////////////////////////////////////////////////////////////
-function modObjDatatable(objCount, fields, columnWidth) {
-	uizGetElementById('object'+objCount).innerHTML = "";
+function modObjDatatable(objCount, datasourceNo) {
+	//uizGetElementById('object'+objCount).innerHTML = "";
+
+	if(datasourceNo != "undefined") {	
+		uizObj[objCount].datasourceNo = datasourceNo;
+		uizObj[objCount].fields = uizObj[datasourceNo].fields;
+		
+		var datasourceURL = uizObj[datasourceNo].obj.liveData;
+		var query = uizObj[datasourceNo].query;
+		var fields = uizObj[datasourceNo].fields;
+		var resultNode = uizObj[datasourceNo].resultNode;
 	
-	var dummyDs = new YAHOO.util.XHRDataSource("config/toolbox/default.xml");
-	dummyDs.connMethodPost = true; 
-	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
-	dummyDs.responseSchema = { 
-		resultNode: "property", 
-		fields: ["id","value"] 
-	};
-	
+		if(uizObj[datasourceNo].datasourceType == "HTML") {
+			uizGetElementById('datasourceHTML'+datasourceNo).innerHTML = html;
+				
+			var column = uizGetElementById('datasourceHTML'+datasourceNo).getElementsByTagName('th');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+				
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML, width:100};
+				myColumnFields[i] = {key:column[i].innerHTML};
+			}
+				
+			uizObj[datasourceNo].datasource = new YAHOO.util.DataSource(YAHOO.util.Dom.get("datasourceHTMLTable"+datasourceNo));
+			uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
+			uizObj[datasourceNo].datasource.responseSchema = {
+				fields: myColumnFields
+			};
+				
+			var oConfigs = {   
+				paginator: new YAHOO.widget.Paginator({   
+					rowsPerPage: 10,
+					alwaysVisible: false					
+				})   
+			}; 
+			
+			uizGetElementById("object" + objCount).innerHTML = "";
+			uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
+		}
+		else if(uizObj[datasourceNo].datasourceType == "JSON") {
+			var column = fields.split(',');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnFields[i] = {key:column[i]};
+			}
+			
+			if(datasourceURL != "" && query != "query") {
+				datasourceURL = datasourceURL + "&" + query;
+			}
+			
+			var connectionCallback = {   
+				   success: function(o) {
+					if(datasourceURL != "" && query != "query") {			
+						uizObj[datasourceNo].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
+						uizObj[datasourceNo].datasource.responseSchema = {
+							resultsList: resultNode,
+							fields: myColumnFields
+						};
+						
+						var oConfigs = {   
+							paginator: new YAHOO.widget.Paginator({   
+								rowsPerPage: 10,
+								alwaysVisible: false					
+							})   
+						}; 
+						
+						uizGetElementById("object" + objCount).innerHTML = "";
+						uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
+					}
+				},
+				failure: function(o) {
+					alert("Failed.");   
+				}   
+			}
+			
+			var getJSON = YAHOO.util.Connect.asyncRequest("GET", "php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);  						
+		}
+		else if(uizObj[datasourceNo].datasourceType == "XML") {
+			var column = fields.split(',');
+			var myColumnDefs = new Array();
+			var myColumnFields = new Array();
+			
+			for(var i=0; i<column.length; i++) {
+				myColumnDefs[i] = {key:column[i], label:column[i]};
+				myColumnFields[i] = {key:column[i]};
+			}
+			
+			if(datasourceURL != "" && query != "query") {
+				datasourceURL = datasourceURL + "&" + query;
+			}
+			
+			var connectionCallback = {   
+				success: function(o) {
+					if(datasourceURL != "" && query != "query") {
+						uizObj[datasourceNo].datasource = new YAHOO.util.DataSource("php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
+						uizObj[datasourceNo].datasource.responseSchema = {
+							resultNode: resultNode,
+							fields: myColumnFields
+						};
+						
+						var oConfigs = {   
+							paginator: new YAHOO.widget.Paginator({   
+								rowsPerPage: 10,
+								alwaysVisible: false					
+							})   
+						};
+						
+						uizGetElementById("object" + objCount).innerHTML = "";
+						uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
+					}
+				},
+				failure: function(o) {
+					alert("Failed.");   
+				}   
+			}
+			
+			var getXML = YAHOO.util.Connect.asyncRequest("GET", "php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);  
+		}
+	}
+	/*
 	if(fields.length == columnWidth.length) {
 		var tableColumnDefs = new Array();
 		
@@ -511,6 +625,7 @@ function modObjDatatable(objCount, fields, columnWidth) {
 	else {
 		alert("the number of fields should match with that of the columnWidth");
 	}
+	*/
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1176,12 +1291,21 @@ function addObjFinish() {
 		treeviewObjects.render();
 		treeviewObjects.expandAll();
 		treeviewObjects.subscribe("labelClick", labelClicked);
+		
+		tabView.set('activeIndex', 0);
+		canvas1.show();
+		canvas2.hide();
+		canvas3.hide();
+		canvas4.hide();
+		canvas5.hide();
+		canvas6.hide();
+		canvas7.hide();
 	}
 	
 	uizGetElementById('objectStorage').innerHTML += "<div id='objectSelection" + objectCount + "' class='objBorder'></div>"
+	objectCount++;
 	
-	writeMessage("<font color=blue><b>Added the object#" + objectCount + "</b></font>");
-	objectCount++;	
+	writeMessage("<font color=blue><b>Added the object#" + objectCount + "</b></font>");	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
