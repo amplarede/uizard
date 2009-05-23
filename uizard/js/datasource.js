@@ -36,7 +36,7 @@ function addDsHTML() {
 	uizObj[objectCount].fields = "No Need";
 	uizObj[objectCount].query = "No Need";
 	
-	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><br />" + uizObj[objectCount].provider + "</div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table><div id='datasourceHTML"+objectCount+"' style='position:absolute; visibility: hidden;'></div></div>";
+	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><div id='divProvider" + objectCount + "'>" + uizObj[objectCount].provider + "</div></div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table><div id='datasourceHTML"+objectCount+"' style='position:absolute; visibility: hidden;'></div></div>";
 	
 	uizGetElementById('datasourceHTML'+objectCount).innerHTML += uizObj[objectCount].html;
 	
@@ -85,7 +85,7 @@ function addDsJSON() {
 	uizObj[objectCount].fields = "fields";
 	uizObj[objectCount].query = "query";
 	
-	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><br />" + uizObj[objectCount].provider + "</div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table></div>";
+	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><div id='divProvider" + objectCount + "'>" + uizObj[objectCount].provider + "</div></div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table></div>";
 	
 	uizObj[objectCount].code  = "\n\n//Do Not Remove This Function Prototype\n";	
 	
@@ -106,12 +106,68 @@ function addDsXML() {
 	uizObj[objectCount].fields = "fields";
 	uizObj[objectCount].query = "query";
 	
-	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><br />" + uizObj[objectCount].provider + "</div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table></div>";
+	uizGetElementById('canvasDataSource').innerHTML += "<div id='object" + objectCount+"' style='height:260px; background-color:#FCFCFC; border:1px #CCCCCC solid; margin:5px; cursor:pointer; font-size:11px;' onClick='objDsClicked(" + objectCount + ")' onDblClick='objDsDblClicked(" + objectCount + ")'><table width='100%' border='0'><tr><td width='70' rowspan='4' valign='top' style='padding:6px; text-align:center;'><img src='images/datasource.png'><br><br><a href='#' onclick=\"deleteDs(" + objectCount + ");\"><img src='images/toolbox/delete.png' border='0' align='absmiddle'> DELETE</a></td><td colspan='2' style='font-size:14px; font-weight:bold;'><div style='padding-top:5px; padding-bottom:3px;'>object" + objectCount + " (datasource)</div></td></tr><tr><td width='150' style='padding:2px;'><b>Datasource Type</b><br /><div id='divDsType" + objectCount + "'>" + uizObj[objectCount].datasourceType + "</div></td><td style='padding:2px;'><b>Datasource URL</b><div id='divLiveData" + objectCount + "'>" + uizObj[objectCount].obj.liveData + "</div></td></tr><tr><td width='150' style='padding:2px;'><b>Provider</b><div id='divProvider" + objectCount + "'>" + uizObj[objectCount].provider + "</div></div></td><td style='padding:2px;'></td></tr><tr><td colspan='2' style='padding:2px;'><b>Data Preview</b><div id='dataPreview" + objectCount + "'>table</div></td></tr></table></div>";
 	
 	uizObj[objectCount].code  = "\n\n//Do Not Remove This Function Prototype\n";	
 	
-	addObjDsFinish();	
+	addObjDsFinish();
+}
 
+function addDsExternal(datasourceType, provider, APIKey, datasourceURL, resultNode, fields, query) {
+	if(datasourceType == "JSON") {
+		addDsJSON();
+	}
+	else if(datasourceType == "XML") {
+		addDsXML();
+	}
+	
+	uizObj[objectCount-1].provider = provider;
+	uizObj[objectCount-1].obj.liveData = datasourceURL + APIKey;
+	uizObj[objectCount-1].resultNode = resultNode;
+	uizObj[objectCount-1].fields = fields;
+	uizObj[objectCount-1].query = query;
+	
+	objDsClicked(objectCount-1);
+
+	var x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code;
+
+	var objStyle = getObjStyle(objectCount-1);
+
+	x = objStyle.x;
+	y = objStyle.y;
+	zindex = objStyle.zindex;
+	width = objStyle.width;
+	height = objStyle.height;
+	align = objStyle.align;
+	visibility = objStyle.visibility;
+	label = objStyle.label;
+	disabled = objStyle.disabled;
+	tabindex = objStyle.tabindex;
+	datasourceNo = objStyle.datasourceNo;
+	provider = objStyle.provider;
+	datasourceURL = objStyle.datasourceURL;
+	datasourceType = objStyle.datasourceType;
+	resultNode = objStyle.resultNode;
+	fields = objStyle.fields;
+	query = objStyle.query;
+	columnWidth = objStyle.columnWidth;	
+	paginator = objStyle.paginator;	
+	rowsPerPage = objStyle.rowsPerPage;		
+	tabcount = objStyle.tabcount;
+	src = objStyle.src;
+	action = objStyle.action;
+	method = objStyle.method;
+	target = objStyle.target;
+	value = objStyle.value;
+	backgroundColor = objStyle.backgroundColor;
+	buttoncount = objStyle.buttoncount;
+	closebutton = objStyle.closebutton;
+	draggable = objStyle.draggable;
+	code = objStyle.code;
+	html = objStyle.html;
+	interval = objStyle.interval;
+	
+	setObjStyle(objectCount-1, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
 }
 	
 function deleteDs(objCount) {
@@ -127,6 +183,14 @@ function deleteDs(objCount) {
 
 function addObjDsFinish() {
 	if(objectCount != 0) {
+		uizGetElementById("treeNodeDatasource").innerHTML += "<li id='treeNodeObject"+objectCount+"'><a onclick='objDsClicked("+objectCount+");'><img src='images/toolbox/"+uizObj[objectCount].type.toLowerCase()+".png' align='absmiddle'> object"+objectCount+" ("+uizObj[objectCount].type+")</a></li>";
+		uizGetElementById("objectsExplorerTreeview").innerHTML = uizGetElementById("objectsExplorerTreeviewDummy").innerHTML;
+				
+		treeviewObjects = new YAHOO.widget.TreeView("objectsExplorerTreeview");
+		treeviewObjects.render();
+		treeviewObjects.expandAll();
+		treeviewObjects.subscribe("labelClick", labelClicked);
+		
 		tabView.set('activeIndex', 1);
 		canvas1.hide();
 		canvas2.show();

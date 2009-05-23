@@ -190,6 +190,7 @@ function objDsClicked(objCount) {
 	selectedObj = objCount;
 
 	getObjStyle(objCount);
+	
 	codeEditor.setCode(uizObj[objCount].code);
 	htmlEditor.setCode(uizObj[objCount].html);
 }
@@ -338,8 +339,8 @@ function setDragAndDropObj(objCount) {
 	uizObj[objCount].dragAndDrop.subscribe("mouseUpEvent", mouseUp);
 }
 
-function setProperties(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval) {
-	var uri = "php/xmlio.php?projectName="+projectName+"&objNo=" + objCount + "&type=" + uizObj[objCount].type + "&x=" + x + "&y=" + y + "&z-index=" + zindex + "&width=" + width + "&height=" + height + "&align=" + align + "&visibility=" + visibility;
+function setProperties(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval) {
+	var uri = "php/xmlObject.php?projectName="+projectName+"&objNo=" + objCount + "&type=" + uizObj[objCount].type + "&x=" + x + "&y=" + y + "&z-index=" + zindex + "&width=" + width + "&height=" + height + "&align=" + align + "&visibility=" + visibility;
 
 	if(uizObj[objCount].type == "CANVAS") {
 		uri += "&backgroundColor=" + backgroundColor;
@@ -364,6 +365,8 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		uri += "&datasourceNo=" + datasourceNo;
 		uri += "&fields=" + fields;	
 		uri += "&columnWidth=" + columnWidth;
+		uri += "&paginator=" + paginator;
+		uri += "&rowsPerPage=" + rowsPerPage;
 	}	
 	else if(uizObj[objCount].type == "TABVIEW") {
 		uri += "&tabcount=" + tabcount;
@@ -452,7 +455,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		var parsedData = parsingData.substr(parsingStartPoint, parsingEndPoint - parsingStartPoint);
 		
 		var newData = oArgs.newData;
-		var x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code;
+		var x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code;
 		
 		if(parsedData == "x") { x = newData; }
 		else if(parsedData == "y") { y = newData; }
@@ -477,6 +480,8 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		else if(parsedData == "fields") { fields = newData; }	
 		//dataTable
 		else if(parsedData == "columnWidth") { columnWidth = newData; }
+		else if(parsedData == "paginator") { paginator = newData; }
+		else if(parsedData == "rowsPerPage") { rowsPerPage = newData; }
 		//tabView
 		else if(parsedData == "tabcount") { tabcount = newData; }	
 		//image, swf
@@ -502,7 +507,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		
 		html = uizObj[selectedObj].html;
 		
-		setObjStyle(selectedObj, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
+		setObjStyle(selectedObj, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
 		
 		writeMessage("<font color=green><b>" + parsedData + " is changed to " + newData + " (object#" + objCount + ")</b></font>");
 	};
@@ -528,6 +533,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 	tableProperties.subscribe("cellClickEvent", tableProperties.onEventShowCellEditor);
 	tableProperties.subscribe("rowClickEvent", onRowClick);
 	tableProperties.subscribe("editorSaveEvent", onCellEdit);
+	
 }
 
 function getObjStyle(objCount) {
@@ -554,6 +560,8 @@ function getObjStyle(objCount) {
 	var fields = "";
 	//dataTable
 	var columnWidth = "";
+	var paginator = "";
+	var rowsPerPage = "";
 	//tabView
 	var tabcount = "";
 	//image, swf
@@ -604,6 +612,8 @@ function getObjStyle(objCount) {
 		datasourceNo = uizObj[objCount].datasourceNo;
 		fields = uizObj[objCount].fields;
 		columnWidth = uizObj[objCount].columnWidth;
+		paginator = uizObj[objCount].paginator;
+		rowsPerPage = uizObj[objCount].rowsPerPage;
 	}	
 	else if(uizObj[objCount].type == "TABVIEW") {
 		tabcount = uizObj[objCount].childCount;
@@ -638,8 +648,8 @@ function getObjStyle(objCount) {
 	
 	code = uizObj[objCount].code;
 	html = uizObj[objCount].html;
-
-	setProperties(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
+	
+	setProperties(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
 	
 	return {
 		x: x,
@@ -660,6 +670,8 @@ function getObjStyle(objCount) {
 		fields: fields,		
 		query: query,
 		columnWidth: columnWidth,
+		paginator: paginator,
+		rowsPerPage: rowsPerPage,
 		tabcount: tabcount,
 		src: src,
 		action: action,
@@ -676,7 +688,7 @@ function getObjStyle(objCount) {
 	}
 }
 
-function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval) {
+function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval) {
 
 	var objStyle = getObjStyle(objCount);
 		
@@ -698,11 +710,13 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	if(fields == null) fields = objStyle.fields;
 	if(query == null) query = objStyle.query;
 	if(columnWidth == null) columnWidth = objStyle.columnWidth;	
+	if(paginator == null) paginator = objStyle.paginator;	
+	if(rowsPerPage == null) rowsPerPage = objStyle.rowsPerPage;		
 	if(tabcount == null) tabcount = objStyle.tabcount;
 	if(src == null) src = objStyle.src;
 	if(action == null) action = objStyle.action;
 	if(method == null) method = objStyle.method;
-	if(target == null) method = objStyle.target;
+	if(target == null) target = objStyle.target;
 	if(value == null) value = objStyle.value;
 	if(backgroundColor == null) backgroundColor = objStyle.backgroundColor;
 	if(buttoncount == null) buttoncount = objStyle.buttoncount;
@@ -719,7 +733,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	uizSetStyle("object"+objCount, "height", height);
 	uizSetStyle("object"+objCount, "text-align", align);
 	uizSetStyle("object"+objCount, "visibility", visibility);
-
+	
 	if(uizObj[objCount].type == "CANVAS") {
 		uizSetStyle("canvasDesign", "width", width);
 		uizSetStyle("canvasDesign", "height", height);
@@ -742,6 +756,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	}
 	else if(uizObj[objCount].type == "DATASOURCE") {
 		uizObj[objCount].provider = provider;
+		uizGetElementById("divProvider" + objCount).innerHTML = provider;
 		uizObj[objCount].obj.liveData = datasourceURL;
 		uizGetElementById("divLiveData" + objCount).innerHTML = datasourceURL;
 		uizObj[objCount].datasourceType = datasourceType;
@@ -749,6 +764,13 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizObj[objCount].resultNode = resultNode;
 		uizObj[objCount].query = query;
 		uizObj[objCount].fields = fields;
+		
+		var oConfigs = {   
+			paginator: new YAHOO.widget.Paginator({   
+				rowsPerPage: 3,
+				alwaysVisible: false					
+			})   
+		}; 		
 		
 		if(uizObj[objCount].datasourceType == "HTML") {
 			uizGetElementById('datasourceHTML'+objCount).innerHTML = html;
@@ -767,13 +789,6 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 			uizObj[objCount].datasource.responseSchema = {
 				fields: myColumnFields
 			};
-			
-			var oConfigs = {   
-				paginator: new YAHOO.widget.Paginator({   
-					rowsPerPage: 3,
-					alwaysVisible: false					
-				})   
-			}; 
 			
 			uizGetElementById("dataPreview" + objCount).innerHTML = "";
 			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
@@ -807,13 +822,6 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 							resultsList: resultNode,
 							fields: myColumnFields
 						};
-						
-						var oConfigs = {   
-							paginator: new YAHOO.widget.Paginator({   
-								rowsPerPage: 3,
-								alwaysVisible: false					
-							})   
-						}; 
 						
 						uizGetElementById("dataPreview" + objCount).innerHTML = "";
 						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
@@ -856,13 +864,6 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 							fields: myColumnFields
 						};
 						
-						var oConfigs = {   
-							paginator: new YAHOO.widget.Paginator({   
-								rowsPerPage: 3,
-								alwaysVisible: false					
-							})   
-						};
-						
 						uizGetElementById("dataPreview" + objCount).innerHTML = "";
 						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
 					}
@@ -879,8 +880,8 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizObj[objCount].datasourceNo = datasourceNo;
 		uizObj[objCount].fields = fields;
 		uizObj[objCount].columnWidth = columnWidth;
-		var keys = fields.split(",");
-		var widths = columnWidth.split(",");
+		uizObj[objCount].paginator = paginator;
+		uizObj[objCount].rowsPerPage = rowsPerPage;	
 
 		modObjDatatable(objCount, datasourceNo);
 	}
@@ -951,8 +952,8 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	getObjStyle(objCount);
 }
 
-function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumRecommendAPI, daumMapAPI, liveDataAPI) {
-	var uri="php/xmlAPIKey.php?projectName="+projectName+"&GoogleMapAPI=" + googleMapAPI + "&YahooAPI=" + yahooAPI + "&NaverDataAPI=" + naverDataAPI + "&NaverMapAPI=" + naverMapAPI + "&DaumSearchAPI=" + daumSearchAPI + "&DaumShoppingAPI=" + daumShoppingAPI + "&DaumRecommendAPI=" + daumRecommendAPI +"&DaumMapAPI=" + daumMapAPI + "&LiveDataAPI=" + liveDataAPI;
+function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumContentsAPI, daumMapAPI, liveDataAPI) {
+	var uri="php/xmlAPIKey.php?projectName="+projectName+"&GoogleMapAPI=" + googleMapAPI + "&YahooAPI=" + yahooAPI + "&NaverDataAPI=" + naverDataAPI + "&NaverMapAPI=" + naverMapAPI + "&DaumSearchAPI=" + daumSearchAPI + "&DaumShoppingAPI=" + daumShoppingAPI + "&DaumContentsAPI=" + daumContentsAPI +"&DaumMapAPI=" + daumMapAPI + "&LiveDataAPI=" + liveDataAPI;
 	
 	var dataAPIKey = new YAHOO.util.DataSource(uri);
 	dataAPIKey.connMethodPost = true; 
@@ -987,7 +988,7 @@ function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, dau
 		var parsedData = parsingData.substr(parsingStartPoint, parsingEndPoint - parsingStartPoint);
 		
 		var newData = oArgs.newData;
-		var googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumRecommendAPI, daumMapAPI, liveDataAPI;
+		var googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumContentsAPI, daumMapAPI, liveDataAPI;
 		
 		if(parsedData == "GoogleMapAPI") { googleMapAPI = newData; }
 		else if(parsedData == "YahooAPI") { yahooAPI = newData; }
@@ -995,11 +996,11 @@ function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, dau
 		else if(parsedData == "NaverMapAPI") { naverMapAPI = newData; }
 		else if(parsedData == "DaumSearchAPI") { daumSearchAPI = newData; }
 		else if(parsedData == "DaumShoppingAPI") { daumShoppingAPI = newData; }
-		else if(parsedData == "DaumRecommendAPI") { daumRecommendAPI = newData; }
+		else if(parsedData == "DaumContentsAPI") { daumContentsAPI = newData; }
 		else if(parsedData == "DaumMapAPI") { daumMapAPI = newData; }
 		else if(parsedData == "LiveDataAPI") { liveDataAPI = newData; }
 		
-		setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumRecommendAPI, daumMapAPI, liveDataAPI);
+		setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumContentsAPI, daumMapAPI, liveDataAPI);
 		
 		writeMessage(parsedData + " Key Value is changed to " + newData);
 	};
@@ -1008,4 +1009,6 @@ function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, dau
 	tableAPIKeySetting.subscribe("cellMouseoutEvent", tableAPIKeySetting.onEventUnhighlightCell); 
 	tableAPIKeySetting.subscribe("cellClickEvent", tableAPIKeySetting.onEventShowCellEditor); 
 	tableAPIKeySetting.subscribe("editorSaveEvent", onCellEdit);
+	
+	loadAPIKeys();
 }

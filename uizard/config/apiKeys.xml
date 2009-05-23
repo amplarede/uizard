@@ -7,7 +7,7 @@
 		<NaverMapAPI>016200523a6f4851d55ae4ea563f4a1e</NaverMapAPI>
 		<DaumSearchAPI>e6685418afd4d1c361973c28771964266f266e37</DaumSearchAPI>
 		<DaumShoppingAPI>e25b9464cbe501b0bd0df5022fc11ea25179f378</DaumShoppingAPI>
-		<DaumRecommendAPI>8b02f7ecad5fbbaf60935cb46f39c3ee8ed6d44f</DaumRecommendAPI>
+		<DaumContentsAPI>29f702fefbd6cca9449c8c2ae49df6286f45d88e</DaumContentsAPI>
 		<DaumMapAPI>26ddf6fa25d3ae044759c779c02d7df6bed2195a</DaumMapAPI>
 		<LiveDataAPI>F7A62595C7C6380088ECCE1E8D23A914F5BFD6B6</LiveDataAPI>
 	</keySetting>
