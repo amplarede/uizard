@@ -8,7 +8,7 @@
 		<gridOpacity>30</gridOpacity> 
 		<objectSelection>true</objectSelection> 
 		<objectFill>false</objectFill> 
-		<resizeHandle>true</resizeHandle> 
+		<resizeHandle>false</resizeHandle> 
 		<resizeProxy>true</resizeProxy> 
 		<dragProxy>false</dragProxy> 
 		<font>false</font> 

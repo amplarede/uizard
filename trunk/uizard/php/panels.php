@@ -353,3 +353,16 @@ Both Microsoft and Nokia have announced plans to bundle jQuery on their platform
 	</div> 
 	<div class="ft"></div> 
 </div>
+
+<!-- HTML : CONTAINER::SELECT A DATASOURCE -->
+<div id="SelectDatasource" class="yui-picker-panel"> 
+	<div class="hd" style="text-align:left;">Select a datasource.</div> 
+	<div class="bd"> 
+		<div id="layoutSelectDatasource" style="border:1px #CCC solid;">
+        </div>
+        <div id="listSelectDatasource">
+        asdfasdfasdf
+        </div>
+	</div> 
+	<div class="ft"></div> 
+</div>

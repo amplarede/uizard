@@ -517,6 +517,10 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		if(parsedData == "backgroundColor") {
 			colorPickerDialog.show();
 		}
+		else if(parsedData == "datasourceNo") {
+			makeDatasourceList(datasourceNo);
+			panelSelectDatasource.show();
+		}
 	}
 	
 	tableProperties.subscribe("cellMouseoverEvent", highlightEditableCell); 
@@ -789,25 +793,38 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				myColumnFields[i] = {key:column[i]};
 			}
 			
-			datasourceURL = datasourceURL + "&" + query;
+			if(datasourceURL != "" && query != "query") {
+				datasourceURL = datasourceURL + "&" + query;
+			}
 			
-			uizObj[objCount].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
-			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
-			//uizObj[objCount].datasource.connXhrMode = "queueRequests";
-			uizObj[objCount].datasource.responseSchema = {
-				resultsList: resultNode,
-            	fields: myColumnFields
-			};
+			var connectionCallback = {   
+	            success: function(o) {
+					if(datasourceURL != "" && query != "query") {			
+						uizObj[objCount].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
+						//uizObj[objCount].datasource.connXhrMode = "queueRequests";
+						uizObj[objCount].datasource.responseSchema = {
+							resultsList: resultNode,
+							fields: myColumnFields
+						};
+						
+						var oConfigs = {   
+							paginator: new YAHOO.widget.Paginator({   
+								rowsPerPage: 3,
+								alwaysVisible: false					
+							})   
+						}; 
+						
+						uizGetElementById("dataPreview" + objCount).innerHTML = "";
+						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+					}
+				},
+				failure: function(o) {
+					alert("Connection Failed.");   
+				}   
+			} 
 			
-			var oConfigs = {   
-				paginator: new YAHOO.widget.Paginator({   
-					rowsPerPage: 3,
-					alwaysVisible: false					
-				})   
-			}; 
-			
-			uizGetElementById("dataPreview" + objCount).innerHTML = "";
-			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+			var getJSON = YAHOO.util.Connect.asyncRequest("GET", "php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);
 		}
 		else if(uizObj[objCount].datasourceType == "XML") {
 			var column = fields.split(',');
@@ -851,7 +868,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 					}
 				},
 				failure: function(o) {
-					alert("Failed.");   
+					alert("Connection Failed.");   
 				}   
 			}
 			
@@ -864,7 +881,8 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		uizObj[objCount].columnWidth = columnWidth;
 		var keys = fields.split(",");
 		var widths = columnWidth.split(",");
-		modObjDatatable(objCount, keys, widths);
+
+		modObjDatatable(objCount, datasourceNo);
 	}
 	else if(uizObj[objCount].type == "TABVIEW") {
 		uizGetElementById("object"+objCount).innerHTML = html;
