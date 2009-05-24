@@ -18,7 +18,7 @@ $htmldata = "
 <html>
 <head>
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-<title>UIzard Preview</title>
+<title>".$_GET['projectName']."</title>
 
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
 <link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css\">

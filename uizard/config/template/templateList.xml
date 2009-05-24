@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TemplateCategory>
+	<TemplateCategoryName>General Web Application</TemplateCategoryName>
+	<TemplateCategoryDirectory>GeneralWebApplication</TemplateCategoryDirectory>
+	<TemplateCategoryIcon>GeneralWebApplication.png</TemplateCategoryIcon>
+	<TemplateType>
+		<TemplateTypeName>Document Based</TemplateTypeName>
+		<TemplateTypeFile>DocumentBased.xml</TemplateTypeFile>
+		<TemplateTypeIcon>DocumentBased.png</TemplateTypeIcon>
+		<Width>100%</Width>
+		<Height>1000px</Height>		
+	</TemplateType>
+	<TemplateType>
+		<TemplateTypeName>Panel Based</TemplateTypeName>
+		<TemplateTypeFile>PanelBased.xml</TemplateTypeFile>
+		<TemplateTypeIcon>PanelBased.png</TemplateTypeIcon>
+		<Width>100%</Width>
+		<Height>1000px</Height>		
+	</TemplateType>
+	<TemplateType>
+		<TemplateTypeName>Tabview Based</TemplateTypeName>
+		<TemplateTypeFile>TabviewBased.xml</TemplateTypeFile>
+		<TemplateTypeFile>TabviewBased.png</TemplateTypeFile>
+		<Width>100%</Width>
+		<Height>1000px</Height>		
+	</TemplateType>		
+</TemplateCategory>
+
+<TemplateCategory>
+	<TemplateCategoryName>Google API Based Widget/Gadget</TemplateCategoryName>
+	<TemplateCategoryDirectory>GoogleAPIBasedWidgetGadget</TemplateCategoryDirectory>
+	<TemplateCategoryIcon>GoogleAPIBasedWidgetGadget.png</TemplateCategoryIcon>
+	<TemplateType>
+		<TemplateTypeName>Google Gadget</TemplateTypeName>
+		<TemplateTypeFile>GoogleGadget.xml</TemplateTypeFile>
+		<TemplateTypeFile>GoogleGadget.png</TemplateTypeFile>
+		<Width>100%</Width>
+		<Height>200px</Height>		
+	</TemplateType>
+	<TemplateType>
+		<TemplateTypeName>Daum Widget</TemplateTypeName>
+		<TemplateTypeFile>DaumWidget.xml</TemplateTypeFile>
+		<TemplateTypeFile>DaumWidget.png</TemplateTypeFile>
+		<Width>180px</Width>
+		<Height>200px</Height>		
+	</TemplateType>	
+	<TemplateType>
+		<TemplateTypeName>Google Gadget Tab Based</TemplateTypeName>
+		<TemplateTypeFile>GoogleGadgetTabBased.xml</TemplateTypeFile>
+		<TemplateTypeFile>GoogleGadgetTabBased.png</TemplateTypeFile>
+		<Width>100%</Width>
+		<Height>200px</Height>		
+	</TemplateType>
+	<TemplateType>
+		<TemplateTypeName>Daum Widget Tab Based</TemplateTypeName>
+		<TemplateTypeFile>DaumWidgetTabBased.xml</TemplateTypeFile>
+		<TemplateTypeFile>DaumWidgetTabBased.png</TemplateTypeFile>
+		<Width>180px</Width>
+		<Height>200px</Height>			
+	</TemplateType>		
+</TemplateCategory>
+
+<TemplateCategory>
+	<TemplateCategoryName>Mobile Web Application</TemplateCategoryName>
+	<TemplateCategoryDirectory>MobileWebApplication</TemplateCategoryDirectory>
+	<TemplateType>
+		<TemplateTypeName>iPhone Style</TemplateTypeName>
+		<TemplateTypeFile>iPhoneStyle.xml</TemplateTypeFile>
+		<TemplateTypeFile>iPhoneStyle.png</TemplateTypeFile>
+		<Width>320px</Width>
+		<Height>400px</Height>		
+	</TemplateType>
+</TemplateCategory>

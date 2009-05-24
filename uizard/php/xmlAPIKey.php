@@ -17,7 +17,7 @@ $xml = new uizXmlClass;
 $prt = $xml->xmlOpen("../projects/".$_GET['projectName']."/apiKeys.xml",'keySetting'); 
 
 $xmlOutput = "<?xml version=\"1.0\"?>\n";
-$xmlOutput .= "<objectSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalobjectsAvailable=\"1\" totalobjectsReturned=\"1\" firstobjectPosition=\"1\">\n";
+$xmlOutput .= "<objectSet>\n";
 	
 	$xmlOutput .= "\t<keySetting>\n";
 		
@@ -94,7 +94,7 @@ $result = $xmlClass->xmlOpen("../projects/".$_GET['projectName']."/apiKeys.xml",
 header("Content-Type: text/xml; charset=utf-8");
 	
 echo "<?xml version=\"1.0\"?>\n";
-echo "<keyvalueSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalkeyvaluesAvailable=\"1\" totalkeyvaluesReturned=\"1\" firstkeyvaluePosition=\"1\">\n";
+echo "<keyvalueSet>\n";
 	echo "\t<keyvalue>\n";
 	echo "\t\t<apitype>GoogleMapAPI</apitype>\n";
 	echo "\t\t<value>".$result['GoogleMapAPI'][0]['value']."</value>\n";

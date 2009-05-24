@@ -22,7 +22,7 @@ if($_GET['objNo'] != "")
 	if($_GET['objNo'] > ($count-1)) $count++;
 
 	$xmlOutput = "<?xml version=\"1.0\"?>\n";
-	$xmlOutput .= "<objectSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalobjectsAvailable=\"".$count."\" totalobjectsReturned=\"".$count."\" firstobjectPosition=\"1\">\n";
+	$xmlOutput .= "<objectSet>\n";
 	
 	for($i=0; $i<$count; $i++) {
 		
@@ -166,7 +166,7 @@ function writeXML($No) {
 	header("Content-Type: text/xml; charset=utf-8");
 	
 	echo "<?xml version=\"1.0\"?>\n";
-	echo "<propertySet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalpropertysAvailable=\"1\" totalpropertysReturned=\"1\" firstpropertyPosition=\"1\">\n";
+	echo "<propertySet>\n";
 		echo "\t<property>\n";
 		echo "\t\t<id>object-id</id>\n";
 		echo "\t\t<value>".$result['object-id'][$No]['value']."</value>\n";

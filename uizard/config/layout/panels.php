@@ -15,7 +15,7 @@ version: 0.8.2
 	<div class="bd" style="text-align:center;">
     	<div style="float:left; width:180px; height:315px; text-align:left; font-size:12px; margin-right:5px;">
         	<div style="height:20px;"><b>Category</b></div>
-            <div style="height:295px; border:1px #CCC solid; background:#FFF;">
+            <div id="projectCategory" style="height:295px; border:1px #CCC solid; background:#FFF;">
             	<div style="height:40px; border-bottom:1px solid #CCC; background:url(images/layout/categoryBgSelected.png);">
                     <div style="float:left; width:40px; height:40px; border-bottom:1px solid #CCC;">
                     	<img src="images/layout/generalwebapplication.png" border="0" />
@@ -48,7 +48,7 @@ version: 0.8.2
         <div style="float:right; width:392px; height:315px; text-align:left; font-size:11px;">
 	        <div style="height:20px;"><b>Type</b></div>
             <div style="height:295px; border:1px #CCC solid; background:#FFF;">
-                <div style="margin:10px;">
+                <div id="projectType"; style="margin:10px;">
                     <div style="float:left; width:120px; text-align:center;">
                         <a href="#" onClick="showMakeProject();">
                         <img src='images/layout/newprojectdocumentbased.png' border="0"><br>
