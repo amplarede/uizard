@@ -16,60 +16,12 @@ version: 0.8.2
     	<div style="float:left; width:180px; height:315px; text-align:left; font-size:12px; margin-right:5px;">
         	<div style="height:20px;"><b>Category</b></div>
             <div id="projectCategory" style="height:295px; border:1px #CCC solid; background:#FFF;">
-            	<div style="height:40px; border-bottom:1px solid #CCC; background:url(images/layout/categoryBgSelected.png);">
-                    <div style="float:left; width:40px; height:40px; border-bottom:1px solid #CCC;">
-                    	<img src="images/layout/generalwebapplication.png" border="0" />
-                    </div>
-                    <div style="float:right; margin-top:6px; width:130px; font-size:11px; font-weight:bold; color:#FFF;">
-                        General<br />
-                        Web Application
-                    </div>                
-                </div>
-            	<div style="height:40px; border-bottom:1px solid #CCC; background:url(images/layout/categoryBg.png);">
-                    <div style="float:left; width:40px; height:40px; border-bottom:1px solid #CCC;">
-                    	<img src="images/layout/googleapibasedgadget.png" border="0" />                    
-                    </div>
-                    <div style="float:right; margin-top:6px; width:130px; font-size:11px; font-weight:bold;">
-                        Google API Based<br />
-                        Widget / Gadget
-                    </div>                
-                </div>
-            	<div style="height:40px; border-bottom:1px solid #CCC; background:url(images/layout/categoryBg.png);">
-                    <div style="float:left; width:40px; height:40px; border-bottom:1px solid #CCC;">
-                    	<img src="images/layout/mobilewebapplication.png" border="0" />                    
-                    </div>
-                    <div style="float:right; margin-top:6px; width:130px; font-size:11px; font-weight:bold;">
-                        Mobile<br />
-                        Web Application                        
-                    </div>                
-                </div>                                
             </div>
         </div>
         <div style="float:right; width:392px; height:315px; text-align:left; font-size:11px;">
 	        <div style="height:20px;"><b>Type</b></div>
             <div style="height:295px; border:1px #CCC solid; background:#FFF;">
                 <div id="projectType"; style="margin:10px;">
-                    <div style="float:left; width:120px; text-align:center;">
-                        <a href="#" onClick="showMakeProject();">
-                        <img src='images/layout/newprojectdocumentbased.png' border="0"><br>
-                        New Project<br />
-                        (Document Based)
-                        </a>
-                    </div>
-                    <div style="float:left; width:120px; text-align:center;">
-                        <a href="#" onClick="alert('Not Yet!');">
-                        <img src='images/layout/newprojectpanelbased.png' border="0"><br>
-                        New Project<br />
-                        (Panel Based)
-                        </a>
-                    </div>
-                    <div style="float:left; width:120px; text-align:center;">
-                        <a href="#" onClick="alert('Not Yet!');">
-                        <img src='images/layout/newprojecttabviewbased.png' border="0"><br>
-                        New Project<br />
-                        (Tabview Based)
-                        </a>
-                    </div>
                 </div> 
         	</div>
         </div>      
@@ -87,7 +39,10 @@ version: 0.8.2
             <div style="height:30px;"><input id="inputProjectName" name="inputProjectName" style="width:384px;"></div>
             <div style="height:25px;">Project Author</div>
             <div style="height:30px;"><input style="width:384px;" value="<?php echo $projectAuthor;?>" disabled="disabled"><input id="inputProjectAuthor" name="inputProjectAuthor" value="<?=$projectAuthor?>" type="hidden"></div>
-        </div>    
+        </div>
+        <input id="inputProjectTemplate" name="inputProjectTemplate" value="" type="hidden">
+        <input id="inputProjectWidth" name="inputProjectWidth" value="" type="hidden">
+        <input id="inputProjectHeight" name="inputProjectHeight" value="" type="hidden">
     </form>   
 	</div>
 </div>
