@@ -192,20 +192,26 @@ function loadTemplateList(indexCategory) {
 			var TemplateCategoryIcon 		= TemplateCategory[i].getElementsByTagName('TemplateCategoryIcon')[0].firstChild.data;
 			var TemplateType		 		= TemplateCategory[i].getElementsByTagName('TemplateType');
 			
-			uizGetElementById("projectCategory").innerHTML += "<div style='height:40px; border-bottom:1px solid #CCC; background:url(images/layout/categoryBgSelected.png); cursor:pointer;' onclick=''><div style='float:left; width:40px; height:40px; border-bottom:1px solid #CCC;'><img src='config/template/" + TemplateCategoryIcon + "' border='0' /></div><div style='float:right; margin-top:6px; width:130px; font-size:11px; font-weight:bold; color:#FFF;'>" + TemplateCategoryName + "</div></div>";
+			var bgImage = "categoryBg.png";
+			var fontColor = "#333";
 			
-			for(var i=0; i<TemplateType.length; i++) {
-				var TemplateTypeName	= TemplateType[i].getElementsByTagName('TemplateTypeName')[0].firstChild.data;
-				var TemplateTypeFile	= TemplateType[i].getElementsByTagName('TemplateTypeFile')[0].firstChild.data;				
-				var TemplateTypeIcon	= TemplateType[i].getElementsByTagName('TemplateTypeIcon')[0].firstChild.data;
-				var Width 				= TemplateType[i].getElementsByTagName('Width')[0].firstChild.data;
-				var Height 				= TemplateType[i].getElementsByTagName('Height')[0].firstChild.data;
+			if(i == indexCategory) {
+				for(var j=0; j<TemplateType.length; j++) {
+					var TemplateTypeName	= TemplateType[j].getElementsByTagName('TemplateTypeName')[0].firstChild.data;
+					var TemplateTypeFile	= TemplateType[j].getElementsByTagName('TemplateTypeFile')[0].firstChild.data;				
+					var TemplateTypeIcon	= TemplateType[j].getElementsByTagName('TemplateTypeIcon')[0].firstChild.data;
+					var Width 				= TemplateType[j].getElementsByTagName('Width')[0].firstChild.data;
+					var Height 				= TemplateType[j].getElementsByTagName('Height')[0].firstChild.data;
+					
+					uizGetElementById("projectType").innerHTML += "<div style='float:left; width:120px; text-align:center;'><a href='#' onClick='createProject(\"" + TemplateTypeFile + "\", \"" + Width + "\", \"" + Height + "\");'><img src='config/template/" + TemplateCategoryDirectory + "/" + TemplateTypeIcon + "' border='0'><br>New Project<br />(" + TemplateTypeName + ")</a></div>";
+				}
 				
-				uizGetElementById("projectType").innerHTML += "<div style='float:left; width:120px; text-align:center;'><a href='#' onClick='showMakeProject();'><img src='images/layout/" + TemplateTypeIcon + "' border='0'><br>New Project<br />(" + TemplateTypeName + ")</a></div>";
+				bgImage = "categoryBgSelected.png";
+				fontColor = "#FFF";
 			}
+			
+			uizGetElementById("projectCategory").innerHTML += "<div style='height:40px; border-bottom:1px solid #CCC; background:url(images/layout/" + bgImage + "); cursor:pointer;' onclick='loadTemplateList(" + i + ")'><div style='float:left; width:40px; height:40px; border-bottom:1px solid #CCC;'><img src='config/template/" + TemplateCategoryIcon + "' border='0' /></div><div style='float:right; margin-top:6px; width:125px; font-size:11px; font-weight:bold; color:" + fontColor + "; padding-right:5px;'>" + TemplateCategoryName + "</div></div>";
 		}
-
-		APIKeyLiveData = root.getElementsByTagName('LiveDataAPI')[0].firstChild.data;
 		
 		writeMessage("<font color=green><b>Project Templates has been successfully loaded.</b></font>");
 	}

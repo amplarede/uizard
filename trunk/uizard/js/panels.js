@@ -9,10 +9,6 @@ function showNewProject() {
 	panelNewProject.show();
 }
 
-function showMakeProject() {
-	panelMakeProject.show();
-}
-
 function showOpenProject() {
 	if(demomode == false) panelOpenProject.show();
 	else alert("This is demo mode");
