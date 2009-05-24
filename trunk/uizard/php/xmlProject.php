@@ -17,7 +17,7 @@ if($_GET['mode'] == "load") {
 	$prt = $xml->xmlOpen("../projects/".$_GET['projectName']."/project.xml",'project'); 
 	
 	$xmlOutput = "<?xml version=\"1.0\"?>\n";
-	$xmlOutput .= "<projectSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalprojectsAvailable=\"1\" totalprojectsReturned=\"1\" firstprojectPosition=\"1\">\n";
+	$xmlOutput .= "<projectSet>\n";
 	$xmlOutput .= "\t<project>\n";
 	
 	$xmlOutput .= "\t\t<title>".$prt['title'][0]['value']."</title>\n";
@@ -49,7 +49,7 @@ if($_GET['mode'] == "load") {
 //SAVE PROJECT SETTING
 else if($_GET['mode'] == "save") {
 	$xmlOutput = "<?xml version=\"1.0\"?>\n";
-	$xmlOutput .= "<projectSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"urn:yahoo:lcl\" xsi:schemaLocation=\"urn:yahoo:lcl http://api.local.yahoo.com/LocalSearchService/V2/LocalSearchResponse.xsd\" totalprojectsAvailable=\"1\" totalprojectsReturned=\"1\" firstprojectPosition=\"1\">\n";
+	$xmlOutput .= "<projectSet>\n";
 	$xmlOutput .= "\t<project>\n";
 	
 	$xmlOutput .= "\t\t<title>".$_GET['title']."</title>\n";

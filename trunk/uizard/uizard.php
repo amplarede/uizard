@@ -156,6 +156,8 @@ else {
 <script type="text/javascript" src="js/stdfunc.js"></script>
 <script type="text/javascript" src="js/datasource.js"></script>
 <script type="text/javascript" src="js/keyListener.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript" src="js/save.js"></script>
 
 <!-- JS : CODEMIRROR -->
 <script src="lib/codeMirror/js/codemirror.js" type="text/javascript"></script>
@@ -224,7 +226,7 @@ panelLoading.show();
     </div>
     <div id="toolbar" style="background:url(images/bg_toolbar.png); height:35px; border-bottom:#666 solid 1px;">
         <div id="toolbarContainer" style="margin-left:64px; padding-top:5px;">
-      		<?php include("php/toolbar.php"); ?>
+      		<?php include("config/layout/toolbar.php"); ?>
         </div>
     </div>
 </div>
@@ -243,7 +245,7 @@ panelLoading.show();
 <!-- HTML : LAYOUT::LEFT -->
 <div id="left1">
 	<div id="divComponents" style="font-size:12px;" class="divDefaultBackground">
-		<?php include("php/toolbox.php"); ?>
+		<?php include("config/layout/toolbox.php"); ?>
 	</div>
 </div>
 
@@ -347,7 +349,7 @@ panelLoading.show();
 <div id='canvasContainer'>   
 </div>
 
-<?php include("php/panels.php"); ?>
+<?php include("config/layout/panels.php"); ?>
 
 <!-- HTML : CONTAINER::ICON -->
 <div id="uizardIcon" style="position:absolute; z-index:2; left:2px; top:2px; width:60px; height:60px; background:url(images/uizardIcon.png);"></div>
@@ -1493,6 +1495,7 @@ if($_GET['action'] == "load") {
 	loadSetting();
 	loadCss();
 	loadAPIKeys();
+	loadTemplateList();
 	
 	setTimeout('panelLoading.hide()', 600 + (objectCount*200));	
 	
