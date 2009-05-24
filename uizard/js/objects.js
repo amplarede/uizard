@@ -441,7 +441,7 @@ function addObjTabview() {
 // addObjDatatable()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addObjDatatable() {
-	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:310px; height:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
+	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:310px; height:100px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
 	var dummyDs = new YAHOO.util.XHRDataSource("config/dummy.xml");
 	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
@@ -451,15 +451,15 @@ function addObjDatatable() {
 	}; 
 
 	var tableColumnDefs = [
-		{key:"dummyKey1", width:150 },
-		{key:"dummyKey2", width:150 }
+		{key:"dummyKey1", width:120 },
+		{key:"dummyKey2", width:120 }
 	];
 	
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].obj = new YAHOO.widget.DataTable("object"+objectCount, tableColumnDefs, dummyDs);
 	uizObj[objectCount].type = "DATATABLE";
 	uizObj[objectCount].fields = "dummyKey1,dummyKey2";	
-	uizObj[objectCount].columnWidth = "150,150";	
+	uizObj[objectCount].columnWidth = "120,120";	
 	uizObj[objectCount].paginator = "true";	
 	uizObj[objectCount].rowsPerPage = "10";
 	
@@ -492,12 +492,10 @@ function addObjDatatable() {
 function modObjDatatable(objCount, datasourceNo) {
 	//uizGetElementById('object'+objCount).innerHTML = "";
 
-	if(datasourceNo != "undefined") {	
+	if(datasourceNo != "undefined" && uizObj[datasourceNo].obj != null) {	
 		uizObj[objCount].datasourceNo = datasourceNo;
 		uizObj[objCount].fields = uizObj[datasourceNo].fields;
 		
-		var datasourceURL = uizObj[datasourceNo].obj.liveData;
-		var query = uizObj[datasourceNo].query;
 		var fields = uizObj[datasourceNo].fields;
 		var resultNode = uizObj[datasourceNo].resultNode;
 		
@@ -513,113 +511,17 @@ function modObjDatatable(objCount, datasourceNo) {
 				})   
 			};
 		}
-	
-		if(uizObj[datasourceNo].datasourceType == "HTML") {
-			uizGetElementById('datasourceHTML'+datasourceNo).innerHTML = html;
-				
-			var column = uizGetElementById('datasourceHTML'+datasourceNo).getElementsByTagName('th');
-			var myColumnDefs = new Array();
-			var myColumnFields = new Array();
-				
-			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i].innerHTML, label:column[i].innerHTML, width:eval(columnWidth[i])};
-				myColumnFields[i] = {key:column[i].innerHTML};
-			}
-				
-			uizObj[datasourceNo].datasource = new YAHOO.util.DataSource(YAHOO.util.Dom.get("datasourceHTMLTable"+datasourceNo));
-			uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
-			uizObj[datasourceNo].datasource.responseSchema = {
-				fields: myColumnFields
-			};
-				
-			uizGetElementById("object" + objCount).innerHTML = "";
-			uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
-		}
-		else if(uizObj[datasourceNo].datasourceType == "JSON") {
-			var column = fields.split(',');
-			var myColumnDefs = new Array();
-			var myColumnFields = new Array();
-
-			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i], width:eval(columnWidth[i])};
-				myColumnFields[i] = {key:column[i]};
-			}
-			
-			if(datasourceURL != "" && query != "query") {
-				datasourceURL = datasourceURL + "&" + query;
-			}
-			
-			var connectionCallback = {   
-				   success: function(o) {
-					if(datasourceURL != "" && query != "query") {			
-						uizObj[datasourceNo].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
-						uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
-						uizObj[datasourceNo].datasource.responseSchema = {
-							resultsList: resultNode,
-							fields: myColumnFields
-						};
-						
-						uizGetElementById("object" + objCount).innerHTML = "";
-						uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
-					}
-				},
-				failure: function(o) {
-					alert("Failed.");   
-				}   
-			}
-			
-			var getJSON = YAHOO.util.Connect.asyncRequest("GET", "php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);  						
-		}
-		else if(uizObj[datasourceNo].datasourceType == "XML") {
-			var column = fields.split(',');
-			var myColumnDefs = new Array();
-			var myColumnFields = new Array();
-			
-			for(var i=0; i<column.length; i++) {
-				myColumnDefs[i] = {key:column[i], label:column[i], width:eval(columnWidth[i])};
-				myColumnFields[i] = {key:column[i]};
-			}
-			
-			if(datasourceURL != "" && query != "query") {
-				datasourceURL = datasourceURL + "&" + query;
-			}
-			
-			var connectionCallback = {   
-				success: function(o) {
-					if(datasourceURL != "" && query != "query") {
-						uizObj[datasourceNo].datasource = new YAHOO.util.DataSource("php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
-						uizObj[datasourceNo].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
-						uizObj[datasourceNo].datasource.responseSchema = {
-							resultNode: resultNode,
-							fields: myColumnFields
-						};
-						
-						uizGetElementById("object" + objCount).innerHTML = "";
-						uizObj[objCount].datatable = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].datasource, oConfigs);
-					}
-				},
-				failure: function(o) {
-					alert("Failed.");   
-				}   
-			}
-			
-			var getXML = YAHOO.util.Connect.asyncRequest("GET", "php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"), connectionCallback);  
-		}
-	}
-	/*
-	if(fields.length == columnWidth.length) {
-		var tableColumnDefs = new Array();
 		
-		for(var i=0; i<fields.length; i++) {
-			tableColumnDefs[i] = {key: fields[i], width: parseInt(columnWidth[i])};
+		var column = fields.split(',');
+		var myColumnDefs = new Array();
+			
+		for(var i=0; i<column.length; i++) {
+			myColumnDefs[i] = {key:column[i], label:column[i], width:eval(columnWidth[i])};
 		}
-	
-		uizObj[objCount].obj = new YAHOO.widget.DataTable("object"+objCount, tableColumnDefs, dummyDs);
+						
+		uizGetElementById("object" + objCount).innerHTML = "";
+		uizObj[objCount].obj = new YAHOO.widget.DataTable("object" + objCount, myColumnDefs, uizObj[datasourceNo].obj, oConfigs);
 	}
-	else {
-		alert("the number of fields should match with that of the columnWidth");
-	}
-	*/
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -710,14 +612,22 @@ function addObjSlider() {
 // addObjAutoComplete()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addObjAutoComplete() {
-	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
+	uizGetElementById('objectStorage').innerHTML += "<div id='object"+objectCount+"' style='position:absolute; z-index:1; left:50px; top:50px; width:200px; height:30px; padding-bottom:2em;' onMouseUp='objClicked("+objectCount+")' onDblClick='objDblClicked("+objectCount+")' onMouseOver='objMouseOver();' onMouseOut='objMouseOut();'></div>";
 
-	//AutoComplete
+	var dummyDs = new YAHOO.util.XHRDataSource("config/dummy.xml");
+	dummyDs.responseType = YAHOO.util.DataSource.TYPE_XML;
+	dummyDs.responseSchema = { 
+		resultNode: "dummyNode",
+		fields: ["dummyKey1","dummyKey2"] 
+	}; 
+
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].obj = "<input id='object"+objectCount+"Input' type='text' style='width:100%;'>";
 	uizObj[objectCount].type = "AUTOCOMPLETE";
 	
-	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].obj;
+	uizObj[objectCount].html  = "<input id='object" + objectCount + "Input' type='text' style='width:100%;'><div id='object" + objectCount + "Container'></div>";
+	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].html;	
+
+	uizObj[objectCount].obj = new YAHOO.widget.AutoComplete("object" + objectCount + "Input", "object" + objectCount + "Container", dummyDs);
 		
 	uizObj[objectCount].code  = "\n\n//Do Not Remove This Function Prototype ( & => and! )\n";
 	uizObj[objectCount].code += "var generateRequest_Object" + objectCount + " = function(sQuery) {\n";
@@ -728,6 +638,25 @@ function addObjAutoComplete() {
 	uizObj[objectCount].code += "}\n\n";
 
 	addObjFinish();   
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// modObjAutoComplete()
+///////////////////////////////////////////////////////////////////////////////////////////////
+function modObjAutoComplete(objCount, datasourceNo) {
+	if(datasourceNo != "undefined" && uizObj[datasourceNo].obj != null) {	
+		uizObj[objCount].datasourceNo = datasourceNo;
+		//uizObj[objCount].fields = uizObj[datasourceNo].fields;
+		
+		uizGetElementById("object" + objCount).innerHTML = uizObj[objCount].html;
+		uizObj[objCount].obj = new YAHOO.widget.AutoComplete("object" + objCount + "Input", "object" + objCount + "Container", uizObj[datasourceNo].obj);
+		
+		uizObj[objCount].obj.queryDelay = 0;
+		uizObj[objCount].obj.useShadow = true;
+		uizObj[objCount].obj.generateRequest = function(sQuery) { 
+			return "and!q=" + sQuery + "and!query=" + sQuery; 
+		}; 
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

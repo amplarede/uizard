@@ -384,7 +384,7 @@ var objDD;
 var objResize;
 
 //Object Class
-function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, datatable, datasource, dragAndDrop, code, html, tabindex, disabled, interval) {
+function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, dragAndDrop, code, html, tabindex, disabled, interval) {
 	this.obj = obj;
 	this.type = type;
 	this.datasourceNo = datasourceNo;
@@ -392,6 +392,7 @@ function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, p
 	this.resize = resize;
 	this.childCount = childCount;
 	this.provider = provider;
+	this.datasourceURL = datasourceURL;
 	this.datasourceType = datasourceType;
 	this.resultNode = resultNode;
 	this.fields = fields;	
@@ -399,8 +400,6 @@ function uizObjClass(obj, type, datasourceNo, contextMenu, resize, childCount, p
 	this.columnWidth = columnWidth;
 	this.paginator = paginator;
 	this.rowsPerPage = rowsPerPage;
-	this.datatable = datatable;
-	this.datasource = datasource;
 	this.dragAndDrop = dragAndDrop;
 	this.code = code;
 	this.html = html;
@@ -893,6 +892,7 @@ var panelSelectDatasource = new YAHOO.widget.Dialog("SelectDatasource",
                                                 );
 
 var handleSelectDatasourceOK = function() {
+	setObj(selectedObj);
 	this.cancel();
 }
 var handleSelectDatasourceCancel = function() {
