@@ -138,6 +138,27 @@ function objClicked(objCount) {
 																	]
                                                                 ] });
 	}
+	else if(uizObj[objCount].type == "AUTOCOMPLETE") {
+		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
+                                                                trigger: "object"+objCount,
+                                                                lazyload: true, 
+                                                                itemdata: [
+																	[
+																	{ text: "Focus on The Inputbox", onclick: { fn: doObjInputboxFocus } }
+																	],																			   
+																	[
+																	{ text: "Copy The Object", onclick: { fn: doObjCopy } },
+																	{ text: "Paste The Object", onclick: { fn: doObjPaste } }
+																	],
+                                                                    [
+																	{ text: "View The Javascript Code", onclick: { fn: viewCode } },
+																	{ text: "View The Html Code", onclick: { fn: viewHtml } }
+																	],																	
+																	[
+																	{ text: "Delete The Object", onclick: { fn: deleteObj } }
+																	]
+                                                                ] });
+	}	
 	else {
 		uizObj[objCount].contextMenu = new YAHOO.widget.ContextMenu("object"+objCount+"contextmenu", {
                                                                 trigger: "object"+objCount,
@@ -602,7 +623,7 @@ function getObjStyle(objCount) {
 	}
 	else if(uizObj[objCount].type == "DATASOURCE") {
 		provider = uizObj[objCount].provider;
-		datasourceURL = uizObj[objCount].obj.liveData;
+		datasourceURL = uizObj[objCount].datasourceURL;
 		datasourceType = uizObj[objCount].datasourceType;
 		resultNode = uizObj[objCount].resultNode;
 		query = uizObj[objCount].query;
@@ -753,11 +774,13 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	}
 	else if(uizObj[objCount].type == "AUTOCOMPLETE") {
 		uizObj[objCount].datasourceNo = datasourceNo;
+		
+		modObjAutoComplete(objCount, datasourceNo);
 	}
 	else if(uizObj[objCount].type == "DATASOURCE") {
 		uizObj[objCount].provider = provider;
 		uizGetElementById("divProvider" + objCount).innerHTML = provider;
-		uizObj[objCount].obj.liveData = datasourceURL;
+		uizObj[objCount].datasourceURL = datasourceURL;
 		uizGetElementById("divLiveData" + objCount).innerHTML = datasourceURL;
 		uizObj[objCount].datasourceType = datasourceType;
 		uizGetElementById("divDsType" + objCount).innerHTML = datasourceType;
@@ -784,14 +807,14 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				myColumnFields[i] = {key:column[i].innerHTML};
 			}
 			
-			uizObj[objCount].datasource = new YAHOO.util.DataSource(YAHOO.util.Dom.get("datasourceHTMLTable"+objCount));
-			uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
-			uizObj[objCount].datasource.responseSchema = {
+			uizObj[objCount].obj = new YAHOO.util.DataSource(YAHOO.util.Dom.get("datasourceHTMLTable"+objCount));
+			uizObj[objCount].obj.responseType = YAHOO.util.DataSource.TYPE_HTMLTABLE;
+			uizObj[objCount].obj.responseSchema = {
 				fields: myColumnFields
 			};
 			
 			uizGetElementById("dataPreview" + objCount).innerHTML = "";
-			uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+			var dataPreviewTable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].obj, oConfigs);
 		}
 		else if(uizObj[objCount].datasourceType == "JSON") {
 			var column = fields.split(',');
@@ -808,23 +831,23 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				myColumnFields[i] = {key:column[i]};
 			}
 			
-			if(datasourceURL != "" && query != "query") {
+			if(datasourceURL != "" && query != "query" && query != "") {
 				datasourceURL = datasourceURL + "&" + query;
 			}
 			
 			var connectionCallback = {   
 	            success: function(o) {
 					if(datasourceURL != "" && query != "query") {			
-						uizObj[objCount].datasource = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
-						uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_JSON;
-						//uizObj[objCount].datasource.connXhrMode = "queueRequests";
-						uizObj[objCount].datasource.responseSchema = {
+						uizObj[objCount].obj = new YAHOO.util.DataSource("php/jsonProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[objCount].obj.responseType = YAHOO.util.DataSource.TYPE_JSON;
+						//uizObj[objCount].obj.connXhrMode = "queueRequests";
+						uizObj[objCount].obj.responseSchema = {
 							resultsList: resultNode,
 							fields: myColumnFields
 						};
 						
 						uizGetElementById("dataPreview" + objCount).innerHTML = "";
-						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+						var dataPreviewTable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].obj, oConfigs);
 					}
 				},
 				failure: function(o) {
@@ -849,23 +872,22 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 				myColumnFields[i] = {key:column[i]};
 			}
 			
-			if(datasourceURL != "" && query != "query") {
+			if(datasourceURL != "" && query != "query" && query != "") {
 				datasourceURL = datasourceURL + "&" + query;
 			}
 			
 			var connectionCallback = {   
 	            success: function(o) {
 					if(datasourceURL != "" && query != "query") {
-						uizObj[objCount].datasource = new YAHOO.util.DataSource("php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
-						uizObj[objCount].datasource.responseType = YAHOO.util.DataSource.TYPE_XML;
-						uizObj[objCount].datasource.connMethodPost = true;
-						uizObj[objCount].datasource.responseSchema = {
+						uizObj[objCount].obj = new YAHOO.util.DataSource("php/xmlProxy.php?url=" + replaceAll(datasourceURL, "&", "and!"));
+						uizObj[objCount].obj.responseType = YAHOO.util.DataSource.TYPE_XML;
+						uizObj[objCount].obj.responseSchema = {
 							resultNode: resultNode,
 							fields: myColumnFields
 						};
 						
 						uizGetElementById("dataPreview" + objCount).innerHTML = "";
-						uizObj[objCount].datatable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].datasource, oConfigs);
+						var dataPreviewTable = new YAHOO.widget.DataTable("dataPreview" + objCount, myColumnDefs, uizObj[objCount].obj, oConfigs);
 					}
 				},
 				failure: function(o) {
@@ -950,6 +972,48 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 	uizObj[objCount].html = html;
 	
 	getObjStyle(objCount);
+}
+
+function setObj(objCount) {
+	var x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code;
+
+	var objStyle = getObjStyle(objCount);
+
+	x = objStyle.x;
+	y = objStyle.y;
+	zindex = objStyle.zindex;
+	width = objStyle.width;
+	height = objStyle.height;
+	align = objStyle.align;
+	visibility = objStyle.visibility;
+	label = objStyle.label;
+	disabled = objStyle.disabled;
+	tabindex = objStyle.tabindex;
+	datasourceNo = objStyle.datasourceNo;
+	provider = objStyle.provider;
+	datasourceURL = objStyle.datasourceURL;
+	datasourceType = objStyle.datasourceType;
+	resultNode = objStyle.resultNode;
+	fields = objStyle.fields;
+	query = objStyle.query;
+	columnWidth = objStyle.columnWidth;	
+	paginator = objStyle.paginator;	
+	rowsPerPage = objStyle.rowsPerPage;		
+	tabcount = objStyle.tabcount;
+	src = objStyle.src;
+	action = objStyle.action;
+	method = objStyle.method;
+	target = objStyle.target;
+	value = objStyle.value;
+	backgroundColor = objStyle.backgroundColor;
+	buttoncount = objStyle.buttoncount;
+	closebutton = objStyle.closebutton;
+	draggable = objStyle.draggable;
+	code = objStyle.code;
+	html = objStyle.html;
+	interval = objStyle.interval;
+	
+	setObjStyle(objCount, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
 }
 
 function setAPIKeySetting(googleMapAPI, yahooAPI, naverDataAPI, naverMapAPI, daumSearchAPI, daumShoppingAPI, daumContentsAPI, daumMapAPI, liveDataAPI) {

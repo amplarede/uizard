@@ -122,52 +122,14 @@ function addDsExternal(datasourceType, provider, APIKey, datasourceURL, resultNo
 	}
 	
 	uizObj[objectCount-1].provider = provider;
-	uizObj[objectCount-1].obj.liveData = datasourceURL + APIKey;
+	uizObj[objectCount-1].datasourceURL = datasourceURL + APIKey;
 	uizObj[objectCount-1].resultNode = resultNode;
 	uizObj[objectCount-1].fields = fields;
 	uizObj[objectCount-1].query = query;
 	
 	objDsClicked(objectCount-1);
 
-	var x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code;
-
-	var objStyle = getObjStyle(objectCount-1);
-
-	x = objStyle.x;
-	y = objStyle.y;
-	zindex = objStyle.zindex;
-	width = objStyle.width;
-	height = objStyle.height;
-	align = objStyle.align;
-	visibility = objStyle.visibility;
-	label = objStyle.label;
-	disabled = objStyle.disabled;
-	tabindex = objStyle.tabindex;
-	datasourceNo = objStyle.datasourceNo;
-	provider = objStyle.provider;
-	datasourceURL = objStyle.datasourceURL;
-	datasourceType = objStyle.datasourceType;
-	resultNode = objStyle.resultNode;
-	fields = objStyle.fields;
-	query = objStyle.query;
-	columnWidth = objStyle.columnWidth;	
-	paginator = objStyle.paginator;	
-	rowsPerPage = objStyle.rowsPerPage;		
-	tabcount = objStyle.tabcount;
-	src = objStyle.src;
-	action = objStyle.action;
-	method = objStyle.method;
-	target = objStyle.target;
-	value = objStyle.value;
-	backgroundColor = objStyle.backgroundColor;
-	buttoncount = objStyle.buttoncount;
-	closebutton = objStyle.closebutton;
-	draggable = objStyle.draggable;
-	code = objStyle.code;
-	html = objStyle.html;
-	interval = objStyle.interval;
-	
-	setObjStyle(objectCount-1, x, y, zindex, width, height, align, visibility, label, disabled, tabindex, datasourceNo, provider, datasourceURL, datasourceType, resultNode, fields, query, columnWidth, paginator, rowsPerPage, tabcount, src, action, method, target, value, backgroundColor, buttoncount, closebutton, draggable, code, html, interval);
+	setObj(objectCount-1);
 }
 	
 function deleteDs(objCount) {
@@ -237,5 +199,10 @@ function chooseDatasource(datasourceNo) {
 		}
 	}
 	
-	modObjDatatable(selectedObj, datasourceNo);
+	if(uizObj[selectedObj].type == "DATATABLE") {
+		modObjDatatable(selectedObj, datasourceNo);
+	}
+	else if(uizObj[selectedObj].type == "AUTOCOMPLETE") {
+		modObjAutoComplete(selectedObj, datasourceNo);
+	}
 }

@@ -40,8 +40,8 @@ var mainMenuData =
 					{ text: "Paste The Object", helptext: "Shift + V", onclick: { fn: doObjPaste } }
 				],																		
 				[
-					{ text: "View The Javascript Code", helptext: "Shift + J", onclick: { fn: viewCode } },
-					{ text: "View The Html Code", helptext: "Shift + H", onclick: { fn: viewHtml } }
+					{ text: "Javascript Code", helptext: "Shift + J", onclick: { fn: viewCode } },
+					{ text: "Html Code", helptext: "Shift + H", onclick: { fn: viewHtml } }
 				],
 				[
 					{ text: "Delete The Object", helptext: "Shift + D", onclick: { fn: deleteObj } }
@@ -85,13 +85,13 @@ var mainMenuData =
 					{ text: "Toogle The Message", onclick: { fn: toggleBottom } }
 				],
 				[
-					{ text: "View The Design Tab", onclick: { fn: viewDesignTab } },
-					{ text: "View The DataSource Tab", onclick: { fn: viewDataSourceTab } },
-					{ text: "View The Code Tab", onclick: { fn: viewCodeTab } },
-					{ text: "View The RealCode Tab", onclick: { fn: viewRealCodeTab } },
-					{ text: "View The Html Tab", onclick: { fn: viewHtmlTab } },
-					{ text: "View The RealHtml Tab", onclick: { fn: viewRealHtmlTab } },					
-					{ text: "View The Preview Tab", onclick: { fn: viewPreviewTab } }
+					{ text: "Design Tab", onclick: { fn: viewDesignTab } },
+					{ text: "DataSource Tab", onclick: { fn: viewDataSourceTab } },
+					{ text: "Code Tab", onclick: { fn: viewCodeTab } },
+					{ text: "RealCode Tab", onclick: { fn: viewRealCodeTab } },
+					{ text: "Html Tab", onclick: { fn: viewHtmlTab } },
+					{ text: "RealHtml Tab", onclick: { fn: viewRealHtmlTab } },					
+					{ text: "Preview Tab", onclick: { fn: viewPreviewTab } }
 				]              
 			] 
 		},
@@ -149,6 +149,10 @@ var designCanvasContextMenuData = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // Menu Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function doObjInputboxFocus() {
+	uizGetElementById("object" + selectedObj + "Input").focus();
+}
 
 function doObjCopy() {
 	if(uizObj[selectedObj].type != "canvas") {
