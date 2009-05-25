@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Daum Map</toolName>
+		<toolImage>map.png</toolImage>
+		<toolcreator><![CDATA[addObjDaumMap();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Knowledge</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/knowledge', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Board</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/board', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>						
+	
+	<tool>
+		<toolName>Cafe</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/cafe', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Blog</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/blog', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>News</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/news', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Book</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/book', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>		
+	
+	<tool>
+		<toolName>JpDic</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/dic/jpdic', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>VClip</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/vclip', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Image</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/image', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Movie</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/movie', 'item', 'title,year,director', 'q=daum');]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Festival</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/festival', 'item', 'name,date,location', 'q=daum');]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Shopping</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumShopping, 'http://apis.daum.net/shopping/search', 'item', 'title,link', 'q=daum');]]></toolCreator>	
+	</tool>
+
+</toolSet>

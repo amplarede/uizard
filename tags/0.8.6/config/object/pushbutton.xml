@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<EventSet>
+	<Name>CLICK</Name>
+	<Code>
+	<![CDATA[
+	
+	]]>
+	</Code>
+	<Description></Description>
+</EventSet>
+<EventSet>
+	<Name>DOUBLE_CLICK</Name>
+	<Code>
+	<![CDATA[
+	
+	]]>
+	</Code>
+	<Description></Description>
+</EventSet>
+<EventSet>
+	<Name>DOUBLE_CLICK</Name>
+	<Code>
+	<![CDATA[
+	
+	]]>
+	</Code>
+	<Description></Description>
+</EventSet>
