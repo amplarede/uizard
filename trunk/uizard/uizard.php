@@ -99,6 +99,24 @@ else {
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/paginator/assets/skins/sam/paginator.css" />
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css">
 
+<!-- JS : SWFOBJECT -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+
+<!-- JS : CODEMIRROR -->
+<script type="text/javascript" src="lib/codeMirror/js/codemirror.js"></script>
+
+<!-- JS : UIZARD -->
+<script type="text/javascript" src="js/behavior.js"></script>
+<script type="text/javascript" src="js/project.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript" src="js/save.js"></script>
+<script type="text/javascript" src="js/objects.js"></script>
+<script type="text/javascript" src="js/panels.js"></script>
+<script type="text/javascript" src="js/stdfunc.js"></script>
+<script type="text/javascript" src="js/datasource.js"></script>
+<script type="text/javascript" src="js/keyListener.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+
 <!-- JS : GOOGLE MAP -->
 <script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ" charset="utf-8"></script>
 
@@ -144,25 +162,6 @@ else {
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/paginator/paginator-min.js"></script>
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/stylesheet/stylesheet-min.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/assets/js/data.js"></script>
-
-<!-- JS : SWFOBJECT -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
-
-<!-- JS : UIZARD -->
-<script type="text/javascript" src="js/objects.js"></script>
-<script type="text/javascript" src="js/behavior.js"></script>
-<script type="text/javascript" src="js/panels.js"></script>
-<script type="text/javascript" src="js/load.js"></script>
-<script type="text/javascript" src="js/save.js"></script>
-<script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/stdfunc.js"></script>
-<script type="text/javascript" src="js/datasource.js"></script>
-<script type="text/javascript" src="js/keyListener.js"></script>
-<script type="text/javascript" src="js/project.js"></script>
-
-
-<!-- JS : CODEMIRROR -->
-<script src="lib/codeMirror/js/codemirror.js" type="text/javascript"></script>
 
 <!-- CSS : UIZARD -->
 <link rel="stylesheet" type="text/css" href="config/css/uizard.css">

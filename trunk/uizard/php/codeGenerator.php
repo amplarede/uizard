@@ -11,14 +11,42 @@ include("generatingFunc.php");
 
 $dirLib = "../lib/";
 
+$xmlProject		= new uizXmlClass; 
+$project 		= $xmlProject->xmlOpen("../projects/".$_GET['projectName']."/project.xml",'project'); 
+
+$projectName	= $_GET['projectName'];
+$projectTitle	= $project['title'][0]['value'];
+$projectAuthor	= $project['owner'][0]['value'];
+
+$xmlTemplate	= new uizXmlClass; 
+$template 		= $xmlTemplate->xmlOpen("../projects/".$_GET['projectName']."/template.xml",'Template'); 
+
+$Expansion	= $template['Expansion'][0]['value'];
+$Header		= $template['Header'][0]['value'];
+$Body		= $template['Body'][0]['value'];
+$Footer		= $template['Footer'][0]['value'];
+
+$Header	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Header));
+$Header	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Header));
+$Header	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Header));
+$Header	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Header));
+$Header	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Header));
+$Body	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Body));
+$Body	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Body));
+$Body	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Body));
+$Body	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Body));
+$Body	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Body));
+$Footer	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Footer));
+$Footer	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Footer));
+$Footer	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Footer));
+$Footer	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Footer));
+$Footer	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Footer));
+
 $codedata = "";
 
-$htmldata = "
-<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">
-<html>
-<head>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />
-<title>".$_GET['projectName']."</title>
+$htmldata = $Header;
+
+$htmldata .= "
 
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
 <link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css\">
@@ -147,19 +175,15 @@ $htmldata .= "
 $htmldata .= "
 
 <!-- JS : UIZARD -->
-<script type=\"text/javascript\" src=\"stdfunc.js\"></script>
+<script type=\"text/javascript\" src=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/stdfunc.js\"></script>
 
 <!-- CSS : UIZARD -->
-<link rel=\"stylesheet\" type=\"text/css\" href=\"".$_GET['projectName'].".css\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".css\">
 
-</head>
-
-<!-- HTML : BODY -->
-<body class=\"yui-skin-sam\" topmargin=\"0\" leftmargin=\"0\">
 ";
-?>
 
-<?php
+$htmldata .= $Body;
+
 $xml = new uizXmlClass; 
 $prt = $xml->xmlOpen("../projects/".$_GET['projectName']."/objProperties.xml",'object');
 
@@ -216,9 +240,6 @@ for($i=1; $i<$count; $i++) {
 $htmldata .= "
 </div>
 ";
-?>
-
-<?php
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // JS CODE GENERATION
@@ -404,18 +425,8 @@ $codedata .= "
 })();
 
 ";
-?>
 
-<?php
-$htmldata .= "
-
-</body>
-
-<!-- {ProjectName}.js -->
-<script type=\"text/javascript\" src=\"".$_GET['projectName'].".js\"></script>
-
-</html>
-";
+$htmldata .= $Footer;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // WRITE THE JS FILE
@@ -427,7 +438,9 @@ fclose($fp);
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // WRITE THE HTML FILE
 ///////////////////////////////////////////////////////////////////////////////////////////////
-$fp = fopen("../projects/".$_GET['projectName']."/".$_GET['projectName'].".html", "w");
+$fp = fopen("../projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion, "w");
+$htmldata = substr($htmldata, 2, strlen($htmldata) - 2);
+$htmldata = str_replace("{!SCRIPT!}", $codedata, $htmldata);
 fwrite($fp, $htmldata);
 fclose($fp);
 
@@ -505,6 +518,27 @@ SyntaxHighlighter.all();
 // Preview
 ///////////////////////////////////////////////////////////////////////////////////////////////
 else if($_GET['mode'] == "print") {
-	echo "<script>location.href='../projects/".$_GET['projectName']."/".$_GET['projectName'].".html';</script>";
+	if($Expansion == "html") {
+		echo "<script>location.href='../projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."';</script>";
+	}
+	else if($Expansion == "xml") {
+		echo "
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<title>UIzard Gadget/Widget Preview</title>
+
+</head>
+
+<body leftmargin='0' topmargin='0'>
+
+<script src='http://www.gmodules.com/ig/ifr?url=http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."&amp;synd=open&amp;w=".$prt['width'][0]['value']."&amp;h=".$prt['height'][0]['value']."&amp;title=".$projectName."&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js'></script>
+
+</body>
+
+</html>
+		";	
+	}
 }
 ?>

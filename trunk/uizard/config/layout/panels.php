@@ -40,7 +40,7 @@ version: 0.8.2
             <div style="height:25px;">Project Author</div>
             <div style="height:30px;"><input style="width:384px;" value="<?php echo $projectAuthor;?>" disabled="disabled"><input id="inputProjectAuthor" name="inputProjectAuthor" value="<?=$projectAuthor?>" type="hidden"></div>
         </div>
-        <input id="inputProjectTemplate" name="inputProjectTemplate" value="" type="hidden">
+        <input id="inputProjectTemplateFile" name="inputProjectTemplateFile" value="" type="hidden">
         <input id="inputProjectWidth" name="inputProjectWidth" value="" type="hidden">
         <input id="inputProjectHeight" name="inputProjectHeight" value="" type="hidden">
     </form>   

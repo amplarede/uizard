@@ -9,9 +9,9 @@ version: 0.8.0
 function createProject(templateTypeFile, width, height) {
 	panelMakeProject.show();
 	
-	templateTypeFile = templateTypeFile;
-	width = width;
-	height = height;
+	uizGetElementById("inputProjectTemplateFile").value = templateTypeFile;
+	uizGetElementById("inputProjectWidth").value =  width;
+	uizGetElementById("inputProjectHeight").value =  height;
 }
 
 

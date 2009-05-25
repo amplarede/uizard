@@ -8,11 +8,17 @@ version: 0.8.2
 */
 
 include('../lib/pclzip.lib.php');
+include("../php/xmlClass.php");
+
+$xmlTemplate	= new uizXmlClass; 
+$template 		= $xmlTemplate->xmlOpen($_GET['projectDir']."/template.xml",'Template'); 
+
+$Expansion	= $template['Expansion'][0]['value'];
 
 $zipfile = new PclZip($_POST['projectDir'].'.zip');
 
 if($_POST['chkboxIncludeHTMLFile']) {
-	$create = $zipfile->create($_POST['projectDir']."/".$_POST['projectDir'].".html"); 
+	$create = $zipfile->create($_POST['projectDir']."/".$_POST['projectDir'].".".$Expansion); 
 }
 if($_POST['chkboxIncludeJSFile']) {
 	if($_POST['chkboxCompressJSFile'])

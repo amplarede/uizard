@@ -2,12 +2,13 @@
 
 <Template>
 
+	<Expansion>xml</Expansion>
+
 	<Header>
 	<![CDATA[
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Module>
-<ModulePrefs title="사용자 데이터 설정하기" height="150"/>
 <ModulePrefs title="{!ProjectTitle!}" title_url="" height="200" author="{!ProjectAuthor!}" author_email=""/> 
 	<Content>
 	]]>	
