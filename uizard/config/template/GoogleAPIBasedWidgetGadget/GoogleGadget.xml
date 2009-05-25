@@ -2,14 +2,14 @@
 
 <Template>
 
-	<Header>
-	<![CDATA[
-<?xml version="1.0" encoding="UTF-8" ?>
+	<Expansion>xml</Expansion>
 
+	<Header>
+	<![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-<ModulePrefs title="사용자 데이터 설정하기" height="150"/>
-<ModulePrefs title="{!ProjectTitle!}" title_url="" height="200" author="{!ProjectAuthor!}" author_email=""/> 
-	<Content>
+	<ModulePrefs title="{!ProjectTitle!}" height="200" author="{!ProjectAuthor!}" /> 
+	<Content type="html">
+	{!CDATASTART!}
 	]]>	
 	</Header>
 	
@@ -20,6 +20,10 @@
 	
 	<Footer>
 	<![CDATA[
+<script type="text/javascript">
+	{!SCRIPT!}
+</script>
+	{!CDATAEND!}
 	</Content>
 </Module>	
 	]]>	

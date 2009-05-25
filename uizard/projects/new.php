@@ -18,8 +18,9 @@ if($_POST['inputProjectAuthor'] != "" && $_POST['inputProjectName'] != "") {
 	fwrite($fp, "");
 	fclose($fp);
 		
-	copy("../config/apiKeys.xml", "./".$projectname."/apiKeys.xml") ;
-	copy("../config/project.xml", "./".$projectname."/project.xml") ;
+	copy("../config/apiKeys.xml", "./".$projectname."/apiKeys.xml");
+	copy("../config/project.xml", "./".$projectname."/project.xml");
+	copy("../config/template/".$_POST['inputProjectTemplateFile'], "./".$projectname."/template.xml");
 	copy("../config/css/default.css", "./".$projectname."/".$projectname.".css") ;
 	copy("../php/xmlProxy.php", "./".$projectname."/xmlProxy.php");
 	copy("../js/stdfunc.js", "./".$projectname."/stdfunc.js") ;
