@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Virtual Earth</ToolboxName>
+		<toolImage>map.png</toolImage>
+		<toolCreator>addObjLiveMap();</toolCreator>	
+	</tool>	
+
+</toolSet>

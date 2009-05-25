@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Push Button</ToolboxName>
+		<toolImage>pushbutton.png</toolImage>
+		<toolCreator>addObjPushButton();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Radio Button</ToolboxName>
+		<toolImage>radiobutton.png</toolImage>
+		<toolCreator>addObjRadioButton();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Checkbox Button</ToolboxName>
+		<toolImage>checkboxbutton.png</toolImage>
+		<toolCreator>addObjCheckboxButton();</toolCreator>	
+	</tool>						
+	
+	<tool>
+		<toolName>Color Picker</ToolboxName>
+		<toolImage>colorpicker.png</toolImage>
+		<toolCreator>addObjColorPicker();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Tabview</ToolboxName>
+		<toolImage>tabview.png</toolImage>
+		<toolCreator>addObjTabview();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Datatable</ToolboxName>
+		<toolImage>datatable.png</toolImage>
+		<toolCreator>addObjDatatable();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>HTML Datasource</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsHTML();</toolCreator>	
+	</tool>		
+	
+	<tool>
+		<toolName>JSON Datasource</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsJSON();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>XML Datasource</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsXML();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Calendar</ToolboxName>
+		<toolImage>calendar.png</toolImage>
+		<toolCreator>addObjCalendar();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Panel</ToolboxName>
+		<toolImage>panel.png</toolImage>
+		<toolCreator>addObjPanel();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Slider</ToolboxName>
+		<toolImage>slider.png</toolImage>
+		<toolCreator>addObjSlider();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>AutoComplete</ToolboxName>
+		<toolImage>autocomplete.png</toolImage>
+		<toolCreator>addObjAutoComplete();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>MenuBar</ToolboxName>
+		<toolImage>menubar.png</toolImage>
+		<toolCreator>addObjMenuBar();</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>TreeView</ToolboxName>
+		<toolImage>treeview.png</toolImage>
+		<toolCreator>addObjTreeview();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Chart</ToolboxName>
+		<toolImage>yuichart.png</toolImage>
+		<toolCreator>addObjYUIChart();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Paginator</ToolboxName>
+		<toolImage>paginator.png</toolImage>
+		<toolCreator>addObjPaginator();</toolCreator>	
+	</tool>												
+
+</toolSet>

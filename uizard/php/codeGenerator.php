@@ -47,27 +47,26 @@ $codedata = "";
 $htmldata = $Header;
 
 $htmldata .= "
-
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/resize/assets/skins/sam/resize.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/layout/assets/skins/sam/layout.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset/reset.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/fonts/fonts.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/container/assets/skins/sam/container.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/tabview/assets/skins/sam/tabview.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/datatable/assets/skins/sam/datatable.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/editor/assets/skins/sam/simpleeditor.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/autocomplete/assets/skins/sam/autocomplete.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/calendar/assets/skins/sam/calendar.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/treeview/assets/skins/sam/treeview.css\">
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/slider/assets/skins/sam/slider.css\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/resize/assets/skins/sam/resize.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/layout/assets/skins/sam/layout.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset/reset.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/fonts/fonts.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/container/assets/skins/sam/container.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/tabview/assets/skins/sam/tabview.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/datatable/assets/skins/sam/datatable.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/editor/assets/skins/sam/simpleeditor.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/autocomplete/assets/skins/sam/autocomplete.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/calendar/assets/skins/sam/calendar.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/treeview/assets/skins/sam/treeview.css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/slider/assets/skins/sam/slider.css\" />
 <link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/paginator/assets/skins/sam/paginator.css\" />
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css\">
-
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css\" />
 ";
+
 
 $xmlAPIKey = new uizXmlClass; 
 $apiKey = $xmlAPIKey->xmlOpen("../projects/".$_GET['projectName']."/apiKeys.xml",'keySetting'); 
@@ -533,7 +532,7 @@ else if($_GET['mode'] == "print") {
 
 <body leftmargin='0' topmargin='0'>
 
-<script src='http://www.gmodules.com/ig/ifr?url=http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."&amp;synd=open&amp;w=".$prt['width'][0]['value']."&amp;h=".$prt['height'][0]['value']."&amp;title=".$projectName."&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js'></script>
+<script src='http://www.gmodules.com/ig/ifr?url=http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."&amp;synd=open&amp;w=".str_replace("px", "", $prt['width'][0]['value'])."&amp;h=".str_replace("px", "", $prt['height'][0]['value'])."&amp;title=".$projectName."&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js&amp;nocache=1'></script>
 
 </body>
 

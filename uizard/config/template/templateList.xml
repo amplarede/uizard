@@ -37,28 +37,28 @@
 			<TemplateTypeName>Google Gadget</TemplateTypeName>
 			<TemplateTypeFile>GoogleGadget.xml</TemplateTypeFile>
 			<TemplateTypeIcon>GoogleGadget.png</TemplateTypeIcon>
-			<Width>100%</Width>
+			<Width>300px</Width>
 			<Height>200px</Height>		
 		</TemplateType>
 		<TemplateType>
 			<TemplateTypeName>Daum Widget</TemplateTypeName>
 			<TemplateTypeFile>DaumWidget.xml</TemplateTypeFile>
 			<TemplateTypeIcon>DaumWidget.png</TemplateTypeIcon>
-			<Width>180px</Width>
+			<Width>160px</Width>
 			<Height>200px</Height>		
 		</TemplateType>	
 		<TemplateType>
 			<TemplateTypeName>Google Gadget Tab Based</TemplateTypeName>
 			<TemplateTypeFile>GoogleGadgetTabBased.xml</TemplateTypeFile>
 			<TemplateTypeIcon>GoogleGadgetTabBased.png</TemplateTypeIcon>
-			<Width>100%</Width>
+			<Width>300px</Width>
 			<Height>200px</Height>		
 		</TemplateType>
 		<TemplateType>
 			<TemplateTypeName>Daum Widget Tab Based</TemplateTypeName>
 			<TemplateTypeFile>DaumWidgetTabBased.xml</TemplateTypeFile>
 			<TemplateTypeIcon>DaumWidgetTabBased.png</TemplateTypeIcon>
-			<Width>180px</Width>
+			<Width>160px</Width>
 			<Height>200px</Height>			
 		</TemplateType>		
 	</TemplateCategory>

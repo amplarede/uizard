@@ -245,7 +245,7 @@ panelLoading.show();
 
 <!-- HTML : LAYOUT::LEFT -->
 <div id="left1">
-	<div id="divComponents" style="font-size:12px;" class="divDefaultBackground">
+	<div id="divToolbox" style="font-size:12px;" class="divDefaultBackground">
 		<?php include("config/layout/toolbox.php"); ?>
 	</div>
 </div>
@@ -293,9 +293,9 @@ panelLoading.show();
 <!-- HTML : CONTAINER::DESIGN CANVAS -->
 <div id='canvas1'>
 	<div class="hd"></div>
-	<div id='canvasDesign' class="bd" style='height:1000px; background-color:#ffffff;' onClick='canvasClicked();' onDblClick='canvasDblClicked();'>
+	<div id='canvasDesign' class="bd" style='width:<?php echo $_GET['width']; ?>; height:<?php echo $_GET['height']; ?>; background-color:#ffffff;' onClick='canvasClicked();' onDblClick='canvasDblClicked();'>
 	<div id="objectStorage" style=""></div>
-	<div id="canvasGrid" style="height:100%; background:url(images/grid_10px.png); opacity:0.4; filter:alpha(opacity=40);"></div>
+	<div id="canvasGrid" style="height:<?php echo $_GET['height']; ?>; background:url(images/grid_10px.png); opacity:0.4; filter:alpha(opacity=40);"></div>
 	</div>
 </div>
 
