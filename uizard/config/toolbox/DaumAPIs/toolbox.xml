@@ -3,81 +3,81 @@
 <toolSet>
 
 	<tool>
-		<toolName>Daum Map</ToolboxName>
+		<toolName>Daum Map</toolName>
 		<toolImage>map.png</toolImage>
-		<toolCreator>addObjDaumMap();</toolCreator>	
+		<toolcreator><![CDATA[addObjDaumMap();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>지식 검색</ToolboxName>
+		<toolName>Knowledge</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/knowledge', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/knowledge', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>게시판 검색</ToolboxName>
+		<toolName>Board</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/board', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/board', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>						
 	
 	<tool>
-		<toolName>까페 검색</ToolboxName>
+		<toolName>Cafe</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/cafe', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/cafe', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>블로그 검색</ToolboxName>
+		<toolName>Blog</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/blog', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/blog', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>뉴스 검색</ToolboxName>
+		<toolName>News</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/news', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/news', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>책 검색</ToolboxName>
+		<toolName>Book</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/book', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/book', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>		
 	
 	<tool>
-		<toolName>일본어 사전</ToolboxName>
+		<toolName>JpDic</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/dic/jpdic', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/dic/jpdic', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>동영상 검색</ToolboxName>
+		<toolName>VClip</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/vclip', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/vclip', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>이미지 검색</ToolboxName>
+		<toolName>Image</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/image', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumSearch, 'http://apis.daum.net/search/image', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>영화 검색</ToolboxName>
+		<toolName>Movie</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/movie', 'item', 'title,year,director', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/movie', 'item', 'title,year,director', 'q=daum');]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>축제 검색</ToolboxName>
+		<toolName>Festival</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/festival', 'item', 'name,date,location', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumContents, 'http://apis.daum.net/contents/festival', 'item', 'name,date,location', 'q=daum');]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>쇼핑 검색</ToolboxName>
+		<toolName>Shopping</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumShopping, 'http://apis.daum.net/shopping/search', 'item', 'title,link', 'q=daum');</toolCreator>	
+		<toolCreator><![CDATA[addDsExternal('XML', 'DAUM', '?apikey='+APIKeyDaumShopping, 'http://apis.daum.net/shopping/search', 'item', 'title,link', 'q=daum');]]></toolCreator>	
 	</tool>
 
 </toolSet>

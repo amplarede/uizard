@@ -245,7 +245,7 @@ panelLoading.show();
 
 <!-- HTML : LAYOUT::LEFT -->
 <div id="left1">
-	<div id="divToolbox" style="font-size:12px;" class="divDefaultBackground">
+	<div id="divComponents" style="font-size:12px;" class="divDefaultBackground">
 		<?php include("config/layout/toolbox.php"); ?>
 	</div>
 </div>

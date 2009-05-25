@@ -3,105 +3,105 @@
 <toolSet>
 
 	<tool>
-		<toolName>Push Button</ToolboxName>
+		<toolName>Push Button</toolName>
 		<toolImage>pushbutton.png</toolImage>
-		<toolCreator>addObjPushButton();</toolCreator>	
+		<toolCreator><![CDATA[addObjPushButton();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Radio Button</ToolboxName>
+		<toolName>Radio Button</toolName>
 		<toolImage>radiobutton.png</toolImage>
-		<toolCreator>addObjRadioButton();</toolCreator>	
+		<toolCreator><![CDATA[addObjRadioButton();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Checkbox Button</ToolboxName>
+		<toolName>Checkbox Button</toolName>
 		<toolImage>checkboxbutton.png</toolImage>
-		<toolCreator>addObjCheckboxButton();</toolCreator>	
+		<toolCreator><![CDATA[addObjCheckboxButton();]]></toolCreator>	
 	</tool>						
 	
 	<tool>
-		<toolName>Color Picker</ToolboxName>
+		<toolName>Color Picker</toolName>
 		<toolImage>colorpicker.png</toolImage>
-		<toolCreator>addObjColorPicker();</toolCreator>	
+		<toolCreator><![CDATA[addObjColorPicker();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Tabview</ToolboxName>
+		<toolName>Tabview</toolName>
 		<toolImage>tabview.png</toolImage>
-		<toolCreator>addObjTabview();</toolCreator>	
+		<toolCreator><![CDATA[addObjTabview();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Datatable</ToolboxName>
+		<toolName>Datatable</toolName>
 		<toolImage>datatable.png</toolImage>
-		<toolCreator>addObjDatatable();</toolCreator>	
+		<toolCreator><![CDATA[addObjDatatable();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>HTML Datasource</ToolboxName>
+		<toolName>HTML Datasource</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsHTML();</toolCreator>	
+		<toolCreator><![CDATA[addDsHTML();]]></toolCreator>	
 	</tool>		
 	
 	<tool>
-		<toolName>JSON Datasource</ToolboxName>
+		<toolName>JSON Datasource</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsJSON();</toolCreator>	
+		<toolCreator><![CDATA[addDsJSON();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>XML Datasource</ToolboxName>
+		<toolName>XML Datasource</toolName>
 		<toolImage>datasource.png</toolImage>
-		<toolCreator>addDsXML();</toolCreator>	
+		<toolCreator><![CDATA[addDsXML();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>Calendar</ToolboxName>
+		<toolName>Calendar</toolName>
 		<toolImage>calendar.png</toolImage>
-		<toolCreator>addObjCalendar();</toolCreator>	
+		<toolCreator><![CDATA[addObjCalendar();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>Panel</ToolboxName>
+		<toolName>Panel</toolName>
 		<toolImage>panel.png</toolImage>
-		<toolCreator>addObjPanel();</toolCreator>	
+		<toolCreator><![CDATA[addObjPanel();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>Slider</ToolboxName>
+		<toolName>Slider</toolName>
 		<toolImage>slider.png</toolImage>
-		<toolCreator>addObjSlider();</toolCreator>	
+		<toolCreator><![CDATA[addObjSlider();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>AutoComplete</ToolboxName>
+		<toolName>AutoComplete</toolName>
 		<toolImage>autocomplete.png</toolImage>
-		<toolCreator>addObjAutoComplete();</toolCreator>	
+		<toolCreator><![CDATA[addObjAutoComplete();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>MenuBar</ToolboxName>
+		<toolName>MenuBar</toolName>
 		<toolImage>menubar.png</toolImage>
-		<toolCreator>addObjMenuBar();</toolCreator>	
+		<toolCreator><![CDATA[addObjMenuBar();]]></toolCreator>	
 	</tool>
 	
 	<tool>
-		<toolName>TreeView</ToolboxName>
+		<toolName>TreeView</toolName>
 		<toolImage>treeview.png</toolImage>
-		<toolCreator>addObjTreeview();</toolCreator>	
+		<toolCreator><![CDATA[addObjTreeview();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Chart</ToolboxName>
+		<toolName>Chart</toolName>
 		<toolImage>yuichart.png</toolImage>
-		<toolCreator>addObjYUIChart();</toolCreator>	
+		<toolCreator><![CDATA[addObjYUIChart();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Paginator</ToolboxName>
+		<toolName>Paginator</toolName>
 		<toolImage>paginator.png</toolImage>
-		<toolCreator>addObjPaginator();</toolCreator>	
+		<toolCreator><![CDATA[addObjPaginator();]]></toolCreator>	
 	</tool>												
 
 </toolSet>
