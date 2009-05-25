@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolboxSet>
+
+	<toolbox>
+		<toolboxName>Basic UI Components</ToolboxName>
+		<toolboxDirectory>BasicUIComponents</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>
+	
+	<toolbox>
+		<toolboxName>YUI Components</ToolboxName>
+		<toolboxDirectory>YUIComponents</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>
+	
+	<toolbox>
+		<toolboxName>Google APIs</ToolboxName>
+		<toolboxDirectory>GoogleAPIs</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>
+	
+	<toolbox>
+		<toolboxName>Daum APIs</ToolboxName>
+		<toolboxDirectory>DaumAPIs</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>
+	
+	<toolbox>
+		<toolboxName>Naever APIs</ToolboxName>
+		<toolboxDirectory>NaverAPIs</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>
+	
+	<toolbox>
+		<toolboxName>Live APIs</ToolboxName>
+		<toolboxDirectory>LiveAPIs</toolboxDirectory>
+		<toolboxFileName>toolbox.xml</toolboxFileName>	
+	</toolbox>					
+
+</toolboxSet>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Naver Map</ToolboxName>
+		<toolImage>map.png</toolImage>
+		<toolCreator>addObjNaverMap();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>지식iN</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=kin', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>동영상</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=video', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>						
+	
+	<tool>
+		<toolName>이미지</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=image', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>전문자료</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=doc', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>책</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=book', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>영화</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=movie', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=batman');</toolCreator>	
+	</tool>		
+	
+	<tool>
+		<toolName>영화인</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=movieman', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=송강호');</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>지역</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=local', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>쇼핑</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=shop', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>자동차</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=car', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=porsche');</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>백과사전</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=encyc', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>국어사전</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=krdic', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=바보');</toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>영어사전</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=endic', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=wizard');</toolCreator>	
+	</tool>
+		
+	<tool>
+		<toolName>일어사전</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=jpdic', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=おはよう');</toolCreator>	
+	</tool>
+		
+	<tool>
+		<toolName>블로그 검색</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=blog', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+		
+	<tool>
+		<toolName>까페/까페글 검색</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=cafe', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+		
+	<tool>
+		<toolName>웹문서 검색</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData+'&target=webkr', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver ');</toolCreator>	
+	</tool>
+		
+	<tool>
+		<toolName>뉴스 검색</ToolboxName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator>addDsExternal('XML', 'NAVER', '?key='+APIKeyNaverData +'&target=news', 'http://openapi.naver.com/search', 'item', 'title,link', 'query=naver');</toolCreator>	
+	</tool>
+			
+</toolSet>

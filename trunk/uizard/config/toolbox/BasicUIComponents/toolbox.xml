@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Div Layer</ToolboxName>
+		<toolImage>div.png</toolImage>
+		<toolCreator>addObjDiv();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Image</ToolboxName>
+		<toolImage>image.png</toolImage>
+		<toolCreator>addObjImage();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>SWF</ToolboxName>
+		<toolImage>swf.png</toolImage>
+		<toolCreator>addObjSWF();</toolCreator>	
+	</tool>						
+	
+	<tool>
+		<toolName>Form</ToolboxName>
+		<toolImage>form.png</toolImage>
+		<toolCreator>addObjForm();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Inputbox</ToolboxName>
+		<toolImage>inputbox.png</toolImage>
+		<toolCreator>addObjInputbox();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>CheckboxSet</ToolboxName>
+		<toolImage>checkboxset.png</toolImage>
+		<toolCreator>addObjCheckboxSet();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>RadiobuttonSet</ToolboxName>
+		<toolImage>radiobuttonset.png</toolImage>
+		<toolCreator>addObjRadiobuttonSet();</toolCreator>	
+	</tool>		
+	
+	<tool>
+		<toolName>Textarea</ToolboxName>
+		<toolImage>textarea.png</toolImage>
+		<toolCreator>addObjTextarea();</toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Table</ToolboxName>
+		<toolImage>table.png</toolImage>
+		<toolCreator>addObjTable();</toolCreator>	
+	</tool>						
+
+</toolSet>
