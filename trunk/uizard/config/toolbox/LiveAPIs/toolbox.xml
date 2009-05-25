@@ -3,9 +3,9 @@
 <toolSet>
 
 	<tool>
-		<toolName>Virtual Earth</ToolboxName>
+		<toolName>Virtual Earth</toolName>
 		<toolImage>map.png</toolImage>
-		<toolCreator>addObjLiveMap();</toolCreator>	
+		<toolCreator><![CDATA[addObjLiveMap();]]></toolCreator>	
 	</tool>	
 
 </toolSet>

@@ -3,15 +3,15 @@
 <toolSet>
 
 	<tool>
-		<toolName>Google Map</ToolboxName>
+		<toolName>Google Map</toolName>
 		<toolImage>map.png</toolImage>
-		<toolCreator>addObjGoogleMap();</toolCreator>	
+		<toolCreator><![CDATA[addObjGoogleMap();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Google Chart</ToolboxName>
+		<toolName>Google Chart</toolName>
 		<toolImage>googlechart.png</toolImage>
-		<toolCreator>addObjGoogleChart();</toolCreator>	
+		<toolCreator><![CDATA[addObjGoogleChart();]]></toolCreator>	
 	</tool>						
 
 </toolSet>

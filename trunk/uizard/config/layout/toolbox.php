@@ -7,43 +7,43 @@ http://www.uizard.org/License
 version: 0.8.0
 */
 
-
-include("../../php/xmlClass.php");
+/*
+include("php/xmlClass.php");
 
 $xmlToolbox		= new uizXmlClass; 
-$toolbox 		= $xmlToolbox->xmlOpen("../toolbox/toolboxList.xml",'toolbox'); 
+$toolbox 		= $xmlToolbox->xmlOpen("config/toolbox/toolboxList.xml",'toolbox'); 
 
 $countToolbox = count($toolbox['toolbox']);
 
 for($i=0; $i<$countToolbox; $i++) {
 	echo "
-    	<div style='padding:0px;'>
-        	<div style='background-image:url(images/layout/bgComponentTop.png); height:23px;'>
+		<div style='padding:0px;'>
+			<div style='background-image:url(images/layout/bgComponentTop.png); height:23px;'>
 	            <div style='padding-left:4px; padding-top:3px;'>
                 	<img src='images/toolbox/component.png' style='margin:2px;' align='absmiddle'> <b>".$toolbox['toolboxName'][$i]['value']."</b><br />
                 </div>
             </div>
             <div style='background-image:url(images/layout/bgComponent2.png); line-height:23px; padding-left:7px; font-size:11px;'>
-	";
+";
 
 	$xmlTool	= new uizXmlClass; 
-	$tool 		= $xmlTool->xmlOpen("../toolbox/".$toolbox['toolboxDirectory'][$i]['value']."/".$toolbox['toolboxFileName'][$i]['value'],'tool'); 
+	$tool 		= $xmlTool->xmlOpen("config/toolbox/".$toolbox['toolboxDirectory'][$i]['value']."/".$toolbox['toolboxFileName'][$i]['value'],'tool'); 
 
 	$countTool	= count($tool['tool']);
 	
 	for($j=0; $j<$countTool; $j++) {
-		echo "<img src='images/toolbox/".$tool['toolImage'][$i]['value']."' style='margin:2px;' align='absmiddle'> <a href='#' onclick='".$tool['toolCreator'][$i]['value']."'>".$tool['toolName'][$i]['value']."</a><br />\n";
+		echo "\t\t\t<img src='images/toolbox/".$tool['toolImage'][$j]['value']."' style='margin:2px;' align='absmiddle'> <a href='#' onclick=\"".$tool['toolCreator'][$j]['value']."\">".$tool['toolName'][$j]['value']."</a><br />\n";
 	}
 
 	echo "				
-            </div>
-        </div>	
+			</div>
+		</div>	
 	";
 }
-
+*/
 ?>
 
-<?php /*
+
     	<div style="padding:0px;">
         	<div style="background-image:url(images/layout/bgComponentTop.png); height:23px;">
 	            <div style="padding-left:4px; padding-top:3px;">
@@ -174,5 +174,5 @@ for($i=0; $i<$countToolbox; $i++) {
                 -->
             </div>
         </div>
-*/        
-?>
+      
+

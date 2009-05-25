@@ -3,57 +3,57 @@
 <toolSet>
 
 	<tool>
-		<toolName>Div Layer</ToolboxName>
+		<toolName>Div Layer</toolName>
 		<toolImage>div.png</toolImage>
-		<toolCreator>addObjDiv();</toolCreator>	
+		<toolCreator><![CDATA[addObjDiv();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Image</ToolboxName>
+		<toolName>Image</toolName>
 		<toolImage>image.png</toolImage>
-		<toolCreator>addObjImage();</toolCreator>	
+		<toolCreator><![CDATA[addObjImage();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>SWF</ToolboxName>
+		<toolName>SWF</toolName>
 		<toolImage>swf.png</toolImage>
-		<toolCreator>addObjSWF();</toolCreator>	
+		<toolCreator><![CDATA[addObjSWF();]]></toolCreator>	
 	</tool>						
 	
 	<tool>
-		<toolName>Form</ToolboxName>
+		<toolName>Form</toolName>
 		<toolImage>form.png</toolImage>
-		<toolCreator>addObjForm();</toolCreator>	
+		<toolCreator><![CDATA[addObjForm();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Inputbox</ToolboxName>
+		<toolName>Inputbox</toolName>
 		<toolImage>inputbox.png</toolImage>
-		<toolCreator>addObjInputbox();</toolCreator>	
+		<toolCreator><![CDATA[addObjInputbox();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>CheckboxSet</ToolboxName>
+		<toolName>CheckboxSet</toolName>
 		<toolImage>checkboxset.png</toolImage>
-		<toolCreator>addObjCheckboxSet();</toolCreator>	
+		<toolCreator><![CDATA[addObjCheckboxSet();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>RadiobuttonSet</ToolboxName>
+		<toolName>RadiobuttonSet</toolName>
 		<toolImage>radiobuttonset.png</toolImage>
-		<toolCreator>addObjRadiobuttonSet();</toolCreator>	
+		<toolCreator><![CDATA[addObjRadiobuttonSet();]]></toolCreator>	
 	</tool>		
 	
 	<tool>
-		<toolName>Textarea</ToolboxName>
+		<toolName>Textarea</toolName>
 		<toolImage>textarea.png</toolImage>
-		<toolCreator>addObjTextarea();</toolCreator>	
+		<toolCreator><![CDATA[addObjTextarea();]]></toolCreator>	
 	</tool>	
 	
 	<tool>
-		<toolName>Table</ToolboxName>
+		<toolName>Table</toolName>
 		<toolImage>table.png</toolImage>
-		<toolCreator>addObjTable();</toolCreator>	
+		<toolCreator><![CDATA[addObjTable();]]></toolCreator>	
 	</tool>						
 
 </toolSet>
