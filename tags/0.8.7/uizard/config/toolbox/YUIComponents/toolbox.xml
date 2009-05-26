@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Push Button</toolName>
+		<toolImage>pushbutton.png</toolImage>
+		<toolCreator><![CDATA[addObjPushButton();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Radio Button</toolName>
+		<toolImage>radiobutton.png</toolImage>
+		<toolCreator><![CDATA[addObjRadioButton();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Checkbox Button</toolName>
+		<toolImage>checkboxbutton.png</toolImage>
+		<toolCreator><![CDATA[addObjCheckboxButton();]]></toolCreator>	
+	</tool>						
+	
+	<tool>
+		<toolName>Color Picker</toolName>
+		<toolImage>colorpicker.png</toolImage>
+		<toolCreator><![CDATA[addObjColorPicker();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Tabview</toolName>
+		<toolImage>tabview.png</toolImage>
+		<toolCreator><![CDATA[addObjTabview();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Datatable</toolName>
+		<toolImage>datatable.png</toolImage>
+		<toolCreator><![CDATA[addObjDatatable();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>HTML Datasource</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsHTML();]]></toolCreator>	
+	</tool>		
+	
+	<tool>
+		<toolName>JSON Datasource</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsJSON();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>XML Datasource</toolName>
+		<toolImage>datasource.png</toolImage>
+		<toolCreator><![CDATA[addDsXML();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Calendar</toolName>
+		<toolImage>calendar.png</toolImage>
+		<toolCreator><![CDATA[addObjCalendar();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Panel</toolName>
+		<toolImage>panel.png</toolImage>
+		<toolCreator><![CDATA[addObjPanel();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>Slider</toolName>
+		<toolImage>slider.png</toolImage>
+		<toolCreator><![CDATA[addObjSlider();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>AutoComplete</toolName>
+		<toolImage>autocomplete.png</toolImage>
+		<toolCreator><![CDATA[addObjAutoComplete();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>MenuBar</toolName>
+		<toolImage>menubar.png</toolImage>
+		<toolCreator><![CDATA[addObjMenuBar();]]></toolCreator>	
+	</tool>
+	
+	<tool>
+		<toolName>TreeView</toolName>
+		<toolImage>treeview.png</toolImage>
+		<toolCreator><![CDATA[addObjTreeview();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Chart</toolName>
+		<toolImage>yuichart.png</toolImage>
+		<toolCreator><![CDATA[addObjYUIChart();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Paginator</toolName>
+		<toolImage>paginator.png</toolImage>
+		<toolCreator><![CDATA[addObjPaginator();]]></toolCreator>	
+	</tool>												
+
+</toolSet>
