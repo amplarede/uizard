@@ -9,6 +9,9 @@ version: 0.8.2
 
 ?>
 
+<!-- HTML : CONTAINER::PANELS -->
+<div id="panels"></div>
+
 <!-- HTML : CONTAINER::NEW PROJECT -->
 <div id="newProject">
 	<div class="hd" style="text-align:left"><img src="images/toolbar/new.png" align="absmiddle"> New Project</div>

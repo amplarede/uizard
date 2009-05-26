@@ -150,6 +150,34 @@ var designCanvasContextMenuData = [
 // Menu Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function initTopMenu() {
+
+	var oMenuBar = new YAHOO.widget.MenuBar("mainMenu",
+														{ 
+															autosubmenudisplay: true, 
+															hidedelay: 750, 
+															lazyload: true,
+															effect: { 
+																effect: YAHOO.widget.ContainerEffect.FADE,
+																duration: 0.25
+															} 
+														});
+	var aSubmenuData = mainMenuData;
+
+	oMenuBar.subscribe("beforeRender", function () {
+		if (this.getRoot() == this) {
+			this.getItem(0).cfg.setProperty("submenu", aSubmenuData[0]);
+			this.getItem(1).cfg.setProperty("submenu", aSubmenuData[1]);
+			this.getItem(2).cfg.setProperty("submenu", aSubmenuData[2]);
+			this.getItem(3).cfg.setProperty("submenu", aSubmenuData[3]);
+			this.getItem(4).cfg.setProperty("submenu", aSubmenuData[4]);
+			this.getItem(5).cfg.setProperty("submenu", aSubmenuData[5]);
+		}
+	});
+		
+	oMenuBar.render();         
+};
+
 function doObjInputboxFocus() {
 	uizGetElementById("object" + selectedObj + "Input").focus();
 }

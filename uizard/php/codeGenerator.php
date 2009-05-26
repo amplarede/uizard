@@ -278,7 +278,7 @@ uizObj[".$i."] = new uizObjClass();
 
 $codedata .= "
 
-(function() {
+var eventDOMReady = YAHOO.util.Event.onDOMReady(function() {
 
 ";
 
