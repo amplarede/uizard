@@ -177,11 +177,12 @@ function objClicked(objCount) {
 																	]
                                                                 ] });		
 	}
+
 	
 	getObjStyle(objCount);
 	codeEditor.setCode(uizObj[objCount].code);
 	htmlEditor.setCode(uizObj[objCount].html);
-	
+
 	if(uizObj[objCount].type != "CANVAS") {
 		var left = uizGetStyle("object"+objCount, "left");
 		left = parseInt(replaceAll(left, "px", ""));
@@ -607,6 +608,7 @@ function getObjStyle(objCount) {
 	var code = "";
 	//html
 	var html = "";
+
 
 	if(uizObj[objCount].type == "CANVAS") {
 		width = uizGetStyle("canvasDesign", "width");

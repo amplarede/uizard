@@ -19,7 +19,7 @@ function addCanvas() {
 	uizObj[objectCount].code += "}\n\n";
 	uizObj[objectCount].code += "function onUnLoad_Canvas() {\n\n";
 	uizObj[objectCount].code += "}\n\n";
-	
+		
 	addObjFinish();
 }
 
@@ -1204,7 +1204,7 @@ function addObjLiveMap() {
 // addObjFinish()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function addObjFinish() {
-	if(objectCount != 0) {
+	if(objectCount != 0) {	
 		objClicked(objectCount);
 		
 		uizGetElementById("treeNodeObjects").innerHTML += "<li id='treeNodeObject"+objectCount+"'><a onclick='objClicked("+objectCount+");'><img src='images/toolbox/"+uizObj[objectCount].type.toLowerCase()+".png' align='absmiddle'> object"+objectCount+" ("+uizObj[objectCount].type+")</a></li>";

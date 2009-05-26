@@ -200,11 +200,10 @@ function loadTemplateList(indexCategory) {
 					var TemplateTypeName	= TemplateType[j].getElementsByTagName('TemplateTypeName')[0].firstChild.data;
 					var TemplateTypeFile	= TemplateType[j].getElementsByTagName('TemplateTypeFile')[0].firstChild.data;				
 					var TemplateTypeIcon	= TemplateType[j].getElementsByTagName('TemplateTypeIcon')[0].firstChild.data;
-					var TemplateExpansion	= TemplateType[j].getElementsByTagName('TemplateExpansion')[0].firstChild.data;
 					var Width 				= TemplateType[j].getElementsByTagName('Width')[0].firstChild.data;
 					var Height 				= TemplateType[j].getElementsByTagName('Height')[0].firstChild.data;
 					
-					uizGetElementById("projectType").innerHTML += "<div style='float:left; width:120px; text-align:center;'><a href='#' onClick='createProject(\"" + TemplateCategoryDirectory + "/" + TemplateTypeFile + "\", \"" + Width + "\", \"" + Height + "\", \"" + TemplateExpansion + "\");'><img src='config/template/" + TemplateCategoryDirectory + "/" + TemplateTypeIcon + "' border='0'><br>New Project<br />(" + TemplateTypeName + ")</a></div>";
+					uizGetElementById("projectType").innerHTML += "<div style='float:left; width:120px; text-align:center;'><a href='#' onClick='createProject(\"" + TemplateCategoryDirectory + "/" + TemplateTypeFile + "\", \"" + Width + "\", \"" + Height + "\");'><img src='config/template/" + TemplateCategoryDirectory + "/" + TemplateTypeIcon + "' border='0'><br>New Project<br />(" + TemplateTypeName + ")</a></div>";
 				}
 				
 				bgImage = "categoryBgSelected.png";
