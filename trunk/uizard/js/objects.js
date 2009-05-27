@@ -77,7 +77,7 @@ function addObjSWF() {
 	  name: "objectSWF"+objectCount
 	};
 
-	swfobject.embedSWF("images/test.swf", "objectSWFcontainer"+objectCount, "150", "150", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
+	swfobject.embedSWF("images/noswf.swf", "objectSWFcontainer"+objectCount, "150", "150", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
 	
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
@@ -381,8 +381,8 @@ function addObjColorPicker() {
 		showhsvcontrols: true,
 		showhexcontrols: true,
 		images: {
-			PICKER_THUMB: "lib/yui/colorpicker/assets/picker_thumb.png",
-			HUE_THUMB: "lib/yui/colorpicker/assets/hue_thumb.png"
+			PICKER_THUMB: "http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/picker_thumb.png",
+			HUE_THUMB: "http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/hue_thumb.png"
 		}
 	});
 	uizObj[objectCount].type = "COLORPICKER";
@@ -497,7 +497,6 @@ function modObjDatatable(objCount, datasourceNo) {
 		uizObj[objCount].fields = uizObj[datasourceNo].fields;
 		
 		var fields = uizObj[datasourceNo].fields;
-		var resultNode = uizObj[datasourceNo].resultNode;
 		
 		var oConfigs;
 		

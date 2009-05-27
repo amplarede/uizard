@@ -5,7 +5,7 @@
 	<tool>
 		<toolName>Daum Map</toolName>
 		<toolImage>map.png</toolImage>
-		<toolcreator><![CDATA[addObjDaumMap();]]></toolCreator>	
+		<toolCreator><![CDATA[addObjDaumMap();]]></toolCreator>	
 	</tool>	
 	
 	<tool>

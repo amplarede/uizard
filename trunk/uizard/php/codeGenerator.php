@@ -278,45 +278,67 @@ uizObj[".$i."] = new uizObjClass();
 
 $codedata .= "
 
-var eventDOMReady = YAHOO.util.Event.onDOMReady(function() {
+var eventDOMReady = YAHOO.util.Event.onDOMReady(init);
+												
+function init() {
 
 ";
 
 for($i=1; $i<$count; $i++) {
 	
-	$type = $prt['type'][$i]['value'];
-	$objectid = $prt['object-id'][$i]['value'];
-	$x = $prt['x'][$i]['value'];
-	$y = $prt['y'][$i]['value'];
-	$zindex = $prt['z-index'][$i]['value'];
-	$width = $prt['width'][$i]['value'];
-	$height = $prt['height'][$i]['value'];
-	$align = $prt['align'][$i]['value'];
-	$visibility = $prt['visibility'][$i]['value'];
-	$backgroundColor = $prt['backgroundColor'][$i]['value'];
-	$action = $prt['action'][$i]['value'];
-	$method = $prt['method'][$i]['value'];
-	$target = $prt['target'][$i]['value'];
-	$html = $prt['html'][$i]['value'];
-	$src = $prt['src'][$i]['value'];
-	$value = $prt['value'][$i]['value'];
-	$code = $prt['code'][$i]['value'];
-	$label = $prt['label'][$i]['value'];
-	$disabled = $prt['disabled'][$i]['value'];
-	$tabindex = $prt['tabindex'][$i]['value'];
-	$buttoncount = $prt['buttoncount'][$i]['value'];
-	$tabcount = $prt['tabcount'][$i]['value'];
-	$datasourceNo = $prt['datasourceNo'][$i]['value'];
-	$fields = $prt['fields'][$i]['value'];
-	$columnWidth = $prt['columnWidth'][$i]['value'];
-	$closebutton = $prt['closebutton'][$i]['value'];
-	$draggable = $prt['draggable'][$i]['value'];
-	$provider = $prt['provider'][$i]['value'];
-	$datasourceURL = $prt['datasourceURL'][$i]['value'];
-	$datasourceType = $prt['datasourceType'][$i]['value'];
-	$resultNode = $prt['resultNode'][$i]['value'];
-	$fields = $prt['fields'][$i]['value'];
-	$query = $prt['query'][$i]['value'];
+	$type 				= $prt['type'][$i]['value'];
+	$objectid 			= $prt['object-id'][$i]['value'];
+	$code 				= $prt['code'][$i]['value'];
+	$provider 			= $prt['provider'][$i]['value'];
+	$datasourceURL 		= $prt['datasourceURL'][$i]['value'];
+	$datasourceType		= $prt['datasourceType'][$i]['value'];
+	$resultNode 		= $prt['resultNode'][$i]['value'];
+	$fields 			= $prt['fields'][$i]['value'];
+	$query 				= $prt['query'][$i]['value'];
+	
+	if($type == "DATASOURCE") {
+		$codedata .= genDatasource($i, $objectid, $provider, $datasourceURL, $datasourceType, $resultNode, $fields, $query, $code);
+	}	
+}
+
+
+for($i=1; $i<$count; $i++) {
+	
+	$type 				= $prt['type'][$i]['value'];
+	$objectid 			= $prt['object-id'][$i]['value'];
+	$x 					= $prt['x'][$i]['value'];
+	$y 					= $prt['y'][$i]['value'];
+	$zindex 			= $prt['z-index'][$i]['value'];
+	$width 				= $prt['width'][$i]['value'];
+	$height 			= $prt['height'][$i]['value'];
+	$align 				= $prt['align'][$i]['value'];
+	$visibility 		= $prt['visibility'][$i]['value'];
+	$backgroundColor 	= $prt['backgroundColor'][$i]['value'];
+	$action 			= $prt['action'][$i]['value'];
+	$method 			= $prt['method'][$i]['value'];
+	$target 			= $prt['target'][$i]['value'];
+	$html 				= $prt['html'][$i]['value'];
+	$src 				= $prt['src'][$i]['value'];
+	$value 				= $prt['value'][$i]['value'];
+	$code 				= $prt['code'][$i]['value'];
+	$label 				= $prt['label'][$i]['value'];
+	$disabled 			= $prt['disabled'][$i]['value'];
+	$tabindex 			= $prt['tabindex'][$i]['value'];
+	$buttoncount 		= $prt['buttoncount'][$i]['value'];
+	$tabcount 			= $prt['tabcount'][$i]['value'];
+	$datasourceNo 		= $prt['datasourceNo'][$i]['value'];
+	$fields 			= $prt['fields'][$i]['value'];
+	$columnWidth 		= $prt['columnWidth'][$i]['value'];
+	$paginator 			= $prt['paginator'][$i]['value'];
+	$rowsPerPage 		= $prt['rowsPerPage'][$i]['value'];
+	$closebutton 		= $prt['closebutton'][$i]['value'];
+	$draggable 			= $prt['draggable'][$i]['value'];
+	$provider 			= $prt['provider'][$i]['value'];
+	$datasourceURL 		= $prt['datasourceURL'][$i]['value'];
+	$datasourceType		= $prt['datasourceType'][$i]['value'];
+	$resultNode 		= $prt['resultNode'][$i]['value'];
+	$fields 			= $prt['fields'][$i]['value'];
+	$query 				= $prt['query'][$i]['value'];
 	
 	if($type == "DIV") {
 		
@@ -364,7 +386,7 @@ for($i=1; $i<$count; $i++) {
 		$codedata .= genTabView($i, $objectid, $tabcount, $code);
 	}
 	else if($type == "DATATABLE") {
-		$codedata .= genDataTable($i, $objectid, $datasourceNo, $fields, $columnWidth, $code);
+		$codedata .= genDataTable($i, $objectid, $datasourceNo, $fields, $columnWidth, $paginator, $rowsPerPage, $code);
 	}	
 	else if($type == "CALENDAR") {
 		$codedata .= genCalendar($i, $objectid, $code);
@@ -414,14 +436,11 @@ for($i=1; $i<$count; $i++) {
 	else if($type == "MAPLIVE") {
 		$codedata .= genMapLive($i, $objectid, $code);
 	}
-	else if($type == "DATASOURCE") {
-		$codedata .= genDatasource($i, $objectid, $provider, $datasourceURL, $datasourceType, $resultNode, $fields, $query, $code);
-	}	
 }
 
 $codedata .= "
 
-})();
+}
 
 ";
 

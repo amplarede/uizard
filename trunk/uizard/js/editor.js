@@ -6,6 +6,8 @@ version: 0.8.2
 */
 
 function initCodeEditor() {
+	writeMessage("<font color=#F90><b>Initializing The Code Editor...</b></font>");
+	
 	var textarea = uizGetElementById('textAreaCode');
 	var height = layoutCanvas.getUnitByPosition('center').get("height")+'px';
 	
@@ -19,9 +21,13 @@ function initCodeEditor() {
 		textWrapping: false,		
 		saveFunction: objSaveCode
 	});	
+	
+	writeMessage("<font color=green><b>The Code Editor has been successfully initialized.</b></font>");
 }
 
 function initHtmlEditor() {
+	writeMessage("<font color=#F90><b>Initializing The Html Editor...</b></font>");	
+	
 	var textarea = uizGetElementById('textAreaHtml');
 	var height = layoutCanvas.getUnitByPosition('center').get("height")+'px';
 	
@@ -35,20 +41,25 @@ function initHtmlEditor() {
 		textWrapping: false,		
 		saveFunction: objSaveHtml
 	});	
+	
+	writeMessage("<font color=green><b>The Html Editor has been successfully initialized.</b></font>");
 }
 
 function initCssEditor() {
+	writeMessage("<font color=#F90><b>Initializing The CSS Editor...</b></font>");
+
 	var textarea = uizGetElementById('cssEditor');
 	
 	cssEditor = new CodeMirror(CodeMirror.replace(textarea), {
 		parserfile : "parsecss.js",
 		stylesheet : 'lib/codeMirror/css/csscolors.css',
 		autoMatchParens : true,
-		content: textarea3.value,
 		path : 'lib/codeMirror/js/',
 		height : '270px',
 		lineNumbers: true,
 		textWrapping: false,
 		saveFunction: saveCss
 	});
+	
+	writeMessage("<font color=green><b>The CSS Editor has been successfully initialized.</b></font>");
 }
