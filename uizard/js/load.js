@@ -228,3 +228,74 @@ function loadTemplateList(indexCategory) {
 
 	var transaction = YAHOO.util.Connect.asyncRequest('GET', "config/template/templateList.xml", callback); 
 }
+
+function loadToolbox() {
+	writeMessage("<font color=#F90><b>Loading The Toolbox Start...</b></font>");
+	
+	var responseSuccess = function(o) {
+		uizGetElementById("divToolbox").innerHTML = "";
+		
+		var root = o.responseXML.documentElement;
+		var toolbox = root.getElementsByTagName('toolbox');
+		
+		for(var i=0; i<toolbox.length; i++) {
+			var toolboxName 		= toolbox[i].getElementsByTagName('toolboxName')[0].firstChild.data;
+			var toolboxDirectory 	= toolbox[i].getElementsByTagName('toolboxDirectory')[0].firstChild.data;
+			var toolboxFileName 	= toolbox[i].getElementsByTagName('toolboxFileName')[0].firstChild.data;
+		
+			if(i == 0) {
+				uizGetElementById("divToolbox").innerHTML += "<div style='padding:0px;'><div style='background-image:url(images/layout/bgComponentTop.png); height:23px;'><div style='padding-left:4px; padding-top:3px;'><img src='images/toolbox/component.png' style='margin:2px;' align='absmiddle'> <b>" + toolboxName + "</b><br /></div></div><div id='toolbox" + i + "' style='background-image:url(images/layout/bgComponent2.png); line-height:23px; padding-left:7px; font-size:11px;'>";
+			}
+			else {
+				uizGetElementById("divToolbox").innerHTML += "<div style='padding:0px;'><div style='background-image:url(images/layout/bgComponent.png); height:24px;'><div style='padding-left:4px; padding-top:3px;'><img src='images/toolbox/component.png' style='margin:2px;' align='absmiddle'> <b>" + toolboxName + "</b><br /></div></div><div id='toolbox" + i + "' style='background-image:url(images/layout/bgComponent2.png); line-height:23px; padding-left:7px; font-size:11px;'>";				
+			}
+			
+			loadTool(i, toolboxDirectory, toolboxFileName);
+			
+			uizGetElementById("divToolbox").innerHTML += "</div></div>";
+		}
+		
+		writeMessage("<font color=green><b>Toolbox has been successfully loaded.</b></font>");
+	}
+	
+	var responseFailure = function(o) {
+		writeMessage("<font color=red><b>Toolbox Loading Error : " + o.statusText + ".</b></font>");
+	}
+	
+	var callback =
+	{
+		success:responseSuccess,
+		failure:responseFailure,
+	};	
+
+	var transaction = YAHOO.util.Connect.asyncRequest('GET', "config/toolbox/toolboxList.xml", callback); 
+}
+
+function loadTool(num, toolboxDirectory, toolboxFileName) {
+	var responseSuccess = function(o) {
+		uizGetElementById("toolbox" + num).innerHTML = "";
+		
+		var root = o.responseXML.documentElement;
+		var tool = root.getElementsByTagName('tool');
+		
+		for(var i=0; i<tool.length; i++) {
+			var toolName 		= tool[i].getElementsByTagName('toolName')[0].firstChild.data;
+			var toolImage 		= tool[i].getElementsByTagName('toolImage')[0].firstChild.data;
+			var toolCreator 	= tool[i].getElementsByTagName('toolCreator')[0].firstChild.data;
+		
+			uizGetElementById("toolbox" + num).innerHTML += "<img src='images/toolbox/" + toolImage +"' style='margin:2px;' align='absmiddle'> <a href='#' onclick=\"" + toolCreator +"\">" + toolName + "</a><br />";
+		}
+	}
+	
+	var responseFailure = function(o) {
+		writeMessage("<font color=red><b>Tool Loading Error : " + o.statusText + ".</b></font>");
+	}
+	
+	var callback =
+	{
+		success:responseSuccess,
+		failure:responseFailure,
+	};	
+
+	var transaction = YAHOO.util.Connect.asyncRequest('GET', "config/toolbox/" + toolboxDirectory + "/" + toolboxFileName, callback); 
+}

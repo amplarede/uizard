@@ -110,12 +110,19 @@ YUI DATATABLE STYLE CUSTOMIZATION
 }
 
 /**************************************************************************
+YUI BUTTON STYLE CUSTOMIZATION
+**************************************************************************/
+.yui-button-checked {  
+     background: #5398ee;
+} 
+
+/**************************************************************************
 CODE MIRROR STYLE CUSTOMIZATION
 **************************************************************************/
 .CodeMirror-line-numbers {
 	width: 2.2em;
-	color: #aaa;
-	background-color: #eee;
+	color: #FFF;
+	background-color: #5398ee;
 	text-align: right;
 	padding-right: .3em;
 	font-size: 10pt;

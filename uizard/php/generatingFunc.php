@@ -232,8 +232,8 @@ function genColorPicker($no, $objectid, $code) {
 		showhsvcontrols: true,
 		showhexcontrols: true,
 		images: {
-			PICKER_THUMB: \"../lib/yui/colorpicker/assets/picker_thumb.png\",
-			HUE_THUMB: \"../lib/yui/colorpicker/assets/hue_thumb.png\"
+			PICKER_THUMB: \"http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/picker_thumb.png\",
+			HUE_THUMB: \"http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/hue_thumb.png\"
 		}
 	});
 	uizObj[".$no."].type = \"COLORPICKER\";
@@ -266,24 +266,39 @@ function genTabView($no, $objectid, $tabcount, $code) {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // genDataTable()
 ///////////////////////////////////////////////////////////////////////////////////////////////
-function genDataTable($no, $objectid, $datasourceNo, $fields, $columnWidth, $code) {
-	$fieldsTemp = spliti(",", $fields);
-	$widths = spliti(",", $columnWidth);
-	$fields = "";
-	for($i=0; $i<count($fieldsTemp); $i++) {
-		$fields .= "{key:\"".$fieldsTemp[$i]."\", width:".$widths[$i]."}";
-		if($i != (count($fieldsTemp)-1)) $fields .= ", ";
-	}	
+function genDataTable($no, $objectid, $datasourceNo, $fields, $columnWidth, $paginator, $rowsPerPage, $code) {
+	$return = "";
 	
-	$return = "
+	if($datasourceNo != "undefined" && $datasourceNo != "") {
+		$fieldsTemp = spliti(",", $fields);
+		$widths = spliti(",", $columnWidth);
+		$fields = "";
+		for($i=0; $i<count($fieldsTemp); $i++) {
+			$fields .= "{key:\"".$fieldsTemp[$i]."\", width:".$widths[$i]."}";
+			if($i != (count($fieldsTemp)-1)) $fields .= ", ";
+		}	
+	
+		$return .= "
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Generating a object#".$no."(DataTable)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	var ".$objectid."ColumnDefs = [".$fields."];
+	var oConfigs;
+	";
 	
-	".str_replace("\n", "\n\t", stripslashes($code))."
-	
-	uizObj[".$no."].obj = new YAHOO.widget.DataTable(\"".$objectid."\", ".$objectid."ColumnDefs, uizObj[".$datasourceNo."].obj);
+		if($paginator == "true") {
+			$return .= "
+	oConfigs = {   
+		paginator: new YAHOO.widget.Paginator({   
+			rowsPerPage: ".$rowsPerPage.",
+			alwaysVisible: false					
+		})   
+	};
+			";
+		}
+		
+		$return .= "
+	uizObj[".$no."].obj = new YAHOO.widget.DataTable(\"".$objectid."\", ".$objectid."ColumnDefs, uizObj[".$datasourceNo."].obj, oConfigs);
 	uizObj[".$no."].type = \"DATATABLE\";
 	
 	uizObj[".$no."].obj.subscribe(\"cellClickEvent\", onCellClickEvent_Object".$no.");
@@ -294,7 +309,11 @@ function genDataTable($no, $objectid, $datasourceNo, $fields, $columnWidth, $cod
 	uizObj[".$no."].obj.subscribe(\"cellMouseupEvent\", onCellMouseupEvent_Object".$no.");
 	uizObj[".$no."].obj.subscribe(\"rowMouseoverEvent\", onRowMouseoverEvent_Object".$no.");
 	uizObj[".$no."].obj.subscribe(\"rowMouseoutEvent\", onRowMouseoutEvent_Object".$no.");	
-	";
+
+	".str_replace("\n", "\n\t", stripslashes($code))."
+	
+		";
+	}
 	
 	return $return;		
 }
@@ -377,20 +396,25 @@ function genSlider($no, $objectid, $code) {
 // genAutoComplete()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function genAutoComplete($no, $objectid, $datasourceNo, $code) {
-	$return = "
+	$return = "";
+	
+	if($datasourceNo != "undefined" && $datasourceNo != "") {	
+		$return = "
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	//Generating a object#".$no."(AutoComplete)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	uizGetElementById(\"".$objectid."\").innerHTML = \"<input id='".$objectid."Input' type='text' style='width:100%;'><div id='".$objectid."Container'></div>\";
 	uizObj[".$no."].obj = new YAHOO.widget.AutoComplete(\"".$objectid."Input\", \"".$objectid."Container\", uizObj[".$datasourceNo."].obj);
 	uizObj[".$no."].type = \"AUTOCOMPLETE\";
-	uizObj[".$no."].obj.suppressInputUpdate = true;
+	uizObj[".$no."].obj.queryDelay = 0;
+	uizObj[".$no."].obj.useShadow = true;
 	
 	".str_replace("\n", "\n\t", stripslashes($code))."
 											 
 	uizObj[".$no."].obj.generateRequest = generateRequest_Object".$no.";
 	uizObj[".$no."].obj.formatResult = formatResult_Object".$no.";
-	";
+		";
+	}
 	
 	return $return;	
 }
@@ -698,53 +722,55 @@ function genDatasource($no, $objectid, $provider, $datasourceURL, $datasourceTyp
 		if($i != (count($fieldsTemp)-1)) $fields .= ", ";
 	}
 	
-	$xmlAPIKey = new uizXmlClass; 
-	$apiKey = $xmlAPIKey->xmlOpen("../projects/".$_GET['projectName']."/apiKeys.xml",'keySetting'); 
-	
-	$keyYahooAPI = $apiKey['YahooAPI'][0]['value'];
-	$keyNaverDataAPI = $apiKey['NaverDataAPI'][0]['value'];
-	$keyDaumSearchAPI = $apiKey['DaumSearchAPI'][0]['value'];
-	$keyDaumShoppingAPI = $apiKey['DaumShoppingAPI'][0]['value'];
-	$keyDaumRecommendAPI = $apiKey['DaumRecommendAPI'][0]['value'];	
-	$keyLiveDataAPI = $apiKey['LiveDataAPI'][0]['value'];
-	
-	if($provider == "daumKnowledge" || $provider == "daumCafe" || $provider == "daumBlog" || $provider == "daumNews" || $provider == "daumBook" || $provider == "daumJpdic" || $provider == "daumVclip" || $provider == "daumImage" || $provider == "daumBoard") {
-		$apikey = "?apikey=".$keyDaumSearchAPI;
-		if($query != "") $apikey .= "&q=".$query;		
-	}
-	else if($provider == "daumShopping" || $provider == "daumShoppingDetail") {
-		$apikey = "?apikey=".$keyDaumShoppingAPI;
-		if($query != "") $apikey .= "&q=".$query;
-	}
-	else if($provider == "daumKeyword") {
-		$apikey = "?apikey=".$keyDaumRecommendAPI;
-		if($query != "") $apikey .= "&q=".$query;
-	}
-	else if($provider == "naverRank" || $provider == "naverKin" || $provider == "naverVideo" || $provider == "naverImage" || $provider == "naverDoc" || $provider == "naverCar" || $provider == "naverBook" || $provider == "naverMovie" || $provider == "naverMovieman" || $provider == "naverLocal" || $provider == "naverShop" || $provider == "naverEncyc" || $provider == "naverKrdic" || $provider == "naverEndic" || $provider == "naverJpdic" || $provider == "naverBlog" || $provider == "naverCafe" || $provider == "naverWebkr" || $provider == "naverNews" || $provider == "naverRecmd" || $provider == "naverAdult" || $provider == "naverErrata") {
-		$apikey = "&key=".$keyNaverDataAPI;
-		if($query != "") $apikey .= "&query=".$query;
-	}
-	else if($provider == "liveImage" || $provider == "liveInstantAnswer" || $provider == "liveNews" || $provider == "liveSpell" || $provider == "liveWeb") {
-		$apikey = "&AppId=".$keyLiveDataAPI;
-		if($query != "") $apikey .= "&Query=".$query;
-	}
-	
 	$datasourceURL .= $apikey;
 	
-	$return = "
+	if($datasourceType == "HTML") {
+		$return = "
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
+	//Generating a object#".$no."(Datasource)
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	uizObj[".$no."].obj = new YAHOO.util.XHRDataSource(YAHOO.util.Dom.get(\"datasourceHTMLTable".$no."\"));
+	uizObj[".$no."].type = \"DATASOURCE\";
+	uizObj[".$no."].obj.responseType =  YAHOO.util.DataSourceBase.TYPE_HTMLTABLE;
+	uizObj[".$no."].obj.responseSchema = { 
+		fields: [".$fields."] 
+	};
+		";
+	}
+	else if($datasourceType == "JSON") {
+		if($query != "undefined" && $query != "") {
+			$datasourceURL .= "&".$query;
+		}
+		$return = "
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	//Generating a object#".$no."(Datasource)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	uizObj[".$no."].obj = new YAHOO.util.XHRDataSource(\"xmlProxy.php?url=".str_replace("&", "and!", $datasourceURL)."\");
 	uizObj[".$no."].type = \"DATASOURCE\";
-	uizObj[".$no."].datasourceType = \"".$datasourceType."\";
-	uizObj[".$no."].obj.connMethodPost = true;	
-	uizObj[".$no."].obj.responseType =  YAHOO.util.DataSourceBase.TYPE_".$datasourceType.";
+	uizObj[".$no."].obj.responseType =  YAHOO.util.DataSourceBase.TYPE_JSON;
+	uizObj[".$no."].obj.responseSchema = { 
+		resultList: \"".$resultNode."\",
+		fields: [".$fields."] 
+	};
+		";	
+	}
+	else if($datasourceType == "XML") {
+		if($query != "undefined" && $query != "") {
+			$datasourceURL .= "&".$query;
+		}		
+		$return = "
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
+	//Generating a object#".$no."(Datasource)
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	uizObj[".$no."].obj = new YAHOO.util.XHRDataSource(\"xmlProxy.php?url=".str_replace("&", "and!", $datasourceURL)."\");
+	uizObj[".$no."].type = \"DATASOURCE\";
+	uizObj[".$no."].obj.responseType =  YAHOO.util.DataSourceBase.TYPE_XML;
 	uizObj[".$no."].obj.responseSchema = { 
 		resultNode: \"".$resultNode."\",
 		fields: [".$fields."] 
 	};
-	";
+		";		
+	}
 
 	return $return;	
 }

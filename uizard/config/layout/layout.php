@@ -56,7 +56,7 @@ version: 0.8.2
 <!-- HTML : LAYOUT::LEFT -->
 <div id="left1">
 	<div id="divToolbox" style="font-size:12px;" class="divDefaultBackground">
-		<?php include("config/layout/toolbox.php"); ?>
+		<?php //include("config/layout/toolbox.php"); ?>
 	</div>
 </div>
 

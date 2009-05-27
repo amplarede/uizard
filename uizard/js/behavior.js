@@ -780,6 +780,8 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		modObjAutoComplete(objCount, datasourceNo);
 	}
 	else if(uizObj[objCount].type == "DATASOURCE") {
+		uizSetStyle("object"+objCount, "width", "97%");
+		
 		uizObj[objCount].provider = provider;
 		uizGetElementById("divProvider" + objCount).innerHTML = provider;
 		uizObj[objCount].datasourceURL = datasourceURL;

@@ -356,6 +356,8 @@ function init() {
 	
 	addCanvas();
 	
+	loadToolbox();
+	
 <?php
 if($_GET['action'] == "newProject") {
 ?>
@@ -363,9 +365,8 @@ if($_GET['action'] == "newProject") {
 <?php
 }
 ?>
-
 	enableKeyListener();
-	
+
 	layout.getUnitByPosition('right').set("width", 350);	
 }
 
