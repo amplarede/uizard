@@ -994,7 +994,7 @@ function addObjGoogleMap() {
 	uizObj[objectCount].obj.setUIToDefault();
 	uizObj[objectCount].type = "MAPGOOGLE";
 	
-	uizObj[objectCount].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
+	uizObj[objectCount].obj.setCenter(new GLatLng(37.4419, -122.1419), 13);
 
 	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
 	
