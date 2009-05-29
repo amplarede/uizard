@@ -9,7 +9,7 @@ function saveCss() {
 	writeMessage("<font color=#F90><b>Saving "+projectName+".css Start...</b></font>");
 	
 	var responseSuccess = function(o) {
-		writeMessage("<font color=green><b>CSS File Saving Succeeded.</b></font>");
+		writeMessage("<font color=green><b>CSS File has been successfully saved.</b></font>");
 	 	cssEditor.setCode(o.responseText);
 		var sheet = new YAHOO.util.StyleSheet(cssEditor.getCode());
 		sheet.enable();
@@ -58,7 +58,7 @@ function saveSetting() {
 	var SWFObject = uizGetElementById("chkboxUseSWFObject").checked; 
 	
 	var responseSuccess = function(o) {
-		writeMessage("<font color=green><b>The Project Setting Saving Succeeded.</b></font>");
+		writeMessage("<font color=green><b>The Project Setting has been successfully saved.</b></font>");
 	};
 	
 	var responseFailure = function(o) {

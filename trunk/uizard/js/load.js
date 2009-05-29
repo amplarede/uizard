@@ -9,7 +9,7 @@ function loadCss() {
 	writeMessage("<font color=#F90><b>Loading "+projectName+".css Start...</b></font>");
 	
 	var responseSuccess = function(o) {
-		writeMessage("<font color=green><b>CSS File Loading Succeeded.</b></font>");
+		writeMessage("<font color=green><b>CSS File has been successfully loaded.</b></font>");
 	 	cssEditor.setCode(o.responseText);
 	};
 	
@@ -56,6 +56,15 @@ function loadSetting() {
 		uizGetElementById("inputProjectTitle").value = title;
 		uizGetElementById("inputProjectOwner").value = owner;
 		uizGetElementById("textAreaProjectDescription").value = description;
+		
+		uizGetElementById("exportProjectTitle").innerHTML = title;
+		uizGetElementById("exportProjectOwner").innerHTML = owner;
+		uizGetElementById("exportProjectDescription").innerHTML = description;
+				
+		uizGetElementById("projectGalleryTitle").innerHTML = title;
+		uizGetElementById("projectGalleryOwner").innerHTML = owner;
+		uizGetElementById("projectGalleryDescription").innerHTML = description;
+				
 		
 		if(gridSize == "5") gridSettingButtonGroup.check(0);
 		else if(gridSize == "10") gridSettingButtonGroup.check(1);
