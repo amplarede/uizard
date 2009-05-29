@@ -610,7 +610,7 @@ function genMapGoogle($no, $objectid, $code) {
 	uizObj[".$no."].type = \"MAPGOOGLE\";
 	
 	uizObj[".$no."].obj.setUIToDefault();
-	uizObj[".$no."].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
+	uizObj[".$no."].obj.setCenter(new GLatLng(37.4419, -122.1419), 13);
 	
 	GEvent.addListener(uizObj[".$no."].obj, \"addmaptype\", onAddMapType_Object".$no.");
 	GEvent.addListener(uizObj[".$no."].obj, \"removemaptype\", onRemoveMapType_Object".$no.");

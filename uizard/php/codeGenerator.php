@@ -155,12 +155,12 @@ $jsfiles .= "
 
 $jsfiles .= "
 <!-- JS : UIZARD -->
-<script type=\"text/javascript\" src=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/stdfunc.js\"></script>
+<script type=\"text/javascript\" src=\"http://uizard.org/UIzard/projects/".$_GET['projectName']."/stdfunc.js\"></script>
 ";
 
 $cssfiles .= "
 <!-- CSS : UIZARD -->
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".css\" />
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://uizard.org/UIzard/projects/".$_GET['projectName']."/".$_GET['projectName'].".css\" />
 ";
 
 $cssfiles_dynamically = "
@@ -573,7 +573,7 @@ else if($_GET['mode'] == "print") {
 
 <body leftmargin='0' topmargin='0'>
 
-<script src='http://www.gmodules.com/ig/ifr?url=http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."&amp;synd=open&amp;w=".str_replace("px", "", $prt['width'][0]['value'])."&amp;h=".str_replace("px", "", $prt['height'][0]['value'])."&amp;title=".$projectName."&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js&amp;nocache=1'></script>
+<script src='http://www.gmodules.com/ig/ifr?url=http://uizard.org/UIzard/projects/".$_GET['projectName']."/".$_GET['projectName'].".".$Expansion."&amp;synd=open&amp;w=".str_replace("px", "", $prt['width'][0]['value'])."&amp;h=".str_replace("px", "", $prt['height'][0]['value'])."&amp;title=".$projectName."&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js&amp;nocache=1'></script>
 
 </body>
 
