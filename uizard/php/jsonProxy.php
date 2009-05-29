@@ -7,9 +7,17 @@ http://www.uizard.org/License
 version: 0.8.0
 */
 
-header('Content-type: application/json'); 
+header('Content-type: application/json; charset=UTF-8'); 
 
 $url = str_replace("and!", "&", $_GET['url']);
+$urlTemp = split('=', $url);
+$urlTempCount = count($urlTemp);
+
+$url = "";
+for($i=0; $i<$urlTempCount; $i++) {
+	if($i == $urlTempCount-1) $url .= urlencode($urlTemp[$i]);
+	else $url .= $urlTemp[$i]."=";
+}
 
 $xml = implode("", file($url));
 echo ($xml);

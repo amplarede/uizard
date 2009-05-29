@@ -7,7 +7,7 @@ A:active  {color:#333333;text-decoration:none;}
 A:hover   {color:#2d88dc;text-decoration:none;}
 
 body {
-	font-family: Arial, Tahoma, ±¼¸²Ã¼, ±¼¸²;
+	font-family: Arial, Tahoma, êµ´ë¦¼ì²´, êµ´ë¦¼;
 }
 .objBorder {
 	border:1px #F00 dashed;
@@ -129,3 +129,198 @@ CODE MIRROR STYLE CUSTOMIZATION
 	font-family: monospace;
 	padding-top: .4em;
 }
+
+
+/**************************************************************************
+LOADING PANEL STYLE CUSTOMIZATION
+**************************************************************************/
+	/* Skin default elements */
+	#panelLoading_c.yui-panel-container.shadow .underlay {
+		left:3px;
+		right:-3px;
+		top:3px;
+		bottom:-3px;
+		position:absolute;
+		background-color:transparent;
+	}
+
+	/* Apply the border to the right side */
+	#panelLoading.yui-panel {
+		border:none;
+		overflow:visible;
+		background:transparent;
+	}
+
+	/* Style the close icon */
+	#panelLoading.yui-panel .container-close {
+		background:transparent;
+	}
+
+	/* Style the header with its associated corners */
+	#panelLoading.yui-panel .hd {
+		padding:0;
+		border:none;
+		background:transparent;
+		color:#FFF;
+		height:30px;
+		margin-left:8px;
+		margin-right:8px;
+		text-align:left;
+		vertical-align:middle;
+		overflow:visible;
+	}
+
+	/* Style the body with the left border */
+	#panelLoading.yui-panel .bd {
+		overflow:hidden;
+		padding:10px;
+		border:none;
+		background:transparent; 
+		margin:0 4px 0 0;
+	}
+
+	/* Style the footer with the bottom corner images */
+	#panelLoading.yui-panel .ft {
+		background:transparent;
+	}
+
+	/* Skin custom elements */
+	#panelLoading.yui-panel .hd span {
+		line-height:30px;
+		vertical-align:middle;
+		font-weight:bold;
+	}
+	#panelLoading.yui-panel .hd .tl {
+		width:8px;
+		height:29px;
+		top:1px;
+		left:0;
+		background:transparent;
+		position:absolute;
+	}
+	#panelLoading.yui-panel .hd .tr {
+		width:8px;
+		height:29px;
+		top:1px;
+		right:0;
+		background:transparent; 
+		position:absolute;
+	}
+
+	#panelLoading.yui-panel .ft span {
+		line-height:22px;
+		vertical-align:middle;
+	}
+	#panelLoading.yui-panel .ft .bl {
+		width:8px;
+		height:26px;
+		bottom:0;
+		left:0;
+		background:transparent;
+		position:absolute;
+	}
+	#panelLoading.yui-panel .ft .br {
+		width:8px;
+		height:26px;
+		bottom:0;
+		right:0;
+		background:transparent;
+		position:absolute;
+	}
+
+/**************************************************************************
+INFO PANEL STYLE CUSTOMIZATION
+**************************************************************************/
+	/* Skin default elements */
+	#UIzardInfo_c.yui-panel-container.shadow .underlay {
+		left:3px;
+		right:-3px;
+		top:3px;
+		bottom:-3px;
+		position:absolute;
+		background-color:transparent;
+	}
+
+	/* Apply the border to the right side */
+	#UIzardInfo.yui-panel {
+		border:none;
+		overflow:visible;
+		background:transparent;
+	}
+
+	/* Style the close icon */
+	#UIzardInfo.yui-panel .container-close {
+		background:transparent;
+	}
+
+	/* Style the header with its associated corners */
+	#UIzardInfo.yui-panel .hd {
+		padding:0;
+		border:none;
+		background:transparent;
+		color:#FFF;
+		height:30px;
+		margin-left:8px;
+		margin-right:8px;
+		text-align:left;
+		vertical-align:middle;
+		overflow:visible;
+	}
+
+	/* Style the body with the left border */
+	#UIzardInfo.yui-panel .bd {
+		overflow:hidden;
+		padding:10px;
+		border:none;
+		background:transparent; 
+		margin:0 4px 0 0;
+	}
+
+	/* Style the footer with the bottom corner images */
+	#UIzardInfo.yui-panel .ft {
+		background:transparent;
+	}
+
+	/* Skin custom elements */
+	#UIzardInfo.yui-panel .hd span {
+		line-height:30px;
+		vertical-align:middle;
+		font-weight:bold;
+	}
+	#UIzardInfo.yui-panel .hd .tl {
+		width:8px;
+		height:29px;
+		top:1px;
+		left:0;
+		background:transparent;
+		position:absolute;
+	}
+	#UIzardInfo.yui-panel .hd .tr {
+		width:8px;
+		height:29px;
+		top:1px;
+		right:0;
+		background:transparent; 
+		position:absolute;
+	}
+
+	#UIzardInfo.yui-panel .ft span {
+		line-height:22px;
+		vertical-align:middle;
+	}
+	#UIzardInfo.yui-panel .ft .bl {
+		width:8px;
+		height:26px;
+		bottom:0;
+		left:0;
+		background:transparent;
+		position:absolute;
+	}
+	#UIzardInfo.yui-panel .ft .br {
+		width:8px;
+		height:26px;
+		bottom:0;
+		right:0;
+		background:transparent;
+		position:absolute;
+	}

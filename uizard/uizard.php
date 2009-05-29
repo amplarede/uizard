@@ -13,6 +13,8 @@ require_once("../config/config.inc.php");
 $oContext = &Context::getInstance();
 $oContext->init();
 
+$logged_info = Context::get('logged_info');
+
 $no = $logged_info->member_srl;
 $id = $logged_info->user_id;
 $email = $logged_info->email_address;
@@ -76,6 +78,10 @@ else {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>UIzard</title>
+
+<!-- FAVICON -->
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" href="favicon.ico">
 
 <!-- CSS : CODEMIRROR -->
 <link rel="stylesheet" href="lib/codeMirror/css/docs.css" type="text/css">
@@ -181,8 +187,8 @@ else {
 // Loading Panel Start
 /////////////////////////////////////////////////////////////////////////////////////////////////
 var panelLoading = new YAHOO.widget.Panel("panelLoading",  
-                                                    { width: "580px",
-													  height: "300px",
+                                                    { width: "620px",
+													  height: "350px",
                                                       fixedcenter: true, 
                                                       close: false, 
                                                       draggable: false, 
@@ -193,8 +199,8 @@ var panelLoading = new YAHOO.widget.Panel("panelLoading",
                                                     } 
                                                 );
     
-panelLoading.setHeader("Loading, please wait...");
-panelLoading.setBody("<div style='background:url(images/loading.png); width:560px; height:250px; text-align:left;'><img src=\"http://us.i1.yimg.com/us.yimg.com/i/us/per/gr/gp/rel_interstitial_loading.gif\" style='margin-left:40px; margin-top:200px;'/></div>");
+panelLoading.setHeader("");
+panelLoading.setBody("<div style='background:url(images/loading.png); width:600px; height:300px; text-align:left;'><img src=\"http://us.i1.yimg.com/us.yimg.com/i/us/per/gr/gp/rel_interstitial_loading.gif\" style='margin-left:50px; margin-top:230px;'/></div>");
 panelLoading.render(document.body);
 panelLoading.show();
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,11 +218,15 @@ var demomode = false;
 }
 ?>
 
+//Loading
+var loading = true;
+
 //Environment
 var showObjectSelection = false;
 var fillObjectSelection = false;
 var hoverResizeHandle = true;
 var proxyResize = true;
+
 
 //Object
 var objectCount = 0;
@@ -321,6 +331,7 @@ var panelPreferences;
 var panelProjectSetting;
 var colorPickerDialog;
 var panelSelectDatasource;
+var panelProjectGallery;
 
 //Button Groups
 var gridSettingButtonGroup;
@@ -395,7 +406,8 @@ if($_GET['action'] == "load") {
 	$prt = $xml->xmlOpen("projects/".$_GET['projectDir']."/objProperties.xml",'object');
 	$count = count($prt['object']);
 
-	for($i=1; $i<$count; $i++) {
+
+	for($i=0; $i<$count; $i++) {
 		
 		$type = $prt['type'][$i]['value'];
 		$objectid = $prt['object-id'][$i]['value'];
@@ -532,6 +544,8 @@ if($_GET['action'] == "load") {
 			echo "addObjLiveMap();\n";
 		}
 		else if($type == "DATASOURCE") {
+			$width = "100%";
+			
 			if($datasourceType == "HTML") {
 				echo "addDsHTML();\n";
 			}
@@ -558,17 +572,33 @@ if($_GET['action'] == "load") {
 	echo "writeMessage(\"<font color=gray><b>Saving the Properties...</b></font>\");";
 	echo "\n\n";
 	
-	for($i=1; $i<$count; $i++) {
+	//echo "\tsetTimeout('objClicked(".$i.")', 500);\n";
+	
+	$timeCount = 0;
+	
+	for($i=0; $i<$count; $i++) {
 		$type = $prt['type'][$i]['value'];
 		if($type != "") {
-			//setTimeout ('FuncB()', 2000);
-			echo "\tsetTimeout('objClicked(".$i.")', 500 + ".($i*200).");\n";
+			echo "\tsetTimeout('objClicked(".$i.")', 500 + ".($timeCount*200).");\n";
+			$timeCount++;
 		}
 	}
 	
-	echo "\n\tsetTimeout('writeMessage(\"<font color=green><b>Loading Complete.</b></font>\")', 500 + ".($count*200).");\n";
+	echo "
+	\tloading = false;
+	
+	";
+	
+	for($i=0; $i<$count; $i++) {
+		$type = $prt['type'][$i]['value'];
+		if($type == "DATATABLE") {
+			echo "\tsetTimeout('setObj(".$i.")', 500 + ".($timeCount*200).");\n";
+			$timeCount++;
+		}
+	}	
 	
 	echo "
+	\tsetTimeout('writeMessage(\"<font color=green><b>Loading Complete.</b></font>\")', 500 + ".($timeCount*200).");
 	loadSetting();
 	loadCss();
 	loadAPIKeys();	

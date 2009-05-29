@@ -79,12 +79,12 @@ version: 0.8.2
     <form id="exportProjectForm" name="exportProjectForm" method="POST" action="projects/export.php" target="_blank"> 
     	<input name="projectDir" type="hidden" value="<?php echo $projectname;?>" />
     	<div id="exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
-        	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Name</b></div>
-            <div style="margin-bottom:15px; margin-right:10px;"><?php echo $projectName;?><br /></div>
-            <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Author</b></div>
-            <div style="margin-bottom:15px; margin-right:10px;"><?php echo $projectAuthor;?></div>
+        	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Title</b></div>
+            <div id="exportProjectTitle" style="margin-bottom:15px; margin-right:10px;"></div>
+            <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Owner</b></div>
+            <div id="exportProjectOwner" style="margin-bottom:15px; margin-right:10px;"></div>
             <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Description</b></div>
-            <div style="margin-right:10px;"><?php echo $projectAuthor;?></div>
+            <div id="exportProjectDescription" style="margin-right:10px;"></div>
         </div>
         <div id="exportProjectOption" style="float:left; width:226px; height:310px; text-align:left; font-size:12px;">
         	<div style="height:20px;"><b>Project Option</b></div>
@@ -121,11 +121,47 @@ version: 0.8.2
 	</div>
 </div>
 
+<!-- HTML : CONTAINER::PROJECT GALLERY -->
+<div id="projectGallery">
+	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="absmiddle"> Project Gallery</div>
+	<div class="bd" style="text-align:center;">
+    <form id="projectGalleryForm" name="projectGalleryForm" method="POST" action="projects/projectGallery.php" target="_blank"> 
+    	<input name="projectDir" type="hidden" value="<?php echo $projectname;?>" />
+    	<div id="exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
+        	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Title</b></div>
+            <div id="projectGalleryTitle" style="margin-bottom:15px; margin-right:10px;"></div>
+            <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Owner</b></div>
+            <div id="projectGalleryOwner" style="margin-bottom:15px; margin-right:10px;"></div>
+            <div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Description</b></div>
+            <div id="projectGalleryDescription" style="margin-right:10px;"></div>
+        </div>
+        <div id="exportProjectOption" style="float:left; width:226px; height:310px; text-align:left; font-size:12px;">
+        	<div style="height:20px;"><b>Project Option</b></div>
+        	<div id="exportProjectOptionTreeview" style="text-align:left; padding:3px; height:260px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+              <ul>
+                <li>Files
+                  <ul>
+                    <li><a><input id="chkboxIncludeHTMLFile" name="chkboxIncludeHTMLFile" type="checkbox" checked /> HTML Files</a></li>
+                    <li><a><input id="chkboxIncludeJSFile" name="chkboxIncludeJSFile" type="checkbox" checked /> JS Files</a></li>
+                    <li><a><input id="chkboxIncludeCSSFile" name="chkboxIncludeCSSFile" type="checkbox" checked /> CSS Files</a></li>
+                    <li><a><input id="chkboxIncludePHPFile" name="chkboxIncludePHPFile" type="checkbox" /> PHP Files (for XML Proxy)</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div id="exportProjectOptionCheckBox" style="text-align:left; padding:3px; height:20px; border:1px #CCC solid; background:#FFF; font-size:11px;">
+            	<a><input id="chkboxCompressJSFile" name="chkboxCompressJSFile" type="checkbox" checked /> Compress JS Files</a>
+            </div>
+        </div>
+    </form>
+	</div>
+</div>
+
 <!-- HTML : CONTAINER::UIZARD INFO -->
 <div id="UIzardInfo">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/info.png" align="absmiddle"> UIzard Information</div>
+	<div class="hd"></div>
 	<div class="bd">
-    	<img src='images/info.png'>
+    	<img src='images/info.png' style="cursor:pointer;" onclick="panelUIzardInfo.hide();">
 	</div>
 </div>
 

@@ -47,7 +47,18 @@ function showProjectSetting() {
 }
 
 function showExportProject() {
-	if(demomode == false) panelExportProject.show();
+	if(demomode == false) {
+		loadSetting();
+		panelExportProject.show();
+	}
+	else alert("This is demo mode");
+}
+
+function showProjectGallery() {
+	if(demomode == false) {
+		loadSetting();
+		panelProjectGallery.show();
+	}
 	else alert("This is demo mode");
 }
 
@@ -136,7 +147,7 @@ function initPanels() {
 		this.cancel();
 	}
 	var handleOpenSubmit = function() {
-		window.location = "uizard.php?action=load&projectDir="+"<?php echo $projectAuthor;?>"+"_"+uizGetElementById("openProjectName").value;
+		window.location = "uizard.php?action=load&projectDir="+uizGetElementById("openProjectName").value;
 	}
 	var openButtons = [{ text:"Open", handler:handleOpenSubmit, isDefault:true },
 					 { text:"Cancel", handler:handleOpenCancel } ];
@@ -162,7 +173,7 @@ function initPanels() {
 		this.cancel();
 	}
 	var handleSaveAsSubmit = function() {
-		location.href = 'projects/saveas.php?projectDir=<?php echo $projectname;?>&projectNewDir=' + uizGetElementById("newProjectName").value + "_" + "<?=$projectAuthor?>";
+		location.href = 'projects/saveas.php?projectDir=' + projectName + '&projectNewDir=' + uizGetElementById("newProjectName").value;
 	}
 	var saveAsButtons = [{ text:"Save As", handler:handleSaveAsSubmit, isDefault:true },
 					 { text:"Cancel", handler:handleSaveAsCancel } ];
@@ -211,15 +222,43 @@ function initPanels() {
 			else if(label.getElementsByTagName("input")[0].checked == false) label.getElementsByTagName("input")[0].checked = true;
 		}
 	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	// Project Gallery Panel
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	panelProjectGallery = new YAHOO.widget.Dialog("projectGallery",  
+														{ width: "600px",
+														  height: "400px",
+														  fixedcenter: true, 
+														  close: true, 
+														  draggable: true, 
+														  zindex:100,
+														  modal: true,
+														  visible: false,
+														  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25}
+														} 
+													);
 	
+	var handleProjectGalleryCancel = function() {
+		this.cancel();
+	}
+	var handleProjectGallerySubmit = function() {
+		uizGetElementById("projectGalleryForm").submit();
+	}
+	var projectGalleryButtons = [{ text:"Export", handler:handleProjectGallerySubmit, isDefault:true },
+					 { text:"Cancel", handler:handleProjectGalleryCancel } ];
+	panelProjectGallery.cfg.queueProperty("buttons", projectGalleryButtons);
+	
+	panelProjectGallery.render();
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	// UIzard Info Panel
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	panelUIzardInfo = new YAHOO.widget.Panel("UIzardInfo",  
-														{ width: "580px", 
-														  height: "300px",
+														{ width: "620px", 
+														  height: "350px",
 														  fixedcenter: true, 
-														  close: true, 
+														  close: false, 
 														  draggable: true, 
 														  zindex:100,
 														  modal: true,
@@ -265,7 +304,7 @@ function initPanels() {
 	gridSettingSlider.subscribe("change", function(offsetFromStart) {
 		if (navigator.appVersion.indexOf("MSIE") != -1) uizGetElementById('canvasGrid').filters.alpha.opacity = offsetFromStart/2;
 		else uizGetElementById('canvasGrid').style.opacity = offsetFromStart/200;
-		writeMessage("Grid Opacity is changed to "+offsetFromStart/2+"%");
+		writeMessage("Grid Opacity has been changed to "+offsetFromStart/2+"%");
 	});
 	
 	gridSettingButtonGroup = new YAHOO.widget.ButtonGroup({ 

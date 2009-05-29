@@ -25,7 +25,7 @@ if($_POST['inputProjectAuthor'] != "" && $_POST['inputProjectName'] != "") {
 	copy("../php/xmlProxy.php", "./".$projectname."/xmlProxy.php");
 	copy("../js/stdfunc.js", "./".$projectname."/stdfunc.js") ;
 
-	echo "New Project is Generated Successfully...";
+	echo "New Project is Successfully Generated...";
 	echo "<script>location.href='../uizard.php?action=load&width=".$_POST['inputProjectWidth']."&height=".$_POST['inputProjectHeight']."&projectDir=".$projectname."';</script>";
 }
 else {

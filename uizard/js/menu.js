@@ -15,13 +15,18 @@ var mainMenuData =
 					{ text: "New...", helptext: "Shift + N", onclick: { fn: showNewProject } },
 					{ text: "Open...", helptext: "Shift + O", onclick: { fn: showOpenProject } },
 					{ text: "Save...", helptext: "Shift + S", onclick: { fn: saveProject } },
-					{ text: "Save As...", helptext: "Shift + Ctrl + S", onclick: { fn: showSaveAsProject } },
-					{ text: "Export The Project", helptext: "Shift + E", onclick: { fn: showExportProject } }
+					{ text: "Save As...", helptext: "Shift + Ctrl + S", onclick: { fn: showSaveAsProject } }
+				],
+				[
+					{ text: "Export", helptext: "Shift + E", onclick: { fn: showExportProject } },
+					{ text: "Project Gallery", helptext: "Shift + E", onclick: { fn: showProjectGallery } }					
 				],
 				[
 					{ text: "RealCode in New Window", onclick: { fn: openRealCode } },
 					{ text: "RealHtml in New Window", onclick: { fn: openRealHtml } },
-					{ text: "Preview in New Window", onclick: { fn: openPreview } },
+					{ text: "Preview in New Window", onclick: { fn: openPreview } }
+				],
+				[
 					{ text: "Print a RealCode", onclick: { fn: printRealCode } },
 					{ text: "Print a RealHtml", onclick: { fn: printRealHtml } },
 					{ text: "Print a Preview", onclick: { fn: printPreview } }
@@ -114,10 +119,10 @@ var mainMenuData =
 			itemdata:
 			[
 			 	[
-				 	{ text: "UIzard Official Manual", url: "http://uizard.org/OfficialManual", target: "_blank" },
-					{ text: "UIzard Tutorial Video", url: "http://uizard.org/TutorialVideo", target: "_blank" },
-					{ text: "UIzard Q&A Board", url: "http://uizard.org/QNA", target: "_blank" },
-					{ text: "UIzard Bug Report", url: "http://uizard.org/BugReport", target: "_blank" }
+				 	{ text: "Official Manual", url: "http://uizard.org/OfficialManual", target: "_blank" },
+					{ text: "Tutorial Video", url: "http://uizard.org/TutorialVideo", target: "_blank" },
+					{ text: "Q&A Board", url: "http://uizard.org/QNA", target: "_blank" },
+					{ text: "Bug Report", url: "http://uizard.org/BugReport", target: "_blank" }
 				],
 				[
 					{ text: "Yahoo! Develper Network", url: "http://developer.yahoo.com", target: "_blank" },
@@ -125,8 +130,8 @@ var mainMenuData =
 					{ text: "Windows Live Services", url: "http://dev.live.com", target: "_blank" }
 				],
 				[
-					{ text: "Naver Developer Center", url: "http://dev.naver.com", target: "_blank" },
 					{ text: "Daum DNA", url: "http://dna.daum.net", target: "_blank" },
+					{ text: "Naver Developer Center", url: "http://dev.naver.com", target: "_blank" }
 				],
 				[
 					{ text: "UIzard Information", onclick: { fn: showUIzardInfo } },

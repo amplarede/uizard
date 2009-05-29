@@ -66,10 +66,12 @@ function genSWF($no, $objectid, $width, $height, $src) {
 	uizGetElementById(\"".$objectid."\").innerHTML = uizObj[".$no."].obj;
 	
 	var flashvars = false;
-	var params = {};
+	var params = {
+		wmode: \"transparent\"
+	};
 	var attributes = {
-	  id: \"objectSWF".$no."\",
-	  name: \"objectSWF".$no."\"
+		id: \"objectSWF".$no."\",
+		name: \"objectSWF".$no."\"
 	};
 
 	swfobject.embedSWF(\"".$src."\", \"objectSWFcontainer".$no."\", \"".$width."\", \"".$height."\", \"9.0.0\", \"expressInstall.swf\", flashvars, params, attributes);
@@ -604,9 +606,10 @@ function genMapGoogle($no, $objectid, $code) {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 	//Generating a object#".$no."(Map Google)
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	uizObj[".$no."].obj = new google.maps.Map2(uizGetElementById(\"".$objectid."\"));
+	uizObj[".$no."].obj = new GMap2(uizGetElementById(\"".$objectid."\"));
 	uizObj[".$no."].type = \"MAPGOOGLE\";
 	
+	uizObj[".$no."].obj.setUIToDefault();
 	uizObj[".$no."].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);
 	
 	GEvent.addListener(uizObj[".$no."].obj, \"addmaptype\", onAddMapType_Object".$no.");

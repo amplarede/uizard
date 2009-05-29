@@ -26,27 +26,9 @@ $Header		= $template['Header'][0]['value'];
 $Body		= $template['Body'][0]['value'];
 $Footer		= $template['Footer'][0]['value'];
 
-$Header	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Header));
-$Header	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Header));
-$Header	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Header));
-$Header	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Header));
-$Header	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Header));
-$Body	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Body));
-$Body	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Body));
-$Body	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Body));
-$Body	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Body));
-$Body	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Body));
-$Footer	=  str_replace("{!ProjectName!}", $projectName, stripslashes($Footer));
-$Footer	=  str_replace("{!ProjectTitle!}", $projectTitle, stripslashes($Footer));
-$Footer	=  str_replace("{!ProjectAuthor!}", $projectAuthor, stripslashes($Footer));
-$Footer	=  str_replace("{!CDATASTART!}", "<![CDATA[", stripslashes($Footer));
-$Footer	=  str_replace("{!CDATAEND!}", "]]>", stripslashes($Footer));
-
 $codedata = "";
 
-$htmldata = $Header;
-
-$htmldata .= "
+$cssfiles = "
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
 <link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css\" />
 <link rel=\"stylesheet\" type=\"text/css\" href=\"http://yui.yahooapis.com/2.7.0/build/resize/assets/skins/sam/resize.css\" />
@@ -81,7 +63,7 @@ $keyDaumSearchAPI = $apiKey['DaumSearchAPI'][0]['value'];
 $keyDaumShoppingAPI = $apiKey['DaumShoppingAPI'][0]['value'];
 $keyDaumRecommendAPI = $apiKey['DaumRecommendAPI'][0]['value'];
 
-$htmldata .= "
+$jsfiles = "
 <!-- JS : GOOGLE MAP -->
 <script type=\"text/javascript\" src=\"http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ\" charset=\"utf-8\"></script>
 
@@ -135,51 +117,91 @@ $xmlProjectSetting = new uizXmlClass;
 $projectSetting = $xmlProjectSetting->xmlOpen("../projects/".$_GET['projectName']."/project.xml",'project');
 
 if($projectSetting['Prototype'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : PROTOTYPE -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js\"></script>
 ";
 }
 if($projectSetting['jQuery'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : JQUERY -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></script>
 ";
 }
 if($projectSetting['MooTools'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : MOOTOOLS -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/mootools/1.2.2/mootools-yui-compressed.js\"></script>
 ";
 }
 if($projectSetting['Dojo'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : DOJO -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/dojo/1.3.1/dojo/dojo.xd.js\"></script>
 ";
 }
 if($projectSetting['SWFObject'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : SWFOBJECT -->
 <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js\"></script>
 ";
 }
 if($projectSetting['debuggerFireBug'][0]['value'] == "true") {
-$htmldata .= "
+$jsfiles .= "
 <!-- JS : FIREBUG -->
-<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>
+<script type=\"text/javascript\" src=\"http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js\"></script>
 ";
 }
 
-$htmldata .= "
-
+$jsfiles .= "
 <!-- JS : UIZARD -->
 <script type=\"text/javascript\" src=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/stdfunc.js\"></script>
-
-<!-- CSS : UIZARD -->
-<link rel=\"stylesheet\" type=\"text/css\" href=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".css\">
-
 ";
+
+$cssfiles .= "
+<!-- CSS : UIZARD -->
+<link rel=\"stylesheet\" type=\"text/css\" href=\"http://uizard.org/UIzardTest/projects/".$_GET['projectName']."/".$_GET['projectName'].".css\" />
+";
+
+$cssfiles_dynamically = "
+<script>
+";
+
+$cssfiles_dynamically .= str_replace("\" />", "\" />';", str_replace("<link", "document.getElementsByTagName('head')[0].innerHTML += '<link", $cssfiles));
+
+$cssfiles_dynamically .= "
+
+alert(document.getElementsByTagName('head')[0].innerHTML);
+</script>
+";
+
+
+$Header	=  str_replace("{!ProjectName!}", 			$projectName, 				stripslashes($Header));
+$Header	=  str_replace("{!ProjectTitle!}", 			$projectTitle, 				stripslashes($Header));
+$Header	=  str_replace("{!ProjectAuthor!}",	 		$projectAuthor, 			stripslashes($Header));
+$Header	=  str_replace("{!CDATASTART!}", 			"<![CDATA[", 				stripslashes($Header));
+$Header	=  str_replace("{!CDATAEND!}", 				"]]>", 						stripslashes($Header));
+$Header	=  str_replace("{!CSSFILES_DYNAMICALLY!}",	$cssfiles_dynamically,		stripslashes($Header));
+$Header	=  str_replace("{!CSSFILES!}", 				$cssfiles,					stripslashes($Header));
+$Header	=  str_replace("{!JSFILES!}", 				$jsfiles,					stripslashes($Header));
+$Body	=  str_replace("{!ProjectName!}", 			$projectName, 				stripslashes($Body));
+$Body	=  str_replace("{!ProjectTitle!}", 			$projectTitle, 				stripslashes($Body));
+$Body	=  str_replace("{!ProjectAuthor!}", 		$projectAuthor, 			stripslashes($Body));
+$Body	=  str_replace("{!CDATASTART!}", 			"<![CDATA[", 				stripslashes($Body));
+$Body	=  str_replace("{!CDATAEND!}", 				"]]>", 						stripslashes($Body));
+$Body	=  str_replace("{!CSSFILES_DYNAMICALLY!}",	$cssfiles_dynamically,		stripslashes($Body));
+$Body	=  str_replace("{!CSSFILES!}", 				$cssfiles,					stripslashes($Body));
+$Body	=  str_replace("{!JSFILES!}", 				$jsfiles,					stripslashes($Body));
+$Footer	=  str_replace("{!ProjectName!}", 			$projectName, 				stripslashes($Footer));
+$Footer	=  str_replace("{!ProjectTitle!}", 			$projectTitle, 				stripslashes($Footer));
+$Footer	=  str_replace("{!ProjectAuthor!}", 		$projectAuthor, 			stripslashes($Footer));
+$Footer	=  str_replace("{!CDATASTART!}", 			"<![CDATA[", 				stripslashes($Footer));
+$Footer	=  str_replace("{!CDATAEND!}", 				"]]>", 						stripslashes($Footer));
+$Footer	=  str_replace("{!CSSFILES_DYNAMICALLY!}",	$cssfiles_dynamically,		stripslashes($Footer));
+$Footer	=  str_replace("{!CSSFILES!}", 				$cssfiles,					stripslashes($Footer));
+$Footer	=  str_replace("{!JSFILES!}", 				$jsfiles,					stripslashes($Footer));
+
+$htmldata = $Header;
 
 $htmldata .= $Body;
 

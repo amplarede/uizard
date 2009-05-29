@@ -32,7 +32,9 @@ function addObjDiv() {
 	uizObj[objectCount] = new uizObjClass();
 	uizObj[objectCount].type = "DIV";	
 
-	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\n";
+	uizObj[objectCount].html  = "<!-- Write here the HTML code for this div Layer -->\nNo Contents Now...";
+	
+	uizGetElementById("object"+objectCount).innerHTML = uizObj[objectCount].html;
 	
 	uizObj[objectCount].code  = "//Do Not Remove This Function Prototype\n";
 	
@@ -71,10 +73,12 @@ function addObjSWF() {
 	uizGetElementById('object'+objectCount).innerHTML = uizObj[objectCount].obj;
 	
 	var flashvars = false;
-	var params = {};
+	var params = {
+		wmode: "transparent"		
+	};
 	var attributes = {
-	  id: "objectSWF"+objectCount,
-	  name: "objectSWF"+objectCount
+		id: "objectSWF"+objectCount,
+		name: "objectSWF"+objectCount
 	};
 
 	swfobject.embedSWF("images/noswf.swf", "objectSWFcontainer"+objectCount, "150", "150", "9.0.0", "expressInstall.swf", flashvars, params, attributes);
@@ -273,6 +277,7 @@ function addObjPushButton() {
 // modObjPushButton()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function modObjPushButton(objCount, label, disabled, tabindex) {
+	uizGetElementById("objectPushButton"+objCount+"-button").innerHTML = label;
 	uizObj[objCount].obj.set("label", label);
 	uizObj[objCount].disabled = disabled;
 	uizObj[objCount].tabindex = tabindex;
@@ -361,6 +366,7 @@ function addObjCheckboxButton() {
 // modObjCheckboxButton()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function modObjCheckboxButton(objCount, label, disabled, tabindex) {
+	uizGetElementById("objectPushButton"+objCount+"-button").innerHTML = label;
 	uizObj[objCount].obj.set("label", label);
 	uizObj[objCount].disabled = disabled;
 	uizObj[objCount].tabindex = tabindex;
@@ -492,7 +498,7 @@ function addObjDatatable() {
 function modObjDatatable(objCount, datasourceNo) {
 	//uizGetElementById('object'+objCount).innerHTML = "";
 
-	if(datasourceNo != "undefined" && uizObj[datasourceNo].obj != null) {	
+	if(datasourceNo != "undefined" && uizObj[datasourceNo].obj != null && loading == false) {	
 		uizObj[objCount].datasourceNo = datasourceNo;
 		uizObj[objCount].fields = uizObj[datasourceNo].fields;
 		
@@ -867,6 +873,7 @@ function makeYUIChart(objCount) {
 		xField: 'Name',
 		yField: 'Value',
 		yAxis: yAxis,
+		wmode: "transparent"
 	});
 }
 
@@ -983,7 +990,8 @@ function addObjGoogleMap() {
 	uizSetStyle("object"+objectCount+"Handle", "z-index", uizGetStyle("object"+objectCount, "z-index"));
 	
 	uizObj[objectCount] = new uizObjClass();
-	uizObj[objectCount].obj = new google.maps.Map2(uizGetElementById("object"+objectCount));
+	uizObj[objectCount].obj = new GMap2(uizGetElementById("object"+objectCount));
+	uizObj[objectCount].obj.setUIToDefault();
 	uizObj[objectCount].type = "MAPGOOGLE";
 	
 	uizObj[objectCount].obj.setCenter(new google.maps.LatLng(37.4419, -122.1419), 13);

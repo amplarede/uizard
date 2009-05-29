@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" id="iphone-viewport" content="width=320; maximum-scale=1.0; minimum-scale=1.0; initial-scale=1.0; user-scalable=no" /><style type="text/css"> 
 <title>{!ProjectName!}</title>
 	]]>	
 	</Header>

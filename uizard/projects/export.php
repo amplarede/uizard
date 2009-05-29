@@ -11,7 +11,7 @@ include('../lib/pclzip.lib.php');
 include("../php/xmlClass.php");
 
 $xmlTemplate	= new uizXmlClass; 
-$template 		= $xmlTemplate->xmlOpen($_GET['projectDir']."/template.xml",'Template'); 
+$template 		= $xmlTemplate->xmlOpen($_POST['projectDir']."/template.xml",'Template'); 
 
 $Expansion	= $template['Expansion'][0]['value'];
 

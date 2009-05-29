@@ -292,7 +292,9 @@ function setResizeObj(objCount) {
 		proxy: true
 	});
 	
-	if(uizObj[objCount].type != "MAPGOOGLE" && uizObj[objCount].type != "MAPYAHOO" && uizObj[objCount].type != "MAPDAUM" && uizObj[objCount].type != "MAPNAVER") uizObj[objCount].resize.set("draggable", true);
+	if(uizObj[objCount].type != "MAPGOOGLE" && uizObj[objCount].type != "MAPYAHOO" && uizObj[objCount].type != "MAPDAUM" && uizObj[objCount].type != "MAPNAVER") {
+		uizObj[objCount].resize.set("draggable", true);
+	}
 
 	uizObj[objCount].resize.subscribe("endResize", function (args) {
 		setObjStyle(selectedObj);		
@@ -491,7 +493,7 @@ function setProperties(objCount, x, y, zindex, width, height, align, visibility,
 		else if(parsedData == "disabled") { disabled = newData; }
 		else if(parsedData == "tabindex") { tabindex = newData; }	
 		//autoComplete
-		else if(parsedData == "datasourceNo") { datasourceNo = newData; }
+		//else if(parsedData == "datasourceNo") { datasourceNo = newData; }
 		//dataSource
 		else if(parsedData == "provider") { provider = newData; }		
 		else if(parsedData == "datasourceURL") { datasourceURL = newData; }
@@ -780,7 +782,7 @@ function setObjStyle(objCount, x, y, zindex, width, height, align, visibility, l
 		modObjAutoComplete(objCount, datasourceNo);
 	}
 	else if(uizObj[objCount].type == "DATASOURCE") {
-		uizSetStyle("object"+objCount, "width", "97%");
+		//uizSetStyle("object"+objCount, "width", "97%");
 		
 		uizObj[objCount].provider = provider;
 		uizGetElementById("divProvider" + objCount).innerHTML = provider;

@@ -9,7 +9,7 @@ function initCanvas() {
 	tabView = new YAHOO.widget.TabView();
 		
 	var tabDesign = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/design.png" align="absmiddle"> <b>Design</b>',
+		label: '<img src="images/layout/design.png" align="absmiddle"> <b>DESIGN</b>',
 		content: '',
 		active: true
 	});		
@@ -35,7 +35,7 @@ function initCanvas() {
 	}				
 	tabDesign.addListener('click', clickedDesign);
 		var tabDataSource = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/datasource.png" align="absmiddle"> <b>DataSource</b>',
+		label: '<img src="images/layout/datasource.png" align="absmiddle"> <b>DATASOURCE</b>',
 		content: ''
 	});
 	tabView.addTab(tabDataSource);
@@ -53,7 +53,7 @@ function initCanvas() {
 	}				
 	tabDataSource.addListener('click', clickedDataSource);		
 		var tabCode = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/code.png" align="absmiddle"> <b>Code</b>',
+		label: '<img src="images/layout/code.png" align="absmiddle"> <b>CODE</b>',
 		content: ''
 	});
 	tabView.addTab(tabCode);
@@ -81,7 +81,7 @@ function initCanvas() {
 	tabCode.on('click', clickedCode);		
 	
 	var tabRealCode = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/realcode.png" align="absmiddle"> <b>RealCode</b>',
+		label: '<img src="images/layout/realcode.png" align="absmiddle"> <b>REALCODE</b>',
 		content: ''
 	});
 	tabView.addTab(tabRealCode);
@@ -106,7 +106,7 @@ function initCanvas() {
 	tabRealCode.on('click', clickedRealCode);		
 	
 	var tabHtml = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/html.png" align="absmiddle"> <b>Html</b>',
+		label: '<img src="images/layout/html.png" align="absmiddle"> <b>HTML</b>',
 		content: ''
 	});
 	tabView.addTab(tabHtml);
@@ -133,7 +133,7 @@ function initCanvas() {
 	}
 	tabHtml.on('click', clickedHtml);			
 		var tabRealHtml = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/realhtml.png" align="absmiddle"> <b>RealHtml</b>',
+		label: '<img src="images/layout/realhtml.png" align="absmiddle"> <b>REALHTML</b>',
 		content: ''
 	});
 	tabView.addTab(tabRealHtml);
@@ -157,7 +157,7 @@ function initCanvas() {
 	}				
 	tabRealHtml.on('click', clickedRealHtml);
 		var tabPreview = new YAHOO.widget.Tab({
-		label: '<img src="images/layout/preview.png" align="absmiddle"> <b>Preview</b>',
+		label: '<img src="images/layout/preview.png" align="absmiddle"> <b>PREVIEW</b>',
 		content: ''
 	});
 	tabView.addTab(tabPreview);
