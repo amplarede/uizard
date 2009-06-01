@@ -6,8 +6,9 @@ http://www.uizard.org/License
 version: 0.8.2
 */
 
-
+/*
 //제로보드XE에 가입된 사용자를 인증하여 사용할 수 있도록 해주기 위한 코드입니다.
+//for Authorizing the member of uizard.org
 define('__ZBXE__',true);
 require_once("../config/config.inc.php");
 $oContext = &Context::getInstance();
@@ -21,6 +22,7 @@ $email = $logged_info->email_address;
 $is_admin = $logged_info->is_admin;
 
 //인증된 경우
+//Authorized
 if($no) {
 	$demomode = FALSE;
 	
@@ -38,6 +40,7 @@ if($no) {
 	}	
 }
 //인증되지 않은 경우
+//Not Authorized.
 else {
 	$demomode = TRUE;
 	$projectAuthor = time();
@@ -52,12 +55,15 @@ else {
 		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
 	}	
 }
+*/
 
-/*
+
 
 
 //인증 없이 사용하기 위해선 아래 코드를 사용합니다.
+//Use this code without authorizing
 //$projectAuthor는 사용자에 맞게 수정이 가능합니다.
+//You can change a $projectAuthor
 
 	$demomode = FALSE;
 	
@@ -74,7 +80,6 @@ else {
 		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
 	}
 	
-*/
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
