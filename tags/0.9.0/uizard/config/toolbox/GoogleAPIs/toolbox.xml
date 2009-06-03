@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolSet>
+
+	<tool>
+		<toolName>Google Map</toolName>
+		<toolImage>map.png</toolImage>
+		<toolCreator><![CDATA[addObjGoogleMap();]]></toolCreator>	
+	</tool>	
+	
+	<tool>
+		<toolName>Google Chart</toolName>
+		<toolImage>googlechart.png</toolImage>
+		<toolCreator><![CDATA[addObjGoogleChart();]]></toolCreator>	
+	</tool>						
+
+</toolSet>
