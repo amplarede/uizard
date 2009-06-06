@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<project name="UIzard" default="dist" description="Web based Web Development Tool">
+	<property name="builddir" value="./build" override="true" />
+
+	<target name="prepare">
+		<echo msg="Making directory ./build" />
+		<mkdir dir="${builddir}" />
+	</target>
+
+	<fileset dir="./" id="source">
+		<include name="uizard/**" />
+		<exclude name="uizard/**/.svn" />
+	</fileset>
+
+	<target name="build" depends="prepare">
+		<echo msg="Copying files to build directory..." />
+
+		<copy todir="${builddir}">
+			<fileset refid="source" />
+<!-- Filterchain
+			<filterchain>
+				<replacetokens>
+					<token key="${version}" value="${top.builddir}/"/>
+					<token key="${revision}" value="${top.builddir}/testsite/user/${lang}/"/>
+				</replacetokens>
+			</filterchain>
+-->
+		</copy>
+
+		<echo msg="Copying ./uizard.php to ./build directory..." />
+	</target>
+
+	<target name="dist" depends="build">
+		<echo msg="Creating archive..." />
+
+		<tar destfile="${builddir}/uizard-lastest.tar.gz" compression="gzip">
+			<fileset dir="${builddir}">
+				<include name="*" />
+			</fileset>
+		</tar>
+
+		<echo msg="Files copied and compressed in build directory OK!" />
+	</target>
+
+	<!-- Rebuild -->
+	<target name="rebuild" description="rebuilds this package">
+		<delete dir="${builddir}" />
+		<phingcall target="main" />
+	</target>
+
+	<!-- Clean -->
+	<target name="clean" description="clean this package">
+		<delete dir="${builddir}" />
+	</target>
+</project>
+
