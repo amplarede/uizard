@@ -1,21 +1,30 @@
-<?xml version="1.0"?>
-<project name="UIzard" default="dist" description="Web based Web Development Tool">
-	<property name="builddir" value="./build" override="true" />
-
-	<target name="prepare">
-		<echo msg="Making directory ./build" />
-		<mkdir dir="${builddir}" />
-	</target>
-
-	<fileset dir="./" id="source">
-		<include name="uizard/**" />
-		<exclude name="uizard/**/.svn" />
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="uizard" default="dist" basedir="." description="Web based Web Development Tool">
+	<property file="build.properties"/>
+	<property file="build.properties.default"/>
+	
+	<property name="outputdir" value="./output" override="true" />
+	<property name="builddir" value="${outputdir}/build" override="true" />
+	<property name="distdir" value="${outputdir}/dist" override="true" />
+	<svnlastrevision svnpath="/usr/bin/svn" workingcopy="${project.basedir}" propertyname="svn.lastrevision" />
+	
+	<fileset dir="${project.basedir}/" id="source">
+		<include name="**" />
+		<exclude name="**/.svn" />
+		<exclude name="output/" />
 	</fileset>
 
-	<target name="build" depends="prepare">
-		<echo msg="Copying files to build directory..." />
+	<target name="prepare">
+		<echo msg="Making directory ${outputdir}" />
+		<mkdir dir="${outputdir}" />
+	</target>
 
-		<copy todir="${builddir}">
+	<target name="build" depends="prepare">
+		<echo msg="Making directory ${builddir}" />
+		<mkdir dir="${builddir}" />
+		
+		<echo msg="Copying files to build directory..." />
+		<copy todir="${builddir}/uizard">
 			<fileset refid="source" />
 <!-- Filterchain
 			<filterchain>
@@ -27,15 +36,18 @@
 -->
 		</copy>
 
-		<echo msg="Copying ./uizard.php to ./build directory..." />
+		<echo msg="Copying UIzard files to ${builddir} directory..." />
 	</target>
 
 	<target name="dist" depends="build">
 		<echo msg="Creating archive..." />
+		
+		<echo msg="Making directory ${distdir}" />
+		<mkdir dir="${distdir}" />
 
-		<tar destfile="${builddir}/uizard-lastest.tar.gz" compression="gzip">
+		<tar destfile="${distdir}/uizard-lastest.tar.gz" compression="gzip">
 			<fileset dir="${builddir}">
-				<include name="*" />
+				<include name="uizard" />
 			</fileset>
 		</tar>
 
@@ -45,12 +57,17 @@
 	<!-- Rebuild -->
 	<target name="rebuild" description="rebuilds this package">
 		<delete dir="${builddir}" />
-		<phingcall target="main" />
+		<phingcall target="build" />
+	</target>
+	
+	<!-- Rebuild -->
+	<target name="redist" description="redistributes this package">
+		<delete dir="${outputdir}" />
+		<phingcall target="dist" />
 	</target>
 
 	<!-- Clean -->
 	<target name="clean" description="clean this package">
-		<delete dir="${builddir}" />
+		<delete dir="${outputdir}" />
 	</target>
 </project>
-
