@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="uizard" default="dist" basedir="." description="Web based Web Development Tool">
+<project name="UIzard" default="dist" basedir="." description="Web based Web Development Tool">
 	<property file="build.properties"/>
 	<property file="build.properties.default"/>
 	
 	<property name="outputdir" value="./output" override="true" />
 	<property name="builddir" value="${outputdir}/build" override="true" />
 	<property name="distdir" value="${outputdir}/dist" override="true" />
+
 	<svnlastrevision svnpath="/usr/bin/svn" workingcopy="${project.basedir}" propertyname="svn.lastrevision" />
 	
 	<fileset dir="${project.basedir}/" id="source">
 		<include name="**" />
 		<exclude name="**/.svn" />
 		<exclude name="output/" />
+		<exclude name="tests/" />
 	</fileset>
 
 	<target name="prepare">
@@ -24,7 +26,7 @@
 		<mkdir dir="${builddir}" />
 		
 		<echo msg="Copying files to build directory..." />
-		<copy todir="${builddir}/uizard">
+		<copy todir="${builddir}/${phing.project.name}">
 			<fileset refid="source" />
 <!-- Filterchain
 			<filterchain>
@@ -37,9 +39,24 @@
 		</copy>
 
 		<echo msg="Copying UIzard files to ${builddir} directory..." />
+	</target>  
+
+	<target name="test" depends="build">
+		<echo msg="Making directory ${outputdir}/report" />
+		<mkdir dir="${outputdir}/report" />
+
+		<phpunit haltonfailure="false" haltonerror="false">
+			<formatter type="xml" todir="${outputdir}/report" outfile="logfile.xml" />
+			<batchtest>
+				<fileset dir="${project.basedir}/tests">
+					<include name="**/*Test*.php" />
+					<exclude name="**/Abstract*.php" />
+				</fileset>
+			</batchtest>
+		</phpunit>
 	</target>
 
-	<target name="dist" depends="build">
+	<target name="dist" depends="test">
 		<echo msg="Creating archive..." />
 		
 		<echo msg="Making directory ${distdir}" />
@@ -47,7 +64,7 @@
 
 		<tar destfile="${distdir}/uizard-lastest.tar.gz" compression="gzip">
 			<fileset dir="${builddir}">
-				<include name="uizard" />
+				<include name="UIzard" />
 			</fileset>
 		</tar>
 
