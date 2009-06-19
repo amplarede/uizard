@@ -121,7 +121,7 @@ else {
 <script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ" charset="utf-8"></script>
 
 <!-- JS : DAUM MAP -->
-<script type="text/javascript" src="http://apis.daum.net/maps/maps.js?apikey=26ddf6fa25d3ae044759c779c02d7df6bed2195a"></script>
+<script type="text/javascript" src="http://apis.daum.net/maps/maps.js?apikey=f69b34ca82ca5e92ee5630a0c2380a4815fc6cc8"></script>
 
 <!-- JS : NAVER MAP -->
 <script type="text/javascript" src="http://maps.naver.com/js/naverMap.naver?key=016200523a6f4851d55ae4ea563f4a1e"></script>
