@@ -5,9 +5,8 @@ Code licensed under the GPL v2 License:
 http://www.uizard.org/License
 version: 0.8.2
 */
-
 /*
-//제로보드XE에 가입된 사용자를 인증하여 사용할 수 있도록 해주기 위한 코드입니다.
+//ì œë¡œë³´ë“œXEì—? ê°€ìž…ë?œ ì‚¬ìš©ìž?ë¥¼ ì?¸ì¦?í•˜ì—¬ ì‚¬ìš©í•  ìˆ˜ ìžˆë?„ë¡? í•´ì£¼ê¸° ìœ„í•œ ì½�?ë“œìž…ë‹ˆë‹¤.
 //for Authorizing the member of uizard.org
 define('__ZBXE__',true);
 require_once("../config/config.inc.php");
@@ -21,7 +20,7 @@ $id = $logged_info->user_id;
 $email = $logged_info->email_address;
 $is_admin = $logged_info->is_admin;
 
-//인증된 경우
+//ì?¸ì¦?ë?œ ê²½ìš°
 //Authorized
 if($no) {
 	$demomode = FALSE;
@@ -39,7 +38,7 @@ if($no) {
 		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
 	}	
 }
-//인증되지 않은 경우
+//ì?¸ì¦?ë?˜ì§€ ì•Šì?€ ê²½ìš°
 //Not Authorized.
 else {
 	$demomode = TRUE;
@@ -56,31 +55,23 @@ else {
 	}	
 }
 */
-
-
-
-
-//인증 없이 사용하기 위해선 아래 코드를 사용합니다.
+//ì?¸ì¦? ì—†ì?´ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„  ì•„ëž˜ ì½�?ë“œë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
 //Use this code without authorizing
-//$projectAuthor는 사용자에 맞게 수정이 가능합니다.
+//$projectAuthorëŠ�? ì‚¬ìš©ìž?ì—? ë§žê²Œ ìˆ˜ì •ì?´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
 //You can change a $projectAuthor
-
-	$demomode = FALSE;
-	
-	$projectName = $_GET['projectname'];
-	$projectAuthor = "uizard";
-	
-	if($_GET['projectDir'] != "") {
-		$projectDir = split("_", $_GET['projectDir']);
-		$projectName = $projectDir[1];
-		$projectAuthor = $projectDir[0];
-		$projectname = $_GET['projectDir'];
-	}
-	else {
-		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
-	}
-	
-
+$demomode = FALSE;
+$projectName = isset($_GET['projectname']) ? $_GET['projectname'] : '';
+$projectAuthor = "uizard";
+if (! empty($_GET['projectDir'])) {
+    $projectDir = split("_", $_GET['projectDir']);
+    $projectName = $projectDir[1];
+    $projectAuthor = $projectDir[0];
+    $projectname = $_GET['projectDir'];
+} else {
+    $projectAuthor = isset($_GET['projectauthor']) ? $_GET['projectauthor'] : $projectAuthor;
+    $projectName = isset($_GET['projectname']) ? $_GET['projectname'] : $projectName;
+    $projectname = $projectAuthor . "_" . $projectName;
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -93,78 +84,134 @@ else {
 <link rel="icon" href="favicon.ico">
 
 <!-- CSS : CODEMIRROR -->
-<link rel="stylesheet" href="lib/codeMirror/css/docs.css" type="text/css">
+<link rel="stylesheet" href="lib/codeMirror/css/docs.css"
+	type="text/css">
 
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/resize/assets/skins/sam/resize.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/layout/assets/skins/sam/layout.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset/reset.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/container/assets/skins/sam/container.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/tabview/assets/skins/sam/tabview.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/datatable/assets/skins/sam/datatable.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/editor/assets/skins/sam/simpleeditor.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/autocomplete/assets/skins/sam/autocomplete.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/calendar/assets/skins/sam/calendar.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/treeview/assets/skins/sam/treeview.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/slider/assets/skins/sam/slider.css">
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/paginator/assets/skins/sam/paginator.css" />
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/reset-fonts-grids/reset-fonts-grids.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/resize/assets/skins/sam/resize.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/layout/assets/skins/sam/layout.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/reset/reset.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/fonts/fonts.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/container/assets/skins/sam/container.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/tabview/assets/skins/sam/tabview.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/button/assets/skins/sam/button.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/colorpicker/assets/skins/sam/colorpicker.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/datatable/assets/skins/sam/datatable.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/editor/assets/skins/sam/simpleeditor.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/autocomplete/assets/skins/sam/autocomplete.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/calendar/assets/skins/sam/calendar.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/treeview/assets/skins/sam/treeview.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/slider/assets/skins/sam/slider.css">
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/paginator/assets/skins/sam/paginator.css" />
+<link rel="stylesheet" type="text/css"
+	href="js/yui/build/menu/assets/skins/sam/menu.css">
 
 <!-- JS : CODEMIRROR -->
 <script type="text/javascript" src="lib/codeMirror/js/codemirror.js"></script>
 
 <!-- JS : GOOGLE MAP -->
-<script type="text/javascript" src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ" charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAAng86x87AJ15YigkYM7nqhT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSQq9HKJH_KZr2R4WQU3xXL2u9PWg"
+	charset="utf-8"></script>
 
 <!-- JS : DAUM MAP -->
-<script type="text/javascript" src="http://apis.daum.net/maps/maps.js?apikey=f69b34ca82ca5e92ee5630a0c2380a4815fc6cc8"></script>
+<script type="text/javascript"
+	src="http://apis.daum.net/maps/maps.js?apikey=f69b34ca82ca5e92ee5630a0c2380a4815fc6cc8"></script>
 
 <!-- JS : NAVER MAP -->
-<script type="text/javascript" src="http://maps.naver.com/js/naverMap.naver?key=016200523a6f4851d55ae4ea563f4a1e"></script>
+<script type="text/javascript"
+	src="http://maps.naver.com/js/naverMap.naver?key=016200523a6f4851d55ae4ea563f4a1e"></script>
 
 <!-- JS : LIVE MAP -->
-<script type="text/javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"></script>
+<script type="text/javascript"
+	src="js/mapcontrol6.2.js"></script>
 
 <!-- JS : YAHOO USER INTERFACE LIBRARY -->
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/event/event.js" ></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dom/dom.js" ></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/datasource/datasource-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dragdrop/dragdrop-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/animation/animation-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/get/get-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/utilities/utilities.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/json/json-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/resize/resize-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/layout/layout-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/button/button-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/tabview/tabview-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/autocomplete/autocomplete-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yuiloader/yuiloader.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/datatable/datatable-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/editor/editor-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/editor/simpleeditor-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/calendar/calendar.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/treeview/treeview.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/charts/charts-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/paginator/paginator-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/stylesheet/stylesheet-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/assets/js/data.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/yahoo/yahoo.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/event/event.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/dom/dom.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/datasource/datasource-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/connection/connection-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/dragdrop/dragdrop-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/animation/animation-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/container/container-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/slider/slider-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/element/element-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/colorpicker/colorpicker-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/get/get-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/utilities/utilities.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/slider/slider-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/json/json-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/resize/resize-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/layout/layout-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/button/button-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/tabview/tabview-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/menu/menu.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/autocomplete/autocomplete-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/yuiloader/yuiloader.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/datatable/datatable-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/editor/editor-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/editor/simpleeditor-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/calendar/calendar.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/treeview/treeview.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/charts/charts-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/paginator/paginator-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/stylesheet/stylesheet-min.js"></script>
+<script type="text/javascript"
+	src="js/yui/build/assets/js/data.js"></script>
 
 <!-- JS : SWFOBJECT -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+<script type="text/javascript"
+	src="js/swfobject.js"></script>
 
 <!-- JS : UIZARD -->
 <script type="text/javascript" src="js/editor.js"></script>
@@ -215,13 +262,12 @@ panelLoading.show();
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 <?php
-if($demomode == TRUE) {
-?>
+if ($demomode == TRUE) {
+    ?>
 var demomode = true;
 <?php
-}
-else {
-?>
+} else {
+    ?>
 var demomode = false;
 <?php
 }
@@ -242,7 +288,9 @@ var objectCount = 0;
 var selectedObj = -1;
 var copiedObj = null;
 
-var projectName = "<?php echo $projectname;?>";
+var projectName = "<?php
+echo $projectname;
+?>";
 
 var objDD;
 var objResize;
@@ -351,11 +399,17 @@ var gridSettingSlider;
 </script>
 
 
-<?php include("config/layout/layout.php"); ?>
+<?php
+include ("config/layout/layout.php");
+?>
 
-<?php include("config/layout/canvas.php"); ?>
+<?php
+include ("config/layout/canvas.php");
+?>
 
-<?php include("config/layout/panels.php"); ?>
+<?php
+include ("config/layout/panels.php");
+?>
 
 </body>
 
@@ -379,13 +433,16 @@ function init() {
 	loadToolbox();
 	
 <?php
-if($_GET['action'] == "newProject") {
-?>
+if (isset($_GET['action']) && $_GET['action'] == 'newProject') {
+    ?>
 	showNewProject();
+<?php
+} else {
+?>
+	enableKeyListener();
 <?php
 }
 ?>
-	enableKeyListener();
 
 	layout.getUnitByPosition('right').set("width", 350);	
 }
@@ -407,207 +464,189 @@ function loadProject() {
 	
 
 <?php
-if($_GET['action'] == "load") {
-	echo "\twriteMessage(\"<font color=#F90><b>Start Loading...</b></font>\");\n\n";
-	
-	include("php/xmlClass.php");
-	$xml = new uizXmlClass; 
-	$prt = $xml->xmlOpen("projects/".$_GET['projectDir']."/objProperties.xml",'object');
-	$count = count($prt['object']);
-
-
-	for($i=0; $i<$count; $i++) {
-		
-		$type = $prt['type'][$i]['value'];
-		$objectid = $prt['object-id'][$i]['value'];
-		$x = $prt['x'][$i]['value'];
-		$y = $prt['y'][$i]['value'];
-		$zindex = $prt['z-index'][$i]['value'];
-		$width = $prt['width'][$i]['value'];
-		$height = $prt['height'][$i]['value'];
-		$align = $prt['align'][$i]['value'];
-		$visibility = $prt['visibility'][$i]['value'];
-		$backgroundColor = $prt['backgroundColor'][$i]['value'];
-		$action = $prt['action'][$i]['value'];
-		$method = $prt['method'][$i]['value'];
-		$target = $prt['target'][$i]['value'];
-		$html = $prt['html'][$i]['value'];
-		$src = $prt['src'][$i]['value'];
-		$value = $prt['value'][$i]['value'];
-		$code = $prt['code'][$i]['value'];
-		$label = $prt['label'][$i]['value'];
-		$disabled = $prt['disabled'][$i]['value'];
-		$tabindex = $prt['tabindex'][$i]['value'];
-		$buttoncount = $prt['buttoncount'][$i]['value'];
-		$tabcount = $prt['tabcount'][$i]['value'];
-		$datasourceNo = $prt['datasourceNo'][$i]['value'];
-		$fields = $prt['fields'][$i]['value'];
-		$columnWidth = $prt['columnWidth'][$i]['value'];
-		$paginator = $prt['paginator'][$i]['value'];
-		$rowsPerPage = $prt['rowsPerPage'][$i]['value'];
-		$closebutton = $prt['closebutton'][$i]['value'];
-		$draggable = $prt['draggable'][$i]['value'];
-		$provider = $prt['provider'][$i]['value'];
-		$datasourceURL = $prt['datasourceURL'][$i]['value'];
-		$datasourceType = $prt['datasourceType'][$i]['value'];
-		$resultNode = $prt['resultNode'][$i]['value'];
-		$fields = $prt['fields'][$i]['value'];
-		$query = $prt['query'][$i]['value'];
-		
-		echo "\t";
-		
-		if($type == "DIV") {
-			echo "addObjDiv();\n";
-		}		
-		else if($type == "IMAGE") {
-			echo "addObjImage();\n";
-		}		
-		else if($type == "SWF") {
-			echo "addObjSWF();\n";
-		}	
-		else if($type == "FORM") {
-			echo "addObjForm();\n";
-		}
-		else if($type == "INPUTBOX") {
-			echo "addObjInputbox();\n";
-		}	
-		else if($type == "CHECKBOXSET") {
-			echo "addObjCheckboxSet();\n";
-		}	
-		else if($type == "RADIOBUTTONSET") {
-			echo "addObjRadiobuttonSet();\n";
-		}		
-		else if($type == "TEXTAREA") {
-			echo "addObjTextarea();\n";
-		}
-		else if($type == "TABLE") {
-			echo "addObjTable();\n";
-		}	
-		else if($type == "TIMER") {
-			echo "addObjTimer();\n";
-		}	
-		else if($type == "PUSHBUTTON") {
-			echo "addObjPushButton();\n";
-		}
-		else if($type == "RADIOBUTTON") {
-			echo "addObjRadioButton();\n";
-		}
-		else if($type == "CHECKBOXBUTTON") {
-			echo "addObjCheckboxButton();\n";
-		}
-		else if($type == "COLORPICKER") {
-			echo "addObjColorPicker();\n";
-		}
-		else if($type == "TABVIEW") {
-			echo "addObjTabview();\n";
-		}
-		else if($type == "DATATABLE") {
-			echo "addObjDatatable();\n";
-		}	
-		else if($type == "CALENDAR") {
-			echo "addObjCalendar();\n";
-		}	
-		else if($type == "PANEL") {
-			echo "addObjPanel();\n";
-		}
-		else if($type == "SLIDER") {
-			echo "addObjSlider();\n";
-		}
-		else if($type == "AUTOCOMPLETE") {
-			echo "addObjAutoComplete();\n";
-		}
-		else if($type == "RICHTEXTEDITOR") {
-			echo "addObjRichTextEditor();\n";
-		}
-		else if($type == "MENUBAR") {
-			echo "addObjMenuBar();\n";
-		}
-		else if($type == "TREEVIEW") {
-			echo "addObjTreeview();\n";
-		}
-		else if($type == "YUICHART") {
-			echo "addObjYUIChart();\n";
-		}
-		else if($type == "PAGINATOR") {
-			echo "addObjPaginator();\n";
-		}
-		else if($type == "DRAGANDDROP") {
-			echo "addObjDragAndDrop();\n";
-		}	
-		else if($type == "RESIZE") {
-			echo "addObjResize();\n";
-		}	
-		else if($type == "MAPDAUM") {
-			echo "addObjDaumMap();\n";
-		}	
-		else if($type == "MAPGOOGLE") {
-			echo "addObjGoogleMap();\n";
-		}
-		else if($type == "GOOGLECHART") {
-			echo "addObjGoogleChart();\n";
-		}
-		else if($type == "MAPNAVER") {
-			echo "addObjNaverMap();\n";
-		}
-		else if($type == "MAPLIVE") {
-			echo "addObjLiveMap();\n";
-		}
-		else if($type == "DATASOURCE") {
-			$width = "100%";
-			
-			if($datasourceType == "HTML") {
-				echo "addDsHTML();\n";
-			}
-			else if($datasourceType == "JSON") {
-				echo "addDsJSON();\n";
-			}
-			else if($datasourceType == "XML") {
-				echo "addDsXML();\n";
-			}
-		}
-
-		if($type != "") {
-			$code = str_replace("\n", "\\n", $code);
-	
-			$html = str_replace("\n", "\\n", $html);	
-			
-			echo "\tsetObjStyle(".$i.", '".$x."', '".$y."', '".$zindex."', '".$width."', '".$height."', '".$align."', '".$visibility."', '".$label."', '".$disabled."', '".$tabindex."', '".$datasourceNo."', '".$provider."', '".$datasourceURL."', '".$datasourceType."', '".$resultNode."', '".$fields."', '".$query."', '".$columnWidth."', '".$paginator."', '".$rowsPerPage."', '".$tabcount."', '".$src."', '".$action."', '".$method."', '".$target."', '".$value."', '".$backgroundColor."', '".$buttoncount."', '".$closebutton."', '".$draggable."', '".$code."', '".$html."', '".$interval."');\n";
-			
-			//echo "\tsetTimeout('objClicked(".$i.")', 500);\n\n";
-		}
-	}
-	
-	echo "\n\n";
-	echo "writeMessage(\"<font color=gray><b>Saving the Properties...</b></font>\");";
-	echo "\n\n";
-	
-	//echo "\tsetTimeout('objClicked(".$i.")', 500);\n";
-	
-	$timeCount = 0;
-	
-	for($i=0; $i<$count; $i++) {
-		$type = $prt['type'][$i]['value'];
-		if($type != "") {
-			echo "\tsetTimeout('objClicked(".$i.")', 500 + ".($timeCount*200).");\n";
-			$timeCount++;
-		}
-	}
-	
-	echo "
+if (isset($_GET['action']) && $_GET['action'] == 'load') {
+    echo "\twriteMessage(\"<font color=#F90><b>Start Loading...</b></font>\");\n\n";
+    include ("php/xmlClass.php");
+    $xml = new uizXmlClass();
+    $prt = $xml->xmlOpen("projects/" . $_GET['projectDir'] . "/objProperties.xml", 'object');
+    $count = count(isset($prt['object']) ? $prt['object'] : array());
+    for ($i = 0; $i < $count; $i ++) {
+        $type = $prt['type'][$i]['value'];
+        $objectid = $prt['object-id'][$i]['value'];
+        $x = $prt['x'][$i]['value'];
+        $y = $prt['y'][$i]['value'];
+        $zindex = $prt['z-index'][$i]['value'];
+        $width = $prt['width'][$i]['value'];
+        $height = $prt['height'][$i]['value'];
+        $align = $prt['align'][$i]['value'];
+        $visibility = $prt['visibility'][$i]['value'];
+        $backgroundColor = $prt['backgroundColor'][$i]['value'];
+        $action = $prt['action'][$i]['value'];
+        $method = $prt['method'][$i]['value'];
+        $target = $prt['target'][$i]['value'];
+        $html = $prt['html'][$i]['value'];
+        $src = $prt['src'][$i]['value'];
+        $value = $prt['value'][$i]['value'];
+        $code = $prt['code'][$i]['value'];
+        $label = $prt['label'][$i]['value'];
+        $disabled = $prt['disabled'][$i]['value'];
+        $tabindex = $prt['tabindex'][$i]['value'];
+        $buttoncount = $prt['buttoncount'][$i]['value'];
+        $tabcount = $prt['tabcount'][$i]['value'];
+        $datasourceNo = $prt['datasourceNo'][$i]['value'];
+        $fields = $prt['fields'][$i]['value'];
+        $columnWidth = $prt['columnWidth'][$i]['value'];
+        $paginator = $prt['paginator'][$i]['value'];
+        $rowsPerPage = $prt['rowsPerPage'][$i]['value'];
+        $closebutton = $prt['closebutton'][$i]['value'];
+        $draggable = $prt['draggable'][$i]['value'];
+        $provider = $prt['provider'][$i]['value'];
+        $datasourceURL = $prt['datasourceURL'][$i]['value'];
+        $datasourceType = $prt['datasourceType'][$i]['value'];
+        $resultNode = $prt['resultNode'][$i]['value'];
+        $fields = $prt['fields'][$i]['value'];
+        $query = $prt['query'][$i]['value'];
+        echo "\t";
+        if ($type == "DIV") {
+            echo "addObjDiv();\n";
+        } else 
+            if ($type == "IMAGE") {
+                echo "addObjImage();\n";
+            } else 
+                if ($type == "SWF") {
+                    echo "addObjSWF();\n";
+                } else 
+                    if ($type == "FORM") {
+                        echo "addObjForm();\n";
+                    } else 
+                        if ($type == "INPUTBOX") {
+                            echo "addObjInputbox();\n";
+                        } else 
+                            if ($type == "CHECKBOXSET") {
+                                echo "addObjCheckboxSet();\n";
+                            } else 
+                                if ($type == "RADIOBUTTONSET") {
+                                    echo "addObjRadiobuttonSet();\n";
+                                } else 
+                                    if ($type == "TEXTAREA") {
+                                        echo "addObjTextarea();\n";
+                                    } else 
+                                        if ($type == "TABLE") {
+                                            echo "addObjTable();\n";
+                                        } else 
+                                            if ($type == "TIMER") {
+                                                echo "addObjTimer();\n";
+                                            } else 
+                                                if ($type == "PUSHBUTTON") {
+                                                    echo "addObjPushButton();\n";
+                                                } else 
+                                                    if ($type == "RADIOBUTTON") {
+                                                        echo "addObjRadioButton();\n";
+                                                    } else 
+                                                        if ($type == "CHECKBOXBUTTON") {
+                                                            echo "addObjCheckboxButton();\n";
+                                                        } else 
+                                                            if ($type == "COLORPICKER") {
+                                                                echo "addObjColorPicker();\n";
+                                                            } else 
+                                                                if ($type == "TABVIEW") {
+                                                                    echo "addObjTabview();\n";
+                                                                } else 
+                                                                    if ($type == "DATATABLE") {
+                                                                        echo "addObjDatatable();\n";
+                                                                    } else 
+                                                                        if ($type == "CALENDAR") {
+                                                                            echo "addObjCalendar();\n";
+                                                                        } else 
+                                                                            if ($type == "PANEL") {
+                                                                                echo "addObjPanel();\n";
+                                                                            } else 
+                                                                                if ($type == "SLIDER") {
+                                                                                    echo "addObjSlider();\n";
+                                                                                } else 
+                                                                                    if ($type == "AUTOCOMPLETE") {
+                                                                                        echo "addObjAutoComplete();\n";
+                                                                                    } else 
+                                                                                        if ($type == "RICHTEXTEDITOR") {
+                                                                                            echo "addObjRichTextEditor();\n";
+                                                                                        } else 
+                                                                                            if ($type == "MENUBAR") {
+                                                                                                echo "addObjMenuBar();\n";
+                                                                                            } else 
+                                                                                                if ($type == "TREEVIEW") {
+                                                                                                    echo "addObjTreeview();\n";
+                                                                                                } else 
+                                                                                                    if ($type == "YUICHART") {
+                                                                                                        echo "addObjYUIChart();\n";
+                                                                                                    } else 
+                                                                                                        if ($type == "PAGINATOR") {
+                                                                                                            echo "addObjPaginator();\n";
+                                                                                                        } else 
+                                                                                                            if ($type == "DRAGANDDROP") {
+                                                                                                                echo "addObjDragAndDrop();\n";
+                                                                                                            } else 
+                                                                                                                if ($type == "RESIZE") {
+                                                                                                                    echo "addObjResize();\n";
+                                                                                                                } else 
+                                                                                                                    if ($type == "MAPDAUM") {
+                                                                                                                        echo "addObjDaumMap();\n";
+                                                                                                                    } else 
+                                                                                                                        if ($type == "MAPGOOGLE") {
+                                                                                                                            echo "addObjGoogleMap();\n";
+                                                                                                                        } else 
+                                                                                                                            if ($type == "GOOGLECHART") {
+                                                                                                                                echo "addObjGoogleChart();\n";
+                                                                                                                            } else 
+                                                                                                                                if ($type == "MAPNAVER") {
+                                                                                                                                    echo "addObjNaverMap();\n";
+                                                                                                                                } else 
+                                                                                                                                    if ($type == "MAPLIVE") {
+                                                                                                                                        echo "addObjLiveMap();\n";
+                                                                                                                                    } else 
+                                                                                                                                        if ($type == "DATASOURCE") {
+                                                                                                                                            $width = "100%";
+                                                                                                                                            if ($datasourceType == "HTML") {
+                                                                                                                                                echo "addDsHTML();\n";
+                                                                                                                                            } else 
+                                                                                                                                                if ($datasourceType == "JSON") {
+                                                                                                                                                    echo "addDsJSON();\n";
+                                                                                                                                                } else 
+                                                                                                                                                    if ($datasourceType == "XML") {
+                                                                                                                                                        echo "addDsXML();\n";
+                                                                                                                                                    }
+                                                                                                                                        }
+        if ($type != "") {
+            $code = str_replace("\n", "\\n", $code);
+            $html = str_replace("\n", "\\n", $html);
+            echo "\tsetObjStyle(" . $i . ", '" . $x . "', '" . $y . "', '" . $zindex . "', '" . $width . "', '" . $height . "', '" . $align . "', '" . $visibility . "', '" . $label . "', '" . $disabled . "', '" . $tabindex . "', '" . $datasourceNo . "', '" . $provider . "', '" . $datasourceURL . "', '" . $datasourceType . "', '" . $resultNode . "', '" . $fields . "', '" . $query . "', '" . $columnWidth . "', '" . $paginator . "', '" . $rowsPerPage . "', '" . $tabcount . "', '" . $src . "', '" . $action . "', '" . $method . "', '" . $target . "', '" . $value . "', '" . $backgroundColor . "', '" . $buttoncount . "', '" . $closebutton . "', '" . $draggable . "', '" . $code . "', '" . $html . "', '" . $interval . "');\n";
+            //echo "\tsetTimeout('objClicked(".$i.")', 500);\n\n";
+        }
+    }
+    echo "\n\n";
+    echo "writeMessage(\"<font color=gray><b>Saving the Properties...</b></font>\");";
+    echo "\n\n";
+    //echo "\tsetTimeout('objClicked(".$i.")', 500);\n";
+    $timeCount = 0;
+    for ($i = 0; $i < $count; $i ++) {
+        $type = $prt['type'][$i]['value'];
+        if ($type != "") {
+            echo "\tsetTimeout('objClicked(" . $i . ")', 500 + " . ($timeCount * 200) . ");\n";
+            $timeCount ++;
+        }
+    }
+    echo "
 	\tloading = false;
 	
 	";
-	
-	for($i=0; $i<$count; $i++) {
-		$type = $prt['type'][$i]['value'];
-		if($type == "DATATABLE") {
-			echo "\tsetTimeout('setObj(".$i.")', 500 + ".($timeCount*200).");\n";
-			$timeCount++;
-		}
-	}	
-	
-	echo "
-	\tsetTimeout('writeMessage(\"<font color=green><b>Loading Complete.</b></font>\")', 500 + ".($timeCount*200).");
+    for ($i = 0; $i < $count; $i ++) {
+        $type = $prt['type'][$i]['value'];
+        if ($type == "DATATABLE") {
+            echo "\tsetTimeout('setObj(" . $i . ")', 500 + " . ($timeCount * 200) . ");\n";
+            $timeCount ++;
+        }
+    }
+    echo "
+	\tsetTimeout('writeMessage(\"<font color=green><b>Loading Complete.</b></font>\")', 500 + " . ($timeCount * 200) . ");
 	loadSetting();
 	loadCss();
 	loadAPIKeys();	

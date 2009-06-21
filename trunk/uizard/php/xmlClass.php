@@ -19,7 +19,8 @@ class uizXmlClass {
 
     function xmlOpen($url, $tag) { 
         $this->_tag = $tag; 
-        if($fp = fopen($url, 'r')) { 
+        if($fp = fopen($url, 'r')) {
+            $xml_data = '';
             while(!feof ($fp)) { 
                 $xml_data .= fgets($fp, 4096); 
             } 
@@ -27,19 +28,23 @@ class uizXmlClass {
             $this->_xmlDefine($xml_data); 
             return $this->_xmlInte(); 
         } else { 
-            $this->_error('xml open error : xml 파일열기 실패 => '.$url); 
+            $this->_error('xml open error : xml 파�?�열기 실패 => '.$url); 
         } 
     } 
 
     ## xml 선언 
     function _xmlDefine($xml_data) { 
-        preg_match('/encoding="[^"]+"/', $xml_data, $pattern); 
-        $this->_xml_encoding = strtolower(preg_replace('/(encoding=)|(")/', '', $pattern[0])); 
+        global $pattern, $index;
 
-        $this->_xml_parser = xml_parser_create(); 
-        xml_parser_set_option($this->_xml_parser, XML_OPTION_CASE_FOLDING, 0); //태그 이름을 소문자로 뿌려줌 
-        xml_parse_into_struct($this->_xml_parser, $xml_data, $this->_xml_item, $index); 
-        xml_parser_free($this->_xml_parser); 
+        if (empty($pattern)) $pattern = array();
+        if (preg_match('/encoding="[^"]+"/', $xml_data, $pattern)) {
+            $this->_xml_encoding = strtolower(preg_replace('/(encoding=)|(")/', '', $pattern[0]));
+
+            $this->_xml_parser = xml_parser_create();
+            xml_parser_set_option($this->_xml_parser, XML_OPTION_CASE_FOLDING, 0); //태그 �?�름�?� 소문�?로 뿌려줌
+            xml_parse_into_struct($this->_xml_parser, $xml_data, $this->_xml_item, $index);
+            xml_parser_free($this->_xml_parser);
+        }
     } 
 
     ## xml 추출 
@@ -60,7 +65,7 @@ class uizXmlClass {
         return $this->_xml_result; 
     } 
 
-    ## 에러표시 
+    ## �?러표시 
     function _error($msg='') { 
         echo $msg; 
         exit; 

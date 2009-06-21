@@ -14,7 +14,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::NEW PROJECT -->
 <div id="newProject">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/new.png" align="absmiddle"> New Project</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/new.png" align="middle"> New Project</div>
 	<div class="bd" style="text-align:center;">
     	<div style="float:left; width:180px; height:315px; text-align:left; font-size:12px; margin-right:5px;">
         	<div style="height:20px;"><b>Category</b></div>
@@ -24,7 +24,7 @@ version: 0.8.2
         <div style="float:right; width:392px; height:315px; text-align:left; font-size:11px;">
 	        <div style="height:20px;"><b>Type</b></div>
             <div style="height:295px; border:1px #CCC solid; background:#FFF;">
-                <div id="projectType"; style="margin:10px;">
+                <div id="projectType" style="margin:10px;">
                 </div> 
         	</div>
         </div>      
@@ -33,7 +33,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::MAKE PROJECT -->
 <div id="makeProject">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/new.png" align="absmiddle"> Project Setting</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/new.png" align="middle"> Project Setting</div>
 	<div class="bd" style="text-align:center;">
     <form id="makeProjectForm"  name="makeProjectForm" method="POST" action="projects/new.php">
     	<div><img src='images/makeproject.png'><a href="#" onClick=""></a></div>
@@ -52,7 +52,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::OPEN PROJECT -->
 <div id="openProject">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/open.png" align="absmiddle"> Open...</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/open.png" align="middle"> Open...</div>
 	<div class="bd" style="text-align:center;">
     	<div style="text-align:left; font-weight:bold; font-size:12px; margin:5px;">Open Project</div>
     	<div id="openProjectInputBox" style="text-align:left; margin:8px; height:34px;"><input id="openProjectName" type="text" style="width:410px;"></div>
@@ -62,7 +62,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::SAVE AS PROJECT -->
 <div id="saveAsProject">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/saveas.png" align="absmiddle"> Save As...</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/saveas.png" align="middle"> Save As...</div>
 	<div class="bd" style="text-align:center;">
     <form name="saveAsProjectForm" method="POST" action="projects/saveas.php" target="_blank">
     	<div style="text-align:left; font-weight:bold; font-size:12px; margin:5px;">New Project Name</div>
@@ -74,10 +74,10 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::EXPORT PROJECT -->
 <div id="exportProject">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="absmiddle"> Export The Project</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="middle"> Export The Project</div>
 	<div class="bd" style="text-align:center;">
     <form id="exportProjectForm" name="exportProjectForm" method="POST" action="projects/export.php" target="_blank"> 
-    	<input name="projectDir" type="hidden" value="<?php echo $projectname;?>" />
+    	<input name="projectDir" type="hidden" value="<?php echo $projectName;?>" />
     	<div id="exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
         	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Title</b></div>
             <div id="exportProjectTitle" style="margin-bottom:15px; margin-right:10px;"></div>
@@ -123,10 +123,10 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::PROJECT GALLERY -->
 <div id="projectGallery">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="absmiddle"> Project Gallery</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/export.png" align="middle"> Project Gallery</div>
 	<div class="bd" style="text-align:center;">
     <form id="projectGalleryForm" name="projectGalleryForm" method="POST" action="projects/projectGallery.php" target="_blank"> 
-    	<input name="projectDir" type="hidden" value="<?php echo $projectname;?>" />
+    	<input name="projectDir" type="hidden" value="<?php echo $projectName;?>" />
     	<div id="exportProjectInformation" style="float:left; width:350px; height:310px; text-align:left; font-size:12px;">
         	<div style="border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:3px; margin-right:10px;"><b>Project Title</b></div>
             <div id="projectGalleryTitle" style="margin-bottom:15px; margin-right:10px;"></div>
@@ -167,12 +167,12 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::GRID SETTING -->
 <div id="gridSetting">
-	<div class="hd" style="text-align:left;"><img src="images/toolbar/gridsetting.png" align="absmiddle"> Grid Setting</div>
+	<div class="hd" style="text-align:left;"><img src="images/toolbar/gridsetting.png" align="middle"> Grid Setting</div>
 	<div id="gridSettingBody" class="bd">
         <div align="left" style="height:25px; font-weight:bold; font-size:12px;">Grid Size</div>
     	<div id="gridSettingButtons" style="height:40px;"></div>
         <div align="left" style="height:25px; font-weight:bold; font-size:12px;">Grid Opacity</div>
-		<div id="gridSettingSlider" class="yui-h-slider" tabindex="-1" title="Slider" style="margin-left:8px; background:url(http://yui.yahooapis.com/2.6.0/build/slider/assets/bg-fader.gif) 5px 0 no-repeat;">   
+		<div id="gridSettingSlider" class="yui-h-slider" title="Slider" style="margin-left:8px; background:url(http://yui.yahooapis.com/2.6.0/build/slider/assets/bg-fader.gif) 5px 0 no-repeat;">   
 			<div id="gridSlider-thumb" class="yui-slider-thumb"><img src="http://yui.yahooapis.com/2.6.0/build/slider/assets/thumb-n.gif"></div>  
 		</div>  
 	</div>
@@ -180,7 +180,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::API KEY SETTING -->
 <div id="APIKeySetting">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/apikeysetting.png" align="absmiddle"> API Key Setting</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/apikeysetting.png" align="middle"> API Key Setting</div>
 	<div class="bd">
     	<div id="tableAPIKeySetting"></div>
        	<div id="statusAPIKeySetting" style="height:50px;"></div>
@@ -189,7 +189,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::CSS SETTING -->
 <div id="CSSSetting">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/cssSetting.png" align="absmiddle"> CSS Setting</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/cssSetting.png" align="middle"> CSS Setting</div>
 	<div class="bd">
     	<div id="tabCSSSetting" style="text-align:left;">
             <ul class="yui-nav">
@@ -206,7 +206,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::PREFERENCES -->
 <div id="Preferences">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/preference.png" align="absmiddle"> Preferences</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/preference.png" align="middle"> Preferences</div>
 	<div class="bd">
     <form name="preferencesForm" method="POST" action="" target="_blank"> 
         <div id="tabPreferences" class="yui-navset" style="text-align:left;">
@@ -220,7 +220,7 @@ version: 0.8.2
                     	<input id="chkboxShowSelection" name="chkboxShowSelection" type="checkbox" /> Show The Object Selection Always<br />
                         <input id="chkboxFillSelection" name="chkboxFillSelection" type="checkbox" /> Fill The Object Selection<br />
                     </div>
-                	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Drag & Resize</div>
+                	<div style="font-weight:bold; border-bottom:solid 1px #999; padding-bottom:3px; margin-bottom:5px;">Drag &amp; Resize</div>
                     <div style="margin-bottom:15px;">
                     	<input id="chkboxShowResizeHandle" name="chkboxShowResizeHandle" type="checkbox" /> Show The Resize Handle Always<br />
                         <!--
@@ -248,7 +248,7 @@ version: 0.8.2
 
 <!-- HTML : CONTAINER::PROJECT SETTING -->
 <div id="ProjectSetting">
-	<div class="hd" style="text-align:left"><img src="images/toolbar/projectsetting.png" align="absmiddle"> Project Setting</div>
+	<div class="hd" style="text-align:left"><img src="images/toolbar/projectsetting.png" align="middle"> Project Setting</div>
 	<div class="bd">
     	<div style="height:300px; width:100%; float:left;">
     	<div id="tabProjectSetting" style="text-align:left;">
