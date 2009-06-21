@@ -500,15 +500,15 @@ if($_GET['mode'] == "codeview") {
 <script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushBash.js"></script>
 <script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushJScript.js"></script>
 
-<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css">
-<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css" />
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>
 
 </head>
 
-<body onload="dp.SyntaxHighlighter.HighlightAll('code');" leftmargin="0" topmargin="0">
+<body onload="dp.SyntaxHighlighter.HighlightAll('code');">
   <textarea class="javascript" name="code">
 <?php
 	echo htmlspecialchars($codedata);
@@ -535,15 +535,15 @@ else if($_GET['mode'] == "htmlview") {
 <script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushBash.js"></script>
 <script type="text/javascript" src="<?php echo $dirLib;?>syntaxHighlighter/scripts/shBrushXml.js "></script>
 
-<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css">
-<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css">
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shCore.css" />
+<link type="text/css" rel="stylesheet" href="<?php echo $dirLib;?>syntaxHighlighter/styles/shThemeDefault.css" />
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>
 
 </head>
 
-<body onload="dp.SyntaxHighlighter.HighlightAll('code');" leftmargin="0" topmargin="0">
+<body onload="dp.SyntaxHighlighter.HighlightAll('code');">
   <textarea class="html" name="code">
 <?php
 	echo htmlspecialchars($htmldata);

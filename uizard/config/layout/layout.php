@@ -78,19 +78,19 @@ version: 0.8.2
 <!-- HTML : CONTAINER::OBJECT EXPLORER -->
 <div id="divObjectsExplorer">
 	<div style="font-size:12px; padding-left:5px; padding-top:5px;">
-    	<img src="images/layout/uizard.png" align="absmiddle"> <b>UIzard</b>
+    	<img src="images/layout/uizard.png" align="middle"> <b>UIzard</b>
 	</div>
 	<div id="objectsExplorerTreeview" style="padding-left:5px; font-size:12px;">
 	</div>
 	<div id="objectsExplorerTreeviewDummy" style="display:none;">
 		<ul id="treeNodeProject">
-			<li><a onclick=""><img src="images/layout/project.png" align="absmiddle"> <b><?php echo $projectname;?></b></a>
+			<li><a onclick=""><img src="images/layout/project.png" align="middle"> <b><?php echo $projectName;?></b></a>
 				<ul id="treeNodeCanvas">
-					<li><a href="#" onclick="objClicked(0);"><img src="images/layout/canvas.png" align="absmiddle"> Canvas</a>
+					<li><a href="#" onclick="objClicked(0);"><img src="images/layout/canvas.png" align="middle"> Canvas</a>
 						<ul id="treeNodeObjects">
 						</ul>
 					</li>
-					<li><a href="#" onclick=""><img src="images/layout/datasource.png" align="absmiddle"> Datasource</a>
+					<li><a href="#" onclick=""><img src="images/layout/datasource.png" align="middle"> Datasource</a>
 						<ul id="treeNodeDatasource">
 						</ul>
 					</li>                    

@@ -556,6 +556,7 @@ function genPaginator($no, $objectid, $code) {
 // genDragAndDrop()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function genDragAndDrop($no, $objectid) {
+    global $x, $y, $zindex, $width, $height, $align, $visibility;
 	return "
 	<div id='".$objectid."' style='position:absolute; left:".$x."; top:".$y."; z-index:".$zindex."; width:".$width."; height:".$height."; text-align:".$align."; visibility:".$visibility.";'></div>
 	";
@@ -565,6 +566,7 @@ function genDragAndDrop($no, $objectid) {
 // genResize()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function genResize($no, $objectid) {
+    global $x, $y, $zindex, $width, $height, $align, $visibility;
 	return "
 	<div id='".$objectid."' style='position:absolute; left:".$x."; top:".$y."; z-index:".$zindex."; width:".$width."; height:".$height."; text-align:".$align."; visibility:".$visibility.";'></div>
 	";
@@ -646,6 +648,7 @@ function genMapGoogle($no, $objectid, $code) {
 // genGoogleChart()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function genGoogleChart($no, $objectid) {
+    global $x, $y, $zindex, $width, $height, $align, $visibility;
 	return "
 	<div id='".$objectid."' style='position:absolute; left:".$x."; top:".$y."; z-index:".$zindex."; width:".$width."; height:".$height."; text-align:".$align."; visibility:".$visibility.";'></div>
 	";
@@ -718,7 +721,9 @@ function genMapLive($no, $objectid, $code) {
 // genDatasource()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function genDatasource($no, $objectid, $provider, $datasourceURL, $datasourceType, $resultNode, $fields, $query, $code) {
-	$fieldsTemp = spliti(",", $fields);
+	global $apikey;
+    
+    $fieldsTemp = spliti(",", $fields);
 	$fields = "";
 	for($i=0; $i<count($fieldsTemp); $i++) {
 		$fields .= "\"".$fieldsTemp[$i]."\"";

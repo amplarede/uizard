@@ -13,9 +13,9 @@ version: 0.8.2
 <!-- HTML : CONTAINER::DESIGN CANVAS -->
 <div id='canvas1'>
 	<div class="hd"></div>
-	<div id='canvasDesign' class="bd" style='width:<?php echo $_GET['width']; ?>; height:<?php echo $_GET['height']; ?>; background-color:#ffffff;' onClick='canvasClicked();' onDblClick='canvasDblClicked();'>
+	<div id='canvasDesign' class="bd" style='width:<?php echo isset($_GET['width']) ? $_GET['width'] : 500; ?>; height:<?php echo isset($_GET['height']) ? $_GET['height'] : 500; ?>; background-color:#ffffff;' onClick='canvasClicked();' onDblClick='canvasDblClicked();'>
 	<div id="objectStorage" style=""></div>
-	<div id="canvasGrid" style="height:<?php echo $_GET['height']; ?>; background:url(images/grid_10px.png); opacity:0.4; filter:alpha(opacity=40);"></div>
+	<div id="canvasGrid" style="height:<?php echo isset($_GET['height']) ? $_GET['height'] : 500; ?>; background:url(images/grid_10px.png); opacity:0.4; filter:alpha(opacity=40);"></div>
 	</div>
 </div>
 
