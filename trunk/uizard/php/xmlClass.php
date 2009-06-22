@@ -28,7 +28,7 @@ class uizXmlClass {
             $this->_xmlDefine($xml_data); 
             return $this->_xmlInte(); 
         } else { 
-            $this->_error('xml open error : xml 파�?�열기 실패 => '.$url); 
+            $this->_error('xml open error : xml file open failure => '.$url); 
         } 
     } 
 
@@ -41,7 +41,7 @@ class uizXmlClass {
             $this->_xml_encoding = strtolower(preg_replace('/(encoding=)|(")/', '', $pattern[0]));
 
             $this->_xml_parser = xml_parser_create();
-            xml_parser_set_option($this->_xml_parser, XML_OPTION_CASE_FOLDING, 0); //태그 �?�름�?� 소문�?로 뿌려줌
+            xml_parser_set_option($this->_xml_parser, XML_OPTION_CASE_FOLDING, 0); // print tag's name to lower case
             xml_parse_into_struct($this->_xml_parser, $xml_data, $this->_xml_item, $index);
             xml_parser_free($this->_xml_parser);
         }
@@ -65,7 +65,7 @@ class uizXmlClass {
         return $this->_xml_result; 
     } 
 
-    ## �?러표시 
+    ## print error
     function _error($msg='') { 
         echo $msg; 
         exit; 
