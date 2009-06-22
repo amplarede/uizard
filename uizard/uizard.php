@@ -6,7 +6,8 @@ http://www.uizard.org/License
 version: 0.8.2
 */
 /*
-//ì œë¡œë³´ë“œXEì—? ê°€ìž…ë?œ ì‚¬ìš©ìž?ë¥¼ ì?¸ì¦?í•˜ì—¬ ì‚¬ìš©í•  ìˆ˜ ìžˆë?„ë¡? í•´ì£¼ê¸° ìœ„í•œ ì½�?ë“œìž…ë‹ˆë‹¤.
+// Following code is authentication code for XpressEngine users.
+
 //for Authorizing the member of uizard.org
 define('__ZBXE__',true);
 require_once("../config/config.inc.php");
@@ -20,7 +21,7 @@ $id = $logged_info->user_id;
 $email = $logged_info->email_address;
 $is_admin = $logged_info->is_admin;
 
-//ì?¸ì¦?ë?œ ê²½ìš°
+// When the user is authenticated,
 //Authorized
 if($no) {
 	$demomode = FALSE;
@@ -38,7 +39,7 @@ if($no) {
 		$projectname = $_GET['projectauthor']."_".$_GET['projectname'];
 	}	
 }
-//ì?¸ì¦?ë?˜ì§€ ì•Šì?€ ê²½ìš°
+// When the user is not authenticated,
 //Not Authorized.
 else {
 	$demomode = TRUE;
@@ -55,10 +56,8 @@ else {
 	}	
 }
 */
-//ì?¸ì¦? ì—†ì?´ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„  ì•„ëž˜ ì½�?ë“œë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤.
-//Use this code without authorizing
-//$projectAuthorëŠ�? ì‚¬ìš©ìž?ì—? ë§žê²Œ ìˆ˜ì •ì?´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
-//You can change a $projectAuthor
+// If you want to use UIzard witout authentication, use this code.
+// $projectAuthor is modifiable according to user's name.
 $demomode = FALSE;
 $projectName = isset($_GET['projectname']) ? $_GET['projectname'] : '';
 $projectAuthor = "uizard";
