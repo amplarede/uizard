@@ -88,39 +88,39 @@ if (! empty($_GET['projectDir'])) {
 
 <!-- CSS : YAHOO USER INTERFACE LIBRARY -->
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/reset-fonts-grids/reset-fonts-grids.css">
+	href="lib/yui/reset-fonts-grids/reset-fonts-grids.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/resize/assets/skins/sam/resize.css">
+	href="lib/yui/resize/assets/skins/sam/resize.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/layout/assets/skins/sam/layout.css">
+	href="lib/yui/layout/assets/skins/sam/layout.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/reset/reset.css">
+	href="lib/yui/reset/reset.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/fonts/fonts.css">
+	href="lib/yui/fonts/fonts.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/container/assets/skins/sam/container.css">
+	href="lib/yui/container/assets/skins/sam/container.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/tabview/assets/skins/sam/tabview.css">
+	href="lib/yui/tabview/assets/skins/sam/tabview.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/button/assets/skins/sam/button.css">
+	href="lib/yui/button/assets/skins/sam/button.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/colorpicker/assets/skins/sam/colorpicker.css">
+	href="lib/yui/colorpicker/assets/skins/sam/colorpicker.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/datatable/assets/skins/sam/datatable.css">
+	href="lib/yui/datatable/assets/skins/sam/datatable.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/editor/assets/skins/sam/simpleeditor.css">
+	href="lib/yui/editor/assets/skins/sam/simpleeditor.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/autocomplete/assets/skins/sam/autocomplete.css">
+	href="lib/yui/autocomplete/assets/skins/sam/autocomplete.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/calendar/assets/skins/sam/calendar.css">
+	href="lib/yui/calendar/assets/skins/sam/calendar.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/treeview/assets/skins/sam/treeview.css">
+	href="lib/yui/treeview/assets/skins/sam/treeview.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/slider/assets/skins/sam/slider.css">
+	href="lib/yui/slider/assets/skins/sam/slider.css">
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/paginator/assets/skins/sam/paginator.css" />
+	href="lib/yui/paginator/assets/skins/sam/paginator.css" />
 <link rel="stylesheet" type="text/css"
-	href="js/yui/build/menu/assets/skins/sam/menu.css">
+	href="lib/yui/menu/assets/skins/sam/menu.css">
 
 <!-- JS : CODEMIRROR -->
 <script type="text/javascript" src="lib/codeMirror/js/codemirror.js"></script>
@@ -140,77 +140,77 @@ if (! empty($_GET['projectDir'])) {
 
 <!-- JS : LIVE MAP -->
 <script type="text/javascript"
-	src="js/mapcontrol6.2.js"></script>
+	src="lib/mapcontrol6.2.js"></script>
 
 <!-- JS : YAHOO USER INTERFACE LIBRARY -->
 <script type="text/javascript"
-	src="js/yui/build/yahoo/yahoo.js"></script>
+	src="lib/yui/yahoo/yahoo.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/event/event.js"></script>
+	src="lib/yui/event/event.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/dom/dom.js"></script>
+	src="lib/yui/dom/dom.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/datasource/datasource-min.js"></script>
+	src="lib/yui/datasource/datasource-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+	src="lib/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/connection/connection-min.js"></script>
+	src="lib/yui/connection/connection-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/dragdrop/dragdrop-min.js"></script>
+	src="lib/yui/dragdrop/dragdrop-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/animation/animation-min.js"></script>
+	src="lib/yui/animation/animation-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/container/container-min.js"></script>
+	src="lib/yui/container/container-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/slider/slider-min.js"></script>
+	src="lib/yui/slider/slider-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/element/element-min.js"></script>
+	src="lib/yui/element/element-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/colorpicker/colorpicker-min.js"></script>
+	src="lib/yui/colorpicker/colorpicker-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/get/get-min.js"></script>
+	src="lib/yui/get/get-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/utilities/utilities.js"></script>
+	src="lib/yui/utilities/utilities.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/slider/slider-min.js"></script>
+	src="lib/yui/slider/slider-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/json/json-min.js"></script>
+	src="lib/yui/json/json-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/resize/resize-min.js"></script>
+	src="lib/yui/resize/resize-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/layout/layout-min.js"></script>
+	src="lib/yui/layout/layout-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/button/button-min.js"></script>
+	src="lib/yui/button/button-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/tabview/tabview-min.js"></script>
+	src="lib/yui/tabview/tabview-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/menu/menu.js"></script>
+	src="lib/yui/menu/menu.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/autocomplete/autocomplete-min.js"></script>
+	src="lib/yui/autocomplete/autocomplete-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/yuiloader/yuiloader.js"></script>
+	src="lib/yui/yuiloader/yuiloader.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/datatable/datatable-min.js"></script>
+	src="lib/yui/datatable/datatable-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/editor/editor-min.js"></script>
+	src="lib/yui/editor/editor-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/editor/simpleeditor-min.js"></script>
+	src="lib/yui/editor/simpleeditor-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/calendar/calendar.js"></script>
+	src="lib/yui/calendar/calendar.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/treeview/treeview.js"></script>
+	src="lib/yui/treeview/treeview.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/charts/charts-min.js"></script>
+	src="lib/yui/charts/charts-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/paginator/paginator-min.js"></script>
+	src="lib/yui/paginator/paginator-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/stylesheet/stylesheet-min.js"></script>
+	src="lib/yui/stylesheet/stylesheet-min.js"></script>
 <script type="text/javascript"
-	src="js/yui/build/assets/js/data.js"></script>
+	src="lib/yui/assets/js/data.js"></script>
 
 <!-- JS : SWFOBJECT -->
 <script type="text/javascript"
-	src="js/swfobject.js"></script>
+	src="lib/swfobject.js"></script>
 
 <!-- JS : UIZARD -->
 <script type="text/javascript" src="js/editor.js"></script>
