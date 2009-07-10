@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<objectSet>
+	<keySetting>
+		<GoogleMapAPI>ABQIAAAAnxp9-CxpjSEUiYZNuqxVfxR_0InGTL-Nzc80coSUi8WNryh4LRRsXN1hieBp1JgRZTLsocZFCUvQdQ</GoogleMapAPI>
+		<YahooAPI>mHLH.VzV34FWDBR1LM__PA96CSHNk5l9uUQDFPNkuIgmvLax4G77zXqWMHMQNo9uBsy0KeANdrU0oA--</YahooAPI>
+		<NaverDataAPI>b9b73353ea229c5447ae857853632d1c</NaverDataAPI>
+		<NaverMapAPI>016200523a6f4851d55ae4ea563f4a1e</NaverMapAPI>
+		<DaumSearchAPI>e6685418afd4d1c361973c28771964266f266e37</DaumSearchAPI>
+		<DaumShoppingAPI>e25b9464cbe501b0bd0df5022fc11ea25179f378</DaumShoppingAPI>
+		<DaumContentsAPI>29f702fefbd6cca9449c8c2ae49df6286f45d88e</DaumContentsAPI>
+		<DaumMapAPI>f69b34ca82ca5e92ee5630a0c2380a4815fc6cc8</DaumMapAPI>
+		<LiveDataAPI>F7A62595C7C6380088ECCE1E8D23A914F5BFD6B6</LiveDataAPI>
+	</keySetting>
+</objectSet>
