@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UIzard" default="dist" basedir="." description="Web based Web Development Tool">
+	<property file="build.properties"/>
+	<property file="build.properties.default"/>
+	
+	<property name="outputdir" value="./output" override="true" />
+	<property name="builddir" value="${outputdir}/build" override="true" />
+	<property name="distdir" value="${outputdir}/dist" override="true" />
+
+	<svnlastrevision svnpath="/usr/bin/svn" workingcopy="${project.basedir}" propertyname="svn.lastrevision" />
+	
+	<fileset dir="${project.basedir}/" id="source">
+		<include name="**" />
+		<exclude name="**/.svn" />
+		<exclude name="output/" />
+		<exclude name="tests/" />
+	</fileset>
+
+	<target name="prepare">
+		<echo msg="Making directory ${outputdir}" />
+		<mkdir dir="${outputdir}" />
+	</target>
+
+	<target name="build" depends="prepare">
+		<echo msg="Making directory ${builddir}" />
+		<mkdir dir="${builddir}" />
+		
+		<echo msg="Copying files to build directory..." />
+		<copy todir="${builddir}/${phing.project.name}">
+			<fileset refid="source" />
+<!-- Filterchain
+			<filterchain>
+				<replacetokens>
+					<token key="${version}" value="${top.builddir}/"/>
+					<token key="${revision}" value="${top.builddir}/testsite/user/${lang}/"/>
+				</replacetokens>
+			</filterchain>
+-->
+		</copy>
+
+		<echo msg="Copying UIzard files to ${builddir} directory..." />
+	</target>  
+
+	<target name="test" depends="build">
+		<echo msg="Making directory ${outputdir}/report" />
+		<mkdir dir="${outputdir}/report" />
+
+		<phpunit haltonfailure="false" haltonerror="false">
+			<formatter type="xml" todir="${outputdir}/report" outfile="logfile.xml" />
+			<batchtest>
+				<fileset dir="${project.basedir}/tests">
+					<include name="**/*Test*.php" />
+					<exclude name="**/Abstract*.php" />
+				</fileset>
+			</batchtest>
+		</phpunit>
+	</target>
+
+	<target name="dist" depends="test">
+		<echo msg="Creating archive..." />
+		
+		<echo msg="Making directory ${distdir}" />
+		<mkdir dir="${distdir}" />
+
+		<tar destfile="${distdir}/uizard-lastest.tar.gz" compression="gzip">
+			<fileset dir="${builddir}">
+				<include name="UIzard" />
+			</fileset>
+		</tar>
+
+		<echo msg="Files copied and compressed in build directory OK!" />
+	</target>
+
+	<!-- Rebuild -->
+	<target name="rebuild" description="rebuilds this package">
+		<delete dir="${builddir}" />
+		<phingcall target="build" />
+	</target>
+	
+	<!-- Rebuild -->
+	<target name="redist" description="redistributes this package">
+		<delete dir="${outputdir}" />
+		<phingcall target="dist" />
+	</target>
+
+	<!-- Clean -->
+	<target name="clean" description="clean this package">
+		<delete dir="${outputdir}" />
+	</target>
+</project>
