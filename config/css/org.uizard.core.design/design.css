@@ -1,0 +1,74 @@
+/*
+Copyright Sung-tae Ryu. All rights reserved.
+Code licensed under the GPL v2 License:
+http://www.uizard.org/License
+version: 3.0.0
+*/
+
+.windowContainer {
+	position: relative;
+}
+
+.canvasContainer {
+	position: relative;
+	overflow: auto;
+	background-color:#999;
+}
+
+.windowContainer .ruler {
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:14px;
+	height:14px;
+	z-index: 4;
+	background-image: url(../../image/org.uizard.core.design/ruler.png);	
+}
+
+.windowContainer .ruler_x {
+	position: absolute;
+	left:14px;
+	top:0px;
+	height:13px;
+	border-bottom:1px solid #333;
+	z-index: 3;
+	background-image: url(../../image/org.uizard.core.design/ruler_x.png);
+}
+
+.windowContainer .ruler_y {
+	position: absolute;
+	left:0px;
+	top:14px;
+	width:13px;	
+	border-right:1px solid #333;	
+	z-index: 3;	
+	background-image: url(../../image/org.uizard.core.design/ruler_y.png);
+}
+
+.canvasContainer .canvas {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #FFF;
+	border: 1px solid #333;	
+	z-index: 2;	
+}
+
+.canvasContainer .canvas .grid {
+	background-image:url(../../image/org.uizard.core.design/grid_10px.png);
+	-moz-opacity:.30; filter:alpha(opacity=30); opacity:.30;
+	width:100%;
+	height:100%;
+}
+
+#workspace .yui-panel-container .yui-panel .ft .designerMessage {
+	font-size: 10px;
+	height:20px;
+	float:left;
+}
+
+#workspace .yui-panel-container .yui-panel .ft .mousePositionView {
+	font-size: 10px;
+	height:20px;
+	float:right;
+}

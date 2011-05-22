@@ -1,0 +1,384 @@
+<!--
+Copyright Sung-tae Ryu. All rights reserved.
+Code licensed under the GPL v2 License:
+http://www.uizard.org/License
+version: 3.0.0
+-->
+<div id="uizardMainMenu">
+    <div class="bd" style="margin-left:10px;">
+        <ul class="first-of-type">
+            <li class="yuimenubaritem first-of-type">
+                <a class="yuimenubaritemlabel" href="#File">File </a>
+                <div id="File" class="yuimenu">
+                    <div class="bd">
+                        <ul class="first-of-type">
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#submenu_New" onclick="">New...</a>
+                                <div id="submenu_New" class="yuimenu"> 
+                                    <div class="bd"> 
+                                        <ul class="first-of-type"> 
+                                            <li class="yuimenuitem"> 
+                                                <a class="yuimenuitemlabel" href="#" action="newProject">Project <em class="helptext">Shift + Alt + P</em></a>
+                                            </li>
+                                        </ul>
+                                        <ul> 
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newFile('xoz');">XOZ <em class="helptext">Shift + N</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newFile('rule');">Rule <em class="helptext">Shift + Alt + R</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newFile('template');">Template <em class="helptext">Shift + Alt + T</em></a> 
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newFile('file');">File <em class="helptext">Shift + Alt + F</em></a>
+                                            </li>
+                                        </ul>
+                                        <ul> 
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newFile('other');">Other... <em class="helptext">Shift + Alt + O</em></a>
+                                            </li>
+                                        </ul> 
+                                    </div> 
+                                </div>
+                            </li>
+                            
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.openFile();">Open... <em class="helptext">Shift + O</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.closeFile('');">Close <em class="helptext">Shift + C</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.closeAll();">Close All <em class="helptext">Shift + D</em></a>
+                            </li>
+                        </ul>
+                        <ul>    
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.saveFile();">Save... <em class="helptext">Shift + S</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.saveAsFile();">Save As... <em class="helptext">Shift + Ctrl + S</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.refreshProjectDirectory();">Refresh <em class="helptext">Shift + R</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.importFile();">Import <em class="helptext">Shift + I</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.exportFile();">Export <em class="helptext">Shift + E</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.exit();">Exit</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Edit">Edit </a>
+                <div id="Edit" class="yuimenu">
+                    <div class="bd">
+                        <ul class="first-of-type">
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.undo();">Undo <em class="helptext">Ctrl + Z</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.redo();">Redo <em class="helptext">Ctrl + Y</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.doCopy();">Copy <em class="helptext">Ctrl + C</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.doCut();">Cut <em class="helptext">Ctrl + X</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.doPaste();">Paste <em class="helptext">Ctrl + Y</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.doDelete();">Delete <em class="helptext">Delete</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.selectAll();">Select All <em class="helptext">Ctrl + A</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.doFind();">Find/Replace <em class="helptext">Shift + F</em></a>
+                            </li><!--
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.replace();">Replace <em class="helptext">Ctrl + Shift + R</em></a>
+                            </li>-->
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.goToLine();">Go to Line <em class="helptext">Shift + L</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.showPreference();">Preferences </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!--
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Search">Search</a>
+                <div id="Search" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="">Object</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            -->
+            <!--            
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Search">Search</a>
+                <div id="Search" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="">Object</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            -->
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Project">Project </a>
+                <div id="Project" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.openProject();">Open Project</a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.deleteProject();">Delete Project</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.showProperties();">Properties</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Generate">Generate </a>
+                <div id="Generate" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.generate();">Generate the Source Codes <em class="helptext">Shift + G</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.cleanProject();">Clean</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Message">Message </a>
+                <div id="Message" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.cleanMessage();">Clean All <em class="helptext">Shift + Ctrl + C</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.successMessage();">Success Message</a>
+                            </li>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.failMessage();">Fail Message</a>
+                            </li>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.warningMessage();">Warning Message</a>
+                            </li>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.errorMessage();">Error Message</a>
+                            </li>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.eventMessage();">Event Message</a>
+                            </li>
+                            <li class="yuimenuitem yuimenuitem-checked">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.alarmMessage();">Alarm Message</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Network">Network </a>
+                <div id="Network" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.startCooperation();">Start Cooperation <em class="helptext">Ctrl + Alt + Q</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.stopCooperation();">Stop Cooperation <em class="helptext">Ctrl + Alt + W</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.startChat();">Start Chat <em class="helptext">Ctrl + Alt + O</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.stopChat();">Stop Chat <em class="helptext">Ctrl + Alt + P</em></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Window">Window </a>
+                <div id="Window" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.newWindow();">New Main Window <em class="helptext">Ctrl + Shift + N</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.previousWindow();">Previous Window <em class="helptext">Shift + Alt + &uarr;</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.nextWindow();">Next Window <em class="helptext">Shift + Alt + &darr;</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.previousTab();">Previous Tab <em class="helptext">Shift + Alt + &larr;</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.nextTab();">Next Tab <em class="helptext">Shift + Alt + &rarr;</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#submenu_Perspectives" onclick="">Perspectives</a>
+                                <div id="submenu_Perspectives" class="yuimenu"> 
+                                    <div class="bd"> 
+                                        <h6 class="first-of-type">Left Layout</h6> 
+                                        <ul> 
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.leftShowAndHide();">Show/Hide <em class="helptext">Shift + Alt + 1</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.leftProjectExplorer();">Toggle Project Explorer <em class="helptext">Shift + Alt + 2</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.leftToolBox();">Toggle Toolbox <em class="helptext">Shift + Alt + 3</em></a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="first-of-type">Right Layout</h6>
+                                        <ul>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.rightShowAndHide();">Show/Hide <em class="helptext">Shift + Alt + 4</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.rightProperties();">Toggle Properties <em class="helptext">Shift + Alt + 5</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.rightObjectExplorer();">Toggle Object Explorer <em class="helptext">Shift + Alt + 6</em></a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="first-of-type">Bottom Layout</h6>
+                                        <ul> 
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.bottomShowAndHide();">Show/Hide <em class="helptext">Shift + Alt + 7</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.bottomMessage();">Toggle Messages <em class="helptext">Shift + Alt + 8</em></a>
+                                            </li><!--
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.bottomDebug();">Toggle Debug <em class="helptext">Shift + Alt + 9</em></a>
+                                            </li>-->
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.bottomGenerator();">Toggle Generator <em class="helptext">Shift + Alt + 9</em></a>
+                                            </li>
+                                            <li class="yuimenuitem">
+                                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.bottomChat();">Toggle Chat <em class="helptext">Shift + Alt + 0</em></a>
+                                            </li>
+                                        </ul> 
+                                    </div> 
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.fullWorkspace();">Toggle Full Workspace <em class="helptext">Shift + Alt + W</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.hideAllWindow();">Hide All Window <em class="helptext">Shift + Alt + _</em></a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.showAllWindow();">Show All Window <em class="helptext">Shift + Alt + +</em></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.cascade();">Cascade</a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.tileVertically();">Tile Vertically</a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.tileHorizontally();">Tile Horizontally</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="yuimenubaritem">
+                <a class="yuimenubaritemlabel" href="#Help">Help </a>
+                <div id="Help" class="yuimenu">
+                    <div class="bd">
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.welcome();">Welcome</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.helpContents();">Help Contents</a>
+                            </li>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.tutorial();">Tutorial</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="yuimenuitem">
+                                <a class="yuimenuitemlabel" href="#" onclick="menuActionManager.about();">About UIzard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+/*
+Copyright Sung-tae Ryu. All rights reserved.
+Code licensed under the GPL v2 License:
+http://www.uizard.org/License
+version: 3.0.0
+*/
+
+.canvas .ui-resizable-handle {
+	width: 6px;
+	height: 6px;
+	border: 1px solid #808080;
+	background-color:#fff;
+}
+
+.canvas .ui-resizable-n, .ui-resizable-s {left: 50%; margin-left:-3px;}
+
+.canvas .ui-resizable-e, .ui-resizable-w {top: 50%; margin-top:-3px;}
+
+.canvas .ui-resizable-se {bottom: -5px; right: -5px;}
+
+
+
+.statusDefault { 
+	cursor: default !important;
+}
+
+.statusDrawingLine { 
+	cursor: crosshair !important;
+}
+
+.statusDrawingSquare { 
+	cursor: crosshair !important;
+}
+
+.statusMove { 
+	cursor: move !important;
+}
+
+
+
+.canvas .selection {
+	border: 1px #666 dotted;
+	position: absolute;
+	z-index: 99;
+}
+
+
